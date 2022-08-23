@@ -1,12 +1,15 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import * as client from "@sendgrid/mail";
 import save from "$lib/api/save-to-spreadsheet";
+import importToFront from "$lib/api/import-message-to-front";
 import type { Email, EmailToType } from "$lib/api/api";
 
 const determineToEmail = (toType: EmailToType = "contact") => {
   switch (toType) {
     case "contact":
       return process.env.SENDGRID_TO_EMAIL_CONTACT;
+    case "support":
+      return process.env.FRONT_SUPPORT_INBOX_ID;
     case "sales":
       return process.env.SENDGRID_TO_EMAIL_SALES;
     case "community-license":
@@ -83,12 +86,32 @@ async function saveToSheet(
   }
 }
 
+async function importMessageToFront(
+  data: any,
+) {
+
+  const from = data.email.from;
+  const name = data.email.name;
+  const message = data.email.message;
+
+  const isImported = await importToFront({
+    from,
+    name,
+    message
+  });
+
+  return {
+    statusCode: 200
+  }
+}
+
 export const post: RequestHandler = async ({ request }) => {
   const body = await request.json();
   const email: Email = body! as Email;
   const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || "no-key";
   const SENDGRID_TO_EMAIL = determineToEmail(email.toType);
   const SENDGRID_FROM_EMAIL = SENDGRID_TO_EMAIL;
+  const FRONT_API_TOKEN = process.env.FRONT_API_TOKEN;
 
   const sheetRes = {
     status: null,
@@ -98,7 +121,10 @@ export const post: RequestHandler = async ({ request }) => {
     status: null,
     body: null,
   };
-
+  const frontRes = {
+    status: null,
+    body: null,
+  }
   const res = {
     status: null,
     body: null,
@@ -163,6 +189,23 @@ export const post: RequestHandler = async ({ request }) => {
       console.error(err);
       sheetRes.status = 500;
       sheetRes.body = err;
+    }
+  } else if (email.toType === "support") {
+    const data = [
+      new Date(),
+      email.data.name,
+      email.data.email
+    ];
+
+    try {
+      const importResponse = await importMessageToFront (
+        data
+      )
+      frontRes.status = importResponse.statusCode;
+      frontRes.body = importResponse.body;
+    } catch (err) {
+      console.error(err);
+      frontRes.status = 500;
     }
   }
 

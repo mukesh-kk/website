@@ -47,6 +47,7 @@ export declare interface ExtensionFeedback {
 
 export type EmailToType =
   | "contact"
+  | "support"
   | "sales"
   | "community-license"
   | "webinar-registeration";
