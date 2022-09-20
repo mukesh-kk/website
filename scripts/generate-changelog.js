@@ -51,8 +51,7 @@ const main = async () => {
   const releaseDate = process.argv[2];
   const from = process.argv[3];
   const to = process.argv[4];
-  const searchQuery = `repo:gitpod-io/gitpod is:pr is:merged merged:${from}..${to} sort:updated-desc`;
-
+  const searchQuery = `repo:gitpod-io/gitpod is:pr is:merged merged:${from}..${to} sort:updated-desc label:deployed -label:"changelog: omit"`;
   if (!process.env.CHANGELOG_GITHUB_ACCESS_TOKEN) {
     console.warn(
       "Please provide a GitHub personal access token via a `CHANGELOG_GITHUB_ACCESS_TOKEN` environment variable."
@@ -68,9 +67,7 @@ const main = async () => {
   });
   await sayHello(octokit);
 
-  console.log(
-    `repo:gitpod-io/gitpod is:pr is:merged merged:${from}..${to} sort:updated-desc`
-  );
+  console.log(searchQuery);
   const { search } = await octokit.graphql(
     `query($searchQuery:String!) {
     search(query: $searchQuery, type: ISSUE, last: 100) {
