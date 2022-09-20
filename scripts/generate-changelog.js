@@ -2,6 +2,7 @@ import fs from "fs";
 import { Octokit } from "octokit";
 import { paginateGraphql } from "@octokit/plugin-paginate-graphql";
 import { getMonthBoundaries } from "./lib/dates.js";
+import "core-js/actual/array/group.js";
 
 const OctokitWithPlugins = Octokit.plugin(paginateGraphql);
 
@@ -16,7 +17,26 @@ const sayHello = async (octokit) => {
   console.log("Hello, %s\r\n", login);
 };
 
-const getParticipants = (pr) =>
+const prCategories = [
+  {
+    name: "VS Code",
+    labels: ["editor: code (desktop)", "editor: code (browser)"],
+    prs: [],
+  },
+  {
+    name: "JetBrains",
+    labels: ["editor: jetbrains"],
+    prs: [],
+  },
+  // todo(ft): Installer (self-hosted), Dashboard, Workspace
+  {
+    name: "Others",
+    labels: [],
+    prs: [],
+  },
+];
+
+const getPrParticipants = (pr) =>
   pr.participants.nodes
     .map(({ login }) => login)
     .filter((login) => !["roboquat"].includes(login))
@@ -39,7 +59,7 @@ const hasReleaseNote = (pr) => !!parseReleaseNote(pr);
 const generatePrChangelogLine = (pr) =>
   `- [#${pr.number}](${pr.url}) - ${parseReleaseNote(
     pr
-  )} <Contributors usernames="${getParticipants(pr)}" />\r\n`;
+  )} <Contributors usernames="${getPrParticipants(pr)}" />\r\n`;
 
 const main = async () => {
   const [firstBusinessDay, lastBusinessDay] = getMonthBoundaries();
@@ -76,6 +96,11 @@ const main = async () => {
                 login
               }
             }
+            labels (first: 50) {
+              nodes {
+                name
+              }
+            }
             url
           }
         }
@@ -88,12 +113,30 @@ const main = async () => {
   }`
   );
 
-  const fixesAndImprovements = search.edges
+  search.edges
     .map((edge) => edge.node)
     .filter(hasReleaseNote)
-    .map(generatePrChangelogLine)
-    .filter((identity) => identity)
-    .join("");
+    .forEach((pr) => {
+      const category = prCategories.find((category) =>
+        category.labels?.some((label) =>
+          pr.labels.nodes?.some((prLabel) => prLabel.name === label)
+        )
+      );
+      if (category) {
+        category.prs.push(pr);
+      } else {
+        prCategories.at(-1).prs.push(pr);
+      }
+    });
+
+  const perCategoryPrContent = prCategories
+    .map((category) => {
+      const prs = category.prs.map(generatePrChangelogLine).join("");
+      if (prs) {
+        return `#### ${category.name}\r\n${prs}`;
+      }
+    })
+    .join("\r");
 
   fs.copyFileSync(
     "./src/lib/contents/changelog/_template.md",
@@ -109,7 +152,7 @@ const main = async () => {
   );
   newChangelogFileContent = newChangelogFileContent.replace(
     /{{fixesAndImprovements}}/,
-    fixesAndImprovements
+    perCategoryPrContent
   );
   fs.writeFileSync(
     `./src/lib/contents/changelog/${releaseDate}.md`,
