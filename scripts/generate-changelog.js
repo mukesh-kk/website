@@ -27,11 +27,11 @@ const parseReleaseNote = (pr) => {
   // For some reason, the multi-line regex doesn't work. We remove all new line
   // characters and match against the one-line string instead.
   const releaseNoteMatch = pr.body
-    .replace(/\r\n/g, "")
+    .replace(/\r\n/g, " ")
     .match(/```release-notes?(.+?)```/);
-  if (!releaseNoteMatch || releaseNoteMatch[1].trim().toUpperCase() === "NONE")
-    return;
-  return releaseNoteMatch[1];
+  const releaseNoteText = releaseNoteMatch && releaseNoteMatch[1].trim();
+  if (!releaseNoteMatch || releaseNoteText.toUpperCase() === "NONE") return;
+  return releaseNoteText;
 };
 
 const hasReleaseNote = (pr) => !!parseReleaseNote(pr);
