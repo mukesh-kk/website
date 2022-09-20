@@ -1,5 +1,9 @@
 import fs from "fs";
 import { Octokit } from "octokit";
+import { paginateGraphql } from "@octokit/plugin-paginate-graphql";
+import { getMonthBoundaries } from "./lib/dates.js";
+
+const OctokitWithPlugins = Octokit.plugin(paginateGraphql);
 
 const sayHello = async (octokit) => {
   const {
@@ -38,19 +42,10 @@ const generatePrChangelogLine = (pr) =>
   )} <Contributors usernames="${getParticipants(pr)}" />\r\n`;
 
 const main = async () => {
-  if (process.argv.length !== 5) {
-    console.error(
-      "Usage: node ./scripts/generate-changelog.js [release-date] [from] [to]"
-    );
-    console.error("");
-    console.error(
-      "Example: node ./scripts/generate-changelog.js 2022-01-17 2022-01-10 2022-01-15"
-    );
-    process.exit(1);
-  }
-  const releaseDate = process.argv[2];
-  const from = process.argv[3];
-  const to = process.argv[4];
+  const [firstBusinessDay, lastBusinessDay] = getMonthBoundaries();
+  const releaseDate = process.argv[2] || lastBusinessDay;
+  const from = process.argv[3] || firstBusinessDay;
+  const to = process.argv[4] || lastBusinessDay;
   const searchQuery = `repo:gitpod-io/gitpod is:pr is:merged merged:${from}..${to} sort:updated-desc label:deployed -label:release-note-none`;
   if (!process.env.CHANGELOG_GITHUB_ACCESS_TOKEN) {
     console.warn(
@@ -62,15 +57,15 @@ const main = async () => {
     process.exit(1);
   }
 
-  const octokit = new Octokit({
+  const octokit = new OctokitWithPlugins({
     auth: process.env.CHANGELOG_GITHUB_ACCESS_TOKEN,
   });
   await sayHello(octokit);
 
   console.log(searchQuery);
-  const { search } = await octokit.graphql(
-    `query($searchQuery:String!) {
-    search(query: $searchQuery, type: ISSUE, last: 100) {
+  const { search } = await octokit.graphql.paginate(
+    `query paginate($cursor: String) {
+    search(query: "${searchQuery}", type: ISSUE, last: 50, after: $cursor) {
       edges {
         node {
           ... on PullRequest {
@@ -85,11 +80,12 @@ const main = async () => {
           }
         }
       }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
     }
-  }`,
-    {
-      searchQuery,
-    }
+  }`
   );
 
   const fixesAndImprovements = search.edges
