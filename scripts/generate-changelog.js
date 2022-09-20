@@ -90,7 +90,6 @@ const main = async () => {
 
   const fixesAndImprovements = search.edges
     .map((edge) => edge.node)
-    // .filter(pr => pr.number === 7609) // Helps with testing
     .filter(hasReleaseNote)
     .map(generatePrChangelogLine)
     .filter((identity) => identity)
