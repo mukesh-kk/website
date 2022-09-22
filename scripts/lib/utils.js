@@ -6,7 +6,7 @@ export const getPrParticipants = (pr) =>
     .join(",");
 
 export const parseReleaseNote = (pr) => {
-  const releaseNoteMatch = pr.body.match(/```release-notes?\r?\n(.+?)\r?\n```/);
+  const releaseNoteMatch = pr.body.match(/```release-notes?(.+?)```/s);
   const releaseNoteText = releaseNoteMatch && releaseNoteMatch[1].trim();
   if (!releaseNoteMatch || releaseNoteText.toUpperCase() === "NONE") return;
   return releaseNoteText;
