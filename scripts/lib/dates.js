@@ -1,5 +1,6 @@
 const isWorkingDay = (date) => {
   const day = date.getDay();
+  //todo(ft): add holidays
   return day !== 0 && day !== 6;
 };
 
