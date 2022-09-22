@@ -14,6 +14,4 @@ TODO: Insert the featured changelog entry here.
 
 <p><Contributors usernames="" /></p>
 
-### Fixes and improvements
-
 {{fixesAndImprovements}}

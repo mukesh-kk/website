@@ -2,7 +2,7 @@ import fs from "fs";
 import { Octokit } from "octokit";
 import { paginateGraphql } from "@octokit/plugin-paginate-graphql";
 import { getMonthBoundaries } from "./lib/dates.js";
-import "core-js/actual/array/group.js";
+import metadataParser from "markdown-yaml-metadata-parser";
 
 const OctokitWithPlugins = Octokit.plugin(paginateGraphql);
 
@@ -21,17 +21,23 @@ const prCategories = [
   {
     name: "VS Code",
     labels: ["editor: code (desktop)", "editor: code (browser)"],
+    partial: "vscode",
+    order: 0,
     prs: [],
   },
   {
     name: "JetBrains",
     labels: ["editor: jetbrains"],
+    partial: "jetbrains",
+    order: 0,
     prs: [],
   },
   // todo(ft): Installer (self-hosted), Dashboard, Workspace
   {
-    name: "Others",
+    name: "Fixes and improvements",
     labels: [],
+    partial: "others",
+    order: Infinity,
     prs: [],
   },
 ];
@@ -129,21 +135,73 @@ const main = async () => {
       }
     });
 
-  const perCategoryPrContent = prCategories
-    .map((category) => {
-      const prs = category.prs.map(generatePrChangelogLine).join("");
-      if (prs) {
-        return `#### ${category.name}\r\n${prs}`;
+  const lineBreak = "\r\n";
+  prCategories.forEach((category, index) => {
+    const prs = category.prs.map(generatePrChangelogLine).join("");
+    try {
+      const partialContent = fs.readFileSync(
+        `./src/lib/contents/changelog/${releaseDate}/${category.partial}.md`,
+        "utf8"
+      );
+      const contentWithStrippedMetadata = partialContent.replace(
+        /---.*---/gs,
+        ""
+      );
+      const contentMetadata = metadataParser(partialContent);
+      if (category.partial !== "others") {
+        prCategories[index].order = contentMetadata.metadata?.order || 0;
       }
-    })
-    .join("\r");
 
+      const heading = `## ${category.name}${lineBreak}${lineBreak}`;
+      if (contentWithStrippedMetadata) {
+        if (prs) {
+          // There are PRs in this category, so we prepend the partial content to them
+          prCategories[
+            index
+          ].content = `${heading}${contentWithStrippedMetadata}${lineBreak}${lineBreak}${prs}`;
+          return;
+        } else {
+          // There are no PRs for this category, so we only include the partial
+          prCategories[
+            index
+          ].content = `${heading}${contentWithStrippedMetadata}${lineBreak}${lineBreak}`;
+          return;
+        }
+      }
+    } catch (e) {
+      if (e.code !== "ENOENT") {
+        throw e;
+      } else {
+        console.warn(`No partial changelog found for ${category.name}`);
+      }
+    }
+    if (prs) {
+      prCategories[index].content = `${baseTemplate}${prs}${lineBreak}`;
+      return;
+    }
+  });
+  const perCategoryPrContent = prCategories
+    .sort((a, b) => {
+      // Sort by ascending order. If the order is the same, sort by name.
+      if (a.order === b.order) {
+        return a.name.localeCompare(b.name);
+      }
+      return a.order - b.order;
+    })
+    .map((category) => category.content)
+    .join(lineBreak);
+
+  const changelogPath = "./src/lib/contents/changelog";
+
+  if (!fs.existsSync(changelogPath)) {
+    fs.mkdirSync(`${changelogPath}/${releaseDate}`);
+  }
   fs.copyFileSync(
-    "./src/lib/contents/changelog/_template.md",
-    `./src/lib/contents/changelog/${releaseDate}.md`
+    `${changelogPath}/_template.md`,
+    `${changelogPath}/${releaseDate}/index.md`
   );
   let newChangelogFileContent = fs.readFileSync(
-    `./src/lib/contents/changelog/${releaseDate}.md`,
+    `${changelogPath}/${releaseDate}/index.md`,
     "utf-8"
   );
   newChangelogFileContent = newChangelogFileContent.replace(
@@ -155,11 +213,11 @@ const main = async () => {
     perCategoryPrContent
   );
   fs.writeFileSync(
-    `./src/lib/contents/changelog/${releaseDate}.md`,
+    `${changelogPath}/${releaseDate}/index.md`,
     newChangelogFileContent
   );
   console.log(
-    `Changelog generated. Please edit ./src/lib/contents/changelog/${releaseDate}.md`
+    `Changelog generated. Please edit ${changelogPath}/${releaseDate}/index.md`
   );
 };
 
