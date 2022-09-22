@@ -182,16 +182,17 @@ const main = async () => {
 
   const changelogPath = "./src/lib/contents/changelog";
 
-  if (!fs.existsSync(changelogPath)) {
+  if (!fs.existsSync(`${changelogPath}/${releaseDate}`)) {
     fs.mkdirSync(`${changelogPath}/${releaseDate}`);
   }
+
   try {
     fs.copyFileSync(
       `${changelogPath}/_template.md`,
-      `${changelogPath}/changelog/index.md`,
-      fs.constants.COPYFILE_EXCL
+      `${changelogPath}/${releaseDate}/index.md`,
+      !argv.force && fs.constants.COPYFILE_EXCL // don't copy if file already exists, unless --force is passed
     );
-  } catch {} // don't copy if file already exists
+  } catch {}
   let newChangelogFileContent = fs.readFileSync(
     `${changelogPath}/${releaseDate}/index.md`,
     "utf-8"
