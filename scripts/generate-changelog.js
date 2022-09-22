@@ -12,6 +12,23 @@ import minimist from "minimist";
 
 const argv = minimist(process.argv.slice(2));
 
+if (argv.help || argv.h) {
+  console.info(
+    `Usage: node scripts/generate-changelog.js [--help] [--token=github-token] [--dry-run] [--onlyPrs] [<release-date>] [<from>] [<to>]`
+  );
+  // Help text for flags
+  console.info(
+    `
+    --help: Show this help text
+    --token: Github token to use for the API calls. If not provided, the script will try to use the CHANGELOG_GITHUB_ACCESS_TOKEN environment variable
+    --dry-run: Do not write the changelog file, just print the output to the console
+    --onlyPrs: Only show the PRs section of the changelog. Only effective with --dry-run
+    --force: Forcefully overwrite the changelog file, removing any manual changes to index.md
+    `
+  );
+  process.exit(0);
+}
+
 const OctokitWithPlugins = Octokit.plugin(paginateGraphql);
 
 const sayHello = async (octokit) => {
@@ -40,7 +57,21 @@ const prCategories = [
     order: 0,
     prs: [],
   },
-  // todo(ft): Installer (self-hosted), Dashboard, Workspace
+  {
+    name: "Dashboard",
+    labels: ["component: dashboard"],
+    partial: "dashboard",
+    order: 0,
+    prs: [],
+  },
+  {
+    name: "Gitpod CLI",
+    labels: ["component: gp cli"],
+    partial: "cli",
+    order: 0,
+    prs: [],
+  },
+  // todo(ft): Installer (self-hosted), Workspace
   {
     name: "Fixes and improvements",
     labels: [],
@@ -61,7 +92,8 @@ const main = async () => {
   const from = argv._[1] || firstBusinessDay;
   const to = argv._[2] || lastBusinessDay;
   const searchQuery = `repo:gitpod-io/gitpod is:pr is:merged merged:${from}..${to} sort:updated-desc label:deployed -label:release-note-none`;
-  if (!process.env.CHANGELOG_GITHUB_ACCESS_TOKEN) {
+  const githubToken = argv.token || process.env.CHANGELOG_GITHUB_ACCESS_TOKEN;
+  if (!githubToken) {
     console.warn(
       "Please provide a GitHub personal access token via a `CHANGELOG_GITHUB_ACCESS_TOKEN` environment variable."
     );
@@ -72,7 +104,7 @@ const main = async () => {
   }
 
   const octokit = new OctokitWithPlugins({
-    auth: process.env.CHANGELOG_GITHUB_ACCESS_TOKEN,
+    auth: githubToken,
   });
   await sayHello(octokit);
 
@@ -112,6 +144,7 @@ const main = async () => {
     // We filter any PRs that don't have a release note but also don't have the `release-note-none` label. This is a bug with @roboquat and after it is fixed, this should be removed.
     .filter(parseReleaseNote)
     .forEach((pr) => {
+      // We group the PRs by their labels
       const category = prCategories.find((category) =>
         category.labels?.some((label) =>
           pr.labels.nodes?.some((prLabel) => prLabel.name === label)
