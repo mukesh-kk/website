@@ -4,9 +4,9 @@ import { paginateGraphql } from "@octokit/plugin-paginate-graphql";
 import { getMonthBoundaries } from "./lib/dates.js";
 import metadataParser from "markdown-yaml-metadata-parser";
 import {
-  parseReleaseNote,
-  getPrParticipants,
+  generatePrChangelogLine,
   replaceContentOfBlock,
+  parseReleaseNote,
 } from "./lib/utils.js";
 import minimist from "minimist";
 
@@ -47,6 +47,7 @@ const prCategories = [
     name: "VS Code",
     labels: ["editor: code (desktop)", "editor: code (browser)"],
     partial: "vscode",
+    prefixes: ["code"],
     order: 0,
     prs: [],
   },
@@ -54,6 +55,7 @@ const prCategories = [
     name: "JetBrains",
     labels: ["editor: jetbrains"],
     partial: "jetbrains",
+    prefixes: ["jb", "jetbrains"],
     order: 0,
     prs: [],
   },
@@ -61,6 +63,7 @@ const prCategories = [
     name: "Dashboard",
     labels: ["component: dashboard"],
     partial: "dashboard",
+    prefixes: ["dashboard"],
     order: 0,
     prs: [],
   },
@@ -68,10 +71,19 @@ const prCategories = [
     name: "Gitpod CLI",
     labels: ["component: gp cli"],
     partial: "cli",
+    prefixes: ["gp-cli"],
     order: 0,
     prs: [],
   },
-  // todo(ft): Installer (self-hosted), Workspace
+  {
+    name: "Server",
+    labels: ["component: server"],
+    partial: "server",
+    prefixes: ["server"],
+    order: 0,
+    prs: [],
+  },
+  // todo(ft): Installer (self-hosted), Workspace, supervisor
   {
     name: "Fixes and improvements",
     labels: [],
@@ -80,11 +92,6 @@ const prCategories = [
     prs: [],
   },
 ];
-
-const generatePrChangelogLine = (pr) =>
-  `- [#${pr.number}](${pr.url}) - ${parseReleaseNote(
-    pr
-  )} <Contributors usernames="${getPrParticipants(pr)}" />\r\n`;
 
 const main = async () => {
   const [firstBusinessDay, lastBusinessDay] = getMonthBoundaries();
@@ -116,6 +123,7 @@ const main = async () => {
         node {
           ... on PullRequest {
             body
+            title
             number
             participants(first: 20) {
               nodes {
@@ -144,12 +152,30 @@ const main = async () => {
     // We filter any PRs that don't have a release note but also don't have the `release-note-none` label. This is a bug with @roboquat and after it is fixed, this should be removed.
     .filter(parseReleaseNote)
     .forEach((pr) => {
-      // We group the PRs by their labels
-      const category = prCategories.find((category) =>
-        category.labels?.some((label) =>
+      // We group the PRs by their labels or prefix
+      const category = prCategories.find((category) => {
+        const releaseNote = parseReleaseNote(pr);
+        const byLabel = category.labels?.some((label) =>
           pr.labels.nodes?.some((prLabel) => prLabel.name === label)
-        )
-      );
+        );
+        const byPrefix =
+          category.prefixes?.some(
+            (prefix) =>
+              releaseNote.startsWith(`[${prefix}]`) ||
+              pr.title.startsWith(`[${prefix}]`)
+          ) ?? false;
+
+        if (!byLabel && byPrefix) {
+          console.warn(
+            pr.title,
+            "is categorized as",
+            category.name,
+            "but it doesn't have the label",
+            category.labels.join(", ")
+          );
+        }
+        return byLabel || byPrefix;
+      });
       if (category) {
         category.prs.push(pr);
       } else {
@@ -193,8 +219,6 @@ const main = async () => {
     } catch (e) {
       if (e.code !== "ENOENT") {
         throw e;
-      } else {
-        console.warn(`No partial changelog found for ${category.name}`);
       }
     }
     if (prs) {
@@ -243,7 +267,7 @@ const main = async () => {
   if (argv.dryRun) {
     console.log("========================================");
     if (argv.onlyPrs) {
-      console.log(fixesAndImprovements);
+      console.log(perCategoryPrContent);
       process.exit(0);
     }
     console.log(newChangelogFileContent);
