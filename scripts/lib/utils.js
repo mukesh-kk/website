@@ -35,7 +35,7 @@ export const parseNewReleaseNote = (pr) => {
         node.position.start.offset > releaseNotesStart
     )?.position.start.offset - 1;
 
-  if (!releaseNotesStart) return pr.title;
+  if (!releaseNotesStart) return;
 
   const releaseNotes = pr.body.slice(
     releaseNotesStart,
@@ -43,6 +43,8 @@ export const parseNewReleaseNote = (pr) => {
   );
   const htmlComments = /<!--([\s\S]*?)-->/g; // https://github.com/stevemao/html-comment-regex/blob/master/index.js
   const withRemovedComments = releaseNotes.replace(htmlComments, "").trim();
+
+  if (withRemovedComments.toUpperCase() === "NONE") return;
 
   return withRemovedComments;
 };
