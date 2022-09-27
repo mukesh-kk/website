@@ -33,13 +33,14 @@ const OctokitWithPlugins = Octokit.plugin(paginateGraphql);
 
 const sayHello = async (octokit) => {
   const {
-    viewer: { login },
+    viewer: { login, name },
   } = await octokit.graphql(`{
     viewer {
       login
+      name
     }
   }`);
-  console.log("Hello, %s\r\n", login);
+  console.log("Hello, %s\r\n", name || login);
 };
 
 const prCategories = [
