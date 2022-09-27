@@ -18,6 +18,7 @@
     grid-template-columns: repeat(auto-fill, 314px);
 
     @media (max-width: 1430px) {
+      /* this breakpoint is there to help make sure there are 4 cards in a row on Macbook 13' */
       @apply max-w-4xl mx-auto;
     }
 
@@ -58,9 +59,7 @@
 
 <GitpodVsLocalDevelopmentPost
   title="Full blog post"
-  text={`
-  Read the full blog post by <a href="https://twitter.com/mikenikles" target="_blank">Mike Nikles</a>, our Senior Developer Success Engineer, sharing the story of moving to the cloud.
-  `}
+  text="Read a first-hand developer perspective on switching to remote development."
 />
 
 <Explore />

@@ -88,20 +88,6 @@
   };
 </script>
 
-<style lang="postcss">
-  form li {
-    @apply mb-0;
-  }
-  .link {
-    @apply underline;
-  }
-
-  fieldset {
-    display: flex;
-    flex-flow: row wrap;
-  }
-</style>
-
 <OpenGraph
   data={{
     description:
@@ -150,7 +136,7 @@
     <h2 class="h3">Why did you uninstall the browser extension?</h2>
     <ul>
       <li class:error={isFormDirty && !formData.reason.valid}>
-        <fieldset>
+        <fieldset class="flex flex-wrap">
           <legend>Check all that apply:</legend>
           <ul class="my-macro">
             {#each reasons as { id, label }}
@@ -197,7 +183,7 @@
       <li>
         <p class="text-sm my-4">
           By submitting this form I acknowledge that I have read and understood <a
-            class="link"
+            class="!underline"
             href="/privacy">Gitpod’s Privacy Policy.</a
           >
         </p>

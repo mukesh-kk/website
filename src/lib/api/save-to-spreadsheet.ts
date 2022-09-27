@@ -17,7 +17,7 @@ export default async (sheetInfo: SheetInfo): Promise<boolean | string> => {
       sheetInfo.type === "signup" ? sheetInfo.data[0] : sheetInfo.data[2];
     if (
       sheetInfo.type === "signup" ||
-      sheetInfo.type === "webinar-registeration"
+      sheetInfo.type === "java-panel-discussion"
     ) {
       const rows = await sheet.getRows();
       let existingEmails: string[] = [];

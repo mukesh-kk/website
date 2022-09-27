@@ -5,9 +5,6 @@
   export let partnershipData: PartnershipCard;
 </script>
 
-<style lang="postcss">
-</style>
-
 <Card class="flex gap-8  items-center justify-center flex-col p-8" size="small">
   {#if partnershipData.imgDark}
     <img

@@ -12,7 +12,7 @@ title: Install Gitpod in an Air-Gapped Network
 
 > **Note:** Installing Gitpod in an air gapped network is a feature limited to our [Professional Plan](https://www.gitpod.io/self-hosted). We support air-gap mode for paying customers only.
 
-In this guide, we expect you to have a cluster up and running that [meets the requirements](../cluster-requirements) and have the [required components](../required-components) installed and configured (at least cert-manager is needed).
+In this guide, we expect you to have a cluster up and running that [meets the requirements](../requirements) and have the [required components](../requirements) installed and configured (at least cert-manager is needed).
 
 ## Preparation
 

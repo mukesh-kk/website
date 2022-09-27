@@ -7,7 +7,7 @@ export const contactActions: Card[] = [
       alt: "Chat",
     },
     title: "Support",
-    text: "Get help with any question or issue.",
+    text: "Get help with any question or<br/>issue.",
     link: {
       text: "Get Support",
       href: "/support",

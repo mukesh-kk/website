@@ -27,6 +27,6 @@
     {src}
     {alt}
     style={styles}
-    class="{image.class} rounded-full h-[50px] w-[50px]"
+    class="{image.class} rounded-full h-[50px] w-[50px] grayscale"
   />
 </div>

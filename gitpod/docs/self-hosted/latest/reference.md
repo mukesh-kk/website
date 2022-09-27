@@ -12,7 +12,8 @@ title: Reference
 
 Reference information for Gitpod Self-Hosted:
 
-- [Required Components](./required-components) - Information on which components Gitpod requires and with which versions of them Gitpod is compatible
+- [Requirements](./requirements) - Information on which components Gitpod requires
+- [Product compatibility Matrix](../../references/product-compatibility-matrix?admin) - Information on which versions of components do and do not work with Gitpod
 - [Releases](./releases) - Information about how Gitpod is released
 - [Telemetry](./telemetry) - Information about the telemetry that is gathered
 - [Upgrade Guides](./upgrade-guides) - Information to take into account when upgrading to a specific version

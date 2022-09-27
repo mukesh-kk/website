@@ -1,3 +1,3 @@
-<div class="max-w-[595px] lgx:pr-small">
+<div class="max-w-[650px] lgx:pr-x-small">
   <slot />
 </div>

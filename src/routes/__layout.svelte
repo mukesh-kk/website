@@ -89,15 +89,11 @@
 
 <LayoutRoot>
   <Nav />
+  <ContactWidget />
   <LayoutMain>
     <slot />
   </LayoutMain>
   <Footer />
 </LayoutRoot>
-<div
-  class="fixed bottom-0 flex flex-col-reverse md:flex-row justify-between md:items-end w-full"
->
-  <CookieConsent />
-  <ContactWidget />
-</div>
+<CookieConsent />
 <Segment />

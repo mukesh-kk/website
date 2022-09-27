@@ -110,13 +110,14 @@ export const MENU: MenuEntry[] = [
     M("Troubleshooting", "self-hosted/latest/troubleshooting", [
       M("Support Bundles", "self-hosted/latest/support-bundle", []),
       M("Config Patches", "self-hosted/latest/config-patches", []),
+      M("Stop Workspaces", "self-hosted/latest/stop-workspaces", []),
+      M("Manage Cluster Nodes", "self-hosted/latest/manage-cluster-nodes", []),
     ]),
     M("Background", "self-hosted/latest/background", [
       M("Disaster Recovery", "self-hosted/latest/disaster-recovery"),
     ]),
     M("Reference", "self-hosted/latest/reference", [
-      M("Required Components", "self-hosted/latest/required-components"),
-      M("Cluster Requirements", "self-hosted/latest/cluster-requirements"),
+      M("Requirements", "self-hosted/latest/requirements"),
       M(
         "Compatibility Matrix",
         "references/product-compatibility-matrix?admin"

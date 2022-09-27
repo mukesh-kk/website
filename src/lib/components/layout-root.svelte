@@ -1,11 +1,3 @@
-<style>
-  div {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-</style>
-
-<div>
+<div class="flex flex-col min-h-screen">
   <slot />
 </div>

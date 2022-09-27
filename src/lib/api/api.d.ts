@@ -24,7 +24,7 @@ export declare interface Email {
 export declare interface SheetInfo {
   sheetTitle: string;
   data: any[];
-  type?: "signup" | "webinar-registeration";
+  type?: string;
 }
 
 export declare interface SignupData {
@@ -46,8 +46,4 @@ export declare interface ExtensionFeedback {
   note?: string;
 }
 
-export type EmailToType =
-  | "contact"
-  | "sales"
-  | "community-license"
-  | "webinar-registeration";
+export type EmailToType = "contact" | "sales" | "community-license" | string;

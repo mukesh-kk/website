@@ -9,41 +9,15 @@
   const { name, jobTitle } = author || {};
 </script>
 
-<style lang="postcss">
-  [class|="kumquat"] {
-    @apply absolute;
-  }
-
-  .quote {
-    @apply text-h5 mt-0 text-black;
-  }
-
-  .kumquat-left {
-    @apply h-16 lgx:h-32 lgx:w-36 top-24 -left-12 lgx:-left-24 -z-10;
-
-    @media (max-width: 800px) {
-      @apply hidden;
-    }
-  }
-
-  .kumquat-right {
-    @apply h-20 lgx:h-36 lgx:w-44 -right-16 lgx:-right-32 -z-10 bottom-0 lgx:-bottom-10;
-
-    @media (max-width: 800px) {
-      @apply hidden;
-    }
-  }
-</style>
-
 <div>
   <Card
     size="medium"
-    class="shadow-normal flex items-start relative text-left md:mx-auto py-x-small px-micro sm:p-small max-w-4xl {clazz}"
+    class="shadow-normal flex items-start relative text-left md:mx-auto py-x-small px-micro sm:p-small {clazz}"
   >
     <img
       src="/images/startups/kumquat-left.png"
       alt="Gitpod Kumquat"
-      class="kumquat-left"
+      class="kumquat-left absolute hidden md:block h-16 lgx:h-32 lgx:w-36 top-24 -left-12 lgx:-left-24 -z-10"
     />
     <svg
       fill="none"
@@ -56,7 +30,10 @@
       /></svg
     >
     <div class="mt-x-small">
-      <p class="h3 text-important font-bold" class:quote={type === "blog"}>
+      <p
+        class="h3 text-important font-bold {type === 'blog' &&
+          'text-h5 mt-0 text-black'}"
+      >
         {@html quote}”
       </p>
       <p class="mt-x-small">
@@ -68,7 +45,7 @@
     <img
       src="/images/startups/kumquat-right.png"
       alt="Gitpod Kumquat"
-      class="kumquat-right"
+      class="kumquat-right absolute hidden md:block h-20 lgx:h-36 lgx:w-44 -right-16 lgx:-right-32 -z-10 bottom-0 lgx:-bottom-10"
     />
   </Card>
 </div>

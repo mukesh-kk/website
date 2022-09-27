@@ -53,10 +53,12 @@
         />
       </div>
     {/if}
-    {#if headingLevel === "h3"}
-      <h3 class={titleClassNames}>{title}</h3>
-    {:else}
-      <h2 class={titleClassNames}>{title}</h2>
+    {#if title}
+      {#if headingLevel === "h3"}
+        <h3 class={titleClassNames}>{title}</h3>
+      {:else}
+        <h2 class={titleClassNames}>{title}</h2>
+      {/if}
     {/if}
     <p class="{alignmentMap[textAlign]} mt-micro">{@html text}</p>
   </div>

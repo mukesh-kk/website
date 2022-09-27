@@ -14,6 +14,10 @@
   let clazz = "";
   export { clazz as class };
 
+  export let toType: EmailToType;
+  export let isJetbrainsConsentRendered = false;
+  export let eventType: string;
+
   const formData: Form = {
     name: {
       el: null,
@@ -30,11 +34,6 @@
       valid: false,
       value: "",
     },
-    jetbrainsConsent: {
-      el: null,
-      valid: true,
-      value: "",
-    },
     consent: {
       el: null,
       valid: false,
@@ -45,7 +44,6 @@
   let isFormDirty = false;
   let isEmailSent = false;
   let isSubmissionInProgress: boolean = false;
-  let toType: EmailToType = "webinar-registeration";
   let sectionStart: HTMLElement;
   let isDuplicate: boolean = false;
 
@@ -66,7 +64,6 @@
         name: formData.name.value,
         email: formData.email.value,
         company: formData.companyWebsite.value,
-        jetbrainsConsent: formData.jetbrainsConsent.value,
       },
     };
 
@@ -109,7 +106,7 @@
         on:submit|preventDefault={handleSubmit}
         novalidate
       >
-        <h2 class="h5">Register for webinar</h2>
+        <h2 class="h5">Register for {eventType}</h2>
         <InputsHalf>
           <div>
             <Input
@@ -164,26 +161,12 @@
         <div>
           <Checkbox
             hasError={isFormDirty && !formData.consent.valid}
-            label="I consent to having this website store my submitted information so that I can get event notifications."
+            label="<p>I consent to having this website store my submitted information so that I can get event notifications. <a class='!underline' href='/privacy'>More on privacy policy</a></p>"
             bind:checked={formData.consent.checked}
             bind:element={formData.consent.el}
             on:change={() => {
               formData.consent.valid =
                 formData.consent.checked && formData.consent.el.validity.valid;
-            }}
-            textClassName="text-sm"
-          />
-          <Checkbox
-            hasError={isFormDirty && !formData.jetbrainsConsent.valid}
-            label="(Optional) I consent to sharing my submitted information with JetBrains to receive a one-time 20% discount for new purchases of personal subscriptions to the All Products Pack or to any IDE that JetBrains Gateway supports."
-            bind:checked={formData.jetbrainsConsent.checked}
-            bind:element={formData.jetbrainsConsent.el}
-            on:change={() => {
-              if (formData.jetbrainsConsent.checked) {
-                formData.jetbrainsConsent.value = "given";
-              } else {
-                formData.jetbrainsConsent.value = "";
-              }
             }}
             textClassName="text-sm"
           />

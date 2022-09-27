@@ -3,23 +3,12 @@
   import Carousel from "../carousel.svelte";
 </script>
 
-<style>
-  div {
-    scroll-snap-align: start;
-    width: 500px;
-    flex-shrink: 0;
-
-    @media (max-width: 768px) {
-      width: 320px;
-    }
-  }
-</style>
-
 <section class="mt-large">
   <Carousel class="mb-small pr-44">
     {#each quotes as { text, author, jobTitle, companyLogo }}
       <div
-        class="text-important text-base w-96 p-x-small overflow-hidden rounded-2xl shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out mb-micro"
+        class="text-important text-base p-x-small overflow-hidden rounded-2xl shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out mb-micro flex-shrink-0 w-80 md:w-[500px]"
+        style="scroll-snap-align: start;"
       >
         <p class="mb-small">{text}</p>
         <div>

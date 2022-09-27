@@ -4,22 +4,9 @@
   export { clazz as class };
 </script>
 
-<style lang="postcss">
-  a {
-    @apply block no-underline;
-  }
-
-  a:hover,
-  a:focus {
-    @apply underline;
-    text-decoration-thickness: 2px;
-  }
-
-  .h3 {
-    @apply text-h4 text-important !important;
-  }
-</style>
-
-<a {href} class="h3 font-semibold transition-all duration-200 {clazz}">
+<a
+  {href}
+  class="h3 text-h4 !text-important block no-underline font-semibold transition-all duration-200 hover:underline focus:underline hover:decoration-2 focus:decoration-2 {clazz}"
+>
   <slot />
 </a>

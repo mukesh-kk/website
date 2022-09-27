@@ -31,22 +31,27 @@ export const get: RequestHandler = async ({ request }) => {
       const data = await res.json();
       const starsCount = data.stargazers_count;
 
-      if (USE_CACHE) {
-        try {
-          const expires = new Date().getTime() + 120000;
+      if (starsCount !== undefined) {
+        if (USE_CACHE) {
+          try {
+            const expires = new Date().getTime() + 120000;
 
-          fs.writeFileSync(
-            CACHE_PATH,
-            JSON.stringify({ starsCount, expires }),
-            {
-              encoding: "utf-8",
-            }
-          );
-        } catch (error) {
-          // A cached file is not required
+            fs.writeFileSync(
+              CACHE_PATH,
+              JSON.stringify({ starsCount, expires }),
+              {
+                encoding: "utf-8",
+              }
+            );
+          } catch (error) {
+            // A cached file is not required
+          }
         }
+        stars = starsCount;
+      } else {
+        // Random Star Number, if API returns undefined starsCount
+        stars = 9200;
       }
-      stars = starsCount;
     }
   }
 

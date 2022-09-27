@@ -39,32 +39,22 @@
   };
 </script>
 
-<style lang="postcss">
-  button {
-    @apply px-macro py-1;
-  }
-
-  button > :global(svg) {
-    width: 18px;
-    height: 18px;
-
-    & :global(path) {
-      transition: all 0.2s;
-    }
-  }
-</style>
-
 <div class="flex divide-x divide-divider mt-x-small mb-xx-small">
   <button
+    class="px-macro py-1"
     title="Switch to System's prefered color scheme."
     on:click={setSystem}
   >
-    <Gear active={theme === "system"} />
+    <Gear active={theme === "system"} class="w-[18px] h-[18px]" />
   </button>
-  <button title="Switch to Light theme" on:click={setLight}>
-    <Sun active={theme === "light"} />
+  <button
+    class="px-macro py-1"
+    title="Switch to Light theme"
+    on:click={setLight}
+  >
+    <Sun active={theme === "light"} class="w-[18px] h-[18px]" />
   </button>
-  <button title="Switch to Dark theme" on:click={setDark}>
-    <Moon active={theme === "dark"} />
+  <button class="px-macro py-1" title="Switch to Dark theme" on:click={setDark}>
+    <Moon active={theme === "dark"} class="w-[18px] h-[18px]" />
   </button>
 </div>

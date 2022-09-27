@@ -5,13 +5,16 @@
   let selectedQuote: Quote = quotes[0];
   import LinkButton from "$lib/components/ui-library/link-button";
   import { onMount } from "svelte";
-  import { fly, scale } from "svelte/transition";
+  import { fade, scale } from "svelte/transition";
 
   let clazz = "";
   export { clazz as class };
 
   let isHovered = false;
   let interval: any;
+
+  const buttonImageClassNames =
+    "h-7 w-20 sm:h-9 sm:w-28 transition group-hover:opacity-100 group-focus:opacity-100 group-focus:filter-none group-hover:filter-none";
 
   const swiper = () => {
     if (isHovered) return;
@@ -34,20 +37,6 @@
     };
   });
 </script>
-
-<style lang="postcss">
-  div :global(.quotes) {
-    max-width: 1182px !important;
-  }
-
-  .square {
-    @apply max-w-[50%] md:max-w-[65%] rounded-3xl;
-  }
-
-  button > :global(*) {
-    @apply h-7 w-20 sm:h-9 sm:w-28 transition group-hover:opacity-100 group-focus:opacity-100 group-focus:filter-none group-hover:filter-none;
-  }
-</style>
 
 <Card
   size="medium"
@@ -78,13 +67,14 @@
             <img
               src={quote.companyLogo.src}
               alt={quote.companyLogo.alt}
-              class=""
+              class={buttonImageClassNames}
             />
           {:else}
             <svelte:component
               this={quote.companyLogo}
               inActive={selectedQuote !== quote}
               {...quote.companyLogoProps}
+              class={buttonImageClassNames}
             />
           {/if}
         </button>
@@ -99,13 +89,15 @@
             src={selectedQuote.img.src}
             alt={selectedQuote.img.alt}
             class:square={selectedQuote.img.square}
-            class="w-full sm:rounded-3xl mx-auto"
+            class="w-full sm:rounded-3xl mx-auto {selectedQuote.img.square
+              ? 'max-w-[50%] md:max-w-[65%] rounded-3xl'
+              : ''}"
             in:scale={{ duration: 2500, start: 0.97, delay: 100 }}
           />
         </div>
         <div
           class="text flex w-full md:w-1/2 justify-center flex-col flex-1 px-xx-small py-xx-small md:py-0 sm:pl-x-small lg:pl-small lg:pr-0"
-          in:fly={{ x: 50, duration: 1000 }}
+          in:fade={{ delay: 100 }}
         >
           <p class="text-large">
             &ldquo;{selectedQuote.text}&rdquo;

@@ -10,19 +10,11 @@
     "As Alice automates the configuration setup by using Gitpod she is ready to code within seconds, while it can take up to days for Bob.";
 </script>
 
-<style>
-  @media (max-width: 980px) {
-    div:last-of-type {
-      flex: 0 0 60%;
-    }
-  }
-</style>
-
 <Card size="medium" class="shadow-normal max-w-lg md:max-w-6xl mx-auto">
   <Section
     class="flex flex-col py-small px-xx-small sm:px-small md:p-0 md:flex-row items-center  {className}"
   >
-    <div class="p-0 md:pl-small lgx:pl-large lgx:py-0">
+    <div class="p-0 md:pl-small lgx:pl-large lgx:py-0 sm:min-w-[350px]">
       <h3 class="h3">Ready within seconds when working in the cloud</h3>
       <p class="text-large">
         {text}

@@ -10,7 +10,9 @@ title: Updating Gitpod Self-Hosted
 
 # How to Update your Gitpod Installation
 
-At first, you need to start the installation admin console. In a terminal with configured `kubectl` run the following command (`<namespace>` is the Kubernetes namespace your Gitpod installation has been installed to):
+At first, you must decide on an [update strategy](#update-strategies), and follow related instructions.
+
+After which, you need to start the installation admin console. In a terminal with configured `kubectl` run the following command (`<namespace>` is the Kubernetes namespace your Gitpod installation has been installed to):
 
 ```shell
 $ kubectl kots admin-console --namespace <namespace>
@@ -32,16 +34,22 @@ In most cases, updates should work without further effort - and your existing da
 
 You can deploy different strategies to update your Gitpod instance. Each strategy comes with trade-offs regarding downtime, risk, and cost. In any case, you should ensure that the chosen strategy matches your (company’s) risk profile and that every part of your update strategy (incl. rollbacks) is regularly practiced.
 
+Please refer to [Update Guides](../latest/upgrade-guides) to check for breaking changes that need to be handled as part of your upgrade.
+
 ### Maintenance Window (Higher downtime, low risk and medium cost) - Recommended
+
+> **Important:** [Single Cluster Reference Architecture](../latest/reference-architecture/single-cluster-ref-arch) is not highly-available, please [stop workspaces](./stop-workspaces) prior to proceeding.
 
 In this strategy, you have scheduled maintenance windows where you take down your entire Gitpod installation, update it, test it, and then make it available again. Ideally, this is done during times of low demand, e.g. outside of work hours.
 
 ### Secondary Staging Deployment (medium downtime, lower risk, higher cost)
 
-In this strategy, you run the newest version of Gitpod on a secondary (staging) cluster to ensure compatibility/fitness of the newest version within your specific environment. Given that you are testing on a secondary cluster, you save on downtime in your primary cluster. If you are confident in the release, you can then also apply the update to your primary cluster. Given that workspace startups may fail for a brief period _during_ the update process, a maintenance window (albeit smaller) may still be required.
+> **Important:** [Single Cluster Reference Architecture](../latest/reference-architecture/single-cluster-ref-arch) is not highly-available, please [stop workspaces](./stop-workspaces) prior to proceeding.
 
-### Live update (No downtime, higher risk, low cost)
+In this strategy, you run the newest version of Gitpod on a secondary (staging) cluster to ensure compatibility/fitness of the newest version within your specific environment. Given that you are testing on a secondary cluster, you save on downtime in your primary cluster. If you are confident in the release, you can then also apply the update to your primary cluster. Given that workspace startups may fail for a brief period _during_ the update process, a maintenance window (albeit smaller) will still be required.
 
-> **Important:** Updating Gitpod while workspaces are running can lead to data loss in certain edge cases. Please keep this in mind when utilising this update strategy.
+### Live update (not available, yet)
 
-In this strategy, an update is applied to the live cluster hosting your production Gitpod installation. This incurs no downtime and no complexities around having to install Gitpod on two clusters, however, if something does go wrong you will need to be able to roll back (this is possible via the installation admin console). This strategy may not work if there are breaking changes that need to be addressed by you from one release to the next (see [Update Guides](../latest/upgrade-guides)).
+> **Important:** Please check back soon, we're planning high-availability [reference architecture](../latest/reference-architecture).
+
+The [Single Cluster Reference Architecture](../latest/reference-architecture/single-cluster-ref-arch) does not support live update. Please choose another update strategy.

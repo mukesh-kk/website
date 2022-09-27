@@ -9,24 +9,6 @@
   import CardSmall from "$lib/components/card/card-small.svelte";
 </script>
 
-<style lang="postcss">
-  div {
-    grid-template-columns: repeat(auto-fill, 320px);
-
-    @media (max-width: 1465px) {
-      grid-template-columns: repeat(auto-fill, 314px);
-    }
-
-    @media (max-width: 1380px) {
-      @apply max-w-4xl mx-auto;
-    }
-
-    @media (max-width: 400px) {
-      grid-template-columns: none;
-    }
-  }
-</style>
-
 <OpenGraph
   data={{
     title: "Contact",
@@ -43,10 +25,15 @@
 >
   <div
     slot="content"
-    class="grid gap-micro justify-center mt-small sm:mb-xx-large"
+    class="grid sm:grid-cols-2 max-w-xl mx-auto xl:max-w-none xl:grid-cols-4 gap-micro justify-center mt-small sm:mb-xx-large"
   >
     {#each contactActions as action}
-      <CardSmall card={action} btnSize="normal" titleClassNames="h4" />
+      <CardSmall
+        card={action}
+        btnSize="normal"
+        titleClassNames="h4"
+        class="px-xx-small lg:px-macro lgx:px-3 2xl:p-x-small"
+      />
     {/each}
   </div>
 </Header>

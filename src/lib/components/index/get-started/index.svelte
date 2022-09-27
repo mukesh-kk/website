@@ -13,23 +13,8 @@
   };
 </script>
 
-<style lang="postcss">
-  h2 {
-    @apply mb-x-small;
-  }
-
-  .cards-container {
-    @apply flex;
-
-    @media (max-width: 1075px) {
-      @apply flex-col mx-auto;
-      max-width: 600px;
-    }
-  }
-</style>
-
 <Section id="get-started" class="pt-20">
-  <h2 class="mb-small text-center text-h2">Get started now</h2>
+  <h2 class="!mb-x-small text-center text-h2">Get started now</h2>
   <Toggle
     labelLeft="SaaS"
     labelRight="Self-Hosted"
@@ -39,26 +24,26 @@
     id="saas-self-hosted"
   />
   <div
-    class="cards-container gap-4"
+    class="cards-container flex flex-col lg:flex-row max-w-[600px] lg:max-w-none gap-4 mx-auto"
     class:justify-center={checked}
     class:justify-between={!checked}
   >
     {#if checked}
       <Card
-        class="shadow-normal p-xx-small sm:py-small basis-[50%] sm:px-x-small md:p-medium text-center"
+        class="shadow-normal p-xx-small sm:py-small basis-[50%] sm:px-x-small xl:p-medium text-center"
         size="small"
       >
         <HostGitpodYourself />
       </Card>
     {:else}
       <Card
-        class="shadow-normal p-xx-small sm:py-small basis-[50%] sm:px-x-small md:p-medium text-center"
+        class="shadow-normal p-xx-small sm:py-small basis-[50%] sm:px-x-small xl:p-medium text-center"
         size="small"
       >
         <LinkGitRepository />
       </Card>
       <Card
-        class="shadow-normal p-xx-small sm:py-small  basis-[50%] sm:px-x-small md:p-medium text-center"
+        class="shadow-normal p-xx-small sm:py-small  basis-[50%] sm:px-x-small xl:p-medium text-center"
         size="small"
       >
         <LaunchExampleWorkspace />

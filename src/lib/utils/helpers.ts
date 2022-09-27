@@ -6,7 +6,7 @@ export const isEurope = () => {
 };
 
 export const stringToBeautifiedFragment = (str: string = "") =>
-  str
+  (str || "")
     .toLocaleLowerCase()
     .replace(/\s/g, "-")
     .replace(/\?/g, "")

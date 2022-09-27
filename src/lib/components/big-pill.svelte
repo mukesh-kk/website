@@ -6,18 +6,10 @@
   const capitalised = text.charAt(0).toUpperCase() + text.slice(1);
 </script>
 
-<style lang="postcss">
-  .pink {
-    @apply bg-salmon;
-  }
-
-  .orange {
-    @apply bg-tertiary;
-  }
-</style>
-
 <div
-  class="inline-block px-3 py-0.5 text-l font-semibold text-important dark:text-black rounded-lg shadow-light {clazz} {variant}"
+  class="inline-block px-3 py-0.5 text-l font-semibold text-important dark:text-black rounded-lg shadow-light {clazz}"
+  class:bg-salmon={variant === "pink"}
+  class:bg-tertiary={variant === "orange"}
 >
   {capitalised}
 </div>

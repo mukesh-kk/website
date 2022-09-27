@@ -12,20 +12,14 @@
   $: active = href === normalizedPath || href === `${normalizedPath}/`;
 </script>
 
-<style lang="postcss">
-  .active {
-    @apply border-current font-semibold text-secondary;
-  }
-
-  .subMenu {
-    @apply pl-8;
-  }
-</style>
-
 <a
-  class:subMenu
-  class:active
-  class="block border-l pl-4 -ml-px border-transparent dark:hover:border-divider-light hover:border-light-black {className}"
+  class="
+    block border-l pl-4 -ml-px border-transparent dark:hover:border-divider-light hover:border-light-black {className}
+    {subMenu ? 'pl-8' : ''}
+  "
+  style={active
+    ? "color: var(--brand-ripe); border-color: currentColor; font-weight: 600"
+    : ""}
   {href}
   sveltekit:prefetch
   {...$$props}><slot /></a

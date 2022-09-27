@@ -13,77 +13,36 @@
   export let displayNavigation: boolean = true;
 </script>
 
-<style lang="scss">
-  .back-button {
-    line-height: 138%;
-  }
-
-  .back-button__icon {
-    flex: 0 0 auto;
-    margin-right: 1rem;
-  }
-
-  .back-button__icon-arrow {
-    transform: rotate(90deg);
-  }
-
-  .sub-menu-container {
-    margin-top: 1rem;
-    border-radius: 0.75rem;
-    box-shadow: var(--shadow);
-  }
-
-  .toggle-button {
-    display: flex;
-    align-items: center;
-    padding: 0.8125rem 1rem;
-    line-height: 138%;
-    color: var(--black);
-  }
-
-  .toggle-button__label {
-    flex: 1 1 auto;
-    margin-right: 1rem;
-    text-align: left;
-  }
-
-  .toggle-button__icon {
-    flex: 0 0 auto;
-  }
-
-  .toggle-button__icon-arrow.open {
-    transform: rotate(180deg);
-  }
-</style>
-
 {#if displayNavigation}
   <button
-    class="back-button flex items-center text-important w-full py-3"
+    class="flex items-center text-important w-full py-3"
     type="button"
     on:click={() => {
       $topicsState = true;
       subMenuState = false;
     }}
   >
-    <div class="back-button__icon">
+    <div class="mr-micro">
       <Arrow width="12" height="12" class="rotate-90" />
     </div>
     All topics
   </button>
 {/if}
 {#if currentSection?.subMenu}
-  <div class="sub-menu-container bg-card">
+  <div class="mt-micro rounded-xl shadow-normal bg-card">
     <button
-      class="toggle-button w-full"
+      class="flex items-center py-[13px] px-micro text-black w-full"
       type="button"
       aria-controls="sub-menu"
       aria-expanded={subMenuState}
       on:click={() => (subMenuState = !subMenuState)}
     >
-      <div class="toggle-button__label text-important">
+      <div
+        class="mr-micro text-left flex-grow flex-shrink w-auto text-important"
+      >
         {currentSection?.title}
       </div>
-      <div class="toggle-button__icon">
+      <div class="flex-grow-0 flex-shrink-0">
         <Arrow
           class={subMenuState ? "rotate-180" : ""}
           height="15"

@@ -19,7 +19,7 @@
     location="custom"
     storageKey="cookie-consent-bar"
     let:closeBanner
-    class="stroked stroked-sand mb-0 md:mb-macro md:left-macro z-50 w-full md:max-w-[410px] px-micro py-macro md:p-xx-small text-xs md:text-base md:rounded-2xl md:shadow-sm"
+    class="fixed stroked stroked-sand bottom-0 md:bottom-macro md:left-macro z-50 w-full md:max-w-[410px] px-micro py-macro md:p-xx-small text-xs md:text-base md:rounded-2xl md:shadow-sm"
   >
     <p>
       This website uses cookies to enhance the user experience. Read our <a

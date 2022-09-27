@@ -647,7 +647,7 @@ eksctl create nodegroup --include=regular-workspaces,headless-workspaces --confi
 2022-06-24 13:59:13 [ℹ]  all nodegroups have up-to-date cloudformation templates
 ```
 
-You can verify that your installation was deployed properly with the custom `kubectl` command provided below which will let you review maxpods, kernel and containerd versions to ensure they are meeting [our minimum requirements](../../latest/cluster-requirements) as intended.
+You can verify that your installation was deployed properly with the custom `kubectl` command provided below which will let you review maxpods, kernel and containerd versions to ensure they are meeting [our minimum requirements](../../latest/requirements) as intended.
 
 ```bash
 kubectl get nodes -o=custom-columns="NAME:.metadata.name,\

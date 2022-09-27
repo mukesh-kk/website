@@ -12,17 +12,6 @@
   export { clazz as class };
 </script>
 
-<style lang="scss">
-  :global(.slides) {
-    margin-bottom: var(--small);
-  }
-
-  :global(.slides) > :global(div) > :global(div) {
-    display: flex;
-    justify-content: center;
-  }
-</style>
-
 <Section class={clazz} {...$$restProps}>
   <div class="row">
     <div class="text-center">

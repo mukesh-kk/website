@@ -2,6 +2,7 @@ import type { RequestHandler } from "@sveltejs/kit";
 import * as client from "@sendgrid/mail";
 import save from "$lib/api/save-to-spreadsheet";
 import type { Email, EmailToType } from "$lib/api/api";
+import { webinarSheets } from "$lib/constants";
 
 const determineToEmail = (toType: EmailToType = "contact") => {
   switch (toType) {
@@ -15,6 +16,12 @@ const determineToEmail = (toType: EmailToType = "contact") => {
       return "contact-test@gitpod.io";
   }
 };
+
+const getWebinarByType = (toType: EmailToType) =>
+  webinarSheets.find((sheet) => sheet.type === toType);
+
+const isTypeWebinar = (toType: EmailToType) =>
+  webinarSheets.some((sheet) => sheet.type === toType);
 
 async function sendEmail(
   client: client.MailService,
@@ -59,11 +66,7 @@ async function sendEmail(
   }
 }
 
-async function saveToSheet(
-  sheetTitle: string,
-  data: any,
-  type?: "signup" | "webinar-registeration"
-) {
+async function saveToSheet(sheetTitle: string, data: any, type?: EmailToType) {
   const isSaved = await save({
     sheetTitle,
     data,
@@ -144,21 +147,17 @@ export const post: RequestHandler = async ({ request }) => {
       sheetRes.status = 500;
       sheetRes.body = err;
     }
-  } else if (email.toType === "webinar-registeration") {
+  } else if (isTypeWebinar(email.toType)) {
+    const { sheetTitle, type } = getWebinarByType(email.toType);
     const data = [
       new Date(),
       email.data.name,
       email.data.email,
       email.data.company,
-      email.data.jetbrainsConsent,
     ];
 
     try {
-      const saveResponse = await saveToSheet(
-        "Webinar registrations",
-        data,
-        "webinar-registeration"
-      );
+      const saveResponse = await saveToSheet(sheetTitle, data, type);
       sheetRes.status = saveResponse.statusCode;
       sheetRes.body = saveResponse.body;
     } catch (err) {
@@ -168,7 +167,7 @@ export const post: RequestHandler = async ({ request }) => {
     }
   }
 
-  if (!dontEmail && email.toType !== "webinar-registeration") {
+  if (!dontEmail && !isTypeWebinar(email.toType)) {
     client.setApiKey(SENDGRID_API_KEY);
     const dontEmailResponse = await sendEmail(client, email);
     sheetRes.status = dontEmailResponse.statusCode;
@@ -189,7 +188,7 @@ export const post: RequestHandler = async ({ request }) => {
       res.status === 500;
       res.body = emailRes.body;
     }
-  } else if (!dontEmail && email.toType !== "webinar-registeration") {
+  } else if (!dontEmail && !isTypeWebinar(email.toType)) {
     res.status = emailRes.status;
     res.body = emailRes.body;
   } else {

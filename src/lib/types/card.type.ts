@@ -6,7 +6,7 @@ export type Card = {
       }
     | any;
   transform?: string;
-  title: string;
+  title?: string;
   text: string;
   link?: {
     href: string;

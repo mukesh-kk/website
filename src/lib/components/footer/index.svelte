@@ -108,6 +108,7 @@
       </Section>
       <Section title="Company">
         <li><FooterLink href="/about">About</FooterLink></li>
+        <li><FooterLink href="/about/team">Team</FooterLink></li>
         <li>
           <FooterLink
             href="https://www.gitpod.io/careers"

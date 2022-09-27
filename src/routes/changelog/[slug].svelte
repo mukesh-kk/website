@@ -26,15 +26,6 @@
 </script>
 
 <style lang="postcss">
-  .entry {
-    max-width: 800px;
-    @apply mx-auto;
-  }
-
-  .entry h2 {
-    @apply text-h3 !important;
-  }
-
   .entry :global(img) {
     @apply rounded-tl-lg rounded-tr-lg sm:rounded-tl-2xl sm:rounded-tr-2xl;
   }
@@ -52,7 +43,7 @@
 />
 
 <Wrapper class="pt-small pb-x-large md:pb-xx-large">
-  <div class="entry flex flex-col md:flex-row">
+  <div class="entry max-w-[800px] mx-auto flex flex-col md:flex-row">
     <div class="content-changelog">
       <BackLink />
       <img
@@ -60,11 +51,13 @@
         class="rounded-xl sm:rounded-3xl"
         {alt}
       />
-      <p class="mt-xx-small -mb-9">{formatDate(date)}</p>
-      <h2>
-        {title}
-      </h2>
-      {@html content}
+      <div class="mt-xx-small">
+        <p>{formatDate(date)}</p>
+        <h2 class="!text-h3">
+          {title}
+        </h2>
+        {@html content}
+      </div>
     </div>
   </div>
 </Wrapper>

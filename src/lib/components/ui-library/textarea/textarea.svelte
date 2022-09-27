@@ -10,16 +10,11 @@
   export { className as class };
 </script>
 
-<style lang="postcss">
-  .error {
-    @apply text-error border-error;
-  }
-</style>
-
 {#if label}
   <label
-    class="text-body cursor-pointer block mb-2"
-    class:error={hasError}
+    class="text-body cursor-pointer block mb-2 {hasError
+      ? '!text-error !border-error'
+      : ''}"
     for={id}>{@html label}</label
   >
 {/if}
@@ -28,12 +23,17 @@
   on:change
   bind:value
   bind:this={element}
-  class:error={hasError}
-  class="whitespace-pre-wrap resize-none bg-transparent text-important box-border w-full rounded-lg py-2 px-4 border-[1px] border-divider {className}"
+  class="whitespace-pre-wrap resize-none bg-transparent text-important box-border w-full rounded-lg py-2 px-4 border-[1px] border-divider {hasError
+    ? '!text-error !border-error'
+    : ''} {className}"
   {...$$restProps}
 />
 {#if hasError}
-  <legend class:error={hasError} class="text-xs block mt-1 mb-2"
-    >Please fill out the {name ? name : ""} field</legend
+  <legend
+    class="text-xs block mt-1 mb-2 {hasError
+      ? '!text-error !border-error'
+      : ''}"
   >
+    Please fill out the {name ? name : ""} field
+  </legend>
 {/if}

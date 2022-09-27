@@ -30,7 +30,7 @@
 </script>
 
 <style lang="postcss">
-  @media (max-width: 1420px) {
+  @media (max-width: 1490px) {
     .link-container :global(a) {
       @apply flex-wrap;
     }

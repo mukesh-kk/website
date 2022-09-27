@@ -273,7 +273,8 @@ export const compatibilityMatrix: Matrix[] = [
       {
         name: "K3s",
         availibility: "untested",
-        limitations: null,
+        limitations:
+          'Please see the <a href="https://www.gitpod.io/docs/self-hosted/latest/cluster-set-up/on-k3s" target=”_blank">K3s Guide</a> for instructions on how to set up k3s',
         policy: {
           text: "see Kubernetes support policy",
           description: null,
@@ -368,9 +369,10 @@ export const compatibilityMatrix: Matrix[] = [
         supportedVersions: "current version",
       },
       {
-        name: "MinIO ",
+        name: "MiniIO backed by in-cluster storage",
         availibility: "supported",
-        limitations: null,
+        limitations:
+          "This can be installed automatically during set-up. Not recommended when using Gitpod on an ongoing basis - there is a risk of data loss if the cluster goes down.",
         policy: {
           text: "",
           description: null,
@@ -455,6 +457,17 @@ export const compatibilityMatrix: Matrix[] = [
         },
         supportedVersions: "",
       },
+      {
+        name: "In-cluster registry",
+        availibility: "supported",
+        limitations:
+          "This can be installed automatically during set-up. Not recommended when using Gitpod on an ongoing basis - there is a risk of data loss if the cluster goes down.",
+        policy: {
+          text: "",
+          description: null,
+        },
+        supportedVersions: "",
+      },
     ],
   },
   {
@@ -462,7 +475,7 @@ export const compatibilityMatrix: Matrix[] = [
     relevance: "self-hosted admins",
     components: [
       {
-        name: "MySQL",
+        name: "External MySQL Database",
         availibility: "supported",
         limitations:
           "Database instance must have a database with the name `gitpod` in it.",
@@ -471,6 +484,17 @@ export const compatibilityMatrix: Matrix[] = [
           description: null,
         },
         supportedVersions: "5.7",
+      },
+      {
+        name: "In-cluster MySQL database",
+        availibility: "supported",
+        limitations:
+          "This can be installed automatically during set-up. Not recommended when using Gitpod on an ongoing basis - there is a risk of data loss if the cluster goes down.",
+        policy: {
+          text: "",
+          description: null,
+        },
+        supportedVersions: "",
       },
     ],
   },

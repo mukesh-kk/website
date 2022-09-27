@@ -55,16 +55,6 @@
   };
 </script>
 
-<style lang="postcss">
-  .selected {
-    @apply grayscale-0 scale-150;
-  }
-
-  .link {
-    @apply underline;
-  }
-</style>
-
 <div class={clazz}>
   <Card
     size="small"
@@ -82,8 +72,10 @@
           {#each new Array(4) as _, index}
             <button
               on:click|preventDefault={() => (selectedEmotion = index + 1)}
-              class:selected={selectedEmotion === index + 1}
-              class="grayscale transition duration-150 hover:grayscale-0 hover:scale-150"
+              class="grayscale transition duration-150 hover:grayscale-0 hover:scale-150 {selectedEmotion ===
+              index + 1
+                ? 'grayscale-0 scale-150'
+                : ''}"
             >
               <img
                 src="/images/docs/feedback-widget/{index + 1}.svg"
@@ -123,7 +115,7 @@
               I consent to having this website store my submitted information so
               that the support team can respond to my message. For more
               information, see our
-              <a class="link" href="/privacy"> Privacy Policy. </a>
+              <a class="!underline" href="/privacy"> Privacy Policy. </a>
             </p>
             <Button
               variant="primary"

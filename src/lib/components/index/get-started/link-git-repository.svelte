@@ -2,47 +2,23 @@
   import LinkButton from "$lib/components/ui-library/link-button";
 </script>
 
-<style lang="postcss">
-  .buttons {
-    display: inline-flex;
-    flex-direction: column;
-    margin: var(--large) 0;
-
-    svg {
-      height: 1.75rem;
-      width: 1.75rem;
-      margin-right: var(--micro);
-    }
-  }
-
-  /* .link--light-grey {
-    display: inline-block;
-    margin-top: var(--micro);
-    font-size: var(--h6);
-  } */
-
-  .prefix {
-    color: var(--dark-grey);
-    display: inline-block;
-    padding: 0 var(--micro);
-    margin-top: var(--macro);
-    background: var(--brand-light);
-    border-radius: 0.75rem;
-  }
-</style>
-
 <h3>Connect Git repository</h3>
 <p class="max-w-md mx-auto">
   Select a Git provider to start with an existing project from any Git context.
 </p>
-<div class="buttons space-y-4">
+<div class="inline-flex flex-col my-large space-y-4">
   <LinkButton
     href="https://gitpod.io/workspaces/"
     variant="unstyled"
     size="large"
-    class="bg-[#5e48ba] text-white dark:text-important hover:text-white focus:text-white active:text-white hover:opacity-90 focus:bg-less-important active:bg-less-important flex items-center"
+    class="bg-[#5e48ba] text-white dark:text-important hover:text-white focus:text-white active:text-white hover:opacity-90 focus:opacity-90 active:opacity-90 flex items-center"
   >
-    <svg viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      class="h-7 w-7 mr-micro"
+      viewBox="0 0 30 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <title>GitLab</title>
       <path
         d="m28.592 11.084-.04-.104L24.593.65A1.03 1.03 0 0 0 23.57.003a1.06 1.06 0 0 0-.596.223 1.06 1.06 0 0 0-.35.533l-2.673 8.175H9.132L6.46.76a1.039 1.039 0 0 0-.352-.535A1.06 1.06 0 0 0 4.898.16a1.04 1.04 0 0 0-.408.49L.525 10.975l-.04.104a7.349 7.349 0 0 0 2.438 8.493l.014.011.036.026 6.029 4.514 2.982 2.258 1.817 1.371a1.221 1.221 0 0 0 1.477 0l1.817-1.371 2.983-2.258 6.065-4.541.015-.013a7.352 7.352 0 0 0 2.434-8.484Z"
@@ -55,9 +31,14 @@
     href="https://gitpod.io/workspaces/"
     variant="unstyled"
     size="large"
-    class="bg-important text-white dark:text-black flex items-center hover:text-white focus:text-white active:text-white hover:bg-less-important focus:bg-less-important active:bg-less-important dark:hover:bg-sand-dark dark:hover:opacity-80"
+    class="bg-important text-white dark:text-black flex items-center hover:text-white focus:text-white active:text-white hover:bg-less-important focus:opacity-90 active:opacity-90 dark:hover:bg-sand-dark dark:hover:opacity-80"
   >
-    <svg viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      class="h-7 w-7 mr-micro"
+      viewBox="0 0 29 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <title>GitHub Octocat</title>
       <path
         fill-rule="evenodd"
@@ -73,9 +54,10 @@
     size="large"
     variant="unstyled"
     href="https://gitpod.io/workspaces/"
-    class="bg-[#265583] text-white dark:text-important flex items-center hover:text-white focus:text-white active:text-white hover:opacity-90 focus:bg-less-important active:bg-less-important"
+    class="bg-[#265583] text-white dark:text-important flex items-center hover:text-white focus:text-white active:text-white hover:opacity-90 focus:opacity-90 active:opacity-90"
   >
     <svg
+      class="h-7 w-7 mr-micro"
       width="27"
       height="25"
       viewBox="0 0 27 25"
@@ -112,5 +94,9 @@
 <p class="text-large">
   Or prefix any GitLab, GitHub or Bitbucket URL with
   <br />
-  <span class="prefix"> gitpod.io/# </span>
+  <span
+    class="text-dark-grey inline-block px-micro mt-macro bg-tertiary rounded-xl"
+  >
+    gitpod.io/#
+  </span>
 </p>

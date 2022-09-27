@@ -6,12 +6,6 @@
   let shown: boolean = false;
 </script>
 
-<style lang="postcss">
-  .active {
-    @apply text-important;
-  }
-</style>
-
 <button
   class="flex items-center text-p-large text-left hover:text-important focus:text-important hover:bg-sand-light focus:bg-sand-light dark:hover:bg-light-black dark:focus:bg-light-black {shown
     ? 'font-semibold text-important'
@@ -30,10 +24,12 @@
     {#each links as { href, text }}
       <a
         {href}
-        class="py-macro no-underline text-body hover:bg-sand-light focus:bg-sand-light dark:hover:bg-light-black dark:focus:bg-light-black"
-        class:active={$page.url.pathname === "/"
+        class="py-macro no-underline text-body hover:bg-sand-light focus:bg-sand-light dark:hover:bg-light-black dark:focus:bg-light-black {$page
+          .url.pathname === '/'
           ? /\/$/.test(href)
-          : href.indexOf($page.url.pathname) >= 0}
+          : href.indexOf($page.url.pathname) >= 0
+          ? '!text-important'
+          : ''}"
       >
         {text}
       </a>

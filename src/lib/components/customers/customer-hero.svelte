@@ -21,19 +21,13 @@
   };
 </script>
 
-<style lang="postcss">
-  .h1 {
-    @apply mb-micro md:mb-xx-small;
-  }
-</style>
-
 <header
   class="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto mt-small mb-x-large md:my-x-large lg:mb-xx-large"
 >
   <div class="lg:mr-small mb-small lg:mb-0">
     <header class={textMaxWClass}>
       <p class="h5 font-bold text-sub mb-xx-small">Customer story</p>
-      <h1 class="h1">{@html title}</h1>
+      <h1 class="h1 !mb-micro md:!mb-xx-small">{@html title}</h1>
     </header>
     <p class="text-large max-w-3xl">{text}</p>
   </div>

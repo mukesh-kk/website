@@ -14,3 +14,5 @@ Something is wrong with your Gitpod installation? Please refer to the following 
 
 - [Generating a Support Bundle](./support-bundle)
 - [Gitpod provided Config Patches](./config-patches)
+- [Stop running workspaces](./stop-workspaces)
+- [Manage cluster nodes](./manage-cluster-nodes)

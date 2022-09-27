@@ -30,12 +30,6 @@
   $: idetoRender = getIdeByName(selectedIde);
 </script>
 
-<style lang="postcss">
-  p {
-    max-width: 638px;
-  }
-</style>
-
 <Section>
   <div class="row">
     <h2 class="text-center">Your environment, your tools, your craft</h2>
@@ -71,7 +65,7 @@
     </div>
     <div class="text-center m-auto">
       <h3 class="mt-medium md:mt-x-large">We adapt, so you don't need to</h3>
-      <p class="text-large mt-xx-small mb-x-small mx-auto">
+      <p class="text-large mt-xx-small mb-x-small mx-auto max-w-[638px]">
         Run a desktop or browser based version of VS Code or any JetBrains IDE
         and customise it to your individual needs - from themes to extensions,
         you have full control.

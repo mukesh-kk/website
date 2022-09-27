@@ -65,15 +65,6 @@
   });
 </script>
 
-<style lang="postcss">
-  .active {
-    @apply border-current font-semibold text-secondary;
-  }
-  .activeH2 {
-    @apply text-important font-semibold;
-  }
-</style>
-
 <svelte:window bind:scrollY={scroll} />
 {#if checkHeaders($docsMeta)}
   <div
@@ -87,10 +78,14 @@
       {#each $docsMeta.headings as heading}
         <li class="leading-6">
           <a
-            class:activeH2={h2 === heading.slug}
-            class:active={heading.slug === active}
             id={heading.slug}
-            class="no-underline"
+            class="
+              no-underline 
+              {h2 === heading.slug ? '!text-important font-semibold' : ''}
+              {heading.slug === active
+              ? 'border-current font-semibold !text-secondary'
+              : ''}
+            "
             href="#{heading.slug}">{heading.title}</a
           >
           {#if heading.children?.length > 0}

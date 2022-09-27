@@ -24,28 +24,38 @@
 
 <svelte:head>
   <link rel="preload" as="image" href="/images/illustration-crop.png" />
-  <link rel="preload" as="image" href="/imagesillustration-crop-dark.png" />
+  <link rel="preload" as="image" href="/images/illustration-crop-dark.png" />
 </svelte:head>
 
 <div class="flex items-start">
   <Layout>
-    <Header />
+    <Header
+      title="Remote Development with IntelliJ & Gitpod"
+      label="Webinar"
+      date="Past Event"
+      duration="60min"
+      webinarDescription="Curious how the biggest tech companies are using remote development to
+    speed up their development cycles? We’ll explore using Gitpod to enable
+    Java development in the cloud with your local IntelliJ IDEA."
+    />
     <!-- <Register class="lgx:hidden" /> -->
     <Recording class="lgx:hidden" />
-    <InThisWebinar>
-      <svelte:fragment slot="list-items">
-        <li>Why remote development can save you hours of work every week</li>
-        <li>
-          How to use Gitpod remote dev environments with the IntelliJ IDE that
-          runs on your computer (Demo)
-        </li>
-      </svelte:fragment>
-    </InThisWebinar>
-    <Hosts {hosts} />
-    <OrganizedBy>
-      <img src="/images/gitpod-logo.svg" alt="Gitpod" class="h-10 w-10" />
-      <Jetbrains isDark={true} notDarkWhenDark={true} class="h-10 w-10" />
-    </OrganizedBy>
+    <div class="max-w-[560px]">
+      <InThisWebinar>
+        <svelte:fragment slot="list-items">
+          <li>Why remote development can save you hours of work every week</li>
+          <li>
+            How to use Gitpod remote dev environments with the IntelliJ IDE that
+            runs on your computer (Demo)
+          </li>
+        </svelte:fragment>
+      </InThisWebinar>
+      <Hosts {hosts} />
+      <OrganizedBy>
+        <img src="/images/gitpod-logo.svg" alt="Gitpod" class="h-10 w-10" />
+        <Jetbrains isDark={true} notDarkWhenDark={true} class="h-10 w-10" />
+      </OrganizedBy>
+    </div>
   </Layout>
   <!-- <Register class="hidden lgx:block" /> -->
   <Recording class="hidden lgx:block" />

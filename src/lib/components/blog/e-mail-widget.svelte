@@ -68,16 +68,6 @@
   };
 </script>
 
-<style lang="postcss">
-  .disclaimer {
-    @apply text-sm;
-  }
-
-  .link {
-    @apply underline;
-  }
-</style>
-
 <div class={clazz}>
   <Card
     size="small"
@@ -118,9 +108,9 @@
               labelClasses="text-sm"
             />
           </div>
-          <p class="disclaimer no-prose">
+          <p class="!text-sm no-prose">
             By submitting this form I acknowledge that I have read and
-            understood <a class="link" href="/privacy"
+            understood <a class="!underline" href="/privacy"
               >Gitpod’s Privacy Policy.</a
             >
           </p>

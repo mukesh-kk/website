@@ -32,16 +32,6 @@
   });
 </script>
 
-<style lang="postcss">
-  .h5 {
-    @apply text-base;
-  }
-
-  :global(button) {
-    @apply whitespace-nowrap;
-  }
-</style>
-
 <Card
   size="medium"
   background="white"
@@ -49,7 +39,7 @@
 >
   <h2 class="h3 text-center">Cookie settings</h2>
   <div>
-    <h3 class="h5">
+    <h3 class="h5 !text-base">
       <Checkbox
         label="Strictly necessary cookies"
         checked={true}
@@ -64,7 +54,7 @@
     </p>
   </div>
   <div>
-    <h3 class="h5">
+    <h3 class="h5 !text-base">
       <Checkbox
         label="Analytical / Performance cookies"
         on:change={(e) => {
@@ -86,7 +76,7 @@
     </p>
   </div>
   <div>
-    <h3 class="h5">
+    <h3 class="h5 !text-base">
       <Checkbox
         label="Targeting / Advertising cookies"
         on:change={(e) => {

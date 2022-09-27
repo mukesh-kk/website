@@ -1,38 +1,33 @@
-<script>
+<script lang="ts">
   import Header from "../header.svelte";
   import Pill from "../pill.svelte";
-  import Jetbrains from "../svgs/brands/jetbrains.svelte";
+  import Logo from "../svgs/logo.svelte";
   import Calendar from "../svgs/webinars/calendar.svelte";
   import Clock from "../svgs/webinars/clock.svelte";
+  export let title: string,
+    label: string,
+    date: string,
+    duration: string,
+    webinarDescription: string;
 </script>
 
-<Header
-  title="Remote Development with IntelliJ & Gitpod"
-  centered={false}
-  textAlign="left"
-  fullWidth={true}
->
-  <Pill text="Webinar" class="mb-3" slot="top" />
+<Header {title} centered={false} textAlign="left" fullWidth={true}>
+  <Pill text={label} class="mb-3" slot="top" />
   <div slot="content" class="text-large my-x-small">
     <div class="flex items-center mb-micro">
-      <Calendar class="h-7 w-7 mr-micro" /> Past event
+      <Calendar class="h-7 w-7 mr-micro" />
+      {date}
     </div>
     <div class="flex items-center">
-      <Clock class="h-7 w-7 mr-micro" /> 60min
+      <Clock class="h-7 w-7 mr-micro" />
+      {duration}
     </div>
-    <p class="text-large my-x-small">
-      Curious how the biggest tech companies are using remote development to
-      speed up their development cycles? We’ll explore using Gitpod to enable
-      Java development in the cloud with your local IntelliJ IDEA.
+    <p class="text-large my-x-small max-w-[595px]">
+      {webinarDescription}
     </p>
-    <div class="flex items-center">
+    <div class="flex items-center gap-micro">
       <h2 class="h5">Hosted by</h2>
-      <img
-        src="/images/gitpod-logo.svg"
-        alt="Gitpod"
-        class="h-9 w-9 mx-micro"
-      />
-      <Jetbrains isDark={true} notDarkWhenDark={true} class="h-9 w-9" />
+      <h2 class="h5"><Logo width="120" isDark={true} /></h2>
     </div>
   </div>
 </Header>

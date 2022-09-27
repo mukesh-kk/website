@@ -2,21 +2,6 @@
   import Header from "../header.svelte";
 </script>
 
-<style lang="postcss">
-  .year {
-    border-bottom: 3px;
-    @apply inline-block border-primary border-solid;
-
-    &:not(:first-of-type) {
-      @apply mt-x-large;
-    }
-  }
-
-  ol {
-    max-width: 285px;
-  }
-</style>
-
 <Header
   title="Thanks for your help"
   text="Big thanks the following people who responsibly disclosed their security
@@ -30,8 +15,10 @@
     slot="top"
   />
   <div class="mt-x-large" slot="content">
-    <h2 class="h4 year">2022</h2>
-    <ol class="mx-auto my-x-small">
+    <h2 class="h4 border-b-[3px] inline-block border-primary border-solid">
+      2022
+    </h2>
+    <ol class="max-w-[285px] mx-auto my-x-small">
       <li>
         <a rel="nofollow" href="https://twitter.com/AlanCao5">Alan Cao</a> from New
         York University.
@@ -40,8 +27,12 @@
         <a href="https://www.linkedin.com/in/0x33c0unt/"> Yusuf Kocadaş</a>.
       </li>
     </ol>
-    <h2 class="h4 year">2021</h2>
-    <ol class="text-left mx-auto my-x-small">
+    <h2
+      class="h4 mt-x-large border-b-[3px] inline-block border-primary border-solid"
+    >
+      2021
+    </h2>
+    <ol class="max-w-[285px] text-left mx-auto my-x-small">
       <li>
         <a rel="nofollow" href="https://twitter.com/Kuys_Potpot"
           >Andrei Jiroh Eugenio Halili</a

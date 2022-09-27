@@ -92,16 +92,6 @@
   };
 </script>
 
-<style lang="postcss">
-  .box {
-    @apply px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0;
-  }
-
-  li {
-    @apply before:hidden m-0 p-0 !important;
-  }
-</style>
-
 <div class="my-8 mt-0">
   <header>
     <nav>
@@ -113,7 +103,7 @@
         {#each items as item}
           {#if Object.keys($$slots).includes(item.slotName)}
             <li
-              class="!before:hidden"
+              class="before:!hidden !m-0 !p-0"
               role="tab"
               aria-selected={item.value === activeValue}
               aria-controls={ariaIds.tabpanel[item.slotName]}
@@ -144,7 +134,9 @@
   </header>
   {#if $$slots.vscodebrowser}
     <article
-      class={`box bg-white dark:bg-card ${activeValue !== 1 ? "hidden" : ""}`}
+      class={`px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card ${
+        activeValue !== 1 ? "hidden" : ""
+      }`}
       {...activeValue !== 1
         ? { hidden: true, "aria-hidden": "true", tabindex: -1 }
         : { hidden: false, "aria-hidden": "false", tabindex: 0 }}
@@ -157,7 +149,9 @@
   {/if}
   {#if $$slots.vscodedesktop}
     <article
-      class={`box bg-white dark:bg-card ${activeValue !== 2 ? "hidden" : ""}`}
+      class={`px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card ${
+        activeValue !== 2 ? "hidden" : ""
+      }`}
       {...activeValue !== 2
         ? { hidden: true, "aria-hidden": "true", tabindex: -1 }
         : { hidden: false, "aria-hidden": "false", tabindex: 0 }}
@@ -170,7 +164,9 @@
   {/if}
   {#if $$slots.jetbrains}
     <article
-      class={`box bg-white dark:bg-card ${activeValue !== 3 ? "hidden" : ""}`}
+      class={`px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card ${
+        activeValue !== 3 ? "hidden" : ""
+      }`}
       {...activeValue !== 3
         ? { hidden: true, "aria-hidden": "true", tabindex: -1 }
         : { hidden: false, "aria-hidden": "false", tabindex: 0 }}
@@ -183,7 +179,9 @@
   {/if}
   {#if $$slots.commandline}
     <article
-      class={`box bg-white dark:bg-card ${activeValue !== 4 ? "hidden" : ""}`}
+      class={`px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card ${
+        activeValue !== 4 ? "hidden" : ""
+      }`}
       {...activeValue !== 4
         ? { hidden: true, "aria-hidden": "true", tabindex: -1 }
         : { hidden: false, "aria-hidden": "false", tabindex: 0 }}

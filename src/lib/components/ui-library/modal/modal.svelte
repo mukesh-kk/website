@@ -56,18 +56,11 @@
   });
 </script>
 
-<style lang="postcss">
-  .modal {
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 100000;
-  }
-</style>
-
 <svelte:window on:keydown={handleKeydown} />
 
 {#if isOpen}
   <div
-    class="modal z-50 fixed top-0 left-0 w-full h-screen flex justify-center items-center"
+    class="modal bg-[rgb(0,0,0)]/70 fixed top-0 left-0 w-full h-screen flex justify-center items-center z-[100000]"
     use:focusTrap
     bind:this={backdrop}
   >

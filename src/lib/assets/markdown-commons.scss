@@ -122,11 +122,14 @@ body.dark {
     }
   }
 
-  a[href*="http://"]:not([href*="www.gitpod.io"]),
-  a[href*="https://"]:not([href*="www.gitpod.io"])
-  {
-    &::after {
-      filter: invert(100%) grayscale(100%);
+  .content-docs,
+  .content-blog {
+    a[href*="http://"]:not([href*="www.gitpod.io"]),
+    a[href*="https://"]:not([href*="www.gitpod.io"])
+    {
+      &::after {
+        filter: invert(100%) grayscale(100%);
+      }
     }
   }
 

@@ -16,10 +16,6 @@
 </script>
 
 <style lang="postcss">
-  .disable-filter {
-    @apply after:filter-none !important;
-  }
-
   a.stroked:hover,
   a.stroked:focus {
     &::after {
@@ -41,7 +37,9 @@
   <a
     {href}
     target="_blank"
-    class="inline-flex stroked disable-filter after:filter-none py-3 px-4 items-center justify-center bg-bg dark:bg-card rounded-2xl text-important dark:text-white shadow-light dark:shadow-none font-semibold"
+    class="
+      inline-flex stroked  after:dark:hover:bg-light-black after:!filter-none py-3 px-4 items-center justify-center bg-bg dark:bg-card rounded-2xl text-important dark:text-white shadow-light dark:shadow-none font-semibold hover:bg-card focus:bg-card dark:hover:bg-light-black dark:focus:bg-light-black
+    "
     rel="noopener"
     data-analytics={`{"variant":"open_in_gitpod"}`}
   >

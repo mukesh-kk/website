@@ -8,13 +8,6 @@
   export let placeholder: string = "Search";
 </script>
 
-<style lang="postcss">
-  input {
-    @apply border-none;
-    border-radius: inherit;
-  }
-</style>
-
 <div
   class="relative bg-card rounded-xl max-w-lg mx-auto shadow-normal mb-12 pl-6 sm:pl-7 {clazz}"
 >
@@ -29,6 +22,6 @@
     {placeholder}
     bind:value
     id="search"
-    class="box-border block w-full text-p-medium h-small pl-4 pr-3 py-2 border border-transparent bg-transparent leading-5 text-important placeholder-text-body focus:outline-none focus:bg-none focus:border-transparent focus:ring-transparent focus:text-important"
+    class="border-none rounded-[inherit] box-border block w-full text-p-medium h-small pl-4 pr-3 py-2 border border-transparent bg-transparent leading-5 text-important placeholder-text-body focus:outline-none focus:bg-none focus:border-transparent focus:ring-transparent focus:text-important"
   />
 </div>

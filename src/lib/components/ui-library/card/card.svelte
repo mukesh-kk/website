@@ -41,6 +41,7 @@
   class:brand={brandShadow}
   class:stroked
   class:stroked-light={background === "white"}
+  {...$$restProps}
 >
   <slot />
 </div>

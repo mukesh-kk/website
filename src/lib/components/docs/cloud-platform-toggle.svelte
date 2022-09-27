@@ -34,16 +34,6 @@
   export let open = false;
 </script>
 
-<style lang="postcss">
-  .box {
-    @apply px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0;
-  }
-
-  li {
-    @apply before:hidden m-0 p-0 !important;
-  }
-</style>
-
 <details open={open || null} {id}>
   <summary class="text-p-medium"
     ><b>Cloud provider specific instructions</b></summary
@@ -53,19 +43,19 @@
     <ul class="flex flex-wrap !pl-0 !mb-0">
       {#each items as item}
         {#if Object.keys($$slots).includes(item.slotName) && !item.hidden}
-          <li class="!before:hidden">
+          <li class="before:!hidden !m-0 !p-0">
             <span
               class="rounded-t-2xl cursor-pointer px-4 py-2 hidden md:block {activeValue ===
               item.value
                 ? 'bg-white dark:bg-card'
-                : 'bg-sand-dark'} transition-all duration-200"
+                : 'bg-sand-dark dark:bg-light-black'} transition-all duration-200"
               on:click={clickHandler(item.value)}>{item.title}</span
             >
             <span
               class="rounded-t-2xl cursor-pointer px-4 py-2 md:hidden block {activeValue ===
               item.value
                 ? 'bg-white dark:bg-card'
-                : 'bg-sand-dark'} transition-all duration-200"
+                : 'bg-sand-dark dark:bg-light-black'} transition-all duration-200"
               on:click={clickHandler(item.value)}>{item.mobileTitle}</span
             >
           </li>
@@ -74,21 +64,27 @@
     </ul>
     {#if $$slots.gcp}
       {#if activeValue === 1}
-        <div class="box bg-white dark:bg-card">
+        <div
+          class="px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card"
+        >
           <slot name="gcp" />
         </div>
       {/if}
     {/if}
     {#if $$slots.aws}
       {#if activeValue === 2}
-        <div class="box bg-white dark:bg-card">
+        <div
+          class="px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card"
+        >
           <slot name="aws" />
         </div>
       {/if}
     {/if}
     {#if $$slots.azure}
       {#if activeValue === 3}
-        <div class="box bg-white dark:bg-card">
+        <div
+          class="px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card"
+        >
           <slot name="azure" />
         </div>
       {/if}

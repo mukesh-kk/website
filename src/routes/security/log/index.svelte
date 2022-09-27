@@ -16,12 +16,6 @@
   export let securityLogs: SecurityLog[];
 </script>
 
-<style lang="postcss">
-  div :global(.header) {
-    @apply mb-large;
-  }
-</style>
-
 <OpenGraph
   data={{
     description: "A sum-up of Gitpod’s latest security incidents and updates",
@@ -38,7 +32,7 @@
     title="Security Log"
     centered={false}
     text="A sum-up of Gitpod’s latest security findings and updates."
-    class="w-full header"
+    class="w-full header mb-large"
     textAlign="left"
   />
 </div>

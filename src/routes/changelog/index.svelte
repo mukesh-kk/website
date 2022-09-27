@@ -23,16 +23,6 @@
   export let changelogEntries: ChangelogEntryType[];
 </script>
 
-<style lang="postcss">
-  .changelog-entry {
-    @apply flex flex-col md:flex-row last:pb-x-large md:last:pb-xx-large;
-
-    & + .changelog-entry {
-      @apply pt-x-large md:pt-xx-large;
-    }
-  }
-</style>
-
 <OpenGraph
   data={{
     description:
@@ -69,8 +59,13 @@
 <div
   class="flex flex-col space-y-x-large md:space-y-xx-large divide-y divide-divider"
 >
-  {#each changelogEntries as { date, title, content, image, alt }}
-    <div class="changelog-entry">
+  {#each changelogEntries as { date, title, content, image, alt }, i}
+    <div
+      class="changelog-entry flex flex-col md:flex-row last:pb-x-large md:last:pb-xx-large {i !==
+        0 &&
+        i !== changelogEntries.length &&
+        'pt-x-large md:pt-xx-large'}"
+    >
       <ChangelogDate
         date={formatDate(date)}
         href={`/changelog/${stringToBeautifiedFragment(title)}`}
