@@ -126,6 +126,9 @@ const main = async () => {
             body
             title
             number
+            author {
+              login
+            }
             participants(first: 20) {
               nodes {
                 login

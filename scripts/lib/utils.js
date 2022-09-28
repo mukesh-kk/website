@@ -1,12 +1,15 @@
 import { unified } from "unified/lib/index.js";
 import remarkParse from "remark-parse";
 
-export const getPrParticipants = (pr) =>
-  pr.participants.nodes
+export const getPrParticipants = (pr) => {
+  const author = pr.author?.login;
+  const participants = pr.participants.nodes
     .map(({ login }) => login)
-    .filter((login) => !["roboquat"].includes(login))
-    .sort()
-    .join(",");
+    .filter((login) => !["roboquat", author].includes(login))
+    .sort();
+  const allParticipants = [author, ...participants].join(",");
+  return allParticipants;
+};
 
 export const parseOldReleaseNote = (pr) => {
   const releaseNoteMatch = pr.body.match(/```release-notes?(.+?)```/s);
