@@ -52,7 +52,7 @@ ports:
     onOpen: open-preview
 ```
 
-You can read more about `.gitpod.yml` in [docs: config gitpod file](https://www.gitpod.io/docs/config-gitpod-file)
+You can read more about `.gitpod.yml` in [docs: config gitpod file](https://www.gitpod.io/docs/references/gitpod-yml)
 
 ### Setting up your first `.gitpod.yml` ⚡️
 
@@ -64,7 +64,7 @@ You can read more about `.gitpod.yml` in [docs: config gitpod file](https://www.
 3. For Gitpod to detect configuration changes, push and commit your `gitpod.yml`.
 4. Now open your project in a new workspace by prefixing your repo URL with `gitpod.io/#{your-repository-url}` or using the Gitpod extension.
 
-You can read more about `.gitpod.yml` in the [configure](https://www.gitpod.io/docs/config-gitpod-file) documentation. For information about the `.gitpod.yml` file properties, see the [`.gitpod.yml` reference documentation](https://www.gitpod.io/docs/references/gitpod-yml).
+You can read more about `.gitpod.yml` in the [configure](https://www.gitpod.io/docs/references/gitpod-yml) documentation. For information about the `.gitpod.yml` file properties, see the [`.gitpod.yml` reference documentation](https://www.gitpod.io/docs/references/gitpod-yml).
 
 ## Configure your developer environment based on a Dockerfile
 
@@ -99,7 +99,7 @@ image:
 3. You can start using the lightweight base image [gitpod/workspace-base](https://github.com/gitpod-io/workspace-images) for your custom Docker image. The `workspace-base` image has some default tooling, whereas `gitpod/workspace-full` already has a lot of pre-installed installed tools.
 4. Start adding the commands you need for your dev environment.
 
-Read more about how to [configure a custom Dockerfile](https://www.gitpod.io/docs/config-docker#configure-a-custom-dockerfile).
+Read more about how to [configure a custom Dockerfile](https://www.gitpod.io/docs/configure/workspaces/workspace-image#configure-a-custom-dockerfile).
 
 # Faster startup by enabling prebuilds
 
@@ -111,7 +111,7 @@ For example, the `.gitpod.yml` saves 41 minutes of installation and building tim
 
 <figure class="flex flex-col items-center text-center">
   <img src="/images/guides/guide-ephemeral-dev-environment-on-gitpod/tweet-image.png" alt="This is tweet about of Node.js project. With Gitpod Prebuilds it got even faster" width="400" />
-   <figcaption class="w-full">This is <a href="https://twitter.com/Siddhant_K_code/status/1548143768301318144">tweet</a> about Node.js project. With <a href="https://www.gitpod.io/docs/prebuilds">Gitpod Prebuilds</a> it got even faster.</figcaption>
+   <figcaption class="w-full">This is <a href="https://twitter.com/Siddhant_K_code/status/1548143768301318144">tweet</a> about Node.js project. With <a href="https://www.gitpod.io/docs/configure/projects/prebuilds">Gitpod Prebuilds</a> it got even faster.</figcaption>
 </figure>
 
 <figure class="flex flex-col items-center text-center">
@@ -121,7 +121,7 @@ For example, the `.gitpod.yml` saves 41 minutes of installation and building tim
 
 ### How to get started with Prebuilds
 
-Prebuilds work for GitHub, Gitlab and Bitbucket repositories (see our [Prebuilds documentation](https://www.gitpod.io/docs/prebuilds#configuring-prebuilds-manually) for more). To give you a real example, though, let's take a look at how you can enable Prebuilds for GitHub:
+Prebuilds work for GitHub, Gitlab and Bitbucket repositories (see our [Prebuilds documentation](https://www.gitpod.io/docs/configure/projects/prebuilds#configuring-prebuilds-manually) for more). To give you a real example, though, let's take a look at how you can enable Prebuilds for GitHub:
 
 1. To enable Gitpod Prebuilds for a repository, you must install the [Gitpod GitHub App](https://github.com/apps/gitpod-io) for your repository.
 2. Click 'Configure' and choose the repository where you wish to install the Gitpod App.
@@ -150,7 +150,7 @@ GitHub:
 
 > **Important:** Prebuilds only save the workspace directory. Any file changes made outside of `/workspace` file hierarchy from `init` tasks will be lost on workspace start when prebuilds are enabled.
 
-You can read more about prebuilds in the [following doc](https://www.gitpod.io/docs/prebuilds).
+You can read more about prebuilds in the [following doc](https://www.gitpod.io/docs/configure/projects/prebuilds).
 
 # Persisting environment variables and files
 
@@ -176,11 +176,11 @@ You can use a wildcard (denoted with a `*`) to match either the `owner` or `repo
   <img src="/images/guides/guide-ephemeral-dev-environment-on-gitpod/scope.png" alt="Scope of each variable determines in what workspaces it will be available" width="500" />
 </figure>
 
-You can read more about environment variables in [Environment Variables on Gitpod](https://www.gitpod.io/docs/environment-variables).
+You can read more about environment variables in [Environment Variables on Gitpod](https://www.gitpod.io/docs/configure/projects/environment-variables).
 
 ### Persisting files between workspace restarts
 
-> For those of you who are looking to persist personal configurations with non-sensitive data, such as bash or zsh configs, you can use [dotfiles](https://www.gitpod.io/docs/config-dotfiles). For sensitive information, an option (outside of introducing your secret store, such as [vault](https://www.vaultproject.io/)) is to leverage: [environment variables](https://www.gitpod.io/docs/environment-variables) and consider encoding, e.g. with base64. See blog posts[[1]](https://www.gitpod.io/blog/personalize-your-gitpod-workspace-environment) [[2]](https://www.gitpod.io/guides/automate-env-files-with-gitpod-environment-variables) .
+> For those of you who are looking to persist personal configurations with non-sensitive data, such as bash or zsh configs, you can use [dotfiles](https://www.gitpod.io/docs/configure/user-settings/dotfiles). For sensitive information, an option (outside of introducing your secret store, such as [vault](https://www.vaultproject.io/)) is to leverage: [environment variables](https://www.gitpod.io/docs/configure/projects/environment-variables) and consider encoding, e.g. with base64. See blog posts[[1]](https://www.gitpod.io/blog/personalize-your-gitpod-workspace-environment) [[2]](https://www.gitpod.io/guides/automate-env-files-with-gitpod-environment-variables) .
 
 There would be some use cases where we would want to persist some files between workspace starts. For example, `.bash_history` refers to previously used history commands.
 
@@ -195,7 +195,7 @@ Inside your workspace, Open the terminal & run the following steps:
 
 # Recommended Reading
 
-- [Docs: Config Dotfiles](https://www.gitpod.io/docs/config-dotfiles)
+- [Docs: Config Dotfiles](https://www.gitpod.io/docs/configure/user-settings/dotfiles)
 - [GitHub Repository: Bring your own Dotfiles to Gitpod | dotfiles on Gitpod](https://github.com/gitpod-io/demo-dotfiles-with-gitpod)
 - [GitHub Repository: AWS Single Sign-On (SSO) and Amazon Elastic Container Registry (ECR) with Gitpod](https://github.com/gitpod-io/demo-aws-with-gitpod)
 - [Guide: Gitpodifying — The Ultimate Guide](https://www.gitpod.io/guides/gitpodify)

@@ -3,7 +3,7 @@ import type { GetStartedItem } from "$lib/types/get-started.type";
 
 export const getStartedItems: GetStartedItem[] = [
   {
-    href: "/docs/getting-started",
+    href: "/docs/introduction/getting-started",
     label: "Read docs",
   },
   {
@@ -11,7 +11,7 @@ export const getStartedItems: GetStartedItem[] = [
     label: "Watch video",
   },
   {
-    href: "/docs/quickstart",
+    href: "/docs/introduction/getting-started",
     label: "Use Quickstart",
   },
 ];

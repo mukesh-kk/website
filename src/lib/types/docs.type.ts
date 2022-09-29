@@ -10,3 +10,10 @@ export type AvailabilityItem = {
   label: string;
   isSaas: boolean;
 };
+
+export type PopularItem = {
+  title: string;
+  path: string;
+  favorite: boolean;
+  icon?: string;
+};

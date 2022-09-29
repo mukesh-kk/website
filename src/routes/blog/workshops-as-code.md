@@ -60,7 +60,7 @@ Now granted, not every workshop requires people to install or configure virtual 
 
 By taking lessons learned from the infrastructure-as-code movement and converting workshops to Docker images, workshops become repeatable and reproducible. By utilising products such as Gitpod to consume, build and execute your `Dockerfile` then attendees no longer need to download or configure your software. All they need is a browser.
 
-A Gitpod workspace gives you the same capabilities (yes, even root, Docker & qemu) as a Linux machine that is [already pre-built](/docs/prebuilds), works on any device from anywhere and that launches in seconds.
+A Gitpod workspace gives you the same capabilities (yes, even root, Docker & qemu) as a Linux machine that is [already pre-built](/docs/configure/projects/prebuilds), works on any device from anywhere and that launches in seconds.
 
 <!-- ![Credit: Geoffrey Huntley](../../../static/images/blog/workshops-as-code/teaser.jpg) -->
 
@@ -89,7 +89,7 @@ Let’s peek under the hood how the integration works from top to bottom:
 1. DataStax have created self-paced workshops which are [hosted on GitHub](https://github.com/DataStax-Academy?type=source).
 1. These workshops are listed within Astra DB (which is DataStax’s DBaaS offering)
 1. On each workshop, there is a button to launch the workshop on Gitpod.
-1. DataStax prompts the user to select which managed database the workshop should use, and non-sensitive information is passed through to Gitpod [as environment variables](/docs/environment-variables#provide-env-vars-via-url) via the URL:
+1. DataStax prompts the user to select which managed database the workshop should use, and non-sensitive information is passed through to Gitpod [as environment variables](/docs/configure/projects/environment-variables#provide-env-vars-via-url) via the URL:
 
 > https://gitpod.io/#ASTRA_DB_ID=6677d1aa-2a69-4739-ba5d-26fdef15d8ae,ASTRA_DB_KEYSPACE=Workshop,ASTRA_DB_REGION=us-east1,ASTRA_DB_USERNAME=/https://github.com/DataStax-Examples/todo-astra-jamstack-netlify
 

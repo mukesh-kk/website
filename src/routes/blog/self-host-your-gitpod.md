@@ -46,7 +46,7 @@ We operate gitpod.io on GCP, hence running Gitpod Self-Hosted on Google Cloud Pl
 
 ## Installation
 
-Installing Gitpod Self-Hosted on your own infrastructure works much like any other piece of kit running on Kubernetes. We have produced a series of [installation guides](/docs/self-hosted/latest/installation) will work most Kubernetes clusters.
+Installing Gitpod Self-Hosted on your own infrastructure works much like any other piece of kit running on Kubernetes. We have produced a series of [installation guides](/docs/configure/self-hosted/latest/installation) will work most Kubernetes clusters.
 
 ## Pricing
 

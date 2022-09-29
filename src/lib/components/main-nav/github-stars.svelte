@@ -6,9 +6,18 @@
   import { getContext } from "svelte";
   import Octocat from "../svgs/octocat.svelte";
 
-  const stars: string = getContext(key).toString();
-
-  const starsFormatted = stars[0] + "," + stars.substring(1, stars.length);
+  const numberFormatter = Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumFractionDigits: 1,
+    unitDisplay: "long",
+  });
+  const stars: number = getContext(key);
+  let starsFormatted: string;
+  if (stars) {
+    starsFormatted = numberFormatter.format(stars).toLocaleLowerCase();
+  } else {
+    starsFormatted = null;
+  }
 </script>
 
 <style lang="postcss">

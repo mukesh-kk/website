@@ -16,7 +16,7 @@ ports:
     name: VNC
     description: VNC Viewer
 
-# List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
+# List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/configure/workspaces/tasks/
 tasks:
   - init: npm install
     command: npm run dev

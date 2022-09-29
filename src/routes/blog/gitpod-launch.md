@@ -25,7 +25,7 @@ Here's how Gitpod works: You are on GitHub and want to start working on a projec
 
 ![Gitpod button added by Gitpod browser extension](../../../static/images/blog/gitpod-launch/browser-ext.png)
 
-Don’t see the button on GitHub yet? You need to [install a small browser extension](/docs/browser-extension) to get it. Alternatively, you can just prefix any GitHub URL with “[gitpod.io/#](https://gitpod.io/#)”.
+Don’t see the button on GitHub yet? You need to [install a small browser extension](/docs/configure/user-settings/browser-extension) to get it. Alternatively, you can just prefix any GitHub URL with “[gitpod.io/#](https://gitpod.io/#)”.
 
 You can try Gitpod right now. It's free for public repositories.
 
@@ -83,7 +83,7 @@ In addition to one of the best code editors, Gitpod environments provide full fe
 
 Gitpod comes with two major features supporting collaboration.
 
-- [Sharing running dev environments](/docs/sharing-and-collaboration) with other users comes in handy if you want to look at code with a colleague to hunt down a bug together or do some pair programming. Collaborators will see the same code you see and even the terminals are synced and shared.
+- [Sharing running dev environments](/docs/configure/workspaces/collaboration) with other users comes in handy if you want to look at code with a colleague to hunt down a bug together or do some pair programming. Collaborators will see the same code you see and even the terminals are synced and shared.
 
 - [Snapshots](/blog/workspace-snapshots) are useful in many ways. In a nutshell, they allow taking an immutable copy of your dev environment at any point in time. You can share the provided link wherever you want. Users opening such a snapshot link will get an exact clone of the environment including all state and even UI layout. This feature is great for sharing reproducibles in issues, but also good for blog posts or solutions on Stack Overflow.
 

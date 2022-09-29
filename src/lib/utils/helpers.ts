@@ -1,4 +1,5 @@
 import { readable } from "svelte/store";
+import type { MenuEntry } from "../types/menu-entry.type";
 
 export const isEurope = () => {
   const offset = new Date().getTimezoneOffset();
@@ -65,4 +66,29 @@ export const useMediaQuery = (mediaQueryString: string) => {
     };
   });
   return matches;
+};
+
+export const scrollIntoView = (selector: string) => {
+  const scrollToElement = document.querySelector(selector);
+
+  if (!scrollToElement) return;
+
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  scrollToElement.scrollIntoView({
+    block: "nearest",
+    inline: "start",
+    behavior: mediaQuery.matches ? "auto" : "smooth",
+  });
+};
+export const getVariantFromStatus = (status: string) => {
+  if (status === "soon" || status === "Early Access") {
+    return "pink";
+  } else {
+    return "orange";
+  }
+};
+
+export const isLongDocsMenuEntry = (entry: MenuEntry) => {
+  return entry && entry.status && entry.status.split(" ").length > 1;
 };

@@ -30,7 +30,7 @@ To get started, all you need is a browser. I use the [Kiwi](https://kiwibrowser.
 
 ![conversation 1](../../../../static/images/guides/getting-started-with-gitpod-in-android/convo.svg "kumquat asks")
 
-- Some shortcuts like **Windows/Meta + Key**, **Control + Space** and etc. will not work on Gitpod as Android captures them for its internal shortcuts. Unfortunately, you can not disable or remap them easily. To workaround, you will have to remap some of your conflicting IDE shortcuts from the [VS Code Browser](https://www.gitpod.io/docs/ides-and-editors/vscode-browser) settings.
+- Some shortcuts like **Windows/Meta + Key**, **Control + Space** and etc. will not work on Gitpod as Android captures them for its internal shortcuts. Unfortunately, you can not disable or remap them easily. To workaround, you will have to remap some of your conflicting IDE shortcuts from the [VS Code Browser](https://www.gitpod.io/docs/references/ides-and-editors/vscode-browser) settings.
 
 ##### Kiwi tips:
 
@@ -78,6 +78,6 @@ We can also utilize some software-based things; these can be helpful whether you
 - You can use an app called [Rotation Control](https://play.google.com/store/apps/details?id=org.crape.rotationcontrol) to force landscape/auto-rotate mode for every app on Android (including your Home launcher!)
 - I'm using a $2 phone stand, it's called "Retractable L7 Phone Stand", sharing the name for reference in case you want to find something similar in your local market or online. Or you can put your phone against a book as well 😆
 
-Congratulations 🎉. Now you have set up the browser and display and connected the hardware keyboard and mouse with your Android phone. You can now code, build and learn seamlessly using Gitpod ⚡️. To get started, you can refer to the [following documentation](https://www.gitpod.io/docs/getting-started).
+Congratulations 🎉. Now you have set up the browser and display and connected the hardware keyboard and mouse with your Android phone. You can now code, build and learn seamlessly using Gitpod ⚡️. To get started, you can refer to the [following documentation](https://www.gitpod.io/docs/introduction/getting-started).
 
 If you have more questions, drop by our community Discord server. We have the [#mobile-and-tablets](https://discord.com/channels/816244985187008514/890901203624534026) channel where fellow mobile-dev enthusiasts hang out!

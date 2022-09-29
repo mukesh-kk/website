@@ -47,4 +47,4 @@ While more and more extensions land in Open VSX on a daily basis, there still mi
 - Download the extension's `.vsix` file (e.g. from the extension's GitHub Releases) and drag and drop it into the IDE's Extensions view. That will install and activate it automatically.
 - Create a PR over at <a class="no-nowrap" href="https://github.com/open-vsx/publish-extensions">https://github.com/open-vsx/publish-extensions</a> — that's where we seed the Open VSX registry by automatically publishing popular open-source extensions.
 
-You can find more information in our [docs](/docs/ides-and-editors/vscode-extensions).
+You can find more information in our [docs](/docs/references/ides-and-editors/vscode-extensions).

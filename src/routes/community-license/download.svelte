@@ -18,7 +18,7 @@
 
 <Header
   title="Download the license file"
-  text="The file needs to be uploaded during the installation process.<br class='hidden sm:block' />View our <a href='/docs/self-hosted/latest'>getting started</a> guides for instructions how to do so."
+  text="The file needs to be uploaded during the installation process.<br class='hidden sm:block' />View our <a href='/docs/configure/self-hosted/latest'>getting started</a> guides for instructions how to do so."
 >
   <LinkButton
     variant="primary"

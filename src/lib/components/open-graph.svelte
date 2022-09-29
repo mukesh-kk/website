@@ -14,7 +14,9 @@
     norobots = false,
   } = data || {};
 
-  const url = $page.url.toString();
+  const url = $page.url;
+
+  const isCustomTwitterImage = imageTwitter !== "images/twitter-preview.jpg";
 </script>
 
 <svelte:head>
@@ -27,14 +29,19 @@
   {/if}
 
   <!-- https://ogp.me -->
+  <!-- url for OG-Image needs to be hardcoded, otherwise it would be resolved to
+  `http://sveltekit-prerender` -->
   <meta property="og:image" content="https://www.gitpod.io/{image}" />
   <meta property="og:description" content={description} />
   <meta property="og:title" content={title} />
   <meta property="og:type" content={type} />
-  <meta property="og:url" content={url} />
+  <meta property="og:url" content={url.toString()} />
 
   <!-- https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup -->
-  <meta name="twitter:card" content="summary" />
+  <meta
+    name="twitter:card"
+    content={isCustomTwitterImage ? "summary_large_image" : "summary"}
+  />
   <meta name="twitter:site" content="@gitpod" />
   <meta name="twitter:creator" content="@gitpod" />
   <meta name="twitter:image" content="https://www.gitpod.io/{imageTwitter}" />

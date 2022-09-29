@@ -202,8 +202,6 @@ export const testimonials: Testimonial[] = [
       <p>GitPod is incredibly cool.</p>
       <p>In my opinion, this is a big step in open source software contribution. I'm excited to see where we go from here.</p>
     `,
-    twitterHandle: "bendhalpern",
-    tweetId: "1115274432958930946",
   },
   {
     name: "Michael Friedrich",
@@ -220,8 +218,6 @@ export const testimonials: Testimonial[] = [
           Plus, installing @code extensions from the store and integrating @gitlab CI. That blew my mind entirely, and that is hard ;)
         </p>
       `,
-    twitterHandle: "dnsmichi",
-    tweetId: "1311560585717460992",
   },
   {
     name: "Julius Volz",
@@ -235,8 +231,6 @@ export const testimonials: Testimonial[] = [
         Look at any PR (pull request) in a full coding environment where you can edit, build, and test the PR code, by just prepending "gitpod.io#" to the PR URL. Super useful for reviewing/testing stuff without having to check it out locally!
       </p>
       `,
-    twitterHandle: "juliusvolz",
-    tweetId: "1298972181708275717",
   },
   {
     name: "David Ressler",
@@ -254,8 +248,6 @@ export const testimonials: Testimonial[] = [
           “http://gitpod.io/#” to the URL. A+ tool all around.
         </p>
       `,
-    twitterHandle: "DavidRessler",
-    tweetId: "1191710936605831169",
   },
   {
     name: "Bartłomiej Płotka",
@@ -275,8 +267,6 @@ export const testimonials: Testimonial[] = [
           <p>https://gitpod.io/#https://github.com/thanos-io/thanos</p>
         </div>
       `,
-    twitterHandle: "bwplotka",
-    tweetId: "1387735880853606402",
   },
   {
     name: "Mrugesh Mohapatra",
@@ -294,8 +284,6 @@ export const testimonials: Testimonial[] = [
           Go check it out on our repo https://github.com/freeCodeCamp/f... now!
         </p>
     `,
-    twitterHandle: "raisedadead",
-    tweetId: "1167463499779338243",
   },
   {
     name: "Sven Peters",
@@ -312,8 +300,6 @@ export const testimonials: Testimonial[] = [
           dev environments with pre-build workspaces. #gitpod #cloudide
         </p>
     `,
-    twitterHandle: "svenpet",
-    tweetId: "1159698330764611584",
   },
   {
     name: "Jonathan Lister Parsons",
@@ -329,8 +315,6 @@ export const testimonials: Testimonial[] = [
           I'm really enjoying @gitpod - for me, it's made full-stack development in the browser (yes,including mobile) a reality
         </p>
       `,
-    twitterHandle: "jayfresh",
-    tweetId: "1217728632887611397",
   },
   {
     name: "Alejandro",
@@ -347,8 +331,6 @@ export const testimonials: Testimonial[] = [
           no setup whatsoever Smiling face with sunglasses 😎 #IntoTheWild
         </p>
       `,
-    twitterHandle: "alesanchezr",
-    tweetId: "1247219573767667715",
   },
   {
     name: "ROKU",
@@ -364,8 +346,6 @@ export const testimonials: Testimonial[] = [
           Have to say that @gitpod is just super nice to use. Very impressed by the performance!
         </p>
     `,
-    twitterHandle: "Codebryo",
-    tweetId: "1331252316255768578",
   },
   {
     name: "Hugh Durkin",
@@ -383,8 +363,6 @@ export const testimonials: Testimonial[] = [
           https://gitpod.io/index.html
         </p>
       `,
-    twitterHandle: "hughdurkin",
-    tweetId: "1102215129696010240",
   },
   {
     name: "Marcel van Remmerden",
@@ -399,8 +377,6 @@ export const testimonials: Testimonial[] = [
           Can only agree, opening a GitLab repository in gitpod is a magical
           experience, thanks for the integration @gitpod!
         </p>`,
-    twitterHandle: "MvRemmerden",
-    tweetId: "1215707492740739072",
   },
   {
     name: "Brendan O’Leary",
@@ -418,8 +394,6 @@ export const testimonials: Testimonial[] = [
         </p>
         <p>Now I can code from *anywhere*</p>
       `,
-    twitterHandle: "olearycrew",
-    tweetId: "1310376245629198341",
   },
   {
     name: "Joonas Lehtinen",
@@ -438,8 +412,6 @@ export const testimonials: Testimonial[] = [
           Launch gitpod for @vaadin at https://vaadin.com/start/v14 ("Online workspace" tab). You'll have app running and will be editing code in 3min from clicking "Launch" button.
         </p>
     `,
-    twitterHandle: "joonaslehtinen",
-    tweetId: "1238597160121200640",
   },
   {
     name: "Yo",
@@ -456,8 +428,6 @@ export const testimonials: Testimonial[] = [
         </p>
         <p>Already started my game! #100DaysOfCode</p>
       `,
-    twitterHandle: "big1nt",
-    tweetId: "1317483426421776385",
   },
   {
     name: "Senior Enterprise Geek",
@@ -474,8 +444,6 @@ export const testimonials: Testimonial[] = [
         </p>
         <p>gitpod.io/#https://githu...</p>
       `,
-    twitterHandle: "k33g_org",
-    tweetId: "1329461150422065152",
   },
 ];
 

@@ -33,8 +33,11 @@ export const screencasts: Screencast[] = [
     youtubeId: "w65POyu3ZUQ",
     relatedDocs: [
       { path: "/docs/", title: "Introduction to Gitpod" },
-      { path: "/docs/getting-started", title: "Getting Started" },
-      { path: "/docs/context-urls", title: "Context URLs" },
+      { path: "/docs/introduction/getting-started", title: "Getting started" },
+      {
+        path: "/docs/introduction/learn-gitpod/context-url",
+        title: "Context URLs",
+      },
     ],
     tags: ["Getting started"],
   },
@@ -46,7 +49,10 @@ export const screencasts: Screencast[] = [
     tile: "screencast-2.jpg",
     youtubeId: "4495YOMhhgo",
     relatedDocs: [
-      { path: "/docs/life-of-workspace", title: "Life of a Workspace" },
+      {
+        path: "/docs/introduction/learn-gitpod/the-life-of-a-workspace",
+        title: "Life of a Workspace",
+      },
     ],
     tags: ["Getting started"],
   },
@@ -60,9 +66,12 @@ export const screencasts: Screencast[] = [
     youtubeId: "fA2fpqP1xaM",
     relatedDocs: [
       { path: "/docs/configure", title: "Configure Your Project" },
-      { path: "/docs/config-gitpod-file", title: ".gitpod.yml" },
-      { path: "/docs/config-docker", title: "Docker Configuration" },
-      { path: "/docs/config-start-tasks", title: "Start Tasks" },
+      { path: "/docs/references/gitpod-yml", title: ".gitpod.yml" },
+      {
+        path: "/docs/configure/workspaces/workspace-image",
+        title: "Docker Configuration",
+      },
+      { path: "/docs/configure/workspaces/tasks", title: "Start Tasks" },
     ],
     tags: ["Getting started"],
   },
@@ -76,10 +85,13 @@ export const screencasts: Screencast[] = [
     youtubeId: "VYHsd1zI_tE",
     relatedDocs: [
       {
-        path: "/docs/ides-and-editors/vscode-extensions",
-        title: "VS Code Extensions",
+        path: "/docs/references/ides-and-editors/vscode-extensions",
+        title: "VS Code extensions",
       },
-      { path: "/docs/environment-variables", title: "Environment Variables" },
+      {
+        path: "/docs/configure/projects/environment-variables",
+        title: "Environment Variables",
+      },
     ],
     tags: ["Customisations"],
   },
@@ -91,7 +103,12 @@ export const screencasts: Screencast[] = [
     duration: 135,
     tile: "screencast-5.jpg",
     youtubeId: "ZtlJ0PakUHQ",
-    relatedDocs: [{ path: "/docs/prebuilds", title: "Prebuilt Workspaces" }],
+    relatedDocs: [
+      {
+        path: "/docs/configure/projects/prebuilds",
+        title: "Prebuilt Workspaces",
+      },
+    ],
     tags: ["Advanced"],
   },
   {
@@ -103,7 +120,10 @@ export const screencasts: Screencast[] = [
     tile: "screencast-6.jpg",
     youtubeId: "n7Ca3jHFtZg",
     relatedDocs: [
-      { path: "/docs/life-of-workspace", title: "Life of a Workspace" },
+      {
+        path: "/docs/introduction/learn-gitpod/the-life-of-a-workspace",
+        title: "Life of a Workspace",
+      },
     ],
     tags: ["Advanced"],
   },
@@ -117,7 +137,7 @@ export const screencasts: Screencast[] = [
     youtubeId: "TrY15zN98p8",
     relatedDocs: [
       {
-        path: "/docs/sharing-and-collaboration",
+        path: "/docs/configure/workspaces/collaboration",
         title: "Collaboration & Sharing",
       },
     ],
@@ -141,7 +161,10 @@ export const screencasts: Screencast[] = [
     tile: "screencast-9.jpg",
     youtubeId: "dehln1E8ylY",
     relatedDocs: [
-      { path: "/docs/environment-variables", title: "Environment Variables" },
+      {
+        path: "/docs/configure/projects/environment-variables",
+        title: "Environment Variables",
+      },
     ],
     tags: ["Customisations"],
   },
@@ -149,14 +172,14 @@ export const screencasts: Screencast[] = [
     nextScreencast: id++,
     title: "How Do Extensions Work On Gitpod? 🔧",
     description:
-      "Discover how to use VS Code Extensions in Gitpod and how they work on Gitpod using OpenVSX.",
+      "Discover how to use VS Code extensions in Gitpod and how they work on Gitpod using OpenVSX.",
     duration: 185,
     tile: "screencast-10.jpg",
     youtubeId: "TwXYbZKEuoA",
     relatedDocs: [
       {
-        path: "/docs/ides-and-editors/vscode-extensions",
-        title: "VS Code Extensions",
+        path: "/docs/references/ides-and-editors/vscode-extensions",
+        title: "VS Code extensions",
       },
     ],
     tags: ["Customisations"],
@@ -170,7 +193,10 @@ export const screencasts: Screencast[] = [
     tile: "screencast-11.jpg",
     youtubeId: "kI6firDA0Bw",
     relatedDocs: [
-      { path: "/docs/ides-and-editors/vscode", title: "VS Code Desktop" },
+      {
+        path: "/docs/references/ides-and-editors/vscode",
+        title: "VS Code Desktop",
+      },
     ],
     tags: ["Advanced"],
   },
@@ -207,7 +233,10 @@ export const screencasts: Screencast[] = [
     tile: "screencast-14.jpg",
     youtubeId: "jFsbmcXCRf8",
     relatedDocs: [
-      { path: "/docs/config-docker", title: "Custom Docker Image" },
+      {
+        path: "/docs/configure/workspaces/workspace-image",
+        title: "Custom Docker Image",
+      },
     ],
     tags: ["Advanced"],
   },
@@ -220,7 +249,7 @@ export const screencasts: Screencast[] = [
     youtubeId: "lwb0JSVJ2J4",
     relatedDocs: [
       {
-        path: "/docs/ides-and-editors/local-companion",
+        path: "/docs/references/ides-and-editors/local-companion",
         title: "Gitpod Local Companion",
       },
     ],

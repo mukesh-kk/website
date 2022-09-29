@@ -67,7 +67,7 @@ export const getStartedFeatures: Card[] = [
     title: "Try Gitpod for free",
     text: "Open your code repository in Gitpod and experiment with automating your setup.",
     link: {
-      href: "/docs/getting-started",
+      href: "/docs/introduction/getting-started",
       text: "Get started",
       btnSize: "large",
       variant: "primary",

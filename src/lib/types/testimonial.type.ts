@@ -4,6 +4,4 @@ export type Testimonial = {
   org: string;
   role: string;
   text: string;
-  tweetId: string;
-  twitterHandle: string;
 };

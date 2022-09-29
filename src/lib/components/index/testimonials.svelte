@@ -1,12 +1,27 @@
 <script lang="ts">
-  import Carousel from "../carousel.svelte";
   import Section from "../section.svelte";
   import Testimonial from "./testimonial.svelte";
   import type { Testimonial as TestimonialType } from "$lib/types/testimonial.type";
+  import Carousel, { getItemId } from "$lib/components/index/carousel.svelte";
+  import { scrollIntoView } from "$lib/utils/helpers";
 
   export let testimonials: TestimonialType[];
   export let title: string = "";
   export let text: string = "";
+
+  let currentID: number = 0;
+
+  const sequence: number[] = [];
+
+  for (let i = 0; i < testimonials.length; i += 3) {
+    sequence.push(i);
+  }
+
+  $: activeSequenceNumber = sequence.reduce((prev, curr) => {
+    return Math.abs(curr - currentID) < Math.abs(prev - currentID)
+      ? curr
+      : prev;
+  });
 
   let clazz = "";
   export { clazz as class };
@@ -24,10 +39,24 @@
         </p>
       {/if}
     </div>
-    <Carousel>
-      {#each testimonials as testimonial}
-        <Testimonial {testimonial} />
+
+    <Carousel bind:currentID>
+      {#each testimonials as testimonial, index}
+        <Testimonial id={getItemId(index)} {testimonial} />
       {/each}
     </Carousel>
+    <div class="flex mt-micro justify-center space-x-micro">
+      {#each sequence as number}
+        <button
+          on:click={() => {
+            activeSequenceNumber = number;
+            scrollIntoView(`#${getItemId(number)}`);
+          }}
+          class="inline-block h-[15px] w-[15px] {number === activeSequenceNumber
+            ? 'bg-light-grey dark:bg-body'
+            : 'bg-divider dark:bg-light-black'}  rounded-full transition-all duration-200"
+        />
+      {/each}
+    </div>
   </div>
 </Section>

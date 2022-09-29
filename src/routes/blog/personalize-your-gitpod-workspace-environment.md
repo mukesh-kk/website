@@ -20,16 +20,16 @@ In this article, we'll show you three features in Gitpod for personalisation:
 
 1. How to configure your IDE and editor
 2. How to configure Dotfiles
-3. How to configure VS Code Settings Sync
+3. How to configure VS Code settings sync
    <br><br>
 
 # 1. IDEs & Editor
 
 Gitpod currently supports various popular IDEs & Editors 🎉. You can edit code in Gitpod using:
 
-- [JetBrains IDE’s](https://www.gitpod.io/docs/ides-and-editors) via [JetBrains Gateway](https://www.gitpod.io/docs/ides-and-editors/jetbrains-gateway)
-- [VS Code in the browser](https://www.gitpod.io/docs/ides-and-editors/vscode-browser) and [VS Code on desktop](https://www.gitpod.io/docs/ides-and-editors/vscode)
-- [Command-line-based](https://www.gitpod.io/docs/ides-and-editors/command-line) editors such as Vim
+- [JetBrains IDE’s](https://www.gitpod.io/docs/references/ides-and-editors) via [JetBrains Gateway](https://www.gitpod.io/docs/integrations/jetbrains-gateway)
+- [VS Code in the browser](https://www.gitpod.io/docs/references/ides-and-editors/vscode-browser) and [VS Code on desktop](https://www.gitpod.io/docs/references/ides-and-editors/vscode)
+- [Command-line-based](https://www.gitpod.io/docs/references/ides-and-editors/command-line) editors such as Vim
 
 <figure>
 <video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating Gitpod IDE preferences to {title}" src="/images/editors/select-jetbrains-ide.mp4"></video>
@@ -39,7 +39,7 @@ Gitpod currently supports various popular IDEs & Editors 🎉. You can edit code
 To configure a specific IDE or editor of your choice for all new workspaces:
 
 1. You will need to update your [user preferences](https://gitpod.io/preferences).
-2. For changes to get reflected, you have to restart a workspace. To read more about this in detail, you can refer to the following [doc](https://www.gitpod.io/docs/ides-and-editors).
+2. For changes to get reflected, you have to restart a workspace. To read more about this in detail, you can refer to the following [doc](https://www.gitpod.io/docs/references/ides-and-editors).
    <br><br>
 
 # 2. Dotfiles
@@ -50,7 +50,7 @@ Configure Dotfiles in Gitpod [Preferences](https://gitpod.io/preferences) to be 
 
 Dotfiles is not to be confused with the `.gitpod.yml`. Dotfiles are personal to you & they contain all your config settings and preferences that can be consistent and reused across all Gitpod workspaces. Whereas `.gitpod.yml` is used to prepare the dev environment for your project. The `gitpod.yml` is a project-specific file that you check into the root of your repository.
 
-> Note: You should not necessarily use dotfiles to install heavy applications & libraries and instead use Dockerfiles to leverage the [build cache](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache). You can configure custom docker image for your project and can read more about it from [here](https://www.gitpod.io/docs/config-docker).
+> Note: You should not necessarily use dotfiles to install heavy applications & libraries and instead use Dockerfiles to leverage the [build cache](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache). You can configure custom docker image for your project and can read more about it from [here](https://www.gitpod.io/docs/configure/workspaces/workspace-image).
 
 ## How Do Dotfiles Work in a Gitpod Workspace?
 
@@ -58,9 +58,9 @@ Dotfiles is not to be confused with the `.gitpod.yml`. Dotfiles are personal to 
   <img src="/images/blog/personalize-your-gitpod-workspace-environment/dotfiles.png" alt="Multiple services can communincate with each-other when running on the same machine" width="700" />
 </figure>
 
-When you create a new Gitpod workspace, the Dotfiles loading process first looks in your [preferences](https://gitpod.io/preferences) to get your dotfiles repository address. If found, the repository is cloned to your new workspace as `.dotfiles` in the `$HOME` directory, before searching for [executable](https://www.gitpod.io/docs/config-dotfiles#:~:text=Make%20sure%20to%20make%20your%20installation%20script%20executable%20with%20chmod%20755%20%3Cinstall%2Dscript%2Dname%3E.sh%20before%20committing%20and%20pushing%20to%20your%20dotfiles%20repository.) scripts like `install.sh`, `bootstrap.sh` (for the exact script names, see the [configure Dotfiles](https://www.gitpod.io/docs/config-dotfiles#:~:text=following%20install%20scripts) page). The dotfiles are synchronously set up before Gitpod starts to handle the `.gitpod.yml` [start tasks](https://www.gitpod.io/docs/config-start-tasks).
+When you create a new Gitpod workspace, the Dotfiles loading process first looks in your [preferences](https://gitpod.io/preferences) to get your dotfiles repository address. If found, the repository is cloned to your new workspace as `.dotfiles` in the `$HOME` directory, before searching for [executable](https://www.gitpod.io/docs/configure/user-settings/dotfiles#:~:text=Make%20sure%20to%20make%20your%20installation%20script%20executable%20with%20chmod%20755%20%3Cinstall%2Dscript%2Dname%3E.sh%20before%20committing%20and%20pushing%20to%20your%20dotfiles%20repository.) scripts like `install.sh`, `bootstrap.sh` (for the exact script names, see the [configure Dotfiles](https://www.gitpod.io/docs/configure/user-settings/dotfiles#:~:text=following%20install%20scripts) page). The dotfiles are synchronously set up before Gitpod starts to handle the `.gitpod.yml` [start tasks](https://www.gitpod.io/docs/configure/workspaces/tasks).
 
-This loading procedure will be repeated each time you create a new Gitpod Workspace. Refer to the [configure Dotfiles](/docs/config-dotfiles) page in our docs to learn more.
+This loading procedure will be repeated each time you create a new Gitpod Workspace. Refer to the [configure Dotfiles](/docs/configure/user-settings/dotfiles) page in our docs to learn more.
 
 ## Getting started with Dotfiles in Gitpod
 
@@ -81,7 +81,7 @@ All your dotfiles will be configured automatically from the next time you create
 
 <br>
 
-# 3. VS Code Settings Sync 🔁
+# 3. VS Code settings sync 🔁
 
 [Settings Sync](https://code.visualstudio.com/docs/editor/settings-sync) in VS Code lets you always work with your favorite editor setup by sharing your VS Code configuration such as settings, keybindings, and installed extensions across your machines.
 
@@ -89,7 +89,7 @@ While working with Gitpod, you start a new workspace for every task. With Settin
 
 For VS Code in the browser Gitpod enables Settings Sync by default. Settings Sync keeps polling the backend to ensure your settings are stored, which gets pushed to the Gitpod's server after the first sync. You can learn more about personalizing your workspace in this [video](https://www.gitpod.io/screencasts/personalise-your-workspace).
 
-## Getting Started with Settings Sync in VS Code Desktop
+## Getting started with Settings Sync in VS Code Desktop
 
 `youtube: wMW2JrCqVA4`
 
@@ -100,7 +100,7 @@ For VS Code in the browser Gitpod enables Settings Sync by default. Settings Syn
    > **Important:** You must entirely close VS Code Desktop for changes to take effect.
 4. Enable Settings Sync from the Manage gear menu at the bottom of the Activity Bar. Authenticate with Gitpod to enable settings sync.
 
-Read more in the [VS Code Setting Sync](https://www.gitpod.io/docs/ides-and-editors/settings-sync) documentation.
+Read more in the [VS Code Setting Sync](https://www.gitpod.io/docs/references/ides-and-editors/settings-sync) documentation.
 
 ## Power of customization
 

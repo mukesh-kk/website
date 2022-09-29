@@ -110,7 +110,7 @@ export const gitpodTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "VS Code Extensions",
+          term: "VS Code extensions",
           availability: true,
         },
         {
@@ -186,7 +186,7 @@ export const jetbrainsTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "VS Code Extensions",
+          term: "VS Code extensions",
           availability: false,
         },
         {
@@ -298,7 +298,7 @@ export const JetbraisSpaceToc: FeatureTableToc[] = [
   {
     type: "text",
     data: {
-      text: "VS Code Extensions",
+      text: "VS Code extensions",
     },
   },
   {

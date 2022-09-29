@@ -53,7 +53,7 @@ We are also shipping an SSH mode in Q1/21, that will let you connect to Gitpod u
 
 ## Connect to Self-managed GitLab ❤️
 
-You can now [connect your Self-Hosted GitLab application with gitpod.io](/docs/gitlab-integration#oauth-application). This way you don't have to host and operate your own Gitpod installation, just to make it work with your GitLab installation. To make this connection, go to the settings and scroll down to the “Git Provider Integrations” section. Add your instance and follow the instructions.
+You can now [connect your Self-Hosted GitLab application with gitpod.io](/docs/configure/authentication/gitlab#oauth-application). This way you don't have to host and operate your own Gitpod installation, just to make it work with your GitLab installation. To make this connection, go to the settings and scroll down to the “Git Provider Integrations” section. Add your instance and follow the instructions.
 
 After completing this process, your entire team can open dev environments by prefixing the projects and merge requests URLs on the self-managed instance with `gitpod.io#` or simply use the Gitpod button provided by GitLab (make sure it is enabled).
 

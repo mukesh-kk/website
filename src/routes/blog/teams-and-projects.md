@@ -25,8 +25,8 @@ So, Gitpod provides your team with consistent, standardized and fully-automated 
 
 But before you and your team can get there, there have always been a few caveats, a few obstacles standing annoyingly between you and that frictionless dev experience:
 
-- It's complicated to describe your project's setup in the [.gitpod.yml](/docs/config-gitpod-file/) syntax
-- It's complicated to enable [Prebuilds](/docs/prebuilds/) for your project—you never know if they're running, or when they fail, and you can't get the build logs anywhere
+- It's complicated to describe your project's setup in the [.gitpod.yml](/docs/references/gitpod-yml/) syntax
+- It's complicated to enable [Prebuilds](/docs/configure/projects/prebuilds/) for your project—you never know if they're running, or when they fail, and you can't get the build logs anywhere
 - It's complicated to create a Team in Gitpod and to invite your team members
 
 **All this changes today.**
@@ -52,7 +52,7 @@ We're making it easy to create and to manage your Teams.
 3. Choose who is a Member or an Owner—you can even have multiple Owners
 4. Add GitHub or GitLab repositories to your Team in order to create Projects
 
-> ℹ️ For now, this new Teams feature is totally independent of Gitpod’s pre-existing [Team Plans](/docs/teams). If you’re currently managing a Team Plan, or you’re a member of a Team Plan, this will remain unchanged, regardless of what new Teams you create using this new feature or how many Members you invite (the Members lists are also independent).
+> ℹ️ For now, this new Teams feature is totally independent of Gitpod’s pre-existing [Team plans](/docs/configure/teams). If you’re currently managing a Team Plan, or you’re a member of a Team Plan, this will remain unchanged, regardless of what new Teams you create using this new feature or how many Members you invite (the Members lists are also independent).
 
 ## Projects
 

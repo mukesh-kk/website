@@ -79,7 +79,7 @@ export const faqs: FAQ = {
     {
       title: "Are both SaaS and the Self-Hosted option part of the program?",
       content:
-        'We are happy to manage Gitpod for you to let you focus on the important things, but if you want to <a href="/docs/self-hosted/latest">self-host</a> on your infrastructure, that\'s possible too, without user limit.',
+        'We are happy to manage Gitpod for you to let you focus on the important things, but if you want to <a href="/docs/configure/self-hosted/latest">self-host</a> on your infrastructure, that\'s possible too, without user limit.',
     },
     {
       title:

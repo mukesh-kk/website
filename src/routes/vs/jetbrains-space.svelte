@@ -53,7 +53,7 @@
     isCut: false,
   }}
   btnPrimary={{
-    href: "https://www.gitpod.io/docs/ides-and-editors/jetbrains-gateway",
+    href: "https://www.gitpod.io/docs/integrations/jetbrains-gateway",
     text: "Try now",
   }}
   btnSecondary={{

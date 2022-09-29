@@ -12,5 +12,5 @@
 </div>
 
 <div class="text-base">
-  <a href="/docs/quickstart">More example workspaces</a>
+  <a href="/docs/introduction/getting-started">More example workspaces</a>
 </div>

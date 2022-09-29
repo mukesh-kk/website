@@ -33,7 +33,7 @@ You can now automatically and securely connect your Gitpod workspace to other de
 
 To connect any new dev environment, spin up a workspace in Gitpod and authenticate to Tailscale with an [auth key](https://tailscale.com/kb/1085/auth-keys/). We recommend setting an ephemeral auth key as an [environment variable](https://gitpod.io/variables) so you do not pollute your list of Tailscale nodes once you experienced the magic of [ephemeral dev environments 🪄](/docs#ephemeral). You’ll also need to add a task to start up Tailscale as well as set a network variable as part of your `.gitpod.yml` configuration file.
 
-> Check out our [docs](/docs/configure/tailscale) and/or the Tailscale repo for a [sample `.gitpod.Dockerfile` and `.gitpod.yml` to get started](https://github.com/gitpod-io/demo-tailscale-with-gitpod).
+> Check out our [docs](/docs/integrations/tailscale) and/or the Tailscale repo for a [sample `.gitpod.Dockerfile` and `.gitpod.yml` to get started](https://github.com/gitpod-io/demo-tailscale-with-gitpod).
 
 With Gitpod and Tailscale you can:
 

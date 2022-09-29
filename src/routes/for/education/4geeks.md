@@ -91,7 +91,7 @@ Rather than rely on another hosted education offering, for which there was no gu
 
 LearnPack is an interactive course framework that runs inside VS Code using Gitpod.
 
-When a student opens a repository in Gitpod, LearnPack uses [Start Tasks](https://www.gitpod.io/docs/config-start-tasks) to initialize the lesson and display both the course instruction and the lesson material at once. Youtube videos from the instructors are embedded directly into the application for a fully integrated learning experience.
+When a student opens a repository in Gitpod, LearnPack uses [Start Tasks](https://www.gitpod.io/docs/configure/workspaces/tasks) to initialize the lesson and display both the course instruction and the lesson material at once. Youtube videos from the instructors are embedded directly into the application for a fully integrated learning experience.
 
 Alejandro expands on some of the advantages of using Gitpod in this way.
 

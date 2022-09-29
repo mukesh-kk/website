@@ -53,5 +53,5 @@
 
 <p class="text-small">
   <a href="/self-hosted#features">View features</a> or
-  <a href="/docs/self-hosted/latest">read documentation</a>
+  <a href="/docs/configure/self-hosted/latest">read documentation</a>
 </p>

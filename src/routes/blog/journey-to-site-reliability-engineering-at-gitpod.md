@@ -25,7 +25,7 @@ Gitpod is scaling! [We are glad to be backed by fantastic investors](/blog/next-
 
 ## Reliability vs Velocity
 
-Of course, Gitpod is a lot more than just an IDE with a terminal in the cloud. We have tons of features that make Gitpod shine amongst all other cloud-based developer environments, such as [Prebuilds](/docs/prebuilds), [Sudo and Docker support](/blog/root-docker-and-vscode), [Shareable Workspaces](/docs/sharing-and-collaboration), while not mentioning our [Roadmap](https://www.gitpod.io/roadmap) that is pretty ambitious too.
+Of course, Gitpod is a lot more than just an IDE with a terminal in the cloud. We have tons of features that make Gitpod shine amongst all other cloud-based developer environments, such as [Prebuilds](/docs/configure/projects/prebuilds), [Sudo and Docker support](/blog/root-docker-and-vscode), [Shareable Workspaces](/docs/configure/workspaces/collaboration), while not mentioning our [Roadmap](https://www.gitpod.io/roadmap) that is pretty ambitious too.
 
 Developing and shipping new features is one of the things that make us more excited about our work, and hopefully our users too 😅, but making changes to production also comes with the risk of breaking stuff that was working just fine previously. Breaking small things is usually okay and we can keep focusing on new features, but we may break Gitpod so much that user experience decreases to a level that makes our users unhappy. That is a big no-no for us. If our users are unhappy then we need to do something about it, even if that means slowing down new features or completely stop them to fully focus on reliability depending on how bad the situation is. _But how do we decide if we should be focusing on reliability or feature velocity?_
 

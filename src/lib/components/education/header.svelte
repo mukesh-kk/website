@@ -10,7 +10,7 @@
 >
   <div slot="content">
     <LinkButton
-      href="/docs/getting-started"
+      href="/docs/introduction/getting-started"
       variant="primary"
       size="large"
       class="mt-x-small mb-small">Get started</LinkButton

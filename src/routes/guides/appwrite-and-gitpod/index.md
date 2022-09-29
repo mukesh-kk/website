@@ -32,7 +32,7 @@ We look forward to integrating more with Gitpod in the future! Check out the Git
 
 Learn More
 
-- 🚀 [Getting Started Tutorial](https://appwrite.io/docs/getting-started-for-server)
+- 🚀 [Getting started Tutorial](https://appwrite.io/docs/getting-started-for-server)
 - 🚀 [Appwrite GitHub](https://github.com/appwrite/appwrite)
 - 📜 [Appwrite Docs](https://appwrite.io/docs)
 - 💬 [Discord Community](https://discord.gg/appwrite)

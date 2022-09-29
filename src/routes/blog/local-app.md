@@ -13,7 +13,7 @@ title: Gitpod Local Companion - localhost is going remote
   export const prerender = true;
 </script>
 
-While Gitpod can seamlessly integrate into your workflow in the vast majority of cases, there are times where you may want to access a workspace from localhost and were required to workaround some limitations, particularly with respect to [framework](/docs/languages/svelte) features such as [live reload](https://github.com/gitpod-io/gitpod/issues/3282).
+While Gitpod can seamlessly integrate into your workflow in the vast majority of cases, there are times where you may want to access a workspace from localhost and were required to workaround some limitations, particularly with respect to [framework](/docs/introduction/languages/svelte) features such as [live reload](https://github.com/gitpod-io/gitpod/issues/3282).
 
 Gitpod is pleased to announce a preview release of the _Gitpod Local Companion_ app that is designed to allow localhost access to any TCP port in a remote workspace regardless of protocol.
 

@@ -59,8 +59,8 @@
   <Resources {cards} headingLevel="h2" />
 </Section>
 <Testimonials
-  title="Putting developer experience first"
-  text=" Bring back joy and speed to your workflows."
+  title="Trusted by the best developer teams"
+  text="Gitpod empowers teams to be always ready to code."
   class="-mb-20"
   {testimonials}
 />

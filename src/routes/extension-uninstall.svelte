@@ -120,7 +120,8 @@
     </p>
     <br />
     <p class="text-large">
-      ps. Did you know we also offer a <a href="/docs/browser-bookmarklet"
+      ps. Did you know we also offer a <a
+        href="/docs/configure/user-settings/browser-bookmarklet"
         >browser bookmarketlet</a
       > as an alternative?
     </p>

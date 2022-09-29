@@ -29,6 +29,9 @@
     description: `
       Install Gitpod Self-Hosted on GKE, EKS, and AKS.
     `,
-    link: { href: "/docs/self-hosted/latest", text: "View installation guide" },
+    link: {
+      href: "/docs/configure/self-hosted/latest",
+      text: "View installation guide",
+    },
   }}
 />

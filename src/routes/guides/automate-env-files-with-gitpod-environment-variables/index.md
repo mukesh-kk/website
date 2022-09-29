@@ -59,7 +59,7 @@ See how this script works at [ExplainShell](https://explainshell.com/explain?cmd
 
 Gitpod will create a terminal for each command in each task in the `.gitpod.yml` file, and those shells will have access to the environment variables set for your Gitpod account.
 
-> Note: this only applies to command scripts. The init and before scripts by default do not load [user-specific environment variables](https://www.gitpod.io/docs/prebuilds#user-specific-environment-variables-in-prebuilds) for security reasons.
+> Note: this only applies to command scripts. The init and before scripts by default do not load [user-specific environment variables](https://www.gitpod.io/docs/configure/projects/prebuilds#user-specific-environment-variables-in-prebuilds) for security reasons.
 
 Decoding the `$DOTENV` variable and writing to a file is all that's required to restore it and have a populated `.env` waiting for you by the time your new workspace has loaded.
 
@@ -75,7 +75,7 @@ When a new developer is onboarding to your repository, they won't have a `$DOTEN
 
 Another concern is that if a developer makes local changes to their `.env` but hasn't persisted it yet, a workspace restart (like after a timeout) shouldn't erase their changes. If there is already a `.env` file when a workspace starts, don't try to override it at all.
 
-You can copy the following Gitpod Task directly into your `.gitpod.yml`. For more information, check out the [documentation for Start Tasks](https://www.gitpod.io/docs/config-start-tasks) on Gitpod
+You can copy the following Gitpod Task directly into your `.gitpod.yml`. For more information, check out the [documentation for Start Tasks](https://www.gitpod.io/docs/configure/workspaces/tasks) on Gitpod
 
 ```yml
 tasks:

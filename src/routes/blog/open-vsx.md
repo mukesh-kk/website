@@ -4,7 +4,7 @@ date: Thu Apr 9 2020 17:00:00 GMT+0000 (UTC)
 excerpt: VS Code is used by more than 50% of all developers worldwide. Its extension protocol enabled the broader developer community to create over
 image: open.jpg
 slug: open-vsx
-subtitle: A Free Marketplace for VS Code Extensions
+subtitle: A Free Marketplace for VS Code extensions
 teaserImage: open.jpg
 title: Open VSX
 ---

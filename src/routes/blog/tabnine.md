@@ -34,7 +34,7 @@ We joined forces to use both of our products together in harmony bringing the be
 
 In line with our orthogonal product design Tabnine’s pluggable code completion assist can be installed as part of a polished VS Code extension that is available for everybody and pre-installed on a repository level for our Tabnine example templates.
 
-## Getting Started
+## Getting started
 
 Try out Gitpod & Tabnine yourself by opening one of these different templates. It is as simple as pressing the open in Gitpod button:
 
@@ -42,4 +42,4 @@ Try out Gitpod & Tabnine yourself by opening one of these different templates. I
 - [Python](https://github.com/gitpod-io/template-python-flask-tabnine)
 - [Go](https://github.com/gitpod-io/template-golang-cli-tabnine)
 
-If you want to add [Tabnine](https://open-vsx.org/extension/TabNine/tabnine-vscode) to your own Gitpod project, go ahead and [install it in with a single click](/docs/ides-and-editors/vscode-extensions#installing-an-extension).
+If you want to add [Tabnine](https://open-vsx.org/extension/TabNine/tabnine-vscode) to your own Gitpod project, go ahead and [install it in with a single click](/docs/references/ides-and-editors/vscode-extensions#installing-an-extension).

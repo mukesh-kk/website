@@ -134,7 +134,7 @@ Thanks for reading! Did you know our free tier is **open to every developer** wi
 
 Go ahead and experience the peace of mind and productivity boost on your own.
 
-Learn how to [use Gitpod](/docs/quickstart) in less than 5 minutes!
+Learn how to [use Gitpod](/docs/introduction/getting-started) in less than 5 minutes!
 
 ![Credit: Camisha's Cakes](../../../static/images/blog/cake/the-cake.jpg)
 _Photo Credit: [Camisha's Cakes](https://www.camishascakes.com/)_

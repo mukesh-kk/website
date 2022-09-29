@@ -54,7 +54,7 @@ We shared and tested the project with several developers and asked them about th
 - **Save battery & data** - as all CPU and RAM intensive tasks run on the remote machine you will preserve battery life and keep your data plan under control
 - **Keep your source secure** - you keep your dev environment centralized and secure, away from your local machine
 
-## Getting Started
+## Getting started
 
 Getting started is as simple as a one-line `docker run` command and starting [localhost:3000](localhost:3000).
 
@@ -70,7 +70,7 @@ A big thank you to all our engineers involved in making this happen, specificall
 
 ### How is this different to Gitpod?
 
-Gitpod is all about removing friction from the developer experience by provisioning and orchestrating [automated, ephemeral developer environments](/blog/cloud-based-development-for-everyone#ephemeral-developer-environments) for you and your team. An IDE is just one building block of a working cloud based developer environment, in addition to the operating system, databases, compilers and all the other tools you need to be productive. At Gitpod we want to support the IDE or editor you like best, and providing VS Code through the web browser is just one possibility. Alternatively, you can access your Gitpod workspaces [through SSH](/blog/local-app), [local VS Code](/docs/ides-and-editors/vscode) and soon your favorite Jetbrains IDEs.
+Gitpod is all about removing friction from the developer experience by provisioning and orchestrating [automated, ephemeral developer environments](/blog/cloud-based-development-for-everyone#ephemeral-developer-environments) for you and your team. An IDE is just one building block of a working cloud based developer environment, in addition to the operating system, databases, compilers and all the other tools you need to be productive. At Gitpod we want to support the IDE or editor you like best, and providing VS Code through the web browser is just one possibility. Alternatively, you can access your Gitpod workspaces [through SSH](/blog/local-app), [local VS Code](/docs/references/ides-and-editors/vscode) and soon your favorite Jetbrains IDEs.
 
 - If you want one-click, fully automated developer environments that give yourself and your team an unparalleled productivity boost try [Gitpod](https://gitpod.io/workspaces/).
 

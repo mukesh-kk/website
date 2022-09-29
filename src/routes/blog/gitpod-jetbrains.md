@@ -23,7 +23,7 @@ title: Gitpod x JetBrains join forces to solve 'works on my machine' problem
 - Starting today professional software engineers can work in reproducible developer environments provisioned by Gitpod using their favorite desktop IDE from JetBrains including IntelliJ IDEA, PyCharm, GoLand, and PhpStorm
 - Gitpod is the first 3rd party service that is natively integrated into JetBrains Gateway for a seamless remote development experience
 - Benefit from improved developer experience, security, and collaboration while keeping the local editing experience with all shortcuts, keybindings and themes
-- Skip the talking and [get started now](https://www.gitpod.io/docs/ides-and-editors/jetbrains-gateway)
+- Skip the talking and [get started now](https://www.gitpod.io/docs/integrations/jetbrains-gateway)
 
 Since we started the company, we never wanted to be in the IDE or editor business. In fact, we are quite allergic to people thinking Gitpod is an _online or web IDE_. Gitpod is an open-source orchestration and provisioning platform for automated developer environments.
 
@@ -67,7 +67,7 @@ Take a step back and look at the benefits which led [companies such as Google, F
 
 ## Getting started in 5 minutes
 
-If you are interested in setting up a new Spring Boot project using Gitpod and JetBrains Gateway we wrote a [detailed guide together with JetBrains](https://www.gitpod.io/guides/set-up-spring-boot-application-remotely-with-gitpod-and-jetBrains-gateway). If you want to start your own project with Gitpod in your JetBrains IDE read on or refer to our [documentation](https://www.gitpod.io/docs/ides-and-editors/jetbrains-gateway).
+If you are interested in setting up a new Spring Boot project using Gitpod and JetBrains Gateway we wrote a [detailed guide together with JetBrains](https://www.gitpod.io/guides/set-up-spring-boot-application-remotely-with-gitpod-and-jetBrains-gateway). If you want to start your own project with Gitpod in your JetBrains IDE read on or refer to our [documentation](https://www.gitpod.io/docs/integrations/jetbrains-gateway).
 
 `youtube: 8djaRYT2FAY`
 

@@ -13,7 +13,7 @@ export const get: RequestHandler = async () => {
         "404",
         "slug]",
         "title]",
-        "src/routes/docs/quickstart",
+        "src/routes/docs/introduction/getting-started",
         "extension-activation",
         "unsubscribe",
         "enterprise-license",
@@ -41,7 +41,7 @@ export const get: RequestHandler = async () => {
 >
 <url><loc>${removeTrailingSlash(website)}</loc></url>
 <url><loc>${removeTrailingSlash(
-    "https://www.gitpod.io/docs/quickstart"
+    "https://www.gitpod.io/docs/introduction/getting-started"
   )}</loc></url>
 ${staticPages
   .map((page) => `<url><loc>${removeTrailingSlash(page)}</loc></url>`)

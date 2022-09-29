@@ -36,6 +36,7 @@
     studentUnlimitedSubject,
     selfHostingSubject,
     "Open Source Sponsorship",
+    "Security",
     otherSubject,
   ];
 

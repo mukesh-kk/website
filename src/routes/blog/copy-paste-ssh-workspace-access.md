@@ -22,7 +22,7 @@ Recently, we shipped a feature on Gitpod that we’re excited to share with you,
 
 ## How does workspace access via copy/paste SSH work?
 
-For those using Gitpod, you’ll know that you can already get SSH access into a Gitpod workspace via the [Gitpod Local Companion](https://www.gitpod.io/docs/ides-and-editors/local-companion) (currently in beta). However, we still saw the need from our users for a super easy, quick way to get direct SSH access to a workspace.
+For those using Gitpod, you’ll know that you can already get SSH access into a Gitpod workspace via the [Gitpod Local Companion](https://www.gitpod.io/docs/references/ides-and-editors/local-companion) (currently in beta). However, we still saw the need from our users for a super easy, quick way to get direct SSH access to a workspace.
 
 All you have to do is visit the Gitpod dashboard, click the more actions menu at the right-hand side of your workspace list, copy/paste the SSH command into a terminal, and voila!
 
@@ -42,7 +42,7 @@ You can also copy/paste your SSH access from the workspace start page, which is 
 
 **Note:** SSH authentication is provided using a shared workspace token that is refreshed on each workspace start. So, as always, be careful where you copy/paste the link.
 
-If you're one of our many users who lives in the [command-line](/docs/ides-and-editors/command-line), rather than in [an editor or IDE](/docs/ides-and-editors), you can also combine SSH copy/paste access to Gitpod workspaces with Gitpod features like [dotfiles](https://www.gitpod.io/docs/config-dotfiles), to get your workflow running just the way that you like it.
+If you're one of our many users who lives in the [command-line](/docs/references/ides-and-editors/command-line), rather than in [an editor or IDE](/docs/references/ides-and-editors), you can also combine SSH copy/paste access to Gitpod workspaces with Gitpod features like [dotfiles](https://www.gitpod.io/docs/configure/user-settings/dotfiles), to get your workflow running just the way that you like it.
 
 Now, some of you might be wondering why we’re so excited about SSH copy/paste access to Gitpod workspaces? And that’s because it’s one of the many ways we’re making Gitpod seamless for professional teams to use Gitpod for developing using any language, technology or workflow.
 
@@ -52,8 +52,8 @@ At Gitpod, we’ve been working very closely with our [customers](https://www.gi
 
 Because, not all tech companies are set up with the same architecture or technology. Not all developers work in exactly the same way, using the same tools, languages or frameworks. And not all development work looks exactly the same.
 
-But that’s a good thing. Choice and flexibility to choose the right tool for the job is essential. And that’s precisely why we build Gitpod to be flexible, eg. by [building Gitpod on top of ubiquitous technologies like Docker](https://www.gitpod.io/docs/config-docker). We integrate, we don’t dictate.
+But that’s a good thing. Choice and flexibility to choose the right tool for the job is essential. And that’s precisely why we build Gitpod to be flexible, eg. by [building Gitpod on top of ubiquitous technologies like Docker](https://www.gitpod.io/docs/configure/workspaces/workspace-image). We integrate, we don’t dictate.
 
-For editing your code, you can use [VS Code in the browser](https://www.gitpod.io/docs/ides-and-editors/vscode-browser), [VS Code on desktop](https://www.gitpod.io/docs/ides-and-editors/vscode), and using JetBrains IDE’s via [JetBrains Gateway](https://www.gitpod.io/docs/ides-and-editors/jetbrains-gateway). Adding copy/paste SSH support just makes it that little bit easier for developers who prefer to work directly in their terminal, or for those times you need to hop into a Gitpod workspace to execute some commands.
+For editing your code, you can use [VS Code in the browser](https://www.gitpod.io/docs/references/ides-and-editors/vscode-browser), [VS Code on desktop](https://www.gitpod.io/docs/references/ides-and-editors/vscode), and using JetBrains IDE’s via [JetBrains Gateway](https://www.gitpod.io/docs/integrations/jetbrains-gateway). Adding copy/paste SSH support just makes it that little bit easier for developers who prefer to work directly in their terminal, or for those times you need to hop into a Gitpod workspace to execute some commands.
 
 Give the new Gitpod copy/paste SSH access a go, and let us know what you think by [joining the community](https://www.gitpod.io/community). We look forward to hearing from you!

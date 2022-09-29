@@ -12,7 +12,7 @@ body:
     attributes:
       label: Page URL
       description: The URL of the page you provide feedback for.
-      placeholder: ex. https://www.gitpod.io/docs/getting-started
+      placeholder: ex. https://www.gitpod.io/docs/introduction/getting-started
     validations:
       required: true
   - type: textarea

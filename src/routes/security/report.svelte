@@ -120,7 +120,7 @@
   <ul class="pl-xx-small md:pl-x-small space-y-4 mb-4">
     <li>
       Perform the majority of your security research against <a
-        href="/docs/self-hosted/latest"
+        href="/docs/configure/self-hosted/latest"
         >Gitpod hosted on your own infrastructure</a
       >.
     </li>

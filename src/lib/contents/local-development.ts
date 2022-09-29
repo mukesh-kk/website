@@ -164,14 +164,14 @@ export const aliceTableData: FeatureTableColumn = {
           term: "Develop a new feature",
           list: [
             "opens new browser tab",
-            'prefixes the issue URL with gitpod.io/#&lang;issue-url&rang; or uses the Gitpod <a href="/docs/browser-extension">browser extension</a>',
+            'prefixes the issue URL with gitpod.io/#&lang;issue-url&rang; or uses the Gitpod <a href="/docs/configure/user-settings/browser-extension">browser extension</a>',
           ],
         },
         {
           term: "Switch context",
           list: [
             "opens new browser tab",
-            'prefixes the PR URL with gitpod.io/#&lang;issue-url&rang; or uses the Gitpod <a href="/docs/browser-extension">browser extension</a>',
+            'prefixes the PR URL with gitpod.io/#&lang;issue-url&rang; or uses the Gitpod <a href="/docs/configure/user-settings/browser-extension">browser extension</a>',
             "reviews code within Gitpod",
             "closes browser tab",
           ],

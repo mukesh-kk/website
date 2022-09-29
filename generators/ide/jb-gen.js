@@ -48,7 +48,10 @@ for (const [id, parameters] of products) {
     content = content.replace(new RegExp(`__${key}__`, "gi"), value);
   }
   fs.writeFileSync(
-    path.join(__dirname, `../../gitpod/docs/ides-and-editors/${id}.md`),
+    path.join(
+      __dirname,
+      `../../gitpod/docs/references/ides-and-editors/${id}.md`
+    ),
     content,
     "utf-8"
   );

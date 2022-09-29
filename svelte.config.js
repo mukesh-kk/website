@@ -10,10 +10,12 @@ import remarkLinkWithImageAsOnlyChild from "./src/lib/utils/remark-link-with-ima
 import remarkHeadingsPermaLinks from "./src/lib/utils/remark-headings-permalinks.js";
 import { toString } from "mdast-util-to-string";
 import rehypeWrap from "rehype-wrap-all";
+import rehypeImgSize from "rehype-img-size";
 import { highlightCode } from "./src/lib/utils/highlight.js";
 import { mdsvexGlobalComponents } from "./src/lib/utils/mdsvex-global-components.js";
 import { h } from "hastscript";
 import { execSync } from "node:child_process";
+import { visit } from "unist-util-visit";
 
 /** @type {Partial<import('vite').ServerOptions>} */
 let extendedViteServerOptions;
@@ -103,6 +105,19 @@ const config = {
       },
       rehypePlugins: [
         [rehypeWrap, { selector: "table", wrapper: "div.overflow-auto" }],
+        [rehypeImgSize, { dir: "./static" }],
+        [
+          /** Custom rehype plugin to add loading="lazy" to all images */
+          () => {
+            return (tree) => {
+              visit(tree, "element", (node) => {
+                if (node.tagName === "img") {
+                  node.properties.loading = "lazy";
+                }
+              });
+            };
+          },
+        ],
       ],
       remarkPlugins: [
         [

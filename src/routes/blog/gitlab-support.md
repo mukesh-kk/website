@@ -16,7 +16,7 @@ We are happy to announce that you can finally enjoy Gitpod's frictionless ready-
 
 ![gitpod loves gitlab](../../../static/images/blog/gitlab-support/teaser-gitlab-gitpod.jpg)
 
-## Getting Started with GitLab and Gitpod
+## Getting started with GitLab and Gitpod
 
 Starting a dev environment for a GitLab project works just as with GitHub, i.e. you prefix any GitLab project URL with `gitpod.io/#`.
 
@@ -60,7 +60,7 @@ There is much more you can do to make sure every team member gets a ready-to-cod
 
 ## Prebuilds
 
-Gitpod’s [prebuilt workspaces](/docs/prebuilds) are key to providing ephemeral, ready-to-code dev environments for your branches and projects. You can configure Gitpod to run your project's build asynchronously every time someone pushes new commits or branches to your repository. So when a developer wants to start coding, she can, because everything is already prepared.
+Gitpod’s [prebuilt workspaces](/docs/configure/projects/prebuilds) are key to providing ephemeral, ready-to-code dev environments for your branches and projects. You can configure Gitpod to run your project's build asynchronously every time someone pushes new commits or branches to your repository. So when a developer wants to start coding, she can, because everything is already prepared.
 
 Enabling prebuilds on your GitLab project is done by configuring a Webhook. But don't fear, you don't have to do that manually, just run a prebuild on your project and it will be configured automatically. To do that, use the prefix `https://gitpod.io/#prebuild/`, as in
 

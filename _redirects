@@ -1,123 +1,264 @@
 https://blog.gitpod.io/* https://www.gitpod.io/blog/:splat 301!
 https://community.gitpod.io/* https://www.gitpod.io/chat 301!
-/blog/gitlab-integration/+ /blog/gitlab-integration 301
-/careers https://gitpod.crew.work/jobs 301
-/chat https://discord.com/invite/gitpod 301
+/blog/gitlab-integration/+ /blog/gitlab-integration
+/careers https://gitpod.crew.work/jobs
+/chat https://discord.com/invite/gitpod
 /code-of-conduct https://github.com/gitpod-io/.github/blob/main/CODE_OF_CONDUCT.md
-/configure/editor /docs/editors/vscode 301
-/direction https://www.notion.so/gitpod/Gitpod-s-Direction-be35d064c0704fbda61c542b84e07ef6 301
-/docs/10_getting_started /docs/getting-started 301
-/docs/10_Getting_Started /docs/getting-started 301
-/docs/20_browser_extension /docs/browser-extension 301
-/docs/20_Browser_Extension /docs/browser-extension 301
-/docs/30_workspaces /docs/workspaces 301
-/docs/31_context_urls /docs/context-urls 301
-/docs/32_life_of_workspace /docs/life-of-workspace 301
-/docs/32_Life_of_Workspace /docs/life-of-workspace 301
-/docs/33_sharing_and_collaboration /docs/sharing-and-collaboration 301
-/docs/33_Sharing_and_Collaboration /docs/sharing-and-collaboration 301
-/docs/34_command_line_interface /docs/command-line-interface 301
-/docs/40_configuration /docs/configure 301
-/docs/40_Configuration /docs/configure 301
-/docs/41_config_gitpod_file /docs/config-gitpod-file 301
-/docs/41_Config_Gitpod_File /docs/config-gitpod-file 301
-/docs/42_config_docker /docs/config-docker 301
-/docs/43_config_ports /docs/config-ports 301
-/docs/44_config_start_tasks /docs/config-start-tasks 301
-/docs/45_checkout_location /docs/checkout-location 301
-/docs/45_Checkout_Location /docs/checkout-location 301
-/docs/45_Config_Go /docs/checkout-location 301
-/docs/46_prebuilds /docs/prebuilds 301
-/docs/47_environment_variables /docs/environment-variables 301
-/docs/47_Environment_Variables /docs/environment-variables 301
-/docs/50_ide /docs/ide 301
-/docs/52_tips_and_tricks /docs/tips-and-tricks 301
-/docs/54_git /docs/git 301
-/docs/56_search /docs/search 301
-/docs/58_pull_requests /docs/pull-requests 301
-/docs/58_Pull_Requests /docs/pull-requests 301
-/docs/59_code_review /docs/code-review 301
-/docs/60_dashboard /docs/dashboard 301
-/docs/70_subscription /docs/subscription 301
-/docs/80_release_notes /docs/release-notes 301
-/docs/bash-in-gitpod /docs 301
-/docs/languages/bash /docs 301
-/docs/changelog /changelog 301
-/docs/configuration /docs/configure 301
-/docs/cpp-in-gitpod /docs/languages/cpp 301
-/docs/develop/vscode-desktop-support /docs/editors/vscode 301
-/docs/dotnet-in-gitpod /docs/languages/dotnet 301
-/docs/go_in_gitpod /docs/go-in-gitpod 301
-/docs/go-in-gitpod /docs/languages/go 301
-/docs/html-in-gitpod /docs/languages/html 301
-/docs/ide /docs/editors 301
-/docs/ides-and-editors/configure-your-editor-ide /docs/ides-and-editors 301
-/docs/editors /docs/ides-and-editors 301
-/docs/editors/vscode-browser /docs/ides-and-editors/vscode-browser
-/docs/editors/Goland /docs/ides-and-editors/Goland
-/docs/editors/intellij /docs/ides-and-editors/intellij
-/docs/editors/vscode /docs/ides-and-editors/vscode
-/docs/editors/clion /docs/ides-and-editors/clion
-/docs/editors/datagrip /docs/ides-and-editors
-/docs/ides-and-editors/datagrip /docs/ides-and-editors
-/docs/editors/phpstorm /docs/ides-and-editors/phpstorm
-/docs/editors/pycharm /docs/ides-and-editors/pycharm
-/docs/editors/rider /docs/ides-and-editors/rider
-/docs/editors/rubymine /docs/ides-and-editors/rubymine
-/docs/editors/webstorm /docs/ides-and-editors/webstorm
-/docs/develop/local-companion /docs/ides-and-editors/local-companion 301
-/docs/vscode-extensions /docs/ides-and-editors/vscode-extensions 301
-/docs/index.html /docs 301
-/docs/integrations/jetbrains /docs/editors 301
-/docs/java_in_gitpod /docs/java-in-gitpod 301
-/docs/java-in-gitpod /docs/languages/java 301
-/docs/julia_in_gitpod /docs/julia-in-gitpod 301
-/docs/julia-in-gitpod /docs/languages/julia 301
-/docs/languages_and_frameworks /docs/languages 301
-/docs/languages-and-frameworks /docs/languages 301
-/docs/languages/pandas /docs/languages/python#pandas 301
-/docs/php-in-gitpod /docs/languages/php 301
-/docs/professional-open-source /for/opensource 301
-/docs/python_in_gitpod /docs/python-in-gitpod 301
-/docs/python-in-gitpod /docs/languages/python 301
-/docs/r-in-gitpod /docs/languages/r 301
-/docs/ruby-in-gitpod /docs/languages/ruby 301
-/docs/rust-in-gitpod /docs/languages/rust 301
-/docs/self-hosted/latest/self-hosted /docs/self-hosted/latest 301
-/docs/self-hosted/latest/installation/on-kubernetes /docs/self-hosted/latest/installation 301
-/docs/vue-in-gitpod /docs/languages/vue 301
-/docs/editors/jetbrains-private-beta /docs/editors/ 301
-/education /pricing#do-you-offer-discounts-for-students-and-educational-institutions 301
-/gitpod-business.html /pricing 301
-/gitpod-vs-codespaces /vs/github-codespaces 301
-/media /blog/next-chapter-for-gitpod 301
-/memes https://github.com/gitpod-io/gitpod/issues/6877 301
-/privacy/terms.html /terms 301
-/references/changelog /changelog 301
-/roadmap https://github.com/orgs/gitpod-io/projects/27/views/1 301
-/screencasts/always-ready-to-code /screencasts/getting-started-with-gitpod 301
-/screencasts/navigating-your-workspace /screencasts/my-workspace-is-running-now-what 301
+/configure/editor /docs/editors/vscode
+/direction https://www.notion.so/gitpod/Gitpod-s-Direction-be35d064c0704fbda61c542b84e07ef6
+/docs/10_getting_started /docs/introduction/getting-started
+/docs/10_Getting_Started /docs/introduction/getting-started
+/docs/20_browser_extension /docs/configure/user-settings/browser-extension
+/docs/20_Browser_Extension /docs/configure/user-settings/browser-extension
+/docs/30_workspaces /docs/introduction/learn-gitpod/one-workspace-per-task
+/docs/31_context_urls /docs/introduction/learn-gitpod/context-url
+/docs/32_life_of_workspace /docs/introduction/learn-gitpod/the-life-of-a-workspace
+/docs/32_Life_of_Workspace /docs/introduction/learn-gitpod/the-life-of-a-workspace
+/docs/33_sharing_and_collaboration /docs/configure/workspaces/collaboration
+/docs/33_Sharing_and_Collaboration /docs/configure/workspaces/collaboration
+/docs/34_command_line_interface /docs/references/gitpod-cli
+/docs/40_configuration /docs/configure
+/docs/40_Configuration /docs/configure
+/docs/41_config_gitpod_file /docs/references/gitpod-yml
+/docs/41_Config_Gitpod_File /docs/references/gitpod-yml
+/docs/42_config_docker /docs/configure/workspaces/workspace-image
+/docs/43_config_ports /docs/configure/workspaces/ports
+/docs/44_config_start_tasks /docs/references/gitpod-yml
+/docs/45_checkout_location /docs/references/gitpod-yml
+/docs/45_Checkout_Location /docs/references/gitpod-yml
+/docs/45_Config_Go /docs/introduction/languages/go
+/docs/46_prebuilds /docs/configure/projects/prebuilds
+/docs/47_environment_variables /docs/configure/projects/environment-variables
+/docs/47_Environment_Variables /docs/configure/projects/environment-variables
+/docs/50_ide /docs/ide
+/docs/52_tips_and_tricks /docs/tips-and-tricks
+/docs/54_git /docs/git
+/docs/56_search /docs/search
+/docs/58_pull_requests /docs/pull-requests
+/docs/58_Pull_Requests /docs/pull-requests
+/docs/59_code_review /docs/code-review
+/docs/60_dashboard /docs/dashboard
+/docs/70_subscription /docs/configure/billing
+/docs/80_release_notes /docs/release-notes
+/docs/bash-in-gitpod /docs
+/docs/languages/bash /docs
+/docs/changelog /changelog
+/docs/configuration /docs/configure
+/docs/cpp-in-gitpod /docs/languages/cpp
+/docs/develop/vscode-desktop-support /docs/editors/vscode
+/docs/dotnet-in-gitpod /docs/introduction/languages/dotnet
+/docs/go_in_gitpod /docs/go-in-gitpod
+/docs/go-in-gitpod /docs/languages/go
+/docs/html-in-gitpod /docs/languages/html
+/docs/ide /docs/editors
+/docs/ides-and-editors/configure-your-editor-ide /docs/references/ides-and-editors
+/docs/ides-and-editors /docs/references/ides-and-editors
+/docs/ides-and-editors/vscode-browser /docs/references/ides-and-editors/vscode-browser
+/docs/ides-and-editors/goland /docs/references/ides-and-editors/goland
+/docs/ides-and-editors/intellij /docs/references/ides-and-editors/intellij
+/docs/ides-and-editors/vscode /docs/references/ides-and-editors/vscode
+/docs/ides-and-editors/clion /docs/references/ides-and-editors/clion
+/docs/ides-and-editors/datagrip /docs/references/ides-and-editors
+/docs/ides-and-editors/phpstorm /docs/references/ides-and-editors/phpstorm
+/docs/ides-and-editors/pycharm /docs/references/ides-and-editors/pycharm
+/docs/ides-and-editors/rider /docs/references/ides-and-editors/rider
+/docs/ides-and-editors/rubymine /docs/references/ides-and-editors/rubymine
+/docs/ides-and-editors/webstorm /docs/references/ides-and-editors/webstorm
+/docs/develop/local-companion /docs/references/ides-and-editors/local-companion
+/docs/ides-and-editors/settings-sync /docs/references/ides-and-editors/settings-sync
+/docs/ides-and-editors/vscode-extensions /docs/references/ides-and-editors/vscode-extensions
+/docs/ides-and-editors/command-line /docs/references/ides-and-editors/command-line
+/docs/ides-and-editors/faqs /docs/references/ides-and-editors/faqs
+/docs/index.html /docs
+/docs/integrations/jetbrains /docs/editors
+/docs/java_in_gitpod /docs/java-in-gitpod
+/docs/java-in-gitpod /docs/introduction/languages/java
+/docs/julia_in_gitpod /docs/julia-in-gitpod
+/docs/julia-in-gitpod /docs/languages/julia
+/docs/languages_and_frameworks /docs/languages
+/docs/languages-and-frameworks /docs/languages
+/docs/languages/pandas /docs/languages/python#pandas
+/docs/php-in-gitpod /docs/languages/php
+/docs/professional-open-source /for/opensource
+/docs/python_in_gitpod /docs/python-in-gitpod
+/docs/python-in-gitpod /docs/languages/python
+/docs/r-in-gitpod /docs/languages/r
+/docs/ruby-in-gitpod /docs/languages/ruby
+/docs/rust-in-gitpod /docs/languages/rust
+/docs/self-hosted/latest/self-hosted /docs/configure/self-hosted/latest
+/docs/self-hosted/latest/installation/on-kubernetes /docs/configure/self-hosted/latest/installation
+/docs/vue-in-gitpod /docs/languages/vue
+/docs/editors/jetbrains-private-beta /docs/editors/
+/education /pricing#do-you-offer-discounts-for-students-and-educational-institutions
+/gitpod-business.html /pricing
+/gitpod-vs-codespaces /vs/github-codespaces
+/media /blog/next-chapter-for-gitpod
+/memes https://github.com/gitpod-io/gitpod/issues/6877
+/privacy/terms.html /terms
+/references/changelog /changelog
+/roadmap https://github.com/orgs/gitpod-io/projects/27/views/1
+/screencasts/always-ready-to-code /screencasts/getting-started-with-gitpod
+/screencasts/navigating-your-workspace /screencasts/my-workspace-is-running-now-what
 /values https://www.notion.so/gitpod/Brand-Values-2ed4c2f93c84499b98e3b5389980992e
-/dashboard https://gitpod.io/ 301
-/projects https://gitpod.io/ 301
-/workspaces https://gitpod.io/workspaces/ 301
-/settings https://gitpod.io/account 301
-/notifications https://gitpod.io/notifications 301
-/plans https://gitpod.io/plans 301
-/teams https://gitpod.io/teams 301
-/variables https://gitpod.io/variables 301
-/integrations https://gitpod.io/integrations 301
-/preferences https://gitpod.io/preferences 301
-/gitpod-vs-github-codespaces /vs/github-codespaces 301
+/dashboard https://gitpod.io/
+/projects https://gitpod.io/
+/workspaces https://gitpod.io/workspaces/
+/settings https://gitpod.io/account
+/notifications https://gitpod.io/notifications
+/plans https://gitpod.io/plans
+/teams https://gitpod.io/teams
+/variables https://gitpod.io/variables
+/integrations https://gitpod.io/integrations
+/preferences https://gitpod.io/preferences
+/gitpod-vs-github-codespaces /vs/github-codespaces
 /changelog/introducing-teams-&-projects /changelog/introducing-teams-and-projects
-/github-teacher-toolbox /pricing 301
-/customers/4geeks /for/education/4geeks 301
-/customers/bruno-rocha /for/education/bruno-rocha 301
-/docs/self-hosted/latest/reference-architecture/production-ready-single-cluster /docs/self-hosted/latest/reference-architecture/single-cluster-ref-arch 301
-/docs/self-hosted/latest/support-patches /docs/self-hosted/latest/config-patches 301
-/docs/self-hosted/latest/getting-started#step-4-install-gitpod /docs/self-hosted/latest/installing-gitpod#install-gitpod 301
-/docs/self-hosted/latest/getting-started /docs/self-hosted/latest/installing-gitpod 301
-/docs/self-hosted/latest/resource-configuration /docs/self-hosted/latest/advanced/resource-configuration 301
-/blog/gitpodify /guides/gitpodify 301
-/docs/self-hosted/latest/required-components /docs/self-hosted/latest/advanced/requirements 301
-/docs/self-hosted/latest/cluster-requirements /docs/self-hosted/latest/advanced/requirements 301
+/github-teacher-toolbox /pricing
+/customers/4geeks /for/education/4geeks
+/customers/bruno-rocha /for/education/bruno-rocha
+/docs/self-hosted/latest/reference-architecture/production-ready-single-cluster /docs/configure/self-hosted/latest/reference-architecture/single-cluster-ref-arch
+/docs/self-hosted/latest/support-patches /docs/configure/self-hosted/latest/config-patches
+/docs/self-hosted/latest/getting-started#step-4-install-gitpod /docs/configure/self-hosted/latest/installing-gitpod#install-gitpod
+/docs/self-hosted/latest/getting-started /docs/configure/self-hosted/latest/installing-gitpod
+/docs/self-hosted/latest/resource-configuration /docs/configure/self-hosted/latest/advanced/resource-configuration
+/docs/prebuilds /docs/configure/projects/prebuilds
+/docs/configure/tailscale /docs/integrations/tailscale
+/docs/sharing-and-collaboration /docs/configure/workspaces/collaboration
+/docs/quickstart /docs/introduction/getting-started/quickstart
+/docs/quickstart/agda /docs/introduction/getting-started/quickstart/agda
+/docs/quickstart/c /docs/introduction/getting-started/quickstart/c
+/docs/quickstart/dotnet /docs/introduction/getting-started/quickstart/dotnet
+/docs/quickstart/cpp /docs/introduction/getting-started/quickstart/cpp
+/docs/quickstart/clojure /docs/introduction/getting-started/quickstart/clojure
+/docs/quickstart/coq /docs/introduction/getting-started/quickstart/coq
+/docs/quickstart/datasette /docs/introduction/getting-started/quickstart/datasette
+/docs/quickstart/deno /docs/introduction/getting-started/quickstart/deno
+/docs/quickstart/docker /docs/introduction/getting-started/quickstart/docker
+/docs/quickstart/elixir /docs/introduction/getting-started/quickstart/elixir
+/docs/quickstart/elm /docs/introduction/getting-started/quickstart/elm
+/docs/quickstart/flutter /docs/introduction/getting-started/quickstart/flutter
+/docs/quickstart/go /docs/introduction/getting-started/quickstart/go
+/docs/quickstart/grain /docs/introduction/getting-started/quickstart/grain
+/docs/quickstart/haskell /docs/introduction/getting-started/quickstart/haskell
+/docs/quickstart/ihp /docs/introduction/getting-started/quickstart/ihp
+/docs/quickstart/java /docs/introduction/getting-started/quickstart/java
+/docs/quickstart/julia /docs/introduction/getting-started/quickstart/julia
+/docs/quickstart/nextjs /docs/introduction/getting-started/quickstart/nextjs
+/docs/quickstart/nix /docs/introduction/getting-started/quickstart/nix
+/docs/quickstart/typescript /docs/introduction/getting-started/quickstart/typescript
+/docs/quickstart/ocaml /docs/introduction/getting-started/quickstart/ocaml
+/docs/quickstart/perl /docs/introduction/getting-started/quickstart/perl
+/docs/quickstart/drupal /docs/introduction/getting-started/quickstart/drupal
+/docs/quickstart/laravel /docs/introduction/getting-started/quickstart/laravel
+/docs/quickstart/planetscale /docs/introduction/getting-started/quickstart/planetscale
+/docs/quickstart/python /docs/introduction/getting-started/quickstart/python
+/docs/quickstart/flask /docs/introduction/getting-started/quickstart/flask
+/docs/quickstart/react /docs/introduction/getting-started/quickstart/react
+/docs/quickstart/ruby /docs/introduction/getting-started/quickstart/ruby
+/docs/quickstart/rust /docs/introduction/getting-started/quickstart/rust
+/docs/quickstart/scala /docs/introduction/getting-started/quickstart/scala
+/docs/quickstart/svelte /docs/introduction/getting-started/quickstart/svelte
+/docs/quickstart/sveltekit /docs/introduction/getting-started/quickstart/sveltekit
+/docs/quickstart/tlaplus /docs/introduction/getting-started/quickstart/tlaplus
+/docs/quickstart/wasp /docs/introduction/getting-started/quickstart/wasp
+/docs/quickstart/wordpress /docs/introduction/getting-started/quickstart/wordpress
+/docs/quickstart/x11 /docs/introduction/getting-started/quickstart/x11
+/docs/quickstart/yasm /docs/introduction/getting-started/quickstart/yasm
+/docs/browser-bookmarklet /docs/configure/user-settings/browser-bookmarklet
+/docs/configure/browser-settings /docs/configure/user-settings/browser-settings
+/docs/self-hosted/latest /docs/configure/self-hosted/latest
+/docs/ides-and-editors /docs/references/ides-and-editors
+/docs/references/ides-and-editors/jetbrains-gateway /docs/integrations/jetbrains-gateway
+/docs/command-line-interface /docs/references/gitpod-cli
+/docs/config-gitpod-file /docs/introduction/learn-gitpod/gitpod-yaml
+/docs/references/gitpod-releases /docs/help/public-roadmap/release-cycle
+/docs/bitbucket-server-integration /docs/configure/authentication/bitbucket-server
+/docs/bitbucket-integration  /docs/configure/authentication/bitbucket
+/docs/gitlab-integration /docs/configure/authentication/gitlab
+/docs/github-integration /docs/configure/authentication/github
+/docs/github-enterprise-integration /docs/configure/authentication/github-enterprise
+/blog/gitpodify /guides/gitpodify
+/docs/references/gp-cli /docs/references/gitpod-cli
+/docs/context-urls /docs/introduction/learn-gitpod/context-url
+/docs/config-dotfiles /docs/configure/user-settings/dotfiles
+/docs/teams-and-projects /docs/configure
+/docs/getting-started /docs/introduction/getting-started
+/docs/config-start-tasks /docs/configure/workspaces/tasks
+/docs/environment-variables /docs/configure/projects/environment-variables
+/docs/browser-extension /docs/configure/user-settings/browser-extension
+/docs/configure/ssh /docs/configure/user-settings/ssh
+/docs/troubleshooting /docs/help/troubleshooting
+/docs/config-ports /docs/configure/workspaces/ports
+/docs/languages /docs/introduction/languages
+/docs/languages/svelte /docs/introduction/languages/svelte
+/docs/languages/javascript /docs/introduction/languages/javascript
+/docs/languages/python /docs/introduction/languages/python
+/docs/languages/java /docs/introduction/languages/java
+/docs/languages/go /docs/introduction/languages/go
+/docs/languages/rust /docs/introduction/languages/rust
+/docs/languages/html /docs/introduction/languages/html
+/docs/languages/cpp /docs/introduction/languages/cpp
+/docs/languages/ruby /docs/introduction/languages/ruby
+/docs/languages/php /docs/introduction/languages/php
+/docs/languages/vue /docs/introduction/languages/vue
+/docs/languages/scala /docs/introduction/languages/scala
+/docs/languages/dotnet /docs/introduction/languages/dotnet
+/docs/languages/dart /docs/introduction/languages/dart
+/docs/languages/julia /docs/introduction/languages/julia
+/docs/languages/latex /docs/introduction/languages/latex
+/docs/languages/r /docs/introduction/languages/r
+/docs/languages/kotlin /docs/introduction/languages/kotlin
+/docs/languages/deno /docs/introduction/languages/deno
+/docs/config-docker /docs/configure/workspaces/workspace-image
+/docs/develop /docs/introduction/learn-gitpod
+/docs/workspaces /docs/introduction/learn-gitpod/one-workspace-per-task
+/docs/the-life-of-workspace /docs/introduction/learn-gitpod/the-life-of-a-workspace
+/docs/life-of-workspace /docs/introduction/learn-gitpod/the-life-of-a-workspace
+/docs/references/product-compatibility-matrix /docs/references/compatibility
+/docs/references/roadmap /docs/help/public-roadmap
+/docs/checkout-location /docs/configure/workspaces
+/docs/self-hosted/latest/required-components /docs/configure/self-hosted/latest/requirements
+/docs/self-hosted/latest/cluster-requirements /docs/configure/self-hosted/latest/requirements
+/docs/self-hosted/latest/installation-guides /docs/configure/self-hosted/latest/installation-guides
+/docs/self-hosted/latest/local-preview /docs/configure/self-hosted/latest/local-preview
+/docs/self-hosted/latest/installing-gitpod /docs/configure/self-hosted/latest/installing-gitpod
+/docs/self-hosted/latest/reference-architecture /docs/configure/self-hosted/latest/reference-architecture
+/docs/self-hosted/latest/advanced /docs/configure/self-hosted/latest/advanced
+/docs/self-hosted/latest/operational-guides /docs/configure/self-hosted/latest/operational-guides
+/docs/self-hosted/latest/updating /docs/configure/self-hosted/latest/updating
+/docs/self-hosted/latest/monitoring /docs/configure/self-hosted/latest/monitoring
+/docs/self-hosted/latest/backup-restore /docs/configure/self-hosted/latest/backup-restore
+/docs/self-hosted/latest/troubleshooting /docs/configure/self-hosted/latest/troubleshooting
+/docs/self-hosted/latest/support-bundle /docs/configure/self-hosted/latest/support-bundle
+/docs/self-hosted/latest/config-patches /docs/configure/self-hosted/latest/config-patches
+/docs/self-hosted/latest/stop-workspaces /docs/configure/self-hosted/latest/stop-workspaces
+/docs/self-hosted/latest/manage-cluster-nodes /docs/configure/self-hosted/latest/manage-cluster-nodes
+/docs/self-hosted/latest/background /docs/configure/self-hosted/latest/background
+/docs/self-hosted/latest/disaster-recovery /docs/configure/self-hosted/latest/disaster-recovery
+/docs/self-hosted/latest/reference /docs/configure/self-hosted/latest/reference
+/docs/self-hosted/latest/requirements /docs/configure/self-hosted/latest/requirements
+/docs/self-hosted/latest/telemetry /docs/configure/self-hosted/latest/telemetry
+/docs/self-hosted/latest/releases /docs/configure/self-hosted/latest/releases
+/docs/self-hosted/latest/upgrade-guides /docs/configure/self-hosted/latest/upgrade-guides
+/docs/contribute /docs/help/contribute
+/docs/contribute/content /docs/help/contribute/content
+/docs/contribute/documentation /docs/help/contribute/documentation
+/docs/contribute/features-and-patches /docs/help/contribute/features-and-patches
+/docs/references/gitpod-dockerfile /docs/configure/workspaces/workspace-image
+/docs/examples /docs/introduction/languages
+/docs/subscriptions /docs/configure/billing
+/docs/team-billing /docs/configure/billing/team-billing
+/docs/usage-based-billing /docs/configure/billing/usage-based-billing
+/docs/teams /docs/configure/billing/team-plans
+/docs/multi-repo-workspaces /docs/configure/workspaces/multi-repo
+/docs/workspace-classes /docs/configure/workspaces/workspace-classes
+/docs/self-hosted/latest/cluster-set-up/on-k3s /docs/configure/self-hosted/latest/cluster-set-up/on-k3s
+/docs/self-hosted/latest/cluster-set-up/on-amazon-eks /docs/configure/self-hosted/latest/cluster-set-up/on-amazon-eks
+/docs/self-hosted/latest/cluster-set-up/on-gke /docs/configure/self-hosted/latest/cluster-set-up/on-gke
+/docs/self-hosted/helm-deprecated/troubleshooting /docs/configure/self-hosted/helm-deprecated/troubleshooting
+/docs/self-hosted/helm-deprecated/installation/on-kubernetes /docs/configure/self-hosted/helm-deprecated/installation/on-kubernetes
+/docs/self-hosted/helm-deprecated/installation /docs/configure/self-hosted/helm-deprecated/installation
+/docs/self-hosted/latest/cluster-set-up/on-microsoft-aks /docs/configure/self-hosted/latest/cluster-set-up/on-microsoft-aks
+/docs/self-hosted/latest/reference-architecture/single-cluster-ref-arch /docs/configure/self-hosted/latest/reference-architecture/single-cluster-ref-arch
+/docs/self-hosted/latest/reference-architecture/proof-of-value /docs/configure/self-hosted/latest/reference-architecture/proof-of-value
+/docs/self-hosted/latest/cluster-set-up /docs/configure/self-hosted/latest/reference-architecture/single-cluster-ref-arch
+/docs/self-hosted/latest/advanced/requirements /docs/configure/self-hosted/latest/requirements

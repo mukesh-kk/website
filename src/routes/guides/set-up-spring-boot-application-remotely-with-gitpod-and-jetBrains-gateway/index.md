@@ -70,7 +70,7 @@ Gitpod JetBrains IDE integration is powered with JetBrains Gateway, a compact de
           <figcaption style="text-align:center">Create a new workspace</figcaption>
       </figure>
 
-If you want to read about the whole process in detail, you can refer to our online [documentation](https://www.gitpod.io/docs/ides-and-editors/intellij) 📖.
+If you want to read about the whole process in detail, you can refer to our online [documentation](https://www.gitpod.io/docs/references/ides-and-editors/intellij) 📖.
 
 ## 2. How to create a new Spring Boot project
 
@@ -105,7 +105,7 @@ Congratulations 🎉😄 <br>You have successfully set up your first Spring Boot
 # Setting up your existing codebase using JetBrains Gateway and Gitpod
 
 You can open an existing codebase using Gitpod and JetBrains Gateway. To get started with Gitpod, add a [`.gitpod.yml`](https://github.com/gitpod-io/template-java-spring-boot-gradle/blob/main/.gitpod.yml) file in the root directory of your existing codebase.
-The `.gitpod.yml` file at the root of your project is where you tell Gitpod how to prepare & build your project, start development servers and configure continuous [prebuilds](https://www.gitpod.io/docs/prebuilds) for GitHub.
+The `.gitpod.yml` file at the root of your project is where you tell Gitpod how to prepare & build your project, start development servers and configure continuous [prebuilds](https://www.gitpod.io/docs/configure/projects/prebuilds) for GitHub.
 Hence, improving the developer experience on Gitpod ✨
 
 ## Customizing `.gitpod.yml`

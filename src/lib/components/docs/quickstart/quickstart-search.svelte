@@ -22,8 +22,9 @@
   </p>
   <p>
     Also note that you are free to install any tools you need for your specific
-    use case. Please refer to the <a target="_blank" href="/docs/config-docker"
-      >custom docker image</a
+    use case. Please refer to the <a
+      target="_blank"
+      href="/docs/configure/workspaces/workspace-image">custom docker image</a
     > documentation for more details.
   </p>
 {/if}

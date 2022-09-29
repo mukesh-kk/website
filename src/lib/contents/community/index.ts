@@ -64,11 +64,11 @@ export const contributeToGitpod: Feature = {
   paragraph:
     "Gitpod’s source code is open-source and we are more than happy to receive community contributions.",
   moreButton: {
-    href: "https://www.gitpod.io/docs/contribute/features-and-patches",
+    href: "https://www.gitpod.io/docs/help/contribute/features-and-patches",
     text: "Contribute to Gitpod",
   },
   secondaryButton: {
-    href: "https://www.gitpod.io/docs/contribute/documentation",
+    href: "https://www.gitpod.io/docs/help/contribute/documentation",
     text: "Contribute to website",
   },
   image: {

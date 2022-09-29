@@ -13,6 +13,7 @@
   <ul class="divide-y divide-divider">
     {#each MENU as menuItem}
       <MenuItem
+        isHeader={menuItem.isSectionHeader}
         href={menuItem.path}
         showIcon={true}
         onClick={() => ($topicsState = false)}

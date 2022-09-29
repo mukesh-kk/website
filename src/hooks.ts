@@ -1,6 +1,7 @@
 // import type { Handle } from "@sveltejs/kit";
 // import * as cookie from "cookie";
 import { sequence } from "@sveltejs/kit/hooks";
+import { compile } from "mdsvex";
 import { basename } from "path";
 
 export const getSession: import("@sveltejs/kit").GetSession = async (event) => {
@@ -52,6 +53,7 @@ const handleChangelogEntries = async ({ event, resolve }) => {
         const fileName = basename(path);
         return {
           ...metadata,
+          excerpt: (await compile(metadata.excerpt)).code.trim(),
           content: content.render().html,
           fileName,
         };

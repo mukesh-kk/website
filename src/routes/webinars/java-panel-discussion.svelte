@@ -18,6 +18,8 @@
       "Open conversation about Java remote development covering best practices. What does not work well yet, and what had to click to make it work.",
     keywords:
       "panel-discussion, remote development, success-stories, Java, Gitpod",
+    image: "images/webinars/java-panel-discussion-twitter.png",
+    imageTwitter: "images/webinars/java-panel-discussion-twitter.png",
   }}
 />
 
@@ -31,11 +33,15 @@
     <Header
       title="Success & failure stories of Java developers shifting to remote"
       label="Panel Discussion"
-      date="October 6pm CEST/ 9am PDT"
+      date="October 04 - 6:00 pm CEST"
       duration="60min"
       webinarDescription="Open conversation about Java remote development covering best practices. What does not work well yet, and what had to click to make it work."
     />
-    <!-- <Register toType={javaPanelDiscussionWebinar.type} class="lgx:hidden" eventType="Panel Discussion" /> -->
+    <Register
+      toType={javaPanelDiscussionWebinar.type}
+      class="lgx:hidden"
+      eventType="panel discussion"
+    />
     <div class="max-w-[560px]">
       <!-- <InThisWebinar>
         <svelte:fragment slot="list-items">

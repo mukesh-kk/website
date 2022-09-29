@@ -17,7 +17,7 @@
 </script>
 
 <div
-  class:hidden={!bannerData.display}
+  class:hidden={!bannerData?.display}
   data-analytics={`{"position":"announcement"}`}
 >
   <Banner

@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   import BannerBg from "../banner-bg.svelte";
 
   import Section from "../section.svelte";

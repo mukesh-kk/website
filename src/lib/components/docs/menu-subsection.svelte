@@ -1,20 +1,15 @@
 <script lang="ts">
   import docsCurrentSubsectionStore from "$lib/stores/docs-current-subsection";
   import type { MenuEntry } from "$lib/types/menu-entry.type";
-  import { sanitizeSelfHosted } from "$lib/utils/helpers";
+  import {
+    getVariantFromStatus,
+    isLongDocsMenuEntry,
+    sanitizeSelfHosted,
+  } from "$lib/utils/helpers";
   import Pill from "../pill.svelte";
   import MenuLink from "./menu-link.svelte";
   export let menuItem: MenuEntry;
-  let isLong: boolean =
-    menuItem && menuItem.status && menuItem.status.split(" ").length > 1;
-
-  const getVariantFromStatus = (status: string) => {
-    if (status === "soon" || status === "Early Access") {
-      return "pink";
-    } else {
-      return "orange";
-    }
-  };
+  let isLong: boolean = isLongDocsMenuEntry(menuItem);
 
   function findSubSection(section: MenuEntry, currentSubSection: string) {
     if (currentSubSection) {

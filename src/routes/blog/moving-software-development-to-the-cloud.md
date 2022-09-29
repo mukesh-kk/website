@@ -35,7 +35,7 @@ The result is that Gitpod offers more powerful dev environments with a small eco
 
 <h2>Gitpod is Fast</h2>
 
-Gitpod is not only extremely fast because of the higher efficiency, but also because of what we call [prebuilds](/docs/prebuilds). Let’s take a closer look.
+Gitpod is not only extremely fast because of the higher efficiency, but also because of what we call [prebuilds](/docs/configure/projects/prebuilds). Let’s take a closer look.
 
 The metric that matters here is the time it takes until a dev environment is **ready-to-code**. Ready-to-code means that developers can actually start writing code and don’t have to wait for builds, dependencies to download or code generators to run.
 

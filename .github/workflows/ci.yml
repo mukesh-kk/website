@@ -32,7 +32,7 @@ jobs:
             ${{ steps.waitFor200.outputs.url }}/blog/devxconf-wrap
             ${{ steps.waitFor200.outputs.url }}/pricing
             ${{ steps.waitFor200.outputs.url }}/docs
-            ${{ steps.waitFor200.outputs.url }}/docs/quickstart
+            ${{ steps.waitFor200.outputs.url }}/docs/introduction/getting-started
           budgetPath: ./budget.json
           uploadArtifacts: true
           temporaryPublicStorage: true

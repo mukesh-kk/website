@@ -109,9 +109,9 @@ https://github.com/gitpod-io/doom becomes https://gitpod.io#https://github.com/g
 ## Recommended Reading
 
 - [https://www.gitpod.io/screencasts/getting-started-with-gitpod](/screencasts/getting-started-with-gitpod)
-- [https://www.gitpod.io/docs/prebuilds](/docs/prebuilds)
-- [https://www.gitpod.io/docs/config-dotfiles](/docs/config-dotfiles)
-- [https://www.gitpod.io/docs/config-gitpod-file](/docs/config-gitpod-file)
+- [https://www.gitpod.io/docs/configure/projects/prebuilds](/docs/configure/projects/prebuilds)
+- [https://www.gitpod.io/docs/configure/user-settings/dotfiles](/docs/configure/user-settings/dotfiles)
+- [https://www.gitpod.io/docs/references/gitpod-yml](/docs/references/gitpod-yml)
 
 ## Anything else?
 

@@ -3,10 +3,10 @@ import type { Card } from "$lib/types/card.type";
 
 export const cards: Card[] = [
   {
-    title: "Getting Started",
+    title: "Getting started",
     text: "This page helps you understand how to provide a configuration for your project.",
     link: {
-      href: "/docs/getting-started",
+      href: "/docs/introduction/getting-started",
       text: "Get Started",
     },
   },

@@ -9,7 +9,7 @@ export const features: Feature[] = [
       "Gitpod continuously builds your Git branches like a CI server. This means no more waiting for dependencies to be downloaded and builds to finish.",
     moreButton: {
       text: "More about prebuilds",
-      href: "/docs/prebuilds",
+      href: "/docs/configure/projects/prebuilds",
     },
     terminal: {
       source: terminalSource,

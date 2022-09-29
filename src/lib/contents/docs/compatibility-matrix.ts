@@ -274,7 +274,7 @@ export const compatibilityMatrix: Matrix[] = [
         name: "K3s",
         availibility: "untested",
         limitations:
-          'Please see the <a href="https://www.gitpod.io/docs/self-hosted/latest/cluster-set-up/on-k3s" target=”_blank">K3s Guide</a> for instructions on how to set up k3s',
+          'Please see the <a href="https://www.gitpod.io/docs/configure/self-hosted/latest/cluster-set-up/on-k3s" target=”_blank">K3s Guide</a> for instructions on how to set up k3s',
         policy: {
           text: "see Kubernetes support policy",
           description: null,

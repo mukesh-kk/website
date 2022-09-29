@@ -54,7 +54,7 @@ export const pricingPlans: Pricing[] = [
         tooltip: "Open up to 8 workspaces per user in parallel.",
       },
       {
-        text: "Team Plans",
+        text: "Team plans",
         tooltip:
           "Manage subscriptions for your team members with centralized billing.",
       },
@@ -130,7 +130,7 @@ export const freePlanTableData: FeatureTableColumn = {
           text: "limited to 50h",
         },
         {
-          term: "Team Plans",
+          term: "Team plans",
           availability: false,
         },
         {
@@ -203,7 +203,7 @@ export const personalPlanTableData: FeatureTableColumn = {
           text: "limited to 100h",
         },
         {
-          term: "Team Plans",
+          term: "Team plans",
           availability: false,
         },
         {
@@ -278,7 +278,7 @@ export const professionalPlanTableData: FeatureTableColumn = {
           text: "unlimited",
         },
         {
-          term: "Team Plans",
+          term: "Team plans",
 
           availability: true,
         },
@@ -352,7 +352,7 @@ export const unleashedPlanTableData: FeatureTableColumn = {
           text: "unlimited",
         },
         {
-          term: "Team Plans",
+          term: "Team plans",
           availability: true,
         },
         {
@@ -416,7 +416,7 @@ export const pricingTableToc: FeatureTableToc[] = [
   {
     type: "tooltip",
     data: {
-      text: "Team Plans",
+      text: "Team plans",
       tooltip:
         "You can create team plans and manage subscriptions for your team members.",
     },
@@ -485,7 +485,7 @@ export const pricingTableToc: FeatureTableToc[] = [
     data: {
       text: "multi-ide support",
       tooltip:
-        "Connect Gitpod with your favourite IDE. View <a href='/docs/ides-and-editors'>docs/IDE</a> to see all suported IDE’s.",
+        "Connect Gitpod with your favourite IDE. View <a href='/docs/references/ides-and-editors'>docs/IDE</a> to see all suported IDE’s.",
     },
   },
   {
@@ -552,7 +552,7 @@ export const pricingFAQ: FAQ = {
     {
       title: "Can I create a team plan?",
       content:
-        '<p> Sure, if you would like to manage subscriptions for a whole team on a single invoice, you can create a <a href="https://gitpod.io/teams/">team plan.</a> </p> <p> In case you need more information on how to setup a team subscription, visit <a href="/docs/teams">gitpod.io/docs/teams.</a> </p>',
+        '<p> Sure, if you would like to manage subscriptions for a whole team on a single invoice, you can create a <a href="https://gitpod.io/teams/">team plan.</a> </p> <p> In case you need more information on how to setup a team subscription, visit <a href="/docs/configure/teams">gitpod.io/docs/configure/teams.</a> </p>',
     },
     {
       title: "Can I change my subscription at any time?",

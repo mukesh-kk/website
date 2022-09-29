@@ -71,7 +71,15 @@
         href={`/changelog/${stringToBeautifiedFragment(title)}`}
       />
       <Wrapper class="content-changelog w-full md:w-8/12">
-        <img src="/images/changelog/{image}" class="rounded-3xl" {alt} />
+        <img
+          src="/images/changelog/{image}"
+          class="rounded-3xl"
+          width="800"
+          height="435"
+          loading={i === 0 ? "eager" : "lazy"}
+          decoding="async"
+          {alt}
+        />
         <h2>
           <ChangelogLink
             href={`/changelog/${stringToBeautifiedFragment(title)}`}

@@ -99,6 +99,6 @@ Head over to https://github.com/gitpod-io/website to look at the source code or 
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/website)
 
-To explore your own project in an online developer environment, prefix your GitHub, GitLab or Bitbucket repository URL with `gitpod.io#`. [Learn more about that in the documentation](/docs/context-urls).
+To explore your own project in an online developer environment, prefix your GitHub, GitLab or Bitbucket repository URL with `gitpod.io#`. [Learn more about that in the documentation](/docs/introduction/learn-gitpod/context-url).
 
 We welcome community contributions 🙏 . Please let us know what you think of the website and its implementation.

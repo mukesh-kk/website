@@ -113,7 +113,7 @@ export const codespacesToc: FeatureTableToc[] = [
   {
     type: "text",
     data: {
-      text: "VS Code Extensions",
+      text: "VS Code extensions",
     },
   },
   {
@@ -207,7 +207,7 @@ export const gitpodColumns: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "VS Code Extensions",
+          term: "VS Code extensions",
           availability: true,
         },
         {
@@ -293,7 +293,7 @@ export const codespacesColumn: FeatureTableColumn = {
           availability: false,
         },
         {
-          term: "VS Code Extensions",
+          term: "VS Code extensions",
           availability: true,
         },
         {

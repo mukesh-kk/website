@@ -2,6 +2,8 @@ import type { RequestHandler } from "@sveltejs/kit";
 import path from "path";
 import fs from "fs";
 
+const fallbackStars = 9200;
+
 const startDate = new Date("Apr 28 2022 06:00:00 EST");
 const endDate = new Date("May 28 2022 06:00:00 EST");
 
@@ -31,28 +33,27 @@ export const get: RequestHandler = async ({ request }) => {
       const data = await res.json();
       const starsCount = data.stargazers_count;
 
-      if (starsCount !== undefined) {
-        if (USE_CACHE) {
-          try {
-            const expires = new Date().getTime() + 120000;
+      if (USE_CACHE) {
+        try {
+          const expires = new Date().getTime() + 120000;
 
-            fs.writeFileSync(
-              CACHE_PATH,
-              JSON.stringify({ starsCount, expires }),
-              {
-                encoding: "utf-8",
-              }
-            );
-          } catch (error) {
-            // A cached file is not required
-          }
+          fs.writeFileSync(
+            CACHE_PATH,
+            JSON.stringify({ starsCount, expires }),
+            {
+              encoding: "utf-8",
+            }
+          );
+        } catch (error) {
+          console.log("failed to write cache file");
         }
-        stars = starsCount;
-      } else {
-        // Random Star Number, if API returns undefined starsCount
-        stars = 9200;
       }
+      stars = starsCount;
     }
+  }
+
+  if (!stars) {
+    stars = fallbackStars;
   }
 
   bannerData = getBannerData();

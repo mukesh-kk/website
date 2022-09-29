@@ -54,6 +54,6 @@ So OpenVSCode Server adds some much-needed, yet minimal changes on top of VS Cod
 
 Try the new 1.62 OpenVSCode Server or the Insiders version and don’t forget to [leave feedback and file any GitHub issues](https://github.com/gitpod-io/openvscode-server) if you need!
 
-You can also quickly explore the latest version of VS Code from within Gitpod, all you have to do is prefix a GitHub URL with `gitpod.io/#https://github.com/example-org/your-repo` (or install the [browser extension](/docs/browser-extension#browser-extension)) to get started.
+You can also quickly explore the latest version of VS Code from within Gitpod, all you have to do is prefix a GitHub URL with `gitpod.io/#https://github.com/example-org/your-repo` (or install the [browser extension](/docs/configure/user-settings/browser-extension#browser-extension)) to get started.
 
 And why not, because [Gitpod is free for up to 50 hours a month](/pricing).
