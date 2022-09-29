@@ -5,8 +5,8 @@ import { getMonthBoundaries } from "./lib/dates.js";
 import metadataParser from "markdown-yaml-metadata-parser";
 import {
   generatePrChangelogLine,
+  processRepository,
   replaceContentOfBlock,
-  parseReleaseNote,
 } from "./lib/utils.js";
 import minimist from "minimist";
 
@@ -84,6 +84,22 @@ const prCategories = [
     order: 0,
     prs: [],
   },
+  {
+    name: "Website",
+    labels: [],
+    partial: "website",
+    prefixes: [],
+    order: 0,
+    prs: [],
+  },
+  {
+    name: "Workspace",
+    labels: ["team: workspace"],
+    partial: "workspace",
+    prefixes: [],
+    order: 0,
+    prs: [],
+  },
   // todo(ft): Installer (self-hosted), Workspace, supervisor
   {
     name: "Fixes and improvements",
@@ -99,7 +115,6 @@ const main = async () => {
   const releaseDate = argv._[0] || lastBusinessDay;
   const from = argv._[1] || firstBusinessDay;
   const to = argv._[2] || lastBusinessDay;
-  const searchQuery = `repo:gitpod-io/gitpod is:pr is:merged merged:${from}..${to} sort:updated-desc label:deployed -label:release-note-none`;
   const githubToken = argv.token || process.env.CHANGELOG_GITHUB_ACCESS_TOKEN;
   if (!githubToken) {
     console.warn(
@@ -116,79 +131,26 @@ const main = async () => {
   });
   await sayHello(octokit);
 
-  console.log(searchQuery);
-  const { search } = await octokit.graphql.paginate(
-    `query paginate($cursor: String) {
-    search(query: "${searchQuery}", type: ISSUE, last: 50, after: $cursor) {
-      edges {
-        node {
-          ... on PullRequest {
-            body
-            title
-            number
-            author {
-              login
-            }
-            participants(first: 20) {
-              nodes {
-                login
-              }
-            }
-            labels (first: 50) {
-              nodes {
-                name
-              }
-            }
-            url
-          }
-        }
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-    }
-  }`
-  );
+  let categorizedPrs = prCategories;
 
-  search.edges
-    .map((edge) => edge.node)
-    // We filter any PRs that don't have a release note but also don't have the `release-note-none` label. This is a bug with @roboquat and after it is fixed, this should be removed.
-    .filter(parseReleaseNote)
-    .forEach((pr) => {
-      // We group the PRs by their labels or prefix
-      const category = prCategories.find((category) => {
-        const releaseNote = parseReleaseNote(pr);
-        const byLabel = category.labels?.some((label) =>
-          pr.labels.nodes?.some((prLabel) => prLabel.name === label)
-        );
-        const byPrefix =
-          category.prefixes?.some(
-            (prefix) =>
-              releaseNote.startsWith(`[${prefix}]`) ||
-              pr.title.startsWith(`[${prefix}]`)
-          ) ?? false;
+  const repos = [
+    "gitpod-io/gitpod",
+    "gitpod-io/website",
+    "gitpod-io/workspace-images",
+  ];
 
-        if (!byLabel && byPrefix) {
-          console.warn(
-            pr.title,
-            "is categorized as",
-            category.name,
-            "but it doesn't have the label",
-            category.labels.join(", ")
-          );
-        }
-        return byLabel || byPrefix;
-      });
-      if (category) {
-        category.prs.push(pr);
-      } else {
-        prCategories.at(-1).prs.push(pr);
-      }
+  for (const repo of repos) {
+    categorizedPrs = await processRepository({
+      octokit,
+      repo,
+      from,
+      to,
+      prCategories: categorizedPrs,
     });
+  }
 
   const lineBreak = "\r\n";
-  prCategories.forEach((category, index) => {
+  categorizedPrs.forEach((category, index) => {
     const prs = category.prs.map(generatePrChangelogLine).join("");
     const heading = `## ${category.name}${lineBreak}${lineBreak}`;
     try {
@@ -202,19 +164,19 @@ const main = async () => {
       );
       const contentMetadata = metadataParser(partialContent);
       if (category.partial !== "others") {
-        prCategories[index].order = contentMetadata.metadata?.order || 0;
+        categorizedPrs[index].order = contentMetadata.metadata?.order || 0;
       }
 
       if (contentWithStrippedMetadata) {
         if (prs) {
           // There are PRs in this category, so we prepend the partial content to them
-          prCategories[
+          categorizedPrs[
             index
           ].content = `${heading}${contentWithStrippedMetadata}${lineBreak}${lineBreak}${prs}`;
           return;
         } else {
           // There are no PRs for this category, so we only include the partial
-          prCategories[
+          categorizedPrs[
             index
           ].content = `${heading}${contentWithStrippedMetadata}${lineBreak}${lineBreak}`;
           return;
@@ -226,11 +188,11 @@ const main = async () => {
       }
     }
     if (prs) {
-      prCategories[index].content = `${heading}${prs}${lineBreak}`;
+      categorizedPrs[index].content = `${heading}${prs}${lineBreak}`;
       return;
     }
   });
-  const perCategoryPrContent = prCategories
+  const perCategoryPrContent = categorizedPrs
     .sort((a, b) => {
       // Sort by ascending order. If the order is the same, sort by name.
       if (a.order === b.order) {

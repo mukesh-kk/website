@@ -1,5 +1,6 @@
 import { unified } from "unified/lib/index.js";
 import remarkParse from "remark-parse";
+import { getPrsForRepo } from "./getPrs.js";
 
 export const getPrParticipants = (pr) => {
   const author = pr.author?.login;
@@ -47,13 +48,69 @@ export const parseNewReleaseNote = (pr) => {
   const htmlComments = /<!--([\s\S]*?)-->/g; // https://github.com/stevemao/html-comment-regex/blob/master/index.js
   const withRemovedComments = releaseNotes.replace(htmlComments, "").trim();
 
-  if (withRemovedComments.toUpperCase() === "NONE") return;
+  if (!withRemovedComments || withRemovedComments.toUpperCase() === "NONE")
+    return;
+
+  // Make sure the release note isn't the old format
+  if (withRemovedComments.startsWith("```release-note")) return;
 
   return withRemovedComments;
 };
 
 export const parseReleaseNote = (pr) => {
   return parseOldReleaseNote(pr) || parseNewReleaseNote(pr);
+};
+
+export const processRepository = async (options) => {
+  const { repo, prCategories, octokit, from, to } = options;
+  const { prs, forceLabel = false } = await getPrsForRepo(
+    octokit,
+    repo,
+    from,
+    to
+  );
+  prs
+    // We filter any PRs that don't have a release note but also don't have the `release-note-none` label. This is a bug with @roboquat and after it is fixed, this should be removed.
+    .filter(parseReleaseNote)
+    .forEach((pr) => {
+      if (forceLabel) {
+        prCategories
+          .find((category) => category.partial === forceLabel)
+          .prs.push(pr);
+        return;
+      }
+
+      // We group the PRs by their labels or prefix
+      const category = prCategories.find((category) => {
+        const releaseNote = parseReleaseNote(pr);
+        const byLabel = category.labels?.some((label) =>
+          pr.labels.nodes?.some((prLabel) => prLabel.name === label)
+        );
+        const byPrefix =
+          category.prefixes?.some(
+            (prefix) =>
+              releaseNote.startsWith(`[${prefix}]`) ||
+              pr.title.startsWith(`[${prefix}]`)
+          ) ?? false;
+
+        if (!byLabel && byPrefix) {
+          console.warn(
+            pr.title,
+            "is categorized as",
+            category.name,
+            "but it doesn't have the label",
+            category.labels.join(", ")
+          );
+        }
+        return byLabel || byPrefix;
+      });
+      if (category) {
+        category.prs.push(pr);
+      } else {
+        prCategories.at(-1).prs.push(pr);
+      }
+    });
+  return prCategories;
 };
 
 export const replaceContentOfBlock = (blockName, blockContent, fileContent) => {
