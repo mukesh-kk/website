@@ -1,5 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import * as client from "@sendgrid/mail";
+// import * as client from "@sendgrid/mail";
 import save from "$lib/api/save-to-spreadsheet";
 import type { Email, EmailToType } from "$lib/api/api";
 import { webinarSheets } from "$lib/constants";
@@ -23,37 +23,84 @@ const getWebinarByType = (toType: EmailToType) =>
 const isTypeWebinar = (toType: EmailToType) =>
   webinarSheets.some((sheet) => sheet.type === toType);
 
+// async function sendEmail(
+//   client: client.MailService,
+//   email: Email
+// ): Promise<{ statusCode: number; body?: string }> {
+//   const data: client.MailDataRequired = {
+//     from: email.from || "",
+//     subject: email.subject,
+//     to: [email.to!],
+//     replyTo: email.replyTo,
+//     content: [
+//       {
+//         type: "text/plain",
+//         value: `${
+//           email.message
+//             ? email.message
+//             : `${email.feedback}\n${email.otherFeedback}`
+//         }`,
+//       },
+//     ],
+//     trackingSettings: {
+//       clickTracking: {
+//         enable: false,
+//         enableText: false,
+//       },
+//       openTracking: {
+//         enable: false,
+//       },
+//     },
+//   };
+//   try {
+//     await client.send(data);
+//     return {
+//       statusCode: 200,
+//       body: JSON.stringify(email) + " added",
+//     };
+//   } catch (e) {
+//     return {
+//       statusCode: 500,
+//       body: `Error : ${JSON.stringify(e)}`,
+//     };
+//   }
+// }
+
 async function sendEmail(
-  client: client.MailService,
   email: Email
 ): Promise<{ statusCode: number; body?: string }> {
-  const data: client.MailDataRequired = {
-    from: email.from || "",
-    subject: email.subject,
-    to: [email.to!],
-    replyTo: email.replyTo,
-    content: [
-      {
-        type: "text/plain",
-        value: `${
-          email.message
-            ? email.message
-            : `${email.feedback}\n${email.otherFeedback}`
-        }`,
-      },
-    ],
-    trackingSettings: {
-      clickTracking: {
-        enable: false,
-        enableText: false,
-      },
-      openTracking: {
-        enable: false,
-      },
+  const body = {
+    sender: { handle: email.replyTo.email || "" },
+    to: [email.to.email],
+    body_format: "markdown",
+    type: "email",
+    metadata: {
+      should_skip_rules: false,
+      is_inbound: true,
     },
+    subject: email.subject,
+    //TODO External ID
+    external_id: "Test Test",
+    created_at: Math.floor(Date.now() / 1000),
+    body: `${
+      email.message
+        ? email.message
+        : `${email.feedback}\n${email.otherFeedback}`
+    }`,
   };
   try {
-    await client.send(data);
+    await fetch(
+      `https://api2.frontapp.com/inboxes/${process.env.FRONT_SUPPORT_INBOX_ID}/imported_messages`,
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+          authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
+        },
+      }
+    );
     return {
       statusCode: 200,
       body: JSON.stringify(email) + " added",
@@ -89,7 +136,7 @@ async function saveToSheet(sheetTitle: string, data: any, type?: EmailToType) {
 export const post: RequestHandler = async ({ request }) => {
   const body = await request.json();
   const email: Email = body! as Email;
-  const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || "no-key";
+  // const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || "no-key";
   const SENDGRID_TO_EMAIL = determineToEmail(email.toType);
   const SENDGRID_FROM_EMAIL = SENDGRID_TO_EMAIL;
 
@@ -168,8 +215,8 @@ export const post: RequestHandler = async ({ request }) => {
   }
 
   if (!dontEmail && !isTypeWebinar(email.toType)) {
-    client.setApiKey(SENDGRID_API_KEY);
-    const dontEmailResponse = await sendEmail(client, email);
+    // client.setApiKey(SENDGRID_API_KEY);
+    const dontEmailResponse = await sendEmail(email);
     sheetRes.status = dontEmailResponse.statusCode;
     sheetRes.body = dontEmailResponse.body;
   }
