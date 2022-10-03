@@ -70,7 +70,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
         dateFormat,
         "-"
       );
-      searchQuery = `repo:${repo} is:pr is:merged merged:${fromAdjusted}..${to} sort:updated-desc label:deployed -label:release-note-none`;
+      searchQuery = `repo:${repo} is:pr is:merged merged:${fromAdjusted}..${to} sort:updated-desc label:deployed -label:release-note-none -project:gitpod-io/22`;
       filter = byDeployed;
       from = fromAdjusted;
       break;
