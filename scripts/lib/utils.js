@@ -69,6 +69,12 @@ export const processRepository = async (options) => {
     from,
     to
   );
+
+  if (!prs || prs.length === 0) {
+    console.log(`No PRs found for ${repo}`);
+    return prCategories;
+  }
+
   prs
     // We filter any PRs that don't have a release note but also don't have the `release-note-none` label. This is a bug with @roboquat and after it is fixed, this should be removed.
     .filter(parseReleaseNote)

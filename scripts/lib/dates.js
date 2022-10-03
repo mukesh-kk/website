@@ -4,13 +4,19 @@ const isWorkingDay = (date) => {
   return day !== 0 && day !== 6;
 };
 
-const join = (date, dateFormat, delimiter) => {
+export const join = (date, dateFormat, delimiter) => {
   const format = (formatOptions) => {
     const intlDate = new Intl.DateTimeFormat("en", formatOptions);
     return intlDate.format(date);
   };
   return dateFormat.map(format).join(delimiter);
 };
+
+export const dateFormat = [
+  { year: "numeric" },
+  { month: "2-digit" },
+  { day: "2-digit" },
+];
 
 /**
  * Finds the first and last working/business days of the month. The month is determined as the either the current month , or, if the current day is before the 7th, the previous month.
@@ -34,10 +40,5 @@ export const getMonthBoundaries = () => {
     offset++;
   } while (!isWorkingDay(firstDay));
 
-  const dateFormat = [
-    { year: "numeric" },
-    { month: "2-digit" },
-    { day: "2-digit" },
-  ];
   return [join(firstDay, dateFormat, "-"), join(lastDay, dateFormat, "-")];
 };
