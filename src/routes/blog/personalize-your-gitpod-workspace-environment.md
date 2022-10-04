@@ -106,4 +106,4 @@ Read more in the [VS Code Setting Sync](https://www.gitpod.io/docs/references/id
 
 Customizing the settings and tools to your preferences and workflows is an important step when using any development environment. Let us know how personalizing your Gitpod workspace environment makes you more productive by [joining our community](https://www.gitpod.io/community) ✨
 
-If you have any questions, drop by our community [Discord server](https://discord.com/invite/gitpod).
+If you have any questions, drop by our community [Discord server](https://gitpod.io/chat).

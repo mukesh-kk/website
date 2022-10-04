@@ -256,6 +256,22 @@ Here's an example that will open a certain path once a service is a available:
 gp ports await 3000 && gp preview $(gp url 3000)/my/path/index.html
 ```
 
+### visibility
+
+You can change a port's visibility to make it only available for **users with workspace access** (`private`) or **everyone who knows the port's URL** (`public`). A port's default visibility is always `private`, unless configured differently from within [`.gitpod.yml`](/docs/references/gitpod-yml#portsnvisibility).
+
+Here's an example which will make port `3000` public:
+
+```sh
+gp ports visibility 3000:public
+```
+
+Here's an example which will make port `3000` private:
+
+```sh
+gp ports visibility 3000:private
+```
+
 ## top
 
 Displays the current workspace's class info along with the used and available CPU and memory.

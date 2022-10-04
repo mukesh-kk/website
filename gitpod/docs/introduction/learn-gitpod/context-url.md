@@ -73,6 +73,8 @@ gitpod.io/#https://github.com/gitpod-io/website/issues/470
 
 ## Pull/Merge Request Context
 
+> **Note:** Currently pull-request based context URLs are only supported by [GitHub authentication](https://www.gitpod.io/docs/configure/authentication/github) as a [Gitpod authentication method](https://www.gitpod.io/docs/configure/authentication).
+
 When Gitpod recognizes a pull or merge request context, it knows you most likely have one of two intentions:
 
 - As a reviewer, provide PR/MR feedback

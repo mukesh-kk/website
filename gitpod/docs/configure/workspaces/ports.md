@@ -95,12 +95,12 @@ The property `visibility` configures who can access a port:
 
 ### Configure port visibility
 
-Port visibility can be set in [`.gitpod.yml`](/docs/references/gitpod-yml), or manually changed within the IDE or editor.
+Port visibility can be set in [`.gitpod.yml`](/docs/references/gitpod-yml), changed via [the Gitpod CLI](/docs/references/gitpod-cli), or manually changed within the IDE or editor.
 
 <IdeToggle id="ide-toggle-ports">
 
 <div slot="jetbrains">
-    Currently, toggling port visibility is not possible in JetBrains IDEs.
+    <p>Using the <a href="/docs/references/gitpod-cli#visibility">Gitpod CLI with ports visibility</a> in the terminal.</p>
 </div>
 
 <div slot="vscodebrowser">
@@ -111,7 +111,7 @@ Port visibility can be set in [`.gitpod.yml`](/docs/references/gitpod-yml), or m
 </div>
 
 <div slot="vscodedesktop">
-    Currently, toggling port visibility is not possible in VS Code Desktop.
+    <p>Using the <a href="/docs/references/gitpod-cli#visibility">Gitpod CLI with ports visibility</a> in the terminal.</p>
 </div>
 
 </IdeToggle>

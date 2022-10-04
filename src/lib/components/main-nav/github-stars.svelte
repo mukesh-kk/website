@@ -30,7 +30,7 @@
 </style>
 
 <a
-  href="https://github.com/gitpod-io/gitpod/stargazers"
+  href="https://github.com/gitpod-io/gitpod"
   target="_blank"
   class="flex items-center font-bold text-sm"
 >

@@ -22,7 +22,7 @@
   import OpenGraph from "$lib/components/open-graph.svelte";
   import "$lib/assets/markdown-commons.scss";
   export let changelogEntry: ChangelogEntryType;
-  const { date, title, excerpt, content, image, alt } = changelogEntry;
+  const { date, title, excerpt, content, image, alt, ogImage } = changelogEntry;
 </script>
 
 <style lang="postcss">
@@ -36,8 +36,8 @@
     description: excerpt,
     title,
     type: "article",
-    image: `images/changelog/${image}`,
-    imageTwitter: `images/changelog/${image}`,
+    image: `images/changelog/${ogImage ? ogImage : image}`,
+    imageTwitter: `images/changelog/${ogImage ? ogImage : image}`,
     norobots: true,
   }}
 />

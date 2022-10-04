@@ -40,9 +40,7 @@ In cases where you don't know how long it will take until someone looks at your 
 
 ## Garbage Collection
 
-Old, unused workspaces are automatically deleted.
-
-Unused workspaces are deleted on a schedule. There is no fixed amount of workspaces that are kept by Gitpod. To know exactly how long your past workspaces will be kept, a message is displayed at the top of the [workspaces list](https://gitpod.io/workspaces/) in your dashboard. Restarting a workspace resets the day counter for this particular workspace.
+Unused or inactive workspaces are automatically deleted after 14 days. A message is also displayed at the bottom of the [workspaces list](https://gitpod.io/workspaces/) within the `Inactive Workspaces` panel in your dashboard. Restarting a workspace resets the day counter for that particular workspace.
 
 To prevent a workspace from being deleted, you can pin it in your [list of workspaces](https://gitpod.io/workspaces/). Pinned workspaces are kept forever.
 
