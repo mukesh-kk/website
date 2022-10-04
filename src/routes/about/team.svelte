@@ -6,7 +6,7 @@
   import Explore from "$lib/components/explore.svelte";
   import FeatureTitles from "$lib/components/feature-titles.svelte";
   import Header from "$lib/components/header.svelte";
-  import ImageLightDark from "$lib/components/image-light-dark.svelte";
+  // import ImageLightDark from "$lib/components/image-light-dark.svelte";
   import OpenGraph from "$lib/components/open-graph.svelte";
   import Celebrate from "$lib/components/team/celebrate.svelte";
   import CoreValues from "$lib/components/team/core-values.svelte";
@@ -31,7 +31,7 @@
   text="Gitpod started with a small team in Germany. Now, our fully remote team is distributed across the globe."
   fullWidth={true}
 >
-  <ImageLightDark
+  <!-- <ImageLightDark
     slot="content"
     image={{
       src: "/images/team/map-light.svg",
@@ -39,6 +39,16 @@
       alt: "World Map of Gitpodders",
     }}
     class="mt-x-small md:mt-medium w-full max-w-[1091px] mx-auto"
+  /> -->
+
+  <iframe
+    title="World Map of where different people working at Gitpod are located."
+    slot="content"
+    src="https://app.hex.tech/ede2d1dd-c218-4acd-ba74-f5923b3203a4/app/d1c6ec1e-7515-4a5f-be62-5b605b929733/latest?embedded=true&embeddedStaticCellId=7013b08a-5cee-48db-b2f3-1549e0fdfd1c"
+    frameborder="0"
+    style="border:0"
+    allowfullscreen
+    class="mx-auto mt-x-small md:mt-small w-full max-w-5xl aspect-[64/50]"
   />
 </Header>
 
