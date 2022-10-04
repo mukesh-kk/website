@@ -3,6 +3,7 @@ import type { RequestHandler } from "@sveltejs/kit";
 import save from "$lib/api/save-to-spreadsheet";
 import type { Email, EmailToType } from "$lib/api/api";
 import { webinarSheets } from "$lib/constants";
+import crypto from "node:crypto";
 
 const determineToEmail = (toType: EmailToType = "contact") => {
   switch (toType) {
@@ -80,7 +81,10 @@ async function sendEmail(
     },
     subject: email.subject,
     //TODO External ID
-    external_id: "Test Test",
+    external_id: crypto
+      .createHash("sha1")
+      .update(Date.now().toString())
+      .digest("hex"),
     created_at: Math.floor(Date.now() / 1000),
     body: `${
       email.message
