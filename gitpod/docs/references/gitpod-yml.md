@@ -51,7 +51,7 @@ Below is a full reference of all available properties. To see the underlying sch
     - [`tasks[n].openIn`](#tasksnopenin)
     - [`tasks[n].openMode`](#tasksnopenmode)
     - [`tasks[n].prebuild`](#tasksnprebuild)
-    - [`mainConfiguration`](#mainconfiguration)
+  - [`mainConfiguration`](#mainconfiguration)
   - [`vscode`](#vscode)
     - [`vscode.extensions`](#vscodeextensions)
   - [`workspaceLocation`](#workspacelocation)
@@ -149,7 +149,7 @@ checkoutLocation: "go/src/github.com/demo-apps/go-gin-app"
 
 Define workspace core dump behavior.
 
-In most cases, this is not needed, but it is a valuable feature to debug C++ and other languages like Rust, Python, or node.js when debugging add-ons.
+For most cases, setting the `coreDump` property is not required. However, it can be a valuable feature to debug C++, or when debugging add-ons in Rust, Python, or node.js.
 
 <div class="overflow-x-auto">
 
@@ -166,10 +166,7 @@ coreDump:
   enabled: true
 ```
 
-We can also set custom size values for the generated core files using the `softLimit` and `hardLimit` values
-The setting `softLimit` configures the upper limit on the size of the core dump file that will be produced if a process receives a core dump signal, while `hardLimit` allows setting a hard limit to act as a ceiling for the soft limit.
-
-For more details, please check https://man7.org/linux/man-pages/man2/getrlimit.2.html
+You can also set custom size values for the generated core files using the `softLimit` and `hardLimit` values (see example below). The setting `softLimit` configures the upper limit on the size of the core dump file that will be produced if a process receives a core dump signal, while `hardLimit` allows setting a hard limit to act as a ceiling for the soft limit.
 
 ```yaml
 coreDump:
@@ -177,6 +174,8 @@ coreDump:
   softLimit: <bytes>
   hardLimit: <bytes>
 ```
+
+For more details, please see the [Linux man page for `getrlimit`](https://man7.org/linux/man-pages/man2/getrlimit.2.html)
 
 ## `gitConfig`
 
@@ -728,7 +727,7 @@ Note: `split-top` and `split-bottom` are deprecated values.
 
 Deprecated. Please use the [`init`](#tasksninit) task instead.
 
-### `mainConfiguration`
+## `mainConfiguration`
 
 > mainConfiguration is currently in [Beta](/docs/help/public-roadmap/release-cycle). [Send feedback](https://github.com/gitpod-io/gitpod/issues/8623).
 

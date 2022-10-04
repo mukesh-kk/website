@@ -25,5 +25,6 @@
 | Pearberry Software, Inc      | United States of America | Email service for Account Notifications, Product Updates and Newsletters                           |
 | Twillo, Inc                  | United States of America | Phone number and user account verification service                                                 |
 | Stripe, Inc                  | United States of America | Payment Service                                                                                    |
+| Gong.io, Inc                 | United States of America | Meeting Transcript Service                                                                         |
 
 </div>

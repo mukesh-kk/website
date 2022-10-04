@@ -187,6 +187,23 @@ tasks:
       npm run test
 ```
 
+### Immediately exit for any command failure within a task
+
+If you wish to halt an entire task with for an error within the task script, then you could do the following:
+```
+tasks:
+  - init: |
+      (
+        set -e # Tells bash to immediately exit on failure off a command
+        bundle install
+        yarn install --frozen-lockfile
+        bundle exec rake
+        bundle exec nanoc compile
+      )
+```
+
+Gitpod starts all your `tasks` inside separate `bash` (`$SHELL`) shells. Gitpod can only assert the exit status of the shell process of a task. Normally `bash` or other shells don't halt on a failure of a command unless you explicitly ask it to. `bash` only inherits the last exit status of a script run with it before it's own `exit`. Hence Gitpod can't determine if all of your commands inside the `init` task succeeded. To have that effect, you can put `set -e;` on top of task shell-commands and wrap your whole task-script with `()` to configure that particular task shell to halt and immediately exit with an error code for a failure of any command. This can be specially helpful for prebuilds (i.e `init` tasks)
+
 ### Missing examples?
 
 We'd love to hear from you if you have specific questions or ideas for additional examples. Please click the following link to open a pre-configured GitHub issue: [Ask for a new Start Task example](https://github.com/gitpod-io/website/issues/new?title=[Start+Task+Example]&labels=documentation).

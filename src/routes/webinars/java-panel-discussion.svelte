@@ -2,11 +2,13 @@
   import Articles from "$lib/components/articles.svelte";
   import Explore from "$lib/components/explore.svelte";
   import OpenGraph from "$lib/components/open-graph.svelte";
+  import Card from "$lib/components/ui-library/card";
   import Header from "$lib/components/webinars/header.svelte";
   import Hosts from "$lib/components/webinars/hosts.svelte";
   import Layout from "$lib/components/webinars/layout.svelte";
   import OrganizedBy from "$lib/components/webinars/organized-by.svelte";
   import Register from "$lib/components/webinars/register.svelte";
+  import YoutubeEmbed from "$lib/components/youtube-embed.svelte";
   import { javaPanelDiscussionWebinar } from "$lib/constants";
   import { hosts } from "$lib/contents/webinars/java-panel-discussion";
 </script>
@@ -37,11 +39,19 @@
       duration="60min"
       webinarDescription="Open conversation about Java remote development covering best practices. What does not work well yet, and what had to click to make it work."
     />
-    <Register
-      toType={javaPanelDiscussionWebinar.type}
-      class="lgx:hidden"
-      eventType="panel discussion"
-    />
+
+    <div class="lgx:hidden">
+      <Card
+        size="medium"
+        class="pt-small md:pt-large px-3 sm:px-xx-small pb-micro md:pb-xx-small w-[95vw] lg:w-[auto]"
+      >
+        <YoutubeEmbed
+          title="Success and failure stories of Java developers shifting to remote"
+          embedId="Tgb7CBoqoqg"
+        />
+      </Card>
+    </div>
+
     <div class="max-w-[560px]">
       <!-- <InThisWebinar>
         <svelte:fragment slot="list-items">
@@ -60,11 +70,18 @@
       </OrganizedBy>
     </div>
   </Layout>
-  <Register
-    toType={javaPanelDiscussionWebinar.type}
-    class="hidden lgx:block"
-    eventType="panel discussion"
-  />
+
+  <div class="hidden lgx:block max-w-2xl">
+    <Card
+      size="medium"
+      class="pt-small md:pt-large px-3 sm:px-xx-small pb-micro md:pb-xx-small w-[95vw] lg:w-[auto]"
+    >
+      <YoutubeEmbed
+        title="Success and failure stories of Java developers shifting to remote"
+        embedId="Tgb7CBoqoqg"
+      />
+    </Card>
+  </div>
 </div>
 
 <Articles

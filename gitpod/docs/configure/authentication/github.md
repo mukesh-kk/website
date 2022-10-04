@@ -5,6 +5,7 @@ title: GitHub
 
 <script context="module">
   export const prerender = true;
+  import Keybind from "$lib/components/keybind.svelte";
 </script>
 
 # GitHub
@@ -19,7 +20,7 @@ Gitpod uses the name and email from your GitHub account ID to create a new Gitpo
 
 ## Starting Workspaces
 
-To start a new workspace after logging into Gitpod, use cmd-O (ctrl-O on Windows) or click on the **New Workspace** button in https://gitpod.io/workspaces. This will prompt for a repository URL, or suggest recent repositories opened with your account.
+To start a new workspace after logging into Gitpod, use <Keybind>CtrlCmd + O</Keybind> or click on the **New Workspace** button in https://gitpod.io/workspaces. This will prompt for a repository URL, or suggest recent repositories opened with your account.
 
 You can also start a Gitpod workspace using a GitHub repository URL. Simply point your browser to the repository URL prefixed with `gitpod.io/#` as described in [Getting started](/docs/introduction/getting-started).
 

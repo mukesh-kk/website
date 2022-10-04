@@ -31,6 +31,9 @@
     type: "website",
     keywords:
       "updates, product, changes, features, releases, bugs, fixes, version, updates, improvements",
+    // Update this each monthly release and enter the changelog URL into https://cards-dev.twitter.com/validator to force twitter to refresh it
+    image: "images/changelog/2022-09-30-og.png",
+    imageTwitter: "images/changelog/2022-09-30-og.png",
   }}
 />
 

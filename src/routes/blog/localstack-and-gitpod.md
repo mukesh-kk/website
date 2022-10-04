@@ -37,7 +37,7 @@ There is also a large and growing ecosystem of tools that LocalStack natively in
 
 # What is Gitpod ?
 
-Gitpod is an open-source remote development platform for remote development. It provides an automated setup with cloud-based, remote developer environments connected with a developer’s [editing experience of choice](https://www.gitpod.io/docs/ides-and-editors), making developer experiences better.
+Gitpod is an open-source remote development platform for remote development. It provides an automated setup with cloud-based, remote developer environments connected with a developer’s [editing experience of choice](https://www.gitpod.io/docs/references/ides-and-editors), making developer experiences better.
 
 Rather than having a single static environment (like your local machine), Gitpod encourages you to codify your dev environment as code. With your project codified, you’ll be able to spin up a new workspace, start coding and throw away the workspace when you’re done. You can have multiple workspaces with different contexts open at once - one for your feature, one for a bug or one for your code review directly in Gitpod.
 
@@ -49,7 +49,7 @@ Combining the development environment of Gitpod with the cloud sandbox provided 
 
 The figure below illustrates how the components fit together - on the left-hand side, we can see the user’s machine and their Web browser, whereas, on the right-hand side, we see the Gitpod workspace running in the Gitpod backend infrastructure.
 
-The figure is also segmented vertically - in the upper part, we see the code view, i.e., the Gitpod developer environment. Gitpod is not a browser-based IDE but provides fully-automated workspaces (think Linux workstations) in the cloud. You can access them with the code editor of your choice. Gitpod works best with VS Code (browser and desktop), JetBrains IDEs like IntelliJ or GoLand, and Vim. New [IDE integrations](https://www.gitpod.io/docs/ides-and-editors) are added over time.
+The figure is also segmented vertically - in the upper part, we see the code view, i.e., the Gitpod developer environment. Gitpod is not a browser-based IDE but provides fully-automated workspaces (think Linux workstations) in the cloud. You can access them with the code editor of your choice. Gitpod works best with VS Code (browser and desktop), JetBrains IDEs like IntelliJ or GoLand, and Vim. New [IDE integrations](https://www.gitpod.io/docs/references/ides-and-editors) are added over time.
 
 The lower part contains the runtime view, i.e., an instantiation of your app that can be used for previewing the application logic and quickly iterating on the logic. The runtime makes use of a LocalStack container that runs inside the Gitpod environment - and allows you to conveniently deploy your cloud application assets into this sandbox, to then preview the results.
 
@@ -109,7 +109,7 @@ There are a number of key benefits of using Gitpod and LocalStack to develop clo
 - **Seamless transition into CI:** The application configuration can be taken 1:1 and directly transferred to a CI/CD pipeline that deploys the application and executes integration tests to ensure quality, as the business logic of the cloud app evolves over time.
 - **Cost savings:** Last but not least, it becomes very easy to run your applications in a sandbox environment, without ever talking to the real cloud, hence not incurring any costs for using any of the real cloud resources.
 
-If you have any questions about configuring and running your project, drop by Gitpod’s [community Discord server](https://discord.com/invite/gitpod) or LocalStack [Slack Community](https://localstack-community.slack.com/). We would love to hear your feedback in the Community.
+If you have any questions about configuring and running your project, drop by Gitpod’s [community Discord server](https://gitpod.io/chat) or LocalStack [Slack Community](https://localstack-community.slack.com/). We would love to hear your feedback in the Community.
 
 ## Resources and Further Reading
 

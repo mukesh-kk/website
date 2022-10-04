@@ -5,6 +5,7 @@ title: Bitbucket Server Integration
 
 <script context="module">
   export const prerender = true;
+  import Keybind from "$lib/components/keybind.svelte";
 </script>
 
 # Bitbucket Server
@@ -46,7 +47,7 @@ Refreshing the integration settings page should show a new Git provider connecti
 
 Other Bitbucket Server users need to connect their own Gitpod account to their own Bitbucket Server account by starting a workspace.
 
-To start a workspace, paste the URL of a Bitbucket Server repository into the New Workspace popup (Cmd+O) in Gitpod, or prefix the repository URL as described in [Getting started](/docs/introduction/getting-started).
+To start a workspace, paste the URL of a Bitbucket Server repository into the New Workspace popup (<Keybind>CtrlCmd + O</Keybind>) in Gitpod, or prefix the repository URL as described in [Getting started](/docs/introduction/getting-started).
 
 ![Open in Gitpod form](../../../static/images/integrations/bbs-open-in-gitpod.png)
 

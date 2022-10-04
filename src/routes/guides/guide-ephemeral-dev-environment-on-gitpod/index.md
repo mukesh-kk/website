@@ -207,4 +207,4 @@ Inside your workspace, Open the terminal & run the following steps:
 
 Yay! You are now ready to get started with an ephemeral Dev Environment on Gitpod.
 
-If you have questions about configuring your project, drop by our community [Discord server](https://discord.com/invite/gitpod). We would love to hear your feedback in the [Gitpod Community](https://www.gitpod.io/community).
+If you have questions about configuring your project, drop by our community [Discord server](https://gitpod.io/chat). We would love to hear your feedback in the [Gitpod Community](https://www.gitpod.io/community).
