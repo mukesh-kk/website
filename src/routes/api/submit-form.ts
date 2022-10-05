@@ -18,6 +18,19 @@ const determineToEmail = (toType: EmailToType = "contact") => {
   }
 };
 
+const determineInboxID = (toType: string = "contact") => {
+  switch (toType) {
+    case "contact":
+      return process.env.FRONT_SUPPORT_INBOX_ID;
+    case "sales":
+      return process.env.FRONT_SALES_INBOX_ID;
+    case "community-license":
+      return process.env.FRONT_SALES_INBOX_ID;
+    default:
+      return process.env.FRONT_SUPPORT_INBOX_ID;
+  }
+};
+
 const getWebinarByType = (toType: EmailToType) =>
   webinarSheets.find((sheet) => sheet.type === toType);
 
@@ -70,6 +83,7 @@ const isTypeWebinar = (toType: EmailToType) =>
 async function sendEmail(
   email: Email
 ): Promise<{ statusCode: number; body?: string }> {
+  const inboxID = determineInboxID(email.toType);
   const body = {
     sender: { handle: email.replyTo.email || "" },
     to: [email.to.email],
@@ -80,7 +94,6 @@ async function sendEmail(
       is_inbound: true,
     },
     subject: email.subject,
-    //TODO External ID
     external_id: crypto
       .createHash("sha1")
       .update(Date.now().toString())
@@ -94,7 +107,7 @@ async function sendEmail(
   };
   try {
     await fetch(
-      `https://api2.frontapp.com/inboxes/${process.env.FRONT_SUPPORT_INBOX_ID}/imported_messages`,
+      `https://api2.frontapp.com/inboxes/${inboxID}/imported_messages`,
       {
         method: "POST",
         body: JSON.stringify(body),
