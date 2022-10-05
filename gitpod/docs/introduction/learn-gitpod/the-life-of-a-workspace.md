@@ -14,6 +14,42 @@ Gitpod makes creating fresh workspaces as easy as [clicking a button on a reposi
 Gitpod's continuous dev environments encourages you to create fresh workspaces rather than restarting older ones.
 This ensures that you are starting from a clean slate with proper configuration.
 
+## Workspace Loading Phases (New)
+
+### 1: New Workspace
+
+### 2: Establish Workspace Image
+
+**Steps:**
+
+- Checks the `gitpod.yml` `workspace-image` property first
+
+**Applies to:** `new workspace`<br />
+**Does not apply to:** `snapshots`, `restarted workspace`
+
+### 3: Workspace Image Build
+
+- Start a docker build based on workspace base image
+- This is not run as part of the workspace
+
+### 4: Workspace Image Download
+
+<!-- TODO: Description -->
+
+### 5: Repo Clone
+
+<!-- TODO: Description -->
+
+### 6: Workspace Start
+
+<!-- TODO: Description -->
+
+### X: Workspace Deletion
+
+- Workspace is cleaned up / removed after ~14 days
+
+---
+
 ## Timeouts
 
 Any running workspace will automatically stop after some time of inactivity. Normally, this timeout is 30 minutes but is extended to **60 minutes if you have an _Unleashed_ plan**.
