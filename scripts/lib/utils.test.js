@@ -1,4 +1,4 @@
-import { parseOldReleaseNote } from "../lib/utils.js";
+import { parseOldReleaseNote } from "./utils.js";
 
 test("Formatting of old release note blocks works for valid release notes", () => {
   const pr = {

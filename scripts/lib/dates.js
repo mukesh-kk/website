@@ -27,13 +27,13 @@ export const dateFormat = [
  * @param {number} [year] - The year to find the boundaries for. If not provided, the current year is used.
  * @returns {Array} An array of two strings, the first being the first business day of the month, the second being the last business day of the month.
  */
-export const getMonthBoundaries = (prefferedMonth, prefferedYear) => {
+export const getMonthBoundaries = (preferredMonth, preferredYear) => {
   const date = new Date();
   let offset = 0;
   let lastDay = null;
   let firstDay = null;
-  const year = prefferedYear || date.getFullYear();
-  const month = prefferedMonth || date.getMonth() + 1;
+  const year = preferredYear || date.getFullYear();
+  const month = preferredMonth || date.getMonth() + 1;
 
   do {
     lastDay = new Date(year, month, offset);
@@ -49,10 +49,18 @@ export const getMonthBoundaries = (prefferedMonth, prefferedYear) => {
   return [firstDay, lastDay];
 };
 
-export const getFormattedMonthBoundaries = (prefferedMonth, prefferedYear) => {
-  const [firstDay, lastDay] = getMonthBoundaries(prefferedMonth, prefferedYear);
-  return [
-    formatDate(firstDay, dateFormat, "-"),
-    formatDate(lastDay, dateFormat, "-"),
-  ];
+// TODO: Update signature to mock date via Jest (https://jestjs.io/docs/jest-object#jestsetsystemtimenow-number--date)
+export const getStartOfMonth = (preferredMonth, preferredYear) => {
+  const [firstDay] = getMonthBoundaries(preferredMonth, preferredYear);
+  return formatDate(firstDay, dateFormat, "-");
 };
+
+export const getEndOfMonth = (preferredMonth, preferredYear) => {
+  const [_, lastDay] = getMonthBoundaries(preferredMonth, preferredYear);
+  return formatDate(lastDay, dateFormat, "-");
+};
+
+export const getFormattedMonthBoundaries = (...args) => [
+  getStartOfMonth(...args),
+  getEndOfMonth(...args),
+];
