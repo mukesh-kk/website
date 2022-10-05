@@ -1,7 +1,7 @@
 import fs from "fs";
 import { Octokit } from "octokit";
 import { paginateGraphql } from "@octokit/plugin-paginate-graphql";
-import { getMonthBoundaries } from "./lib/dates.js";
+import { getFormattedMonthBoundaries } from "./lib/dates.js";
 import metadataParser from "markdown-yaml-metadata-parser";
 import {
   generatePrChangelogLine,
@@ -63,7 +63,7 @@ const main = async () => {
     process.exit(0);
   }
 
-  const [firstBusinessDay, lastBusinessDay] = getMonthBoundaries();
+  const [firstBusinessDay, lastBusinessDay] = getFormattedMonthBoundaries();
   const releaseDate = argv._[0] || lastBusinessDay;
   const from = argv._[1] || firstBusinessDay;
   const to = argv._[2] || lastBusinessDay;

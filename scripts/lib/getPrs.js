@@ -1,4 +1,8 @@
-import { getMonthBoundaries, join, dateFormat } from "./dates.js";
+import {
+  formatDate,
+  dateFormat,
+  getFormattedMonthBoundaries,
+} from "./dates.js";
 import minimist from "minimist";
 
 const argv = minimist(process.argv.slice(2));
@@ -7,7 +11,9 @@ const byDeployed = (pr) => {
   const timelineItems = pr.timelineItems.edges.map((edge) => edge.node);
 
   const [from, to] =
-    argv._[0] && argv._[1] ? [argv._[0], argv._[1]] : getMonthBoundaries();
+    argv._[0] && argv._[1]
+      ? [argv._[0], argv._[1]]
+      : getFormattedMonthBoundaries();
 
   const end = new Date(to);
   end.setHours(23, 59, 59, 999);
@@ -65,7 +71,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
 
   switch (repo) {
     case "gitpod-io/gitpod":
-      const fromAdjusted = join(
+      const fromAdjusted = formatDate(
         new Date(from).getTime() - 60 * 24 * 60 * 60 * 1000,
         dateFormat,
         "-"

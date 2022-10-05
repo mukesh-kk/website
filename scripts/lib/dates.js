@@ -4,7 +4,7 @@ const isWorkingDay = (date) => {
   return day !== 0 && day !== 6;
 };
 
-export const join = (date, dateFormat, delimiter) => {
+export const formatDate = (date, dateFormat, delimiter) => {
   const format = (formatOptions) => {
     const intlDate = new Intl.DateTimeFormat("en", formatOptions);
     return intlDate.format(date);
@@ -12,6 +12,9 @@ export const join = (date, dateFormat, delimiter) => {
   return dateFormat.map(format).join(delimiter);
 };
 
+/**
+ * The default date format: YYYY-MM-DD
+ */
 export const dateFormat = [
   { year: "numeric" },
   { month: "2-digit" },
@@ -19,15 +22,18 @@ export const dateFormat = [
 ];
 
 /**
- * Finds the first and last working/business days of the month. The month is determined as the either the current month , or, if the current day is before the 7th, the previous month.
+ * Finds the first and last working/business days of the month..
+ * @param {number} [month] - The month to find the boundaries for. If not provided, the current month is used.
+ * @param {number} [year] - The year to find the boundaries for. If not provided, the current year is used.
+ * @returns {Array} An array of two strings, the first being the first business day of the month, the second being the last business day of the month.
  */
-export const getMonthBoundaries = () => {
+export const getMonthBoundaries = (prefferedMonth, prefferedYear) => {
   const date = new Date();
   let offset = 0;
   let lastDay = null;
   let firstDay = null;
-  const year = date.getFullYear();
-  const month = date.getMonth() + (date.getDate() < 7 ? 0 : 1);
+  const year = prefferedYear || date.getFullYear();
+  const month = prefferedMonth || date.getMonth() + 1;
 
   do {
     lastDay = new Date(year, month, offset);
@@ -40,5 +46,13 @@ export const getMonthBoundaries = () => {
     offset++;
   } while (!isWorkingDay(firstDay));
 
-  return [join(firstDay, dateFormat, "-"), join(lastDay, dateFormat, "-")];
+  return [firstDay, lastDay];
+};
+
+export const getFormattedMonthBoundaries = (prefferedMonth, prefferedYear) => {
+  const [firstDay, lastDay] = getMonthBoundaries(prefferedMonth, prefferedYear);
+  return [
+    formatDate(firstDay, dateFormat, "-"),
+    formatDate(lastDay, dateFormat, "-"),
+  ];
 };

@@ -30,7 +30,8 @@
     "generate:adr": "adr new",
     "generate:jb": "node ./generators/ide/jb-gen.js",
     "cypress:open": "cypress open --browser firefox",
-    "test:e2e": "cypress run --headless --browser firefox"
+    "test:e2e": "cypress run --headless --browser firefox",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "dependencies": {
     "@octokit/plugin-paginate-graphql": "^2.0.1",
@@ -61,6 +62,7 @@
     "hast-util-heading-rank": "^2.1.0",
     "hastscript": "^7.0.2",
     "husky": "^7.0.4",
+    "jest": "^29.1.2",
     "lint-staged": "^11.2.6",
     "markdown-yaml-metadata-parser": "^3.0.0",
     "mdast-util-to-string": "^3.1.0",
