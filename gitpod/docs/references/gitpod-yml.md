@@ -51,7 +51,7 @@ Below is a full reference of all available properties. To see the underlying sch
     - [`tasks[n].openIn`](#tasksnopenin)
     - [`tasks[n].openMode`](#tasksnopenmode)
     - [`tasks[n].prebuild`](#tasksnprebuild)
-    - [`mainConfiguration`](#mainconfiguration)
+  - [`mainConfiguration`](#mainconfiguration)
   - [`vscode`](#vscode)
     - [`vscode.extensions`](#vscodeextensions)
   - [`workspaceLocation`](#workspacelocation)
@@ -727,7 +727,7 @@ Note: `split-top` and `split-bottom` are deprecated values.
 
 Deprecated. Please use the [`init`](#tasksninit) task instead.
 
-### `mainConfiguration`
+## `mainConfiguration`
 
 > mainConfiguration is currently in [Beta](/docs/help/public-roadmap/release-cycle). [Send feedback](https://github.com/gitpod-io/gitpod/issues/8623).
 

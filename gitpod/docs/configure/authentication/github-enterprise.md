@@ -5,6 +5,7 @@ title: GitHub Enterprise
 
 <script context="module">
   export const prerender = true;
+  import Keybind from "$lib/components/keybind.svelte";
 </script>
 
 # GitHub Enterprise
@@ -38,7 +39,7 @@ Copy the **Client ID** and **Secret** into the corresponding fields in Gitpod an
 
 GHE users connect their Gitpod account to their GHE account by starting a workspace.
 
-To start a workspace, paste the URL of a GHE repository into the New Workspace popup (Cmd+O) in Gitpod, or prefix the repository URL as described in [Getting started](/docs/introduction/getting-started).
+To start a workspace, paste the URL of a GHE repository into the New Workspace popup (<Keybind>CtrlCmd + O</Keybind>) in Gitpod, or prefix the repository URL as described in [Getting started](/docs/introduction/getting-started).
 
 ![Open in Gitpod form](../../../static/images/integrations/open-in-gitpod.png)
 

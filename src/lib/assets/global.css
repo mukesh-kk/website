@@ -188,6 +188,20 @@
     overflow-wrap: break-word;
   }
 
+  kbd > kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+      0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: 0.85em;
+    line-height: 1;
+    padding: 2px 4px;
+    white-space: nowrap;
+  }
+
   .text-large .code {
     @apply py-0;
   }
@@ -217,4 +231,80 @@
 .docs-toc-item::before {
   @apply absolute left-[3px];
   content: url(/svg/docs/fold.svg);
+}
+
+/* Scrollbar */
+body::-webkit-scrollbar {
+  background-color: var(--white);
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--white);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #ece7e5;
+  border-radius: 12px;
+  border: 2px solid var(--white);
+}
+
+body::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Dark Mode of Scrollbar */
+body.dark::-webkit-scrollbar {
+  background-color: var(--slight-grey);
+  width: 12px;
+}
+
+body.dark::-webkit-scrollbar-track {
+  background-color: var(--mid-black);
+}
+
+body.dark::-webkit-scrollbar-thumb {
+  background-color: var(--light-black);
+  border-radius: 12px;
+  border: 2px solid var(--mid-black);
+}
+
+body.dark::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Left Menu Items Scrollbar */
+ul::-webkit-scrollbar {
+  background-color: var(--white);
+  width: 12px;
+  border-radius: 100px;
+}
+
+ul::-webkit-scrollbar-track {
+  background-color: var(--white);
+  border-radius: 100px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: #ece7e5;
+  border-radius: 12px;
+  border: 2px solid var(--white);
+}
+
+/* Dark Mode of Left Menu Items Scrollbar*/
+.dark ul::-webkit-scrollbar {
+  background-color: var(--slight-grey);
+  width: 12px;
+  border-radius: 100px;
+}
+
+.dark ul::-webkit-scrollbar-track {
+  background-color: var(--mid-black);
+  border-radius: 100px;
+}
+
+.dark ul::-webkit-scrollbar-thumb {
+  background-color: var(--light-black);
+  border-radius: 12px;
+  border: 2px solid var(--mid-black);
 }

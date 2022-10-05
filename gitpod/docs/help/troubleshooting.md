@@ -5,6 +5,7 @@ title: Troubleshooting
 
 <script context="module">
   export const prerender = true;
+  import Keybind from "$lib/components/keybind.svelte";
 </script>
 
 # Troubleshooting
@@ -15,7 +16,7 @@ If you cannot find your issue here or in the documentation, please contact Gitpo
 
 These logs contain information about the workspace, the session, and the Visual Studio Code environment. They are useful for diagnosing connection issues and other unexpected behavior.
 
-- Open the Visual Studio Code Command Palette (<kbd>Shift</kbd> + <kbd>Command</kbd> + <kbd>P</kbd> (Mac) / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (Windows)) and type **Export logs**, select **Gitpod: Export all logs** from the list to download a zip file containing all of the logs.
+- Open the Visual Studio Code Command Palette (<Keybind>CtrlCmd + Shift + P</Keybind>) and type **Export logs**, select **Gitpod: Export all logs** from the list to download a zip file containing all of the logs.
 
 **Important:** The content of these logs should **NOT** be shared publicly as they could contain sensitive information about your workspace. Instead, send them to troubleshooting@gitpod.io along with a link to a corresponding GitHub issue if needed.
 

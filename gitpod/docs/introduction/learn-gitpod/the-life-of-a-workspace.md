@@ -5,6 +5,7 @@ title: The life of a workspace
 
 <script context="module">
   export const prerender = true;
+  import Keybind from "$lib/components/keybind.svelte";
 </script>
 
 # The life of a workspace
@@ -18,7 +19,7 @@ This ensures that you are starting from a clean slate with proper configuration.
 Any running workspace will automatically stop after some time of inactivity. Normally, this timeout is 30 minutes but is extended to **60 minutes if you have an _Unleashed_ plan**.
 Furthermore, _Unleashed_ users can manually boost the timeout of a workspace to 180 minutes. This comes in handy, e.g. in case you want to go out for a longer lunch or meeting and don't like restarting your workspace when coming back.
 
-To do that, open the editor's Command Palette (⇧⌘P or Ctrl+Shift+P) and search for "Gitpod: Extend Workspace Timeout".
+To do that, open the editor's Command Palette (<Keybind>CtrlCmd + Shift + P</Keybind>) and search for "Gitpod: Extend Workspace Timeout".
 
 **Note**: If you do not have an _Unleashed_ plan, this command is not available.
 

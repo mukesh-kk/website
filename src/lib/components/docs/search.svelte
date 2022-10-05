@@ -18,6 +18,7 @@
   import topicsState from "./states/topics-state";
   import { page } from "$app/stores";
   import MagGlass from "../svgs/mag-glass.svelte";
+  import { isMac } from "$lib/utils/helpers";
   let clazz = "";
   export { clazz as class };
   export let containerClasses = "";
@@ -58,7 +59,7 @@
 
   onMount(() => {
     if (!navigator.userAgent.toLowerCase().match(/mobile/i)) {
-      const platformKey = /(Mac)/i.test(navigator.userAgent) ? "⌘" : "Ctrl";
+      const platformKey = isMac() ? "⌘" : "Ctrl";
       placeholder += ` ${platformKey}+K`;
     }
   });
