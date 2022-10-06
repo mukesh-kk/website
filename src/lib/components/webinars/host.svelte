@@ -1,6 +1,6 @@
 <script lang="ts">
   import Card from "../ui-library/card/card.svelte";
-  import type { Host } from "$lib/types/host.type";
+  import type { Host } from "$lib/types/host";
   import GradientStrokeAvatar from "../gradient-stroke-avatar.svelte";
 
   export let host: Host;

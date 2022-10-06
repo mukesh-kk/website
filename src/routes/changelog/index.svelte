@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-  import type { ChangelogEntry as ChangelogEntryType } from "$lib/types/changelog-entry.type";
+  import type { ChangelogEntry as ChangelogEntryType } from "$lib/types/changelog-entry";
 
   import OpenGraph from "$lib/components/open-graph.svelte";
   import "$lib/assets/markdown-commons.scss";

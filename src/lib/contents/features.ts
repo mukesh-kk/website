@@ -1,4 +1,4 @@
-import type { Feature } from "$lib/types/feature.type";
+import type { Feature } from "$lib/types/feature";
 // @ts-ignore
 import Workspaces from "$lib/components/workspaces.svelte";
 import { terminalSource } from "./terminal";

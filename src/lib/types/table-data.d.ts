@@ -1,5 +1,5 @@
-import type { Details } from "./details.type";
-import type { Image } from "./image.type";
+import type { Details } from "./details";
+import type { Image } from "./image";
 
 export type TableData = {
   title: string;

@@ -3,7 +3,7 @@
   import { goto } from "$app/navigation";
   import Toggle from "../toggle.svelte";
   import PricingBoxes from "./pricing-boxes.svelte";
-  import type { Pricing } from "$lib/types/pricing.type";
+  import type { Pricing } from "$lib/types/pricing";
   import Header from "../header.svelte";
 
   export let pricingPlans: Pricing[];

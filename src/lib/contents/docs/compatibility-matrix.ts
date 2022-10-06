@@ -1,4 +1,4 @@
-import type { Matrix } from "$lib/types/matrix.type";
+import type { Matrix } from "$lib/types/matrix";
 
 export const compatibilityMatrix: Matrix[] = [
   {

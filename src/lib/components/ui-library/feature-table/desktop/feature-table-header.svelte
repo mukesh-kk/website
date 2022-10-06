@@ -1,6 +1,6 @@
 <script lang="ts">
   import MostPopular from "$lib/components/pricing/most-popular.svelte";
-  import type { FeatureTableHeader } from "../feature-table.types";
+  import type { FeatureTableHeader } from "../feature-table";
 
   export let isToc: boolean = false;
   export let headerData: FeatureTableHeader = { headline: "" };

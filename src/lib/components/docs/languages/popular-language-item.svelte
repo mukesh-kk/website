@@ -1,6 +1,6 @@
 <script lang="ts">
   import LinkButton from "$lib/components/ui-library/link-button";
-  import type { PopularItem } from "$lib/types/docs.type";
+  import type { PopularItem } from "$lib/types/docs";
 
   export let language: PopularItem;
 </script>

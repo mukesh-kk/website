@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import type { ChangelogEntry } from "$lib/types/changelog-entry.type";
+  import type { ChangelogEntry } from "$lib/types/changelog-entry";
   import { getContext } from "svelte";
   import TimelineItem from "./timeline-item.svelte";
 

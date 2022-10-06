@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import type { Form } from "$lib/types/form.type";
+  import type { Form } from "$lib/types/form";
   import OpenGraph from "$lib/components/open-graph.svelte";
   import Textarea from "$lib/components/ui-library/textarea";
   import Input from "$lib/components/ui-library/input";

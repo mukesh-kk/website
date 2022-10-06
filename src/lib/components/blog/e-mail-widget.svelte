@@ -4,7 +4,7 @@
   import Button from "$lib/components/ui-library/button";
   import Checkbox from "$lib/components/ui-library/checkbox";
   import Card from "$lib/components/ui-library/card";
-  import type { Form } from "$lib/types/form.type";
+  import type { Form } from "$lib/types/form";
 
   let resultMessage: string;
   let isSubmittedOnce = false;

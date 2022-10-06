@@ -1,4 +1,4 @@
-import type { Lottie } from "./lottie.type";
+import type { Lottie } from "./lottie";
 
 interface moreButton {
   text: string;

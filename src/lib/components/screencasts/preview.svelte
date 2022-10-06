@@ -1,6 +1,6 @@
 <script lang="ts">
   import { stringToBeautifiedFragment } from "$lib/utils/helpers";
-  import type { Screencast } from "$lib/types/screencasts.type";
+  import type { Screencast } from "$lib/types/screencasts";
   import Logo from "../svgs/logo.svelte";
 
   export let screencast: Screencast;

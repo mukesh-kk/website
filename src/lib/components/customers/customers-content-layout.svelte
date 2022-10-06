@@ -6,7 +6,6 @@
   import OpenGraph from "../open-graph.svelte";
 
   import Share from "../share.svelte";
-  import Hackernews from "../svgs/share/hackernews.svelte";
   import MoreCustomersStories from "./more-customers-stories.svelte";
 
   const baseUrl = "https://www.gitpod.io/customers/";
@@ -43,8 +42,10 @@
       href: `http://news.ycombinator.com/submitlink?u=${encodeURIComponent(
         `${baseUrl}${slug}`
       )}&t=${encodeURIComponent(title)}`,
-      name: "HackerNews",
-      svg: Hackernews,
+      icon: {
+        src: "/svg/brands/hackernews.svg",
+        alt: "HackerNews",
+      },
       trackingName: "hackernews",
     },
   ];

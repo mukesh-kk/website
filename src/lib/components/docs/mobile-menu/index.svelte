@@ -10,7 +10,7 @@
   import EditInGitpod from "../edit-in-gitpod.svelte";
   import docsCurrentSubsectionStore from "$lib/stores/docs-current-subsection";
   import { sanitizeSelfHosted } from "$lib/utils/helpers";
-  import type { MenuEntry } from "$lib/types/menu-entry.type";
+  import type { MenuEntry } from "$lib/types/menu-entry";
   import { navigating } from "$app/stores";
   export let MENU: MenuEntry[];
 

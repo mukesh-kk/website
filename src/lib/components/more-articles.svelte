@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BlogPost } from "$lib/types/blog-post.type";
+  import type { BlogPost } from "$lib/types/blog-post";
 
   import PostPreview from "./blog/post-preview.svelte";
   import Section from "./section.svelte";

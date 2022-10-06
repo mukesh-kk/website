@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Pricing } from "$lib/types/pricing.type";
+  import type { Pricing } from "$lib/types/pricing";
   import PricingBox from "./pricing-box.svelte";
 
   export let pricingPlans: Pricing[];

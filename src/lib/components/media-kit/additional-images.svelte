@@ -1,7 +1,7 @@
 <script lang="ts">
   import Section from "../section.svelte";
   import ImageBox from "./image-box.svelte";
-  import type { ImageBox as Image } from "$lib/types/image-box.type";
+  import type { ImageBox as Image } from "$lib/types/image-box";
 
   const images: Image[] = [
     {

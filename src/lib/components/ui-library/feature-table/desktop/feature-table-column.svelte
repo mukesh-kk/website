@@ -2,7 +2,7 @@
   import FeatureTableHeader from "./feature-table-header.svelte";
   import LinkButton from "$lib/components/ui-library/link-button";
   import FeatureTableItem from "./feature-table-item.svelte";
-  import type { FeatureTableColumn } from "../feature-table.types";
+  import type { FeatureTableColumn } from "../feature-table";
   import Card from "$lib/components/ui-library/card";
 
   export let featureData: FeatureTableColumn;

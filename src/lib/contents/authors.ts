@@ -1,4 +1,4 @@
-import type { SocialMediaLinks } from "$lib/types/avatars.type";
+import type { SocialMediaLinks } from "$lib/types/avatars";
 
 export type Author = {
   name: string;

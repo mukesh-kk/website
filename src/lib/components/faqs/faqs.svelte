@@ -6,7 +6,7 @@
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
   import Faq from "./faq.svelte";
-  import type { FAQ } from "$lib/types/faq.type";
+  import type { FAQ } from "$lib/types/faq";
   import StructuredData from "./structured-data.svelte";
 
   export let faq: FAQ;

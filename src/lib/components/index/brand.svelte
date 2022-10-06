@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Brand } from "$lib/types/brand.type";
+  import type { Brand } from "$lib/types/brand";
 
   export let brand: Brand;
 

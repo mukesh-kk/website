@@ -2,7 +2,7 @@
   import docsCurrentSectionStore from "$lib/stores/docs-current-section";
   import MenuLink from "./menu-link.svelte";
 
-  import type { MenuEntry } from "$lib/types/menu-entry.type";
+  import type { MenuEntry } from "$lib/types/menu-entry";
   import MenuSubsection from "./menu-subsection.svelte";
   import Pill from "../pill.svelte";
   import {

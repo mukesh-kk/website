@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Screencast } from "$lib/types/screencasts.type";
+  import type { Screencast } from "$lib/types/screencasts";
   import Duration from "./duration.svelte";
   import Preview from "./preview.svelte";
 

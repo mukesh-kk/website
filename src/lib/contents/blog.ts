@@ -1,5 +1,5 @@
-import type { Quote } from "$lib/types/quote.type";
-import type { Brand } from "$lib/types/brand.type";
+import type { Quote } from "$lib/types/quote";
+import type { Brand } from "$lib/types/brand";
 import githubMarkSvelte from "$lib/components/svgs/github-mark.svelte";
 
 export const quotes: Quote[] = [

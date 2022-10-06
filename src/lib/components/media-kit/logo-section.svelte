@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Logo } from "$lib/types/logo.type";
+  import type { Logo } from "$lib/types/logo";
   import LogoBox from "./logo-box.svelte";
   const logos: Logo[] = [
     {

@@ -1,6 +1,6 @@
-import type { Card } from "$lib/types/card.type";
-import type { FeatureTitle } from "$lib/types/feature-title.type";
-import type { Image } from "$lib/types/image.type";
+import type { Card } from "$lib/types/card";
+import type { FeatureTitle } from "$lib/types/feature-title";
+import type { Image } from "$lib/types/image";
 
 export const teamImages: Image[] = [
   {

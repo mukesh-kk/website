@@ -1,5 +1,5 @@
-import type { Article } from "$lib/types/article.type";
-import type { Card } from "$lib/types/card.type";
+import type { Article } from "$lib/types/article";
+import type { Card } from "$lib/types/card";
 
 export const cards: Card[] = [
   {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Project } from "$lib/types/project.type";
+  import type { Project } from "$lib/types/project";
   import LinkButton from "$lib/components/ui-library/link-button";
   import Button from "$lib/components/ui-library/button";
 

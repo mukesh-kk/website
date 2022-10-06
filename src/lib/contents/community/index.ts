@@ -1,5 +1,5 @@
-import type { Feature } from "$lib/types/feature.type";
-import type { Card } from "$lib/types/card.type";
+import type { Feature } from "$lib/types/feature";
+import type { Card } from "$lib/types/card";
 
 export const primaryCtas: Card[] = [
   {

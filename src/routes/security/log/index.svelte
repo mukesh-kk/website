@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-  import type { SecurityLog } from "$lib/types/security.type";
+  import type { SecurityLog } from "$lib/types/security";
   import OpenGraph from "$lib/components/open-graph.svelte";
   import Header from "$lib/components/header.svelte";
   import { formatDate } from "$lib/utils/helpers";

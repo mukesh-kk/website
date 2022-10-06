@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ExtensionButton } from "$lib/types/extension-button.type";
+  import type { ExtensionButton } from "$lib/types/extension-button";
   import LinkButton from "$lib/components/ui-library/link-button";
   import Section from "../section.svelte";
   import Card from "$lib/components/ui-library/card";

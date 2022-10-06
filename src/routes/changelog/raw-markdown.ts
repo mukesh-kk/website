@@ -1,5 +1,5 @@
 import { basename } from "path";
-import type { ChangelogEntry as ChangelogEntryType } from "$lib/types/changelog-entry.type";
+import type { ChangelogEntry as ChangelogEntryType } from "$lib/types/changelog-entry";
 
 export const get: import("@sveltejs/kit").RequestHandler = async ({
   url,

@@ -3,7 +3,7 @@
 
   import Arrow from "$lib/components/svgs/arrow.svelte";
 
-  import type { FeatureTableHeader } from "../feature-table.types";
+  import type { FeatureTableHeader } from "../feature-table";
 
   export let headerData: FeatureTableHeader;
   const toggleIsShown = () => {

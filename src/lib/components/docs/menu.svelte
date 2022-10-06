@@ -1,6 +1,6 @@
 <script lang="ts">
   import MenuSection from "./menu-section.svelte";
-  import type { MenuEntry } from "$lib/types/menu-entry.type";
+  import type { MenuEntry } from "$lib/types/menu-entry";
   export let MENU: MenuEntry[];
 </script>
 

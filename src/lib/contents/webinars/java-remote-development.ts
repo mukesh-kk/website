@@ -1,6 +1,6 @@
 import gitpodSvelte from "$lib/components/svgs/brands/gitpod.svelte";
 import jetbrainsSvelte from "$lib/components/svgs/brands/jetbrains.svelte";
-import type { Host } from "$lib/types/host.type";
+import type { Host } from "$lib/types/host";
 
 export const hosts: Host[] = [
   {

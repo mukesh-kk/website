@@ -8,7 +8,7 @@
   import GetStartedSmall from "$lib/components/screencasts/get-started-small.svelte";
   import { demoScreencast } from "$lib/contents/screencasts";
   import { session } from "$app/stores";
-  import type { BlogPost } from "$lib/types/blog-post.type";
+  import type { BlogPost } from "$lib/types/blog-post";
   import MoreArticles from "$lib/components/more-articles.svelte";
   import Explore from "$lib/components/explore.svelte";
 

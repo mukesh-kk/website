@@ -1,7 +1,7 @@
 <script lang="ts">
   import SectionCommon from "../section-common.svelte";
   import VerticalFeature from "$lib/components/vertical-feature.svelte";
-  import type { verticalFeature } from "../../types/feature.type";
+  import type { verticalFeature } from "../../types/feature";
   export let features: verticalFeature[];
 </script>
 

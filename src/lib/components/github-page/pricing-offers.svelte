@@ -1,6 +1,6 @@
 <script lang="ts">
   import PricingBoxes from "../pricing/pricing-boxes.svelte";
-  import type { Pricing } from "$lib/types/pricing.type";
+  import type { Pricing } from "$lib/types/pricing";
 
   export let title: string;
   export let pricingPlans: Pricing[];

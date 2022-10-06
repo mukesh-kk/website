@@ -6,7 +6,7 @@
   export let text: string;
 
   import { session } from "$app/stores";
-  import type { BlogPost } from "$lib/types/blog-post.type";
+  import type { BlogPost } from "$lib/types/blog-post";
   const post = $session.posts.find(
     (p: BlogPost) =>
       p.slug === "i-said-goodbye-to-local-development-and-so-can-you"

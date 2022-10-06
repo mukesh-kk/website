@@ -4,7 +4,7 @@
   import LinkButton from "../ui-library/link-button/link-button.svelte";
   import Duration from "./duration.svelte";
   import { screencasts } from "$lib/contents/screencasts";
-  import type { Screencast } from "$lib/types/screencasts.type";
+  import type { Screencast } from "$lib/types/screencasts";
   import YoutubeEmbed from "../youtube-embed.svelte";
   import Header from "../header.svelte";
   import OpenGraph from "../open-graph.svelte";

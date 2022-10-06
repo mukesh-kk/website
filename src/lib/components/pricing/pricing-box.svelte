@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Pricing } from "$lib/types/pricing.type";
+  import type { Pricing } from "$lib/types/pricing";
   import LinkButton from "$lib/components/ui-library/link-button";
   import Card from "$lib/components/ui-library/card";
   import FeaturesList from "./features-list.svelte";

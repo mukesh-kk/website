@@ -3,7 +3,7 @@
     compatibilityMatrix,
     filterMatrixByRelevance,
   } from "$lib/contents/docs/compatibility-matrix";
-  import type { Matrix } from "$lib/types/matrix.type";
+  import type { Matrix } from "$lib/types/matrix";
   import GreyDash from "../svgs/grey-dash.svelte";
   import RedCross from "../svgs/red-cross.svelte";
   import GreenTick from "../svgs/green-tick.svelte";

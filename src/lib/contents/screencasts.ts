@@ -1,4 +1,4 @@
-import type { Screencast } from "$lib/types/screencasts.type";
+import type { Screencast } from "$lib/types/screencasts";
 
 export let topics = [
   "Getting started",

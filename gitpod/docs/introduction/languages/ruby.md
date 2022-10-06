@@ -13,26 +13,28 @@ It's relatively easy to set up your Ruby project in Gitpod.
 
 ## Ruby Versions
 
-As of this writing, Gitpod comes with Ruby 2.7.6 pre-installed in the [gitpod/workspace-full](https://hub.docker.com/r/gitpod/workspace-full).
+As of this writing, Gitpod comes with Ruby 3.1 pre-installed in the [gitpod/workspace-full](https://hub.docker.com/r/gitpod/workspace-full).
 
-To use a more recent Ruby version, you can [change the base image](https://www.gitpod.io/docs/configure/workspaces/workspace-image#configure-a-public-docker-image) to one of the following:
+To use a different Ruby version, you can [change the base image](https://www.gitpod.io/docs/configure/workspaces/workspace-image#configure-a-public-docker-image) to one of the following:
 
+- [gitpod/workspace-ruby-2](https://hub.docker.com/r/gitpod/workspace-ruby-2)
 - [gitpod/workspace-ruby-3.0](https://hub.docker.com/r/gitpod/workspace-ruby-3.0)
-- [gitpod/workspace-ruby-3.1](https://hub.docker.com/r/gitpod/workspace-ruby-3.1)
 
-These images are automatically updated every week with the latest ruby patch versions (3.0.x and 3.1.x).
+These images are automatically updated every week with the latest ruby patch versions.
 
-To use another version, you may use a [custom Dockerfile](https://www.gitpod.io/docs/configure/workspaces/workspace-image#configure-a-custom-dockerfile).
+To use a fixed version, you may use a [custom Dockerfile](https://www.gitpod.io/docs/configure/workspaces/workspace-image#configure-a-custom-dockerfile).
 
 ```dockerfile
 FROM gitpod/workspace-full
 USER gitpod
 
-# Install Ruby version 3.1.1 and set it as default
-RUN echo "rvm_gems_path=/home/gitpod/.rvm" > ~/.rvmrc
-RUN bash -lc "rvm install ruby-3.1.1 && \
-              rvm use ruby-ruby-3.1.1 --default"
-RUN echo "rvm_gems_path=/workspace/.rvm" > ~/.rvmrc
+# Install Ruby version 2.7.6 and set it as default
+RUN _ruby_version=ruby-2.7.6 \
+    && printf "rvm_gems_path=/home/gitpod/.rvm\n" > ~/.rvmrc \
+    && bash -lc "rvm reinstall ${_ruby_version} && \
+                 rvm use ${_ruby_version} --default" \
+    && printf "rvm_gems_path=/workspace/.rvm" > ~/.rvmrc \
+    && printf "{ rvm use \$(rvm current); } >/dev/null 2>&1\n" >> "$HOME/.bashrc.d/70-ruby"
 ```
 
 > 💡 Explanation: Gitpod initially [sets up RVM](https://github.com/gitpod-io/workspace-images/blob/481f7600b725e0ab507fbf8377641a562a475625/chunks/lang-ruby/Dockerfile#L11-L26) in `/home/gitpod/.rvm`, but then later switches the RVM configuration directory to `/workspace/.rvm`, so that any user-made changes (like installing new gems) are persisted within a Gitpod workspace. However, during the Dockerfile build, the `/workspace` directory doesn't exist yet, so we temporarily reset RVM's configuration directory to `/home/gitpod/.rvm`.

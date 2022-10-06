@@ -1,6 +1,6 @@
-import type { Action } from "$lib/types/action.type";
+import type { Action } from "$lib/types/action";
 
-import type { Card } from "$lib/types/card.type";
+import type { Card } from "$lib/types/card";
 
 export const secureParagraphs = [
   "Storing copies of your source code locally on countless unsecured devices and networks is a bad practice. At the same time, it has become a reality for many organisations to enable their employees to work remotely with BYOD policies.",

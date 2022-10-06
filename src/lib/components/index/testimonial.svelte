@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Testimonial } from "$lib/types/testimonial.type";
+  import type { Testimonial } from "$lib/types/testimonial";
   export let testimonial: Testimonial;
   export let id: string = "";
 
