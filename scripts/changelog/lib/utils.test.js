@@ -1,4 +1,8 @@
-import { parseOldReleaseNote } from "./utils.js";
+import { parseOldReleaseNote, ensureGithubToken } from "./utils.js";
+import { jest } from "@jest/globals";
+
+const error = jest.spyOn(console, "error").mockImplementation(() => {});
+const exit = jest.spyOn(process, "exit").mockImplementation(() => {});
 
 test("Formatting of old release note blocks works for valid release notes", () => {
   const pr = {
@@ -91,4 +95,26 @@ test("Formatting of old release note blocks returns the content for release bloc
       `,
   };
   expect(parseOldReleaseNote(pr)).not.toBe(undefined);
+});
+
+test("If no GitHub token log error and exit process", () => {
+  const result = ensureGithubToken(null);
+  expect(error.mock.calls).toEqual([
+    [
+      "Please provide a GitHub personal access token via a `CHANGELOG_GITHUB_ACCESS_TOKEN` environment variable.",
+    ],
+    [
+      "Create a personal access token at https://github.com/settings/tokens/new?scopes=repo,user",
+    ],
+  ]);
+  expect(exit).toBeCalledWith(1);
+  expect(result).toBe(null);
+});
+
+test("If GitHub token passed, don't log or exit process", () => {
+  const TOKEN = "I AM A TOKEN";
+  const result = ensureGithubToken(TOKEN);
+  expect(error).not.toBeCalled();
+  expect(exit).not.toBeCalled();
+  expect(result).toBe(TOKEN);
 });

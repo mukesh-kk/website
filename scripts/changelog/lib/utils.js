@@ -206,3 +206,25 @@ export const outputResults = (
     `Changelog generated. Please edit ${changelogPath}/${releaseDate}/index.md`
   );
 };
+
+export const ensureGithubToken = (mockedToken) => {
+  let githubToken;
+
+  if (mockedToken === undefined) {
+    githubToken = argv.token || process.env.CHANGELOG_GITHUB_ACCESS_TOKEN;
+  } else {
+    githubToken = mockedToken;
+  }
+
+  if (!githubToken) {
+    console.error(
+      "Please provide a GitHub personal access token via a `CHANGELOG_GITHUB_ACCESS_TOKEN` environment variable."
+    );
+    console.error(
+      "Create a personal access token at https://github.com/settings/tokens/new?scopes=repo,user"
+    );
+    process.exit(1);
+  }
+
+  return githubToken;
+};

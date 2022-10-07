@@ -7,6 +7,7 @@ import {
   generatePrChangelogLine,
   processRepository,
   outputResults,
+  ensureGithubToken,
 } from "./lib/utils.js";
 import { lineBreak, prCategories, repos } from "./lib/config.js";
 import minimist from "minimist";
@@ -39,25 +40,10 @@ const sayHello = async (octokit) => {
       name
     }
   }`);
-  console.log("Hello, %s\r\n", name || login);
+  console.info("Hello, %s\r\n", name || login);
 };
 
-const ensureGithubToken = () => {
-  const githubToken = argv.token || process.env.CHANGELOG_GITHUB_ACCESS_TOKEN;
-  if (!githubToken) {
-    console.error(
-      "Please provide a GitHub personal access token via a `CHANGELOG_GITHUB_ACCESS_TOKEN` environment variable."
-    );
-    console.error(
-      "Create a personal access token at https://github.com/settings/tokens/new?scopes=repo,user"
-    );
-    process.exit(1);
-  }
-
-  return githubToken;
-};
-
-const main = async () => {
+export const main = async () => {
   if (argv.help || argv.h) {
     helpMenu();
     process.exit(0);
@@ -140,6 +126,7 @@ const main = async () => {
     .join(lineBreak);
 
   const { dryRun, onlyPrs, force } = argv;
+
   outputResults(releaseDate, perCategoryPrContent, { force, dryRun, onlyPrs });
 };
 
