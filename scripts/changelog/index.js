@@ -8,40 +8,14 @@ import {
   processRepository,
   outputResults,
   ensureGithubToken,
+  sayHello,
 } from "./lib/utils.js";
 import { lineBreak, prCategories, repos } from "./lib/config.js";
 import minimist from "minimist";
 
 const argv = minimist(process.argv.slice(2));
 
-const helpMenu = () => {
-  console.info(
-    `Usage: node scripts/generate-changelog.js [--help] [--token=github-token] [--dry-run] [--onlyPrs] [<release-date>] [<from>] [<to>]`
-  );
-  console.info(
-    `
-    --help: Show this help text
-    --token: Github token to use for the API calls. If not provided, the script will try to use the CHANGELOG_GITHUB_ACCESS_TOKEN environment variable
-    --dry-run: Do not write the changelog file, just print the output to the console
-    --onlyPrs: Only show the PRs section of the changelog. Only effective with --dry-run
-    --force: Forcefully overwrite the changelog file, removing any manual changes to index.md
-    `
-  );
-};
-
 const OctokitWithPlugins = Octokit.plugin(paginateGraphql);
-
-const sayHello = async (octokit) => {
-  const {
-    viewer: { login, name },
-  } = await octokit.graphql(`{
-    viewer {
-      login
-      name
-    }
-  }`);
-  console.info("Hello, %s\r\n", name || login);
-};
 
 export const main = async () => {
   if (argv.help || argv.h) {

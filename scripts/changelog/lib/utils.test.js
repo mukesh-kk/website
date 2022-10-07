@@ -1,7 +1,14 @@
-import { parseOldReleaseNote, ensureGithubToken } from "./utils.js";
+import {
+  parseOldReleaseNote,
+  ensureGithubToken,
+  sayHello,
+  helpMenu,
+} from "./utils.js";
 import { jest } from "@jest/globals";
+import { Octokit } from "octokit";
 
-const error = jest.spyOn(console, "error").mockImplementation(() => {});
+const consoleError = jest.spyOn(console, "error").mockImplementation(() => {});
+const consoleInfo = jest.spyOn(console, "info").mockImplementation(() => {});
 const exit = jest.spyOn(process, "exit").mockImplementation(() => {});
 
 test("Formatting of old release note blocks works for valid release notes", () => {
@@ -99,7 +106,7 @@ test("Formatting of old release note blocks returns the content for release bloc
 
 test("If no GitHub token log error and exit process", () => {
   const result = ensureGithubToken(null);
-  expect(error.mock.calls).toEqual([
+  expect(consoleError.mock.calls).toEqual([
     [
       "Please provide a GitHub personal access token via a `CHANGELOG_GITHUB_ACCESS_TOKEN` environment variable.",
     ],
@@ -114,7 +121,20 @@ test("If no GitHub token log error and exit process", () => {
 test("If GitHub token passed, don't log or exit process", () => {
   const TOKEN = "I AM A TOKEN";
   const result = ensureGithubToken(TOKEN);
-  expect(error).not.toBeCalled();
+  expect(consoleError).not.toBeCalled();
   expect(exit).not.toBeCalled();
   expect(result).toBe(TOKEN);
+});
+
+test("The script can say hello into stdout correctly", async () => {
+  const octokit = new Octokit({
+    auth: ensureGithubToken(process.env.CHANGELOG_GITHUB_ACCESS_TOKEN),
+  });
+  await sayHello(octokit);
+  expect(consoleInfo).toHaveBeenCalledTimes(1);
+});
+
+test("Help menu outputs the correct amount of info into stdout", () => {
+  helpMenu();
+  expect(consoleInfo).toHaveBeenCalledTimes(2);
 });
