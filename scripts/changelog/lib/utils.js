@@ -3,6 +3,9 @@ import fs from "fs";
 import remarkParse from "remark-parse";
 import { getPrsForRepo } from "./getPrs.js";
 import { changelogPath } from "./config.js";
+import minimist from "minimist";
+
+const argv = minimist(process.argv.slice(2));
 
 export const getPrParticipants = (pr) => {
   const author = pr.author?.login;
@@ -254,4 +257,14 @@ export const sayHello = async (octokit) => {
     }
   }`);
   console.info("Hello, %s\r\n", name || login);
+};
+
+/**
+ * Sort by ascending order, according to either the default order value for each category or the order defined in the partial file metadata. If the order is the same, sort by name (alphabetically).
+ */
+export const sortByCategoryOrder = (a, b) => {
+  if (a.order === b.order) {
+    return a.name.localeCompare(b.name);
+  }
+  return a.order - b.order;
 };

@@ -3,7 +3,9 @@ import {
   ensureGithubToken,
   sayHello,
   helpMenu,
+  sortByCategoryOrder,
 } from "./utils.js";
+import { prCategories } from "./config.js";
 import { jest } from "@jest/globals";
 import { Octokit } from "octokit";
 
@@ -14,16 +16,6 @@ const exit = jest.spyOn(process, "exit").mockImplementation(() => {});
 test("Formatting of old release note blocks works for valid release notes", () => {
   const pr = {
     body: `
-        ## Description
-            ---
-        ### Discussion
-
-        Lorem ipsum
-
-        ## Related Issue(s)
-        <!-- List the issue(s) this PR solves -->
-        Fixes #6969
-
         ## How to test
         <!-- Provide steps to test this PR -->
         \`\`\`bash
@@ -35,27 +27,10 @@ test("Formatting of old release note blocks works for valid release notes", () =
         ## Release Notes
         <!--
         Add entries for the CHANGELOG.md or "NONE" if there aren't any user facing changes.
-        Each line becomes a separate entry.
-        Format: [!<optional for breaking>] <description>
-        Example: !basic auth is no longer supported
-        See https://www.notion.so/gitpod/Release-Notes-513a74fdd23b4cb1b3b3aefb1d34a3e0
         -->
         \`\`\`release-note
         Tab-completions of \`gp\` CLI is now available for bash, fish and zsh
         \`\`\`
-
-        ## Documentation
-        - [ ] Have to document as well
-        <!--
-        Does this PR require updates to the documentation at www.gitpod.io/docs?
-        * Yes
-        * 1. Please create a docs issue: https://github.com/gitpod-io/website/issues/new?labels=documentation&template=DOCS-NEW-FEATURE.yml&title=%5BDocs+-+New+Feature%5D%3A+%3Cyour+feature+name+here%3E
-        * 2. Paste the link to the docs issue below this comment
-        * No
-        * Are you sure? If so, nothing to do here.
-        -->
-
-        ## Werft options:
     `,
   };
   expect(parseOldReleaseNote(pr)).toBe(
@@ -126,9 +101,9 @@ test("If GitHub token passed, don't log or exit process", () => {
   expect(result).toBe(TOKEN);
 });
 
-test("The script can say hello into stdout correctly", async () => {
+test.skip("The script can say hello into stdout correctly", async () => {
   const octokit = new Octokit({
-    auth: ensureGithubToken(process.env.CHANGELOG_GITHUB_ACCESS_TOKEN),
+    auth: ensureGithubToken(),
   });
   await sayHello(octokit);
   expect(consoleInfo).toHaveBeenCalledTimes(1);
@@ -137,4 +112,16 @@ test("The script can say hello into stdout correctly", async () => {
 test("Help menu outputs the correct amount of info into stdout", () => {
   helpMenu();
   expect(consoleInfo).toHaveBeenCalledTimes(2);
+});
+
+test("Category sorting works correctly", () => {
+  // To every category, assign a random number to the `order` property.
+  prCategories.forEach(
+    (category) => (category.order = Math.floor(Math.random() * 10))
+  );
+  const sortedCategories = prCategories.sort(sortByCategoryOrder);
+  const randomIndex = Math.floor(Math.random() * (prCategories.length - 1));
+  expect(sortedCategories[randomIndex].order).toBeLessThanOrEqual(
+    sortedCategories[randomIndex + 1].order
+  );
 });

@@ -9,6 +9,7 @@ import {
   outputResults,
   ensureGithubToken,
   sayHello,
+  sortByCategoryOrder,
 } from "./lib/utils.js";
 import { lineBreak, prCategories, repos } from "./lib/config.js";
 import minimist from "minimist";
@@ -89,13 +90,7 @@ export const main = async () => {
     }
   });
   const perCategoryPrContent = categorizedPrs
-    .sort((a, b) => {
-      // Sort by ascending order, according to either the default order value for each category or the order defined in the partial file metadata. If the order is the same, sort by name.
-      if (a.order === b.order) {
-        return a.name.localeCompare(b.name);
-      }
-      return a.order - b.order;
-    })
+    .sort(sortByCategoryOrder)
     .map((category) => category.content)
     .join(lineBreak);
 
