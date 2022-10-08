@@ -2,7 +2,7 @@
   import { isAnExternalLink } from "$lib/utils/helpers";
   import LinkButton from "$lib/components/ui-library/link-button";
 
-  import type { ContactAction } from "$lib/types/contact-action.type";
+  import type { ContactAction } from "$lib/types/contact-action";
 
   export let width: string = "";
   let clazz = "";

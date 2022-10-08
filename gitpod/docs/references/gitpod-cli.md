@@ -20,6 +20,7 @@ Usage:
 Available Commands:
   env                 Controls user-defined, persistent environment variables.
   help                Help about any command
+  info                Display workspace info, such as its ID, class, etc.
   init                Create a Gitpod configuration for this project.
   open                Opens a file in Gitpod
   ports               Interact with workspace ports.
@@ -222,6 +223,16 @@ Shows the current workspace's timeout.
 ```sh
 gp timeout show
 ```
+
+## info
+
+Displays information about the current workspace, such as its ID, workspace class, and URL.
+
+```sh
+gp info
+```
+
+You can also use `gp info --json` to get the output in JSON format.
 
 ## ports
 

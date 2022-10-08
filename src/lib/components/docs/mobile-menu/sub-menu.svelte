@@ -7,7 +7,7 @@
   import topicsState from "../states/topics-state";
   let subMenuState: boolean = false;
 
-  import type { MenuEntry } from "$lib/types/menu-entry.type";
+  import type { MenuEntry } from "$lib/types/menu-entry";
   import Arrow from "$lib/components/svgs/arrow.svelte";
   export let currentSection: MenuEntry = null;
   export let displayNavigation: boolean = true;

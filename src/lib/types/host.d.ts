@@ -1,4 +1,4 @@
-import type { Image } from "./image.type";
+import type { Image } from "./image";
 
 export type Host = {
   avatar: Image;

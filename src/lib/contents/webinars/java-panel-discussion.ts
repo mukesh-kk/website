@@ -2,7 +2,7 @@ import gitpodSvelte from "$lib/components/svgs/brands/gitpod.svelte";
 import adyenSvelte from "$lib/components/svgs/brands/adyen.svelte";
 import nasaSvelte from "$lib/components/svgs/brands/nasa.svelte";
 import microsoftSvelte from "$lib/components/svgs/brands/microsoft.svelte";
-import type { Host } from "$lib/types/host.type";
+import type { Host } from "$lib/types/host";
 
 export const hosts: Host[] = [
   {

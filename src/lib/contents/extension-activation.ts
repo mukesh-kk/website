@@ -1,4 +1,4 @@
-import type { Feature } from "$lib/types/feature.type";
+import type { Feature } from "$lib/types/feature";
 
 export const feature: Feature = {
   title: "Spin up dev environments with a single click.",

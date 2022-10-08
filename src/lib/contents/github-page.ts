@@ -1,4 +1,4 @@
-import type { Pricing } from "$lib/types/pricing.type";
+import type { Pricing } from "$lib/types/pricing";
 import { isEurope } from "$lib/utils/helpers";
 
 export const ghStudentPricingPlans: Pricing[] = [

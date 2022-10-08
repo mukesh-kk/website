@@ -1,7 +1,7 @@
-import type { Brand } from "$lib/types/brand.type";
-import type { Project } from "$lib/types/project.type";
-import type { Testimonial } from "$lib/types/testimonial.type";
-import type { Ide } from "$lib/types/ide.type";
+import type { Brand } from "$lib/types/brand";
+import type { Project } from "$lib/types/project";
+import type { Testimonial } from "$lib/types/testimonial";
+import type { Ide } from "$lib/types/ide";
 import GitlabLogo from "$lib/components/svgs/brands/gitlab-logo.svelte";
 import FreecodecampLogo from "$lib/components/svgs/brands/freecodecamp.svelte";
 import Google from "$lib/components/svgs/brands/google.svelte";
@@ -14,7 +14,7 @@ import CodeInstitute from "$lib/components/svgs/brands/code-institute.svelte";
 import Redwood from "$lib/components/svgs/brands/redwood.svelte";
 import Jetbrains from "$lib/components/svgs/brands/jetbrains.svelte";
 import FourGeeks from "$lib/components/svgs/brands/fourgeeks.svelte";
-import type { FeatureTitle } from "$lib/types/feature-title.type";
+import type { FeatureTitle } from "$lib/types/feature-title";
 
 export const gitlab: Brand = {
   alt: "GitLab",

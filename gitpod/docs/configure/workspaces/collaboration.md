@@ -66,6 +66,8 @@ To share your workspace, navigate to the workspaces page at https://gitpod.io/wo
 
 This marks your workspace as shared. When you open it, you can copy & share its URL.
 
+> **Note:** You can join shared workspaces only by using VS Code Browser. If you prefer to use another editor, please consider using [external collaboration plugins](#external-collaboration-plugins).
+
 > **Security note:**
 >
 > Beware, anybody with this URL and a Gitpod account will be able to access the workspace as long as

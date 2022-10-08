@@ -1,6 +1,6 @@
 <script lang="ts">
   import Brand from "./brand.svelte";
-  import type { Brand as BrandType } from "$lib/types/brand.type";
+  import type { Brand as BrandType } from "$lib/types/brand";
 
   export let brands: BrandType[];
   export let isCustomerStoriesLinkShown: boolean = true;

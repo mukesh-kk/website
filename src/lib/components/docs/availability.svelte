@@ -1,6 +1,6 @@
 <script lang="ts">
   import AvailabilityItem from "./availability-item.svelte";
-  import type { AvailabilityItem as AvailabilityItemType } from "$lib/types/docs.type";
+  import type { AvailabilityItem as AvailabilityItemType } from "$lib/types/docs";
 
   export let availablity: string[];
   const saasRegex = new RegExp(/^saas$/);

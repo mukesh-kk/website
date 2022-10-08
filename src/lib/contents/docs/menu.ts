@@ -1,4 +1,4 @@
-import type { MenuStatus, MenuEntry } from "$lib/types/menu-entry.type";
+import type { MenuStatus, MenuEntry } from "$lib/types/menu-entry";
 
 function M(
   title: string,

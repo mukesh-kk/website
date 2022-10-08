@@ -55,6 +55,9 @@ FROM gitpod/workspace-full:2022-05-08-14-31-53
 RUN brew install fzf
 ```
 
+> ⚠️ **Caveat:** > `COPY` instructions in a Dockerfile is only evaluated once and then cached.
+> [See this](#manually-rebuild-a-workspace-image) to break the cache and trigger a rebuild.
+
 **Docker support**: If you use the `gitpod/workspace-full` image, you get Docker support built-in to your environment.
 
 If you want a base image without the default tooling installed then use the <a href="https://github.com/gitpod-io/workspace-images/blob/481f7600b725e0ab507fbf8377641a562a475625/dazzle.yaml#L3" target="_blank">gitpod/workspace-base</a> image.

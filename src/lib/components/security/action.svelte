@@ -1,6 +1,6 @@
 <script lang="ts">
   import LinkButton from "$lib/components/ui-library/link-button";
-  import type { Action } from "$lib/types/action.type";
+  import type { Action } from "$lib/types/action";
   export let action: Action;
   const { title, description, link } = action;
   let clazz = "";

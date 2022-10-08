@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ChangelogEntry as ChangelogEntryType } from "$lib/types/changelog-entry.type";
+  import type { ChangelogEntry as ChangelogEntryType } from "$lib/types/changelog-entry";
   import { stringToBeautifiedFragment } from "$lib/utils/helpers";
   export let timelineItem: ChangelogEntryType;
 

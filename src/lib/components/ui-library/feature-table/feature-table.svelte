@@ -1,7 +1,7 @@
 <script lang="ts">
   import FeatureTableToc from "./desktop/feature-table-toc.svelte";
   import FeatureTableColumn from "./desktop/feature-table-column.svelte";
-  import type { FeatureTable } from "./feature-table.types";
+  import type { FeatureTable } from "./feature-table";
   import FeatureTableColumnMobile from "./mobile/feature-table-column-mobile.svelte";
   export let tableData: FeatureTable;
   export let footnote: string = "";

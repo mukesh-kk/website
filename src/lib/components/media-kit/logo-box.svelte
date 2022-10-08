@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Logo } from "$lib/types/logo.type";
+  import type { Logo } from "$lib/types/logo";
   import LinkButton from "$lib/components/ui-library/link-button";
 
   export let logo: Logo;

@@ -1,7 +1,7 @@
 import plusSvelte from "$lib/components/svgs/icons/plus.svelte";
 import tickSvelte from "$lib/components/svgs/icons/tick.svelte";
-import type { Card } from "$lib/types/card.type";
-import type { ExploreSection } from "$lib/types/explore-section.type";
+import type { Card } from "$lib/types/card";
+import type { ExploreSection } from "$lib/types/explore-section";
 
 export const benefits: Card[] = [
   {

@@ -12,7 +12,7 @@
 </script>
 
 <script lang="ts">
-  import type { Screencast as ScreencastType } from "$lib/types/screencasts.type";
+  import type { Screencast as ScreencastType } from "$lib/types/screencasts";
   import { stringToBeautifiedFragment } from "$lib/utils/helpers";
   import CalloutSecondary from "$lib/components/callout-secondary.svelte";
   import Explore from "$lib/components/explore.svelte";

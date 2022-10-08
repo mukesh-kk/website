@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AvailabilityItem as AvailabilityItemType } from "../../types/docs.type";
+  import type { AvailabilityItem as AvailabilityItemType } from "../../types/docs";
 
   export let availabilityItem: AvailabilityItemType;
 </script>

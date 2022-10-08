@@ -1,9 +1,9 @@
 import pulumiSvelte from "$lib/components/svgs/brands/pulumi.svelte";
 import redisUniverstySvelte from "$lib/components/svgs/brands/redis-universty.svelte";
-import type { Brand } from "$lib/types/brand.type";
-import type { Card } from "$lib/types/card.type";
-import type { FAQ } from "$lib/types/faq.type";
-import type { Feature } from "$lib/types/feature.type";
+import type { Brand } from "$lib/types/brand";
+import type { Card } from "$lib/types/card";
+import type { FAQ } from "$lib/types/faq";
+import type { Feature } from "$lib/types/feature";
 import { codeInstitute, fourGeeks, freeCodeCamp } from "./home";
 import { codeAnywhereFeature } from "./home/features";
 import { terminalSource } from "./terminal";

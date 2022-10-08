@@ -1,5 +1,5 @@
 // @ts-nocheck
-import type { GetStartedItem } from "$lib/types/get-started.type";
+import type { GetStartedItem } from "$lib/types/get-started";
 
 export const getStartedItems: GetStartedItem[] = [
   {

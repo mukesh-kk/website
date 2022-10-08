@@ -3,7 +3,7 @@
   import LinkButton from "$lib/components/ui-library/link-button";
   import Card from "$lib/components/ui-library/card";
   import FeatureTableHeaderMobile from "./feature-table-header-mobile.svelte";
-  import type { FeatureTableColumn } from "../feature-table.types";
+  import type { FeatureTableColumn } from "../feature-table";
 
   export let featureData: FeatureTableColumn;
   const hasASingleEntry = featureData.enteries.length === 1;

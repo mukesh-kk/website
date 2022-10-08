@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ShareLink } from "$lib/types/share-link.type";
+  import type { ShareLink } from "$lib/types/share-link";
 
   export let text: string;
   export let shareLinks: ShareLink[];

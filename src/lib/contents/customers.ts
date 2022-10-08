@@ -3,8 +3,8 @@ import redwoodjsSvelte from "$lib/components/svgs/customers/redwoodjs.svelte";
 import sharesSvelte from "$lib/components/svgs/customers/shares.svelte";
 import vizlibSvelte from "$lib/components/svgs/customers/vizlib.svelte";
 import factorialSvelte from "$lib/components/svgs/customers/factorial.svelte";
-import type { Feature } from "$lib/types/feature.type";
-import type { Quote } from "$lib/types/quote.type";
+import type { Feature } from "$lib/types/feature";
+import type { Quote } from "$lib/types/quote";
 
 export const benefits = [
   {

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   import { formatDate, stringToBeautifiedFragment } from "$lib/utils/helpers";
-  import type { ChangelogEntry as ChangelogEntryType } from "$lib/types/changelog-entry.type";
+  import type { ChangelogEntry as ChangelogEntryType } from "$lib/types/changelog-entry";
   import BackLink from "$lib/components/changelog/back-link.svelte";
 
   export const prerender = true;

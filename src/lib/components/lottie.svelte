@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Lottie } from "$lib/types/lottie.type";
+  import type { Lottie } from "$lib/types/lottie";
 
   import { onMount } from "svelte";
 

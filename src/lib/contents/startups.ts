@@ -1,13 +1,13 @@
-import type { Feature } from "$lib/types/feature.type";
+import type { Feature } from "$lib/types/feature";
 import {
   codeAnywhereFeature,
   collaborationFeature,
   multiTrackDevelopmentFeature,
 } from "./home/features";
-import type { ExploreSection } from "$lib/types/explore-section.type";
+import type { ExploreSection } from "$lib/types/explore-section";
 import { terminalSource } from "./terminal";
-import type { Card } from "$lib/types/card.type";
-import type { FAQ } from "../types/faq.type";
+import type { Card } from "$lib/types/card";
+import type { FAQ } from "../types/faq";
 
 export const features: Feature[] = [
   {

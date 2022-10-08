@@ -190,6 +190,16 @@ Inside your workspace, Open the terminal & run the following steps:
 
 - Step 1: `mkdir -p /workspace/.persist`
 - Step 2: `cp $HOME/.bash_history /workspace/.persist`
+- Step 3: Add the following task inside `.gitpod.yml`:
+```yaml
+tasks:
+  - name: Restore persist
+    before: |
+      cp /workspace/.persist/.bash_history $HOME;
+      # Copy more files as necessary below
+      exit;
+```
+- Step 4: [See it in action](https://www.gitpod.io/docs/config-gitpod-file#see-it-in-action)
 
 > **Note**: This is just a temporary solution. The issue for this is still open [Issue URL](https://github.com/gitpod-io/gitpod/issues/8716)
 

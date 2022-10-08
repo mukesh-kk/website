@@ -2,10 +2,10 @@
 author: mikenikles
 date: Wed, 30 Jun 2021 3:00:00 UTC
 excerpt: Stop maintaining your local developer environment. Instead, automate the setup once and use a new environment for each task you work on - available in seconds and always ready-to-code.
-image: teaser.png
+image: teaser.jpg
 slug: i-said-goodbye-to-local-development-and-so-can-you
 subtitle:
-teaserImage: teaser.png
+teaserImage: teaser.jpg
 title: I said goodbye to local development and so can you
 ---
 

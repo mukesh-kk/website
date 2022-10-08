@@ -1,6 +1,6 @@
 <script lang="ts">
   import docsCurrentSubsectionStore from "$lib/stores/docs-current-subsection";
-  import type { MenuEntry } from "$lib/types/menu-entry.type";
+  import type { MenuEntry } from "$lib/types/menu-entry";
   import {
     getVariantFromStatus,
     isLongDocsMenuEntry,

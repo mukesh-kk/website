@@ -12,11 +12,13 @@
   import { trackEvent } from "./segment.svelte";
   import Share from "./share.svelte";
   import Card from "$lib/components/ui-library/card";
-  import type { ShareLink } from "$lib/types/share-link.type";
-  import Hackernews from "./svgs/share/hackernews.svelte";
+  import type { ShareLink } from "$lib/types/share-link";
 
   export let embedId: string;
   export let title: string;
+
+  export let coverImage: string = null;
+  let isConcealed = Boolean(coverImage);
 
   const randomId = "yt-player-" + Math.random().toString(36).slice(2, 5);
   const VIDEO_PLAYING = 1;
@@ -87,47 +89,73 @@
       href: `http://news.ycombinator.com/submitlink?u=${encodeURIComponent(
         youtubeURL
       )}`,
-      svg: Hackernews,
+      icon: {
+        src: "/svg/brands/hackernews.svg",
+        alt: "HackerNews",
+      },
       trackingName: "hackernews",
     },
   ];
 </script>
 
 <style lang="postcss">
-  div :global(.youtube) {
-    @apply relative overflow-hidden max-w-full m-auto;
-    max-height: 620px;
-  }
-
-  div :global(.youtube),
-  div {
-    width: 990px;
-    @apply max-w-full mx-auto;
-  }
-
   div :global(.youtube::after) {
     display: block;
     content: "";
     padding-top: 56.25%;
   }
-
-  iframe {
-    @apply absolute top-0 left-0 w-full h-full max-w-full;
-  }
 </style>
 
-<div>
-  <Card size="small" class="youtube shadow-normal" stroked={false}>
-    <iframe
-      id={randomId}
-      src={`https://www.youtube-nocookie.com/embed/${embedId}?enablejsapi=1`}
-      {title}
-      width="560"
-      height="315"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    />
+<div class="flex-grow">
+  <Card
+    size="small"
+    class="relative overflow-hidden max-w-full shadow-normal aspect-video"
+    stroked={false}
+  >
+    {#if isConcealed}
+      <button
+        on:click={() => {
+          isConcealed = false;
+        }}
+        class="block relative group"
+      >
+        <span class="sr-only">Play video</span>
+        <img src={coverImage} alt={title} class="rounded-lg" />
+
+        <!-- Play button overlay  -->
+        <div class="pointer-events-none" aria-hidden>
+          <div
+            class="absolute inset-0 flex justify-center items-center opacity-75 group-hover:opacity-100"
+          >
+            <div class="w-24 h-24 rounded-full bg-black" />
+          </div>
+          <div class="absolute inset-0 flex justify-center items-center">
+            <!-- CSS Triangle for play button -->
+            <div
+              class="h-0 w-0 ml-2
+            border-t-[1rem] border-t-transparent
+            border-l-[2rem] border-l-white
+            border-b-[1rem] border-b-transparent"
+            />
+          </div>
+        </div>
+      </button>
+    {:else}
+      <iframe
+        id={randomId}
+        src={`https://www.youtube-nocookie.com/embed/${embedId}?enablejsapi=1&autoplay=${
+          coverImage ? 1 : 0 // Autoplay when revealed from the cover image, but not when there's no cover
+        }`}
+        {title}
+        width="560"
+        height="315"
+        autoplay={Boolean(coverImage)}
+        frameBorder="0"
+        class="absolute top-0 left-0 w-full h-full max-w-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      />
+    {/if}
   </Card>
   <Share
     text="Share this video"

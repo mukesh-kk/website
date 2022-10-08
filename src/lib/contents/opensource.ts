@@ -1,15 +1,15 @@
-import type { Feature } from "$lib/types/feature.type";
-import type { Quote } from "$lib/types/quote.type";
+import type { Feature } from "$lib/types/feature";
+import type { Quote } from "$lib/types/quote";
 // @ts-ignore
 import Workspaces from "$lib/components/workspaces.svelte";
 import { linuxSource } from "./terminal";
-import type { Card } from "$lib/types/card.type";
-import type { ExploreSection } from "$lib/types/explore-section.type";
+import type { Card } from "$lib/types/card";
+import type { ExploreSection } from "$lib/types/explore-section";
 import {
   codeAnywhereFeature,
   multiTrackDevelopmentFeature,
 } from "./home/features";
-import type { FAQ } from "$lib/types/faq.type";
+import type { FAQ } from "$lib/types/faq";
 // @ts-ignore
 import redwoodjsSvelte from "$lib/components/svgs/customers/redwoodjs.svelte";
 // @ts-ignore

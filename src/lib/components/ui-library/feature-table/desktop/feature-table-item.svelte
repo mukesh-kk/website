@@ -1,7 +1,7 @@
 <script lang="ts">
   import GreyDash from "$lib/components/svgs/grey-dash.svelte";
   import GreenTick from "$lib/components/svgs/green-tick.svelte";
-  import type { FeatureItemDetail } from "../feature-table.types";
+  import type { FeatureItemDetail } from "../feature-table";
   export let definition: FeatureItemDetail;
 </script>
 

@@ -2,7 +2,7 @@
   import { isAnExternalLink } from "$lib/utils/helpers";
   import { authorSocialMediaLinks } from "$lib/contents/authors";
 
-  import type { BlogPost } from "$lib/types/blog-post.type";
+  import type { BlogPost } from "$lib/types/blog-post";
   import Avatars from "$lib/components/ui-library/avatars";
   import Pill from "../pill.svelte";
 

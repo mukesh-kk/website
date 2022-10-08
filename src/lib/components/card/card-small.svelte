@@ -3,7 +3,7 @@
   import Base from "./base.svelte";
   let className: string = "";
   export { className as class };
-  import type { Card as CardType } from "$lib/types/card.type";
+  import type { Card as CardType } from "$lib/types/card";
   export let card: CardType;
   export let titleClassNames: "h4" | "h5" = "h5";
 </script>

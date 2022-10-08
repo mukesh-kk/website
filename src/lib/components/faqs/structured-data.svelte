@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FAQ } from "$lib/types/faq.type";
+  import type { FAQ } from "$lib/types/faq";
 
   export let faq: FAQ;
 

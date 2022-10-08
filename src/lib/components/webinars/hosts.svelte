@@ -1,6 +1,6 @@
 <script lang="ts">
   import Section from "../section.svelte";
-  import type { Host as HostType } from "$lib/types/host.type";
+  import type { Host as HostType } from "$lib/types/host";
   import Host from "./host.svelte";
   export let hosts: HostType[];
 </script>

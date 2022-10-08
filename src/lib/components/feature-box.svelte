@@ -1,6 +1,6 @@
 <script lang="ts">
   import Feature from "./feature.svelte";
-  import type { Feature as FeatureType } from "$lib/types/feature.type";
+  import type { Feature as FeatureType } from "$lib/types/feature";
   import Card from "$lib/components/ui-library/card";
   export let feature: FeatureType;
 </script>

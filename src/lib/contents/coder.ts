@@ -1,12 +1,12 @@
 import Opensource from "$lib/components/svgs/opensource.svelte";
-import type { Feature, verticalFeature } from "$lib/types/feature.type";
+import type { Feature, verticalFeature } from "$lib/types/feature";
 import awsSvelte from "$lib/components/svgs/aws.svelte";
 import githubMarkSvelte from "$lib/components/svgs/github-mark.svelte";
 import type {
   FeatureTable,
   FeatureTableColumn,
   FeatureTableToc,
-} from "$lib/components/ui-library/feature-table/feature-table.types";
+} from "$lib/components/ui-library/feature-table/feature-table";
 import Coder from "$lib/components/svgs/coder/coder.svelte";
 
 export const availableAsSaaSSelfHostedFeature: Feature = {

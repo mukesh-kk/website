@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Card as CardType } from "$lib/types/card.type";
+  import type { Card as CardType } from "$lib/types/card";
   import Card from "./card/card.svelte";
 
   export let cards: CardType[];

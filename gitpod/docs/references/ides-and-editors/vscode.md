@@ -239,6 +239,15 @@ _Passphrase prompt from VS Code requiring the SSH key passphrase_
 
 > **Note:** If you cannot remember your passphrase, consider creating a new SSH key and uploading the new key to Gitpod.
 
+### How do I enable SSH agent forwarding for Desktop VSCode?
+
+Gitpod extension delegates ssh connection to the [MS Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) extension so agent forwarding should just work if you configure it in your `~/.ssh/config` file:
+
+```
+Host *.gitpod.io
+    ForwardAgent yes
+```
+
 ## Troubleshooting
 
 If you are still having issues connecting to VS Code Desktop from Gitpod, try:

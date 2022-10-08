@@ -1,14 +1,14 @@
-import type { Pricing } from "$lib/types/pricing.type";
+import type { Pricing } from "$lib/types/pricing";
 import { isEurope } from "$lib/utils/helpers";
-import type { Card } from "$lib/types/card.type";
+import type { Card } from "$lib/types/card";
 // @ts-ignore
 import RedeemOffer from "$lib/components/pricing/redeem-offer.svelte";
 import type {
   FeatureTable,
   FeatureTableColumn,
   FeatureTableToc,
-} from "../components/ui-library/feature-table/feature-table.types";
-import type { FAQ } from "../types/faq.type";
+} from "../components/ui-library/feature-table/feature-table";
+import type { FAQ } from "../types/faq";
 // @ts-ignore
 import githubMarkSvelte from "$lib/components/svgs/github-mark.svelte";
 
@@ -52,11 +52,6 @@ export const pricingPlans: Pricing[] = [
       {
         text: "8 parallel workspaces",
         tooltip: "Open up to 8 workspaces per user in parallel.",
-      },
-      {
-        text: "Team plans",
-        tooltip:
-          "Manage subscriptions for your team members with centralized billing.",
       },
     ],
     btnText: "Choose plan",
@@ -126,27 +121,23 @@ export const freePlanTableData: FeatureTableColumn = {
     {
       items: [
         {
-          term: "Public & Private Repos",
+          term: "Public & private repos",
           text: "limited to 50h",
-        },
-        {
-          term: "Team plans",
-          availability: false,
         },
         {
           term: "Inactivity timeout",
           text: "30min",
         },
         {
-          term: "timeout Boost",
+          term: "Timeout boost",
           availability: false,
         },
         {
-          term: "Parallel Workspaces",
+          term: "Parallel workspaces",
           text: "4",
         },
         {
-          term: "prebuilds",
+          term: "Prebuilds",
           availability: true,
         },
         {
@@ -158,7 +149,7 @@ export const freePlanTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "Admin Dashboard",
+          term: "Admin dashboard",
           availability: false,
         },
         {
@@ -166,7 +157,7 @@ export const freePlanTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "multi-ide support",
+          term: "Multi-ide support",
           availability: true,
         },
         {
@@ -199,27 +190,23 @@ export const personalPlanTableData: FeatureTableColumn = {
     {
       items: [
         {
-          term: "Public & Private Repos",
+          term: "Public & private repos",
           text: "limited to 100h",
-        },
-        {
-          term: "Team plans",
-          availability: false,
         },
         {
           term: "Inactivity timeout",
           text: "30min",
         },
         {
-          term: "timeout Boost",
+          term: "Timeout boost",
           availability: false,
         },
         {
-          term: "Parallel Workspaces",
+          term: "Parallel workspaces",
           text: "4",
         },
         {
-          term: "prebuilds",
+          term: "Prebuilds",
           availability: true,
         },
         {
@@ -231,7 +218,7 @@ export const personalPlanTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "Admin Dashboard",
+          term: "Admin dashboard",
           availability: false,
         },
         {
@@ -239,7 +226,7 @@ export const personalPlanTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "multi-ide support",
+          term: "Multi-ide support",
           availability: true,
         },
         {
@@ -274,28 +261,23 @@ export const professionalPlanTableData: FeatureTableColumn = {
     {
       items: [
         {
-          term: "Public & Private Repos",
+          term: "Public & private repos",
           text: "unlimited",
-        },
-        {
-          term: "Team plans",
-
-          availability: true,
         },
         {
           term: "Inactivity timeout",
           text: "30min",
         },
         {
-          term: "timeout Boost",
+          term: "Timeout boost",
           availability: false,
         },
         {
-          term: "Parallel Workspaces",
+          term: "Parallel workspaces",
           text: "8",
         },
         {
-          term: "prebuilds",
+          term: "Prebuilds",
           availability: true,
         },
         {
@@ -307,7 +289,7 @@ export const professionalPlanTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "Admin Dashboard",
+          term: "Admin dashboard",
           availability: false,
         },
         {
@@ -315,7 +297,7 @@ export const professionalPlanTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "multi-ide support",
+          term: "Multi-ide support",
           availability: true,
         },
         {
@@ -348,27 +330,23 @@ export const unleashedPlanTableData: FeatureTableColumn = {
     {
       items: [
         {
-          term: "Public & Private Repos",
+          term: "Public & private repos",
           text: "unlimited",
-        },
-        {
-          term: "Team plans",
-          availability: true,
         },
         {
           term: "Inactivity timeout",
           text: "1h",
         },
         {
-          term: "timeout Boost",
+          term: "Timeout boost",
           text: "3h",
         },
         {
-          term: "Parallel Workspaces",
+          term: "Parallel workspaces",
           text: "16",
         },
         {
-          term: "prebuilds",
+          term: "Prebuilds",
           availability: true,
         },
         {
@@ -380,7 +358,7 @@ export const unleashedPlanTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "Admin Dashboard",
+          term: "Admin dashboard",
           availability: false,
         },
         {
@@ -388,7 +366,7 @@ export const unleashedPlanTableData: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "multi-ide support",
+          term: "Multi-ide support",
           availability: true,
         },
         {
@@ -411,15 +389,7 @@ export const unleashedPlanTableData: FeatureTableColumn = {
 export const pricingTableToc: FeatureTableToc[] = [
   {
     type: "text",
-    data: { text: "Public & Private Repos" },
-  },
-  {
-    type: "tooltip",
-    data: {
-      text: "Team plans",
-      tooltip:
-        "You can create team plans and manage subscriptions for your team members.",
-    },
+    data: { text: "Public & private repos" },
   },
   {
     type: "tooltip",
@@ -431,7 +401,7 @@ export const pricingTableToc: FeatureTableToc[] = [
   {
     type: "tooltip",
     data: {
-      text: "timeout Boost",
+      text: "Timeout Boost",
       tooltip: "Extra workspace inactivity timeout boost.",
     },
   },
@@ -445,7 +415,7 @@ export const pricingTableToc: FeatureTableToc[] = [
   {
     type: "tooltip",
     data: {
-      text: "prebuilds",
+      text: "Prebuilds",
       tooltip:
         "Enable prebuilds to continuously build your Git branches, so you and your team can always start coding right away.",
     },
@@ -468,7 +438,7 @@ export const pricingTableToc: FeatureTableToc[] = [
   {
     type: "tooltip",
     data: {
-      text: "Admin Dashboard",
+      text: "Admin dashboard",
       tooltip: "Access to exclusive stats of your team.",
     },
   },
@@ -483,7 +453,7 @@ export const pricingTableToc: FeatureTableToc[] = [
   {
     type: "tooltip",
     data: {
-      text: "multi-ide support",
+      text: "Multi-ide support",
       tooltip:
         "Connect Gitpod with your favourite IDE. View <a href='/docs/references/ides-and-editors'>docs/IDE</a> to see all suported IDE’s.",
     },
