@@ -1,0 +1,54 @@
+# Update all PRs with the `changelog-update` label with the latest changelog
+name: Update Changelogs
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1-5'
+
+jobs:
+  update:
+    name: Update Changelogs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - uses: actions/github-script@v6
+        with:
+          retries: 3
+          script: |
+            import { execSync } from "child_process";
+            const searchQuery =
+              "repo:gitpod-io/website is:pr is:open sort:updated-desc label:changelog-update";
+
+            console.log(searchQuery);
+            const { search } = await octokit.graphql(
+              `query {
+              search(query: "${searchQuery}", type: ISSUE, first: 20) {
+                edges {
+                  node {
+                    ... on PullRequest {
+                      number
+                      headRefName
+                      url
+                    }
+                  }
+                }
+              }
+            }`
+            );
+
+            const branches = search.edges.map((edge) => edge.node.headRefName);
+            const originalBranch = execSync("git rev-parse --abbrev-ref HEAD")
+
+            for (const branch of branches) {
+              console.log(`Updating branch ${branch}`);
+              execSync(`git fetch origin ${branch}`);
+              execSync(`git checkout ${branch}`);
+              execSync("npm i");
+              execSync("node ./scripts/changelog");
+              execSync(`git add .`);
+              execSync(`git commit -m "update changelog"`);
+              execSync(`git push origin ${branch}`);
+            }
+
+            execSync(`git checkout ${originalBranch}`);
