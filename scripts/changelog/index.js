@@ -1,8 +1,6 @@
-import fs from "fs";
 import { Octokit } from "octokit";
 import { paginateGraphql } from "@octokit/plugin-paginate-graphql";
 import { getFormattedMonthBoundaries } from "./lib/dates.js";
-import metadataParser from "markdown-yaml-metadata-parser";
 import {
   generatePrChangelogLine,
   processRepository,
@@ -49,20 +47,9 @@ export const main = async () => {
   categorizedPrs.forEach((category, index) => {
     const prs = category.prs.map(generatePrChangelogLine).join("");
     const heading = `## ${category.name}${lineBreak}${lineBreak}`;
-    try {
-      const partialContent = fs.readFileSync(
-        `./src/lib/contents/changelog/${releaseDate}/${category.partial}.md`,
-        "utf8"
-      );
-      const contentWithStrippedMetadata = partialContent.replace(
-        /---.*---/gs,
-        ""
-      );
-      const contentMetadata = metadataParser(partialContent);
-      if (category.partial !== "others") {
-        categorizedPrs[index].order = contentMetadata.metadata?.order || 0;
-      }
-
+    const partialContent = readPartial(category.partial, releaseDate);
+    if (partialContent) {
+      categorizedPrs[index].order = partialContent.order;
       if (contentWithStrippedMetadata) {
         if (prs) {
           // There are PRs in this category, so we prepend the partial content to them
@@ -78,13 +65,7 @@ export const main = async () => {
           return;
         }
       }
-    } catch (e) {
-      // ENOENT means the file doesn't exist, so we just ignore it - we don't require a partial for every category
-      if (e.code !== "ENOENT") {
-        throw e;
-      }
-    }
-    if (prs) {
+    } else if (prs) {
       categorizedPrs[index].content = `${heading}${prs}${lineBreak}`;
       return;
     }

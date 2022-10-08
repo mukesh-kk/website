@@ -1,5 +1,6 @@
 import { unified } from "unified/lib/index.js";
 import fs from "fs";
+import { readFile } from "fs/promises";
 import remarkParse from "remark-parse";
 import { getPrsForRepo } from "./getPrs.js";
 import { changelogPath } from "./config.js";
@@ -267,4 +268,24 @@ export const sortByCategoryOrder = (a, b) => {
     return a.name.localeCompare(b.name);
   }
   return a.order - b.order;
+};
+
+export const readPartial = async (name, releaseDate) => {
+  const partialContent = await readFile(
+    `./src/lib/contents/changelog/${releaseDate}/${name}.md`,
+    "utf8"
+  ).catch((e) => {
+    if (e.code === "ENOENT") {
+      return null;
+    }
+  });
+
+  if (!partialContent) {
+    return null;
+  }
+
+  const contentWithStrippedMetadata = partialContent.replace(/---.*---/gs, "");
+  const contentMetadata = metadataParser(partialContent);
+  const order = contentMetadata.metadata?.order;
+  return { content: contentWithStrippedMetadata, order };
 };
