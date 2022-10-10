@@ -45,7 +45,7 @@ A workspace creation is a linear process (from a high-level perspective) except 
 
 [Dotfiles](/docs/configure/user-settings/dotfiles) allow you to customize each workspace in a reproducable manner before tasks and IDE are started.
 
-When your dotfiles repository is specified in [preferences](/preferences), the following happens:
+When your dotfiles repository is specified in [preferences](https://gitpod.io/preferences), the following happens:
 
 - Your dotfiles repository is `git` cloned at `~/.dotfiles` directory.
 - Installation script is executed if you have one inside your dotfiles repo (i.e `install.sh` and [more](/docs/configure/user-settings/dotfiles))
