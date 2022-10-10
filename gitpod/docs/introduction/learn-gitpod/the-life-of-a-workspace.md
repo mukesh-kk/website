@@ -49,10 +49,10 @@ When your dotfiles repository is specified in [preferences](https://gitpod.io/pr
 
 - Your dotfiles repository is `git` cloned at `~/.dotfiles` directory.
 - Installation script is executed if you have one inside your dotfiles repo (i.e `install.sh` and [more](/docs/configure/user-settings/dotfiles))
-  1. Gitpod will automatically symlink all files recursively from `~/.dotfiles` to `~` **if you do not have an installation script**.
-  2. Your installation script can run for upto 120s (2 minutes), it will receive a `SIGKILL` if it exceeds that limit.
+  - Gitpod will automatically symlink all files recursively from `~/.dotfiles` to `~` **if you do not have an installation script**.
+  - Your installation script can run for upto 120s (2 minutes), it will receive a `SIGKILL` if it exceeds that limit.
 - Any further progress will be halted until your dotfiles is fully installed.
-- Logfile can be found at `~/.dotfiles.log`
+- Logs file can be found at `~/.dotfiles.log`
 
 ### 5: `.gitpod.yml` tasks
 
@@ -71,7 +71,7 @@ Task terminal outputs are saved inside `/workspace/.gitpod` directory if you wis
 #### 6.1: Extensions installation and Settings Sync
 
 - Your IDE (i.e [VSCode](/docs/references/ides-and-editors/vscode-extensions#installing-an-extension), [JetBrains](/docs/references/ides-and-editors/intellij#preconfigure-for-repository)) specific extensions defined on `.gitpod.yml` are auto installed.
-- If you're using VSCode, your user settings are synced from the [`settings-sync` server](/references/ides-and-editors/settings-sync), this includes color-themes, extensions, fonts, etc.
+- If you're using VSCode, your user settings are synced from the [`settings-sync` server](/docs/references/ides-and-editors/settings-sync), this includes color-themes, extensions, fonts, etc.
 
 This step is done in the background (i.e non-blocking) so your IDE can start ahead of time.
 
@@ -107,13 +107,13 @@ To do that, open the editor's Command Palette (<Keybind>CtrlCmd + Shift + P</Key
 
 The timeout will always be reset to the full 30 minutes (or other applicable timeout depending on your subscription) by any activity&thinsp;—&thinsp;mouse move or keystroke&thinsp;—&thinsp;in the editor.
 If the editor is still open but the corresponding workspace has stopped, a dialog will pop up that lets you start the workspace
-again. Alternatively, you can just reload the browser or go to your [workspaces](https://gitpod.io/workspaces) and restart the workspace.
+again. Alternatively, you can just reload the browser or go to your [Workspaces Dashboard](https://gitpod.io/workspaces) and restart the workspace.
 
 For convenience, closing the browser window/tab containing the workspace reduces the timeout to 3 minutes.
 
 ### What happens if my workspace times out?
 
-Not to worry, your changes are safe. You can navigate back to https://gitpod.io, look for your stopped workspace and start it again to continue working.
+Not to worry, your changes are safe. You can navigate back to [Workspaces Dashboard](https://gitpod.io/workspaces), look for your stopped workspace and start it again to continue working.
 
 ### I want my team / client to review my work
 
