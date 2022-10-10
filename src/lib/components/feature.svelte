@@ -1,7 +1,7 @@
 <script lang="ts">
   import { isAnExternalLink } from "$lib/utils/helpers";
   import LinkButton from "$lib/components/ui-library/link-button";
-  import type { Feature } from "$lib/types/feature.type";
+  import type { Feature } from "$lib/types/feature";
   import Console from "./console.svelte";
   import Section from "./section.svelte";
   import ButtonsWrapper from "./buttons-wrapper.svelte";

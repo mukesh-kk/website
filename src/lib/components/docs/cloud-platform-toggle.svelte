@@ -1,7 +1,7 @@
 <script lang="ts">
   // Couldn't create this component entirely dynamic, because Slots can't be named dynamically
   // Had to use !important to make sure the styles from tailwinds prose-class are overridden
-  import type { comparisonItem } from "$lib/types/docs.type";
+  import type { comparisonItem } from "$lib/types/docs";
 
   export let items: comparisonItem[] = [
     {

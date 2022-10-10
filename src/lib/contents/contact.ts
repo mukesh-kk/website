@@ -1,4 +1,4 @@
-import type { Card } from "$lib/types/card.type";
+import type { Card } from "$lib/types/card";
 
 export const contactActions: Card[] = [
   {

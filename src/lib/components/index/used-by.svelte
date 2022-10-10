@@ -7,7 +7,7 @@
   export let isCard: boolean = true;
   export let isCustomerStoriesLinkShown: boolean = true;
   import { brands as brandsDefault } from "$lib/contents/home";
-  import type { Brand } from "$lib/types/brand.type";
+  import type { Brand } from "$lib/types/brand";
   export let brands: Brand[] = brandsDefault;
 
   export let title: string;

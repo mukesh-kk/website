@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Article } from "$lib/types/article.type";
+  import type { Article } from "$lib/types/article";
   import LinkButton from "$lib/components/ui-library/link-button";
   export let article: Article;
   const { title, text, slug } = article;

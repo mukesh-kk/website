@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Image } from "$lib/types/image.type";
+  import type { Image } from "$lib/types/image";
   export let image: Image;
   const { src, alt, styles } = image;
 </script>

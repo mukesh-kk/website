@@ -1,9 +1,6 @@
 <script lang="ts">
   import QaTooltip from "$lib/components/qa-tooltip.svelte";
-  import type {
-    FeatureTocItem,
-    FeatureTocItemType,
-  } from "../feature-table.types";
+  import type { FeatureTocItem, FeatureTocItemType } from "../feature-table";
   export let type: FeatureTocItemType;
   export let definition: FeatureTocItem;
 </script>

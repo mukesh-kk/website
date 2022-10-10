@@ -33,11 +33,13 @@
 >
   <Card
     size="medium"
-    class="pt-small md:pt-large px-3 sm:px-xx-small pb-micro md:pb-xx-small w-[95vw] lg:w-[auto]"
+    class="pt-small md:pt-large px-3 sm:px-xx-small pb-micro md:pb-xx-small lg:w-[auto]"
   >
-    <YoutubeEmbed
-      title="Remote Development with IntelliJ & Gitpod"
-      embedId="0AaRIHwCJ5o"
-    />
+    <div class="max-w-[100vw] w-[990px] mx-auto">
+      <YoutubeEmbed
+        title="Remote Development with IntelliJ & Gitpod"
+        embedId="0AaRIHwCJ5o"
+      />
+    </div>
   </Card>
 </Modal>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BlogPost } from "$lib/types/blog-post.type";
+  import type { BlogPost } from "$lib/types/blog-post";
 
   import MoreArticles from "$lib/components/more-articles.svelte";
   import { session } from "$app/stores";

@@ -1,14 +1,14 @@
-import type { Feature } from "$lib/types/feature.type";
+import type { Feature } from "$lib/types/feature";
 import type {
   FeatureTable,
   FeatureTableColumn,
   FeatureTableToc,
-} from "$lib/components/ui-library/feature-table/feature-table.types";
+} from "$lib/components/ui-library/feature-table/feature-table";
 import opensourceSvelte from "$lib/components/svgs/opensource.svelte";
 import githubMarkSvelte from "$lib/components/svgs/github-mark.svelte";
 import awsSvelte from "$lib/components/svgs/aws.svelte";
 import idesSvelte from "$lib/components/svgs/ides.svelte";
-import type { Quote } from "$lib/types/quote.type";
+import type { Quote } from "$lib/types/quote";
 import Jetbrains from "$lib/components/svgs/brands/jetbrains.svelte";
 
 export const openSourceFeature = {

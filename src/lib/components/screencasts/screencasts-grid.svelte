@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Screencast as ScreencastType } from "$lib/types/screencasts.type";
+  import type { Screencast as ScreencastType } from "$lib/types/screencasts";
   import Screencast from "./screencast.svelte";
   export let screencasts: ScreencastType[];
   export let headlineOrder: "h3" | "" = "";

@@ -1,4 +1,4 @@
-import type { PopularItem } from "$lib/types/docs.type";
+import type { PopularItem } from "$lib/types/docs";
 import type { Readable } from "svelte/store";
 import { readable, derived, writable } from "svelte/store";
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Quote } from "$lib/types/quote.type";
+  import type { Quote } from "$lib/types/quote";
   import Card from "$lib/components/ui-library/card";
   export let quotes: Quote[];
   let selectedQuote: Quote = quotes[0];

@@ -1,4 +1,4 @@
-import type { ChangelogEntry } from "$lib/types/changelog-entry.type";
+import type { ChangelogEntry } from "$lib/types/changelog-entry";
 
 export const get: import("@sveltejs/kit").RequestHandler = async ({
   locals,

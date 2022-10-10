@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ImageBox } from "$lib/types/image-box.type";
+  import type { ImageBox } from "$lib/types/image-box";
   import LinkButton from "$lib/components/ui-library/link-button";
   export let image: ImageBox;
   const { src, alt, text, btnText, imgClass } = image;

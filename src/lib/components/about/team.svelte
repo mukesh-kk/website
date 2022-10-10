@@ -13,6 +13,12 @@
     <LinkButton href="#" variant="primary" size="large" class="mb-small">
       Meet the team
     </LinkButton>
-    <YoutubeEmbed title="Gitpod Offsite Portugal 2022" embedId="8QQKs3hFnMg" />
+
+    <div class="max-w-full w-[990px] mx-auto">
+      <YoutubeEmbed
+        title="Gitpod Offsite Portugal 2022"
+        embedId="8QQKs3hFnMg"
+      />
+    </div>
   </div>
 </SectionCommon>

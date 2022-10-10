@@ -1,6 +1,6 @@
 <script lang="ts">
   import Card from "$lib/components/ui-library/card";
-  import type { verticalFeature } from "../types/feature.type";
+  import type { verticalFeature } from "../types/feature";
   import LinkButton from "./ui-library/link-button/link-button.svelte";
   export let verticalFeatureData: verticalFeature;
   export let fullWidth: boolean = false;

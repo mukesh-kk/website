@@ -18,8 +18,8 @@
       "Open conversation about Java remote development covering best practices. What does not work well yet, and what had to click to make it work.",
     keywords:
       "panel-discussion, remote development, success-stories, Java, Gitpod",
-    image: "images/webinars/java-panel-discussion-twitter.png",
-    imageTwitter: "images/webinars/java-panel-discussion-twitter.png",
+    image: "images/webinars/java-panel-discussion.png",
+    imageTwitter: "images/webinars/java-panel-discussion.png",
   }}
 />
 
@@ -33,20 +33,25 @@
     <Header
       title="Success & failure stories of Java developers shifting to remote"
       label="Panel Discussion"
-      date="October 04 - 6:00 pm CEST"
-      duration="60min"
+      date="Past Event"
+      duration="30min"
       webinarDescription="Open conversation about Java remote development covering best practices. What does not work well yet, and what had to click to make it work."
     />
 
-    <div class="lgx:hidden">
+    <div class="lgx:hidden ">
       <Card
-        size="medium"
-        class="pt-small md:pt-large px-3 sm:px-xx-small pb-micro md:pb-xx-small w-[95vw] lg:w-[auto]"
+        size="small"
+        class="px-3 sm:px-xx-small py-micro md:py-xx-small max-w-full shadow-normal"
       >
-        <YoutubeEmbed
-          title="Success and failure stories of Java developers shifting to remote"
-          embedId="Tgb7CBoqoqg"
-        />
+        <h2 class="text-xl font-bold mb-6">Watch the recording</h2>
+
+        <div class="flex">
+          <YoutubeEmbed
+            coverImage="/images/webinars/java-panel-discussion.png"
+            title="Success and failure stories of Java developers shifting to remote"
+            embedId="Tgb7CBoqoqg"
+          />
+        </div>
       </Card>
     </div>
 
@@ -69,16 +74,22 @@
     </div>
   </Layout>
 
-  <div class="hidden lgx:block max-w-2xl">
-    <Card
-      size="medium"
-      class="pt-small md:pt-large px-3 sm:px-xx-small pb-micro md:pb-xx-small w-[95vw] lg:w-[auto]"
-    >
-      <YoutubeEmbed
-        title="Success and failure stories of Java developers shifting to remote"
-        embedId="Tgb7CBoqoqg"
-      />
-    </Card>
+  <div
+    class="hidden lgx:block mt-small md:mt-x-large sticky top-40 left-full lg:pr-16 max-w-2xl flex-1"
+  >
+    <div class="">
+      <Card size="small" class="p-xx-small shadow-normal">
+        <h2 class="text-xl font-bold mb-6">Watch the recording</h2>
+
+        <div class="flex">
+          <YoutubeEmbed
+            coverImage="/images/webinars/java-panel-discussion.png"
+            title="Success and failure stories of Java developers shifting to remote"
+            embedId="Tgb7CBoqoqg"
+          />
+        </div>
+      </Card>
+    </div>
   </div>
 </div>
 

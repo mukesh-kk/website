@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Ide } from "$lib/types/ide.type";
+  import type { Ide } from "$lib/types/ide";
   import { createEventDispatcher } from "svelte";
   export let ides: Ide[];
   export let activeByDefaultName: string;

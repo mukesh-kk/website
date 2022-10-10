@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FeatureTitle as FeatureTitleProps } from "$lib/types/feature-title.type";
+  import type { FeatureTitle as FeatureTitleProps } from "$lib/types/feature-title";
   import FeatureTitle from "./feature-title.svelte";
 
   export let featureTitles: FeatureTitleProps[];

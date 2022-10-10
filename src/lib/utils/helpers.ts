@@ -1,5 +1,5 @@
 import { readable } from "svelte/store";
-import type { MenuEntry } from "../types/menu-entry.type";
+import type { MenuEntry } from "../types/menu-entry";
 
 export const isEurope = () => {
   const offset = new Date().getTimezoneOffset();

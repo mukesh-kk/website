@@ -5,7 +5,7 @@
   // States
   import topicsState from "../states/topics-state";
 
-  import type { MenuEntry } from "$lib/types/menu-entry.type";
+  import type { MenuEntry } from "$lib/types/menu-entry";
   export let MENU: MenuEntry[];
 </script>
 

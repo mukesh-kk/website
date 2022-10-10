@@ -3,7 +3,7 @@
 
   import InputsHalf from "$lib/components/contact/inputs-half.svelte";
   import Input from "$lib/components/ui-library/input/input.svelte";
-  import type { Form } from "$lib/types/form.type";
+  import type { Form } from "$lib/types/form";
   import { scrollToElement } from "$lib/utils/helpers";
   import { tick } from "svelte";
   import Button from "$lib/components/ui-library/button/button.svelte";

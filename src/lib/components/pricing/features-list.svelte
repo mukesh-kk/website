@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Features } from "$lib/types/pricing.type";
+  import type { Features } from "$lib/types/pricing";
   import QaTooltip from "../qa-tooltip.svelte";
 
   export let features: Features;

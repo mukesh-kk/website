@@ -1,12 +1,12 @@
-import type { Card } from "../types/card.type";
+import type { Card } from "../types/card";
 import type { PartnershipCard } from "../types/enterprise";
-import type { ExploreSection } from "../types/explore-section.type";
-import type { Feature, verticalFeature } from "../types/feature.type";
+import type { ExploreSection } from "../types/explore-section";
+import type { Feature, verticalFeature } from "../types/feature";
 import Ides from "../components/svgs/ides.svelte";
 import GitProviders from "../components/svgs/enterprise/git-providers.svelte";
 import { linuxSource } from "./terminal";
 import Jetbrains from "$lib/components/svgs/brands/jetbrains.svelte";
-import type { Quote } from "$lib/types/quote.type";
+import type { Quote } from "$lib/types/quote";
 import {
   factorialQuote,
   redwoodJsQuote,

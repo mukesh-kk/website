@@ -2,7 +2,7 @@
   import Section from "./section.svelte";
   import Card from "$lib/components/ui-library/card";
   import LinkButton from "$lib/components/ui-library/link-button";
-  import type { ExploreSection } from "$lib/types/explore-section.type";
+  import type { ExploreSection } from "$lib/types/explore-section";
   import ButtonsWrapper from "./buttons-wrapper.svelte";
 
   export let contents: ExploreSection = {};

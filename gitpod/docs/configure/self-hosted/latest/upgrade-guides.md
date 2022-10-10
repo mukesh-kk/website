@@ -12,6 +12,19 @@ title: Upgrade Guides and Breaking Changes
 
 This page informs you if there are specific considerations to take into account when upgrading to a specific version. If no breaking changes and thus specific recommendations when updating are mentioned here (or if they do not apply to you), please follow the normal upgrade procedure mentioned on the [Updating your Gitpod Installation](../latest/updating) page.
 
+## 2022.09
+
+### Security
+
+This release includes security fixes addressing information leakage in logs; see the [security announcement log](https://www.gitpod.io/security/log) for more information.
+
+### Breaking Changes
+
+- [Single Cluster Reference Architecture](https://www.gitpod.io/docs/configure/self-hosted/latest/reference-architecture/single-cluster-ref-arch) changes:
+  - Regular workspaces and headless workspaces are isolated to separate node pools to help avoid noisy neighbor issues between the two and guarantee maximum performance for workspaces
+  - Workspace Services (such as `ws-manager`) are deployed to the services nodepool to prevent potential service degradation from high `ws-daemon` memory use.
+  - We've increased the default node size to 16 core / 64 GB nodes. This is to allow for more workspaces per node, and avoid the scenario where there is just one workspace per node. We've also added [documentation](https://www.gitpod.io/docs/configure/self-hosted/latest/configuring-workspace-resources) to detail our recommendations around workspace resources.
+
 ## 2022.08
 
 > There is no expected impact from these changes if using KOTS. These are documented for transparency purposes only.

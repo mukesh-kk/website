@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import { getContext } from "svelte";
-  import type { BannerData } from "$lib/types/banner.type";
+  import type { BannerData } from "$lib/types/banner";
   import Banner from "./base.svelte";
 
   /**

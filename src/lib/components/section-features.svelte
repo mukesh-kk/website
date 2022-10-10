@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Feature as FeatureType } from "$lib/types/feature.type";
+  import type { Feature as FeatureType } from "$lib/types/feature";
   import FeatureBoxes from "./feature-boxes.svelte";
   import Features from "./features.svelte";
 

@@ -2,7 +2,7 @@
   import LinkButton from "$lib/components/ui-library/link-button";
   import Button from "$lib/components/ui-library/button";
   import { isAnExternalLink } from "$lib/utils/helpers";
-  import type { Card } from "$lib/types/card.type";
+  import type { Card } from "$lib/types/card";
   import Modal from "$lib/components/ui-library/modal";
   import type { ButtonSizes } from "../ui-library/button/button";
   let clazz = "";

@@ -1,10 +1,10 @@
-import type { Card } from "$lib/types/card.type";
-import type { Intro } from "$lib/types/intro.type";
+import type { Card } from "$lib/types/card";
+import type { Intro } from "$lib/types/intro";
 import type {
   FeatureTable,
   FeatureTableColumn,
   FeatureTableToc,
-} from "../components/ui-library/feature-table/feature-table.types";
+} from "../components/ui-library/feature-table/feature-table";
 import logoSvelte from "$lib/components/svgs/logo.svelte";
 
 export const benefits: Card[] = [

@@ -1,8 +1,8 @@
-import type { Feature, verticalFeature } from "$lib/types/feature.type";
+import type { Feature, verticalFeature } from "$lib/types/feature";
 import { terminalSource, linuxSource } from "../terminal";
 // @ts-ignore
 import Workspaces from "$lib/components/workspaces.svelte";
-import type { Card } from "$lib/types/card.type";
+import type { Card } from "$lib/types/card";
 
 export const multiTrackDevelopmentFeature: Feature = {
   title: "Multi track development with ease",

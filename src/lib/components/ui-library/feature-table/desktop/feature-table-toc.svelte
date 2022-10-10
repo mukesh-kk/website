@@ -1,7 +1,7 @@
 <script lang="ts">
   import FeatureTableHeader from "./feature-table-header.svelte";
   import FeatureTableTocItem from "./feature-table-toc-item.svelte";
-  import type { FeatureTableToc } from "../feature-table.types";
+  import type { FeatureTableToc } from "../feature-table";
   export let tocData: FeatureTableToc[];
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import Card from "./ui-library/card/card.svelte";
-  import type { FeatureTitle as FeatureTitleProps } from "$lib/types/feature-title.type";
+  import type { FeatureTitle as FeatureTitleProps } from "$lib/types/feature-title";
 
   export let featureTitle: FeatureTitleProps;
   export let featureTitlePadding: string;
