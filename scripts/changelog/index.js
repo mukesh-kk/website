@@ -8,6 +8,7 @@ import {
   ensureGithubToken,
   sayHello,
   sortByCategoryOrder,
+  formatChangelogCategory,
 } from "./lib/utils.js";
 import { lineBreak, prCategories, repos } from "./lib/config.js";
 import minimist from "minimist";
@@ -50,29 +51,12 @@ export const main = async () => {
 
   categorizedPrs.forEach((category, index) => {
     const prs = category.prs.map(generatePrChangelogLine).join("");
-    const heading = `## ${category.name}${lineBreak}${lineBreak}`;
-    const partialContent = readPartial(category.partial, releaseDate);
-    if (partialContent) {
-      categorizedPrs[index].order = partialContent.order;
-      if (contentWithStrippedMetadata) {
-        if (prs) {
-          // There are PRs in this category, so we prepend the partial content to them
-          categorizedPrs[
-            index
-          ].content = `${heading}${contentWithStrippedMetadata}${lineBreak}${lineBreak}${prs}`;
-          return;
-        } else {
-          // There are no PRs for this category, so we only include the partial
-          categorizedPrs[
-            index
-          ].content = `${heading}${contentWithStrippedMetadata}${lineBreak}${lineBreak}`;
-          return;
-        }
-      }
-    } else if (prs) {
-      categorizedPrs[index].content = `${heading}${prs}${lineBreak}`;
-      return;
-    }
+    const formattedCategory = formatChangelogCategory(
+      prs,
+      category,
+      releaseDate
+    );
+    categorizedPrs[index] = formattedCategory;
   });
   const perCategoryPrContent = categorizedPrs
     .sort(sortByCategoryOrder)

@@ -4,7 +4,7 @@ import { readFile } from "fs/promises";
 import remarkParse from "remark-parse";
 import metadataParser from "markdown-yaml-metadata-parser";
 import { getPrsForRepo } from "./getPrs.js";
-import { changelogPath } from "./config.js";
+import { changelogPath, lineBreak } from "./config.js";
 import minimist from "minimist";
 
 const argv = minimist(process.argv.slice(2));
@@ -289,4 +289,31 @@ export const readPartial = async (name, releaseDate) => {
   const contentMetadata = metadataParser(partialContent);
   const order = contentMetadata.metadata?.order;
   return { content: contentWithStrippedMetadata, order };
+};
+
+export const formatChangelogCategory = (prs, category, releaseDate) => {
+  const heading = `## ${category.name}${lineBreak}${lineBreak}`;
+  const partialContent = readPartial(category.partial, releaseDate);
+  if (partialContent) {
+    const { order, content } = partialContent;
+    if (partialContent.content) {
+      if (prs) {
+        // There are PRs in this category, so we prepend the partial content to them
+        return {
+          order: order,
+          content: `${heading}${content}${lineBreak}${lineBreak}${prs}`,
+        };
+      } else {
+        // There are no PRs for this category, so we only include the partial
+        return {
+          order: order,
+          content: `${heading}${content}${lineBreak}${lineBreak}`,
+        };
+      }
+    }
+  } else if (prs) {
+    return {
+      content: `${heading}${prs}${lineBreak}`,
+    };
+  }
 };
