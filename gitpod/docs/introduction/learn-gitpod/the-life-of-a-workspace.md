@@ -70,7 +70,7 @@ Task terminal outputs are saved inside `/workspace/.gitpod` directory if you wis
 
 #### 6.1: Extensions installation and Settings Sync
 
-- Your IDE (i.e [VSCode](/references/ides-and-editors/vscode-extensions#installing-an-extension), [JetBrains](/references/ides-and-editors/intellij#preconfigure-for-repository)) specific extensions defined on `.gitpod.yml` are auto installed.
+- Your IDE (i.e [VSCode](/docs/references/ides-and-editors/vscode-extensions#installing-an-extension), [JetBrains](/docs/references/ides-and-editors/intellij#preconfigure-for-repository)) specific extensions defined on `.gitpod.yml` are auto installed.
 - If you're using VSCode, your user settings are synced from the [`settings-sync` server](/references/ides-and-editors/settings-sync), this includes color-themes, extensions, fonts, etc.
 
 This step is done in the background (i.e non-blocking) so your IDE can start ahead of time.
