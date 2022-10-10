@@ -28,6 +28,10 @@ export const main = async () => {
   const to = argv._[2] || lastBusinessDay;
   const githubToken = ensureGithubToken();
 
+  if (!githubToken) {
+    process.exit(1);
+  }
+
   const octokit = new OctokitWithPlugins({
     auth: githubToken,
   });

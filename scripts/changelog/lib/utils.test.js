@@ -4,10 +4,12 @@ import {
   sayHello,
   helpMenu,
   sortByCategoryOrder,
+  readPartial,
 } from "./utils.js";
-import { prCategories } from "./config.js";
+import { prCategories, changelogPath } from "./config.js";
 import { jest } from "@jest/globals";
 import { Octokit } from "octokit";
+import fs from "fs/promises";
 
 const consoleError = jest.spyOn(console, "error").mockImplementation(() => {});
 const consoleInfo = jest.spyOn(console, "info").mockImplementation(() => {});
@@ -89,7 +91,6 @@ test("If no GitHub token log error and exit process", () => {
       "Create a personal access token at https://github.com/settings/tokens/new?scopes=repo,user",
     ],
   ]);
-  expect(exit).toBeCalledWith(1);
   expect(result).toBe(null);
 });
 
@@ -101,9 +102,15 @@ test("If GitHub token passed, don't log or exit process", () => {
   expect(result).toBe(TOKEN);
 });
 
-test.skip("The script can say hello into stdout correctly", async () => {
+test("The script can say hello into stdout correctly", async () => {
+  const token = ensureGithubToken();
+
+  if (token === null) {
+    return;
+  }
+
   const octokit = new Octokit({
-    auth: ensureGithubToken(),
+    auth: token,
   });
   await sayHello(octokit);
   expect(consoleInfo).toHaveBeenCalledTimes(1);
@@ -124,4 +131,26 @@ test("Category sorting works correctly", () => {
   expect(sortedCategories[randomIndex].order).toBeLessThanOrEqual(
     sortedCategories[randomIndex + 1].order
   );
+});
+
+test("Reading partials works correctly", async () => {
+  const releaseDate = "2020-04-20";
+  const dataToWrite = "---\norder: 1\n---\n\n# Hi VS Code!";
+  await fs.mkdir(`${changelogPath}/${releaseDate}`, { recursive: true });
+  await fs.writeFile(`${changelogPath}/${releaseDate}/vscode.md`, dataToWrite);
+
+  const { order, content } = await readPartial("vscode", releaseDate);
+
+  expect(order).toBe(1);
+  expect(content.trim()).toBe("# Hi VS Code!");
+
+  // Clean up
+  await fs.rmdir(`${changelogPath}/${releaseDate}`, { recursive: true });
+});
+
+test("Reading partials fails correctly on non-existing files", async () => {
+  const releaseDate = "2020-04-20";
+  const result = await readPartial("vscode", releaseDate);
+
+  expect(result).toBe(null);
 });

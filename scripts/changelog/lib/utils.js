@@ -2,6 +2,7 @@ import { unified } from "unified/lib/index.js";
 import fs from "fs";
 import { readFile } from "fs/promises";
 import remarkParse from "remark-parse";
+import metadataParser from "markdown-yaml-metadata-parser";
 import { getPrsForRepo } from "./getPrs.js";
 import { changelogPath } from "./config.js";
 import minimist from "minimist";
@@ -227,7 +228,7 @@ export const ensureGithubToken = (mockedToken) => {
     console.error(
       "Create a personal access token at https://github.com/settings/tokens/new?scopes=repo,user"
     );
-    process.exit(1);
+    return null;
   }
 
   return githubToken;
@@ -272,7 +273,7 @@ export const sortByCategoryOrder = (a, b) => {
 
 export const readPartial = async (name, releaseDate) => {
   const partialContent = await readFile(
-    `./src/lib/contents/changelog/${releaseDate}/${name}.md`,
+    `${changelogPath}/${releaseDate}/${name}.md`,
     "utf8"
   ).catch((e) => {
     if (e.code === "ENOENT") {
