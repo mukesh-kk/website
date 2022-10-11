@@ -82,9 +82,9 @@ This step is done in the background (i.e non-blocking) so your IDE can start ahe
 
 Your workspace may stop for one of these reasons:
 
-- You manually stopped it.
-- [Due to inactivity timeout](#timeouts).
-- Abuse.
+1. User issuing a command to stop the workspace (for example executing `gp stop`)
+2. User inactivity triggering a [Workspace Timeout](#timeouts)
+3. User is suspected of abusing Gitpod's [Terms of Service](https://www.gitpod.io/terms).
 
 So what happens to your workspace files? The following applies:
 
