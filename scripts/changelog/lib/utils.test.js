@@ -1,18 +1,14 @@
 import {
   parseOldReleaseNote,
   ensureGithubToken,
-  sayHello,
-  helpMenu,
   sortByCategoryOrder,
   readPartial,
 } from "./utils.js";
 import { prCategories, changelogPath } from "./config.js";
 import { jest } from "@jest/globals";
-import { Octokit } from "octokit";
 import fs from "fs/promises";
 
 const consoleError = jest.spyOn(console, "error").mockImplementation(() => {});
-const consoleInfo = jest.spyOn(console, "info").mockImplementation(() => {});
 const exit = jest.spyOn(process, "exit").mockImplementation(() => {});
 
 test("Formatting of old release note blocks works for valid release notes", () => {
@@ -100,25 +96,6 @@ test("If GitHub token passed, don't log or exit process", () => {
   expect(consoleError).not.toBeCalled();
   expect(exit).not.toBeCalled();
   expect(result).toBe(TOKEN);
-});
-
-test("The script can say hello into stdout correctly", async () => {
-  const token = ensureGithubToken();
-
-  if (token === null) {
-    return;
-  }
-
-  const octokit = new Octokit({
-    auth: token,
-  });
-  await sayHello(octokit);
-  expect(consoleInfo).toHaveBeenCalledTimes(1);
-});
-
-test("Help menu outputs the correct amount of info into stdout", () => {
-  helpMenu();
-  expect(consoleInfo).toHaveBeenCalledTimes(2);
 });
 
 test("Category sorting works correctly", () => {
