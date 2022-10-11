@@ -22,7 +22,8 @@ export const getPrParticipants = (pr) => {
 export const parseOldReleaseNote = (pr) => {
   const releaseNoteMatch = pr.body.match(/```release-notes?(.+?)```/s);
   const releaseNoteText = releaseNoteMatch && releaseNoteMatch[1].trim();
-  if (!releaseNoteMatch || releaseNoteText.toUpperCase() === "NONE") return;
+  if (!releaseNoteMatch || releaseNoteText.toUpperCase() === "NONE")
+    return null;
   return releaseNoteText;
 };
 
@@ -56,10 +57,10 @@ export const parseNewReleaseNote = (pr) => {
   const withRemovedComments = releaseNotes.replace(htmlComments, "").trim();
 
   if (!withRemovedComments || withRemovedComments.toUpperCase() === "NONE")
-    return;
+    return null;
 
   // Make sure the release note isn't the old format
-  if (withRemovedComments.startsWith("```release-note")) return;
+  if (withRemovedComments.startsWith("```release-note")) return null;
 
   return withRemovedComments;
 };

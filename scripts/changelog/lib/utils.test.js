@@ -56,7 +56,7 @@ test("Formatting of old release note blocks returns nothing for invalid release 
           ## Werft options:
       `,
   };
-  expect(parseOldReleaseNote(pr)).toBe(undefined);
+  expect(parseOldReleaseNote(pr)).toBe(null);
 });
 
 test("Formatting of old release note blocks returns nothing for release blocks with the content of NONE", () => {
@@ -67,7 +67,7 @@ test("Formatting of old release note blocks returns nothing for release blocks w
         \`\`\`
     `,
   };
-  expect(parseOldReleaseNote(pr)).toBe(undefined);
+  expect(parseOldReleaseNote(pr)).toBe(null);
 });
 
 test("Formatting of old release note blocks returns the content for release blocks only containing NONE", () => {
