@@ -54,7 +54,7 @@ When your dotfiles repository is specified in [preferences](https://gitpod.io/pr
 - Any further progress will be halted until your dotfiles is fully installed.
 - Logs file can be found at `~/.dotfiles.log`
 
-### 5: `.gitpod.yml` tasks
+### 5: Workspace Tasks
 
 There are different kinds of [`tasks`](/docs/configure/workspaces/tasks), they run on different stages.
 
