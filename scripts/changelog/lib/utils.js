@@ -291,9 +291,9 @@ export const readPartial = async (name, releaseDate) => {
   return { content: contentWithStrippedMetadata, order };
 };
 
-export const formatChangelogCategory = (prs, category, releaseDate) => {
+export const formatChangelogCategory = async (prs, category, releaseDate) => {
   const heading = `## ${category.name}${lineBreak}${lineBreak}`;
-  const partialContent = readPartial(category.partial, releaseDate);
+  const partialContent = await readPartial(category.partial, releaseDate);
   if (partialContent) {
     const { order, content } = partialContent;
     if (partialContent.content) {

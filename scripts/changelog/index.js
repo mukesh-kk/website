@@ -49,17 +49,18 @@ export const main = async () => {
     });
   }
 
-  categorizedPrs.forEach((category, index) => {
+  for await (const [index, category] of categorizedPrs.entries()) {
     const prs = category.prs.map(generatePrChangelogLine).join("");
-    const formattedCategory = formatChangelogCategory(
+    const formattedCategory = await formatChangelogCategory(
       prs,
       category,
       releaseDate
     );
-    categorizedPrs[index] = formattedCategory;
-  });
+    categorizedPrs[index] = { ...category, ...formattedCategory };
+  }
   const perCategoryPrContent = categorizedPrs
     .sort(sortByCategoryOrder)
+    .filter((category) => category.content)
     .map((category) => category.content)
     .join(lineBreak);
 
