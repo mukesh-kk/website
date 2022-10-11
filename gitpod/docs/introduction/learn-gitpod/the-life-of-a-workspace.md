@@ -78,7 +78,7 @@ This step is done in the background (i.e non-blocking) so your IDE can start ahe
 
 #### 6.2: Your selected IDE is launched
 
-### 7: Workspace stops eventually
+### 7: Workspace Stopping
 
 Your workspace may stop for one of these reasons:
 
