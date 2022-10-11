@@ -18,7 +18,7 @@ This ensures that you are starting from a clean slate with proper configuration.
 
 A workspace creation is a linear process (from a high-level perspective) except for a few things, which we will see later.
 
-### 1: New Workspace
+### 1: Workspace Provisioning
 
 1. New Workspace starts from the provided `git` context (e.g. GitHub, GitLab, Bitbucket). If there is already a running workspace from the same context, you're prompted to reuse it.
 2. Container resource (i.e CPU and RAM) allocation is based on [Workspace classes](/docs/configure/workspaces/workspace-classes#workspace-classes). The time required for allocating resources for your workspace can vary.
