@@ -26,7 +26,7 @@ A workspace creation is a linear process (from a high-level perspective) except 
 
 ### 2: Workspace Image
 
-- By default, [**workspace-full**](https://hub.docker.com/r/gitpod/workspace-full) docker image is used.
+- Unless specified with the `image` property in the `.gitpod.yml`, workspaces will start based on the [**workspace-full**](https://hub.docker.com/r/gitpod/workspace-full) image. 
 
 #### 2.1 Docker container build and pull
 
