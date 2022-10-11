@@ -9,6 +9,7 @@ import {
   sayHello,
   sortByCategoryOrder,
   formatChangelogCategory,
+  helpMenu,
 } from "./lib/utils.js";
 import { lineBreak, prCategories, repos } from "./lib/config.js";
 import minimist from "minimist";
