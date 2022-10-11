@@ -22,7 +22,7 @@ A workspace creation is a linear process (from a high-level perspective) except 
 
 1. New Workspace starts from the provided `git` context (e.g. GitHub, GitLab, Bitbucket). If there is already a running workspace from the same context, you're prompted to reuse it.
 2. Container resource (i.e CPU and RAM) allocation is based on [Workspace classes](/docs/configure/workspaces/workspace-classes#workspace-classes). The time required for allocating resources for your workspace can vary.
-3. As one of the very first things, Gitpod checks for the existence of a `.gitpod.yml` in your repo to load some configuration for processing later.
+3. Gitpod checks for the existence of an [`image` property](/docs/references/gitpod-yml#image) in a committed `.gitpod.yml` within the repo provided as your `git` context for a workspace. 
 
 ### 2: Workspace Image
 
