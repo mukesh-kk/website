@@ -44,7 +44,7 @@ A workspace creation is a linear process (from a high-level perspective) except 
 
 ### 4: Install Dotfiles
 
-[Dotfiles](/docs/configure/user-settings/dotfiles) allow you to customize each workspace in a reproducable manner before tasks and IDE are started.
+[Dotfiles](/docs/configure/user-settings/dotfiles) allow you to customize every workspace according to your personal needs. Dotfiles are useful ways to extend any existing workspace configuration with personal user configuration or overrides. A Dotfile is a GitHub repo that is (optionally) configured by a user of Gitpod in their [preferences](https://gitpod.io/preferences). 
 
 When your dotfiles repository is specified in [preferences](https://gitpod.io/preferences), the following happens:
 
