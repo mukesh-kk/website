@@ -24,7 +24,7 @@ A workspace creation is a linear process (from a high-level perspective) except 
 2. Container resource (i.e CPU and RAM) allocation is based on [Workspace classes](/docs/configure/workspaces/workspace-classes#workspace-classes). The time required for allocating resources for your workspace can vary.
 3. As one of the very first things, Gitpod checks for the existence of a `.gitpod.yml` in your repo to load some configuration for processing later.
 
-### 2: Docker container
+### 2: Workspace Image
 
 - By default, [**workspace-full**](https://hub.docker.com/r/gitpod/workspace-full) docker image is used.
 - If you configured a [custom image](/docs/configure/workspaces/workspace-image#configure-a-custom-dockerfile), then that will be used instead.
