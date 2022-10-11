@@ -4,6 +4,7 @@ import { jest } from "@jest/globals";
 import { Octokit } from "octokit";
 
 const consoleInfo = jest.spyOn(console, "info").mockImplementation(() => {});
+const processExit = jest.spyOn(process, "exit").mockImplementation(() => {});
 
 test("Help menu outputs the correct amount of info into stdout", () => {
   helpMenu();
@@ -44,5 +45,6 @@ test("Help menu argument invokes the help menu", () => {
   };
   parseArgs(dummyArgs);
 
+  expect(processExit).toHaveBeenCalledWith(0);
   expect(consoleInfo).toHaveBeenCalledTimes(2);
 });

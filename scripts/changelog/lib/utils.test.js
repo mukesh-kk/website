@@ -4,6 +4,7 @@ import {
   sortByCategoryOrder,
   readPartial,
   getPrParticipants,
+  replaceContentOfBlock,
 } from "./utils.js";
 import { prCategories, changelogPath } from "./config.js";
 import { jest } from "@jest/globals";
@@ -151,4 +152,16 @@ test("@roboquat is filtered out of PR participants and the author is first", () 
   const participants = getPrParticipants(dummyPr).split(",");
   expect(participants[0]).toBe(prAuthor);
   expect(participants).not.toContain("roboquat");
+});
+
+test("Markdown block injection works correctly", () => {
+  const input =
+    "Helloo!\n<!--- BEGIN_TEST -->\nhi there\n<!--- END_TEST -->\npost-block content";
+  const output = replaceContentOfBlock("TEST", "new", input);
+  expect(output).toBe(
+    "Helloo!\n<!--- BEGIN_TEST -->\r\nnew\r\n<!--- END_TEST -->\npost-block content"
+  );
+
+  // Testing invalid data
+  expect(() => replaceContentOfBlock("TEST", "", "lorem")).toThrow();
 });
