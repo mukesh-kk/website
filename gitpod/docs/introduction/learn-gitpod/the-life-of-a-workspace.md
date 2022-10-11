@@ -40,6 +40,7 @@ A workspace creation is a linear process (from a high-level perspective) except 
   - Your workspace may be created from any repository context (i.e issue, pull-request, branch and so on)
   - `git` submodules are initialized as well.
 - Multiple repositories may be cloned using the built-in [multi-repo](/docs/configure/workspaces/multi-repo) feature.
+- `/workspace/.gitpod/ready` is created after cloning is done.
 
 ### 4: Install Dotfiles
 
