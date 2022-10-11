@@ -3,6 +3,7 @@ import {
   ensureGithubToken,
   sortByCategoryOrder,
   readPartial,
+  getPrParticipants,
 } from "./utils.js";
 import { prCategories, changelogPath } from "./config.js";
 import { jest } from "@jest/globals";
@@ -130,4 +131,24 @@ test("Reading partials fails correctly on non-existing files", async () => {
   const result = await readPartial("vscode", releaseDate);
 
   expect(result).toBe(null);
+});
+
+test("@roboquat is filtered out of PR participants and the author is first", () => {
+  const prAuthor = "LouIsCool";
+  const otherParticipants = ["LoremDipsum", "roboquat", "FunnyUsername2"];
+  const participantNodes = otherParticipants.map((participant) => ({
+    login: participant,
+  }));
+  const dummyPr = {
+    author: {
+      login: prAuthor,
+    },
+    participants: {
+      nodes: participantNodes,
+    },
+  };
+
+  const participants = getPrParticipants(dummyPr).split(",");
+  expect(participants[0]).toBe(prAuthor);
+  expect(participants).not.toContain("roboquat");
 });

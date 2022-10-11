@@ -1,4 +1,4 @@
-import { helpMenu, sayHello } from "./cli.js";
+import { helpMenu, sayHello, parseArgs } from "./cli.js";
 import { ensureGithubToken } from "./utils.js";
 import { jest } from "@jest/globals";
 import { Octokit } from "octokit";
@@ -24,3 +24,25 @@ test("The script can say hello into stdout correctly", async () => {
   expect(consoleInfo).toHaveBeenCalledTimes(1);
 });
 4;
+
+test("Arguments are parsed correctly", () => {
+  const dummyArgs = {
+    _: ["testDate", "testFrom", "testTo"],
+  };
+
+  const parsed = parseArgs(dummyArgs);
+
+  expect(parsed.releaseDate).toBe("testDate");
+  expect(parsed.from).toBe("testFrom");
+  expect(parsed.to).toBe("testTo");
+});
+
+test("Help menu argument invokes the help menu", () => {
+  const dummyArgs = {
+    help: true,
+    _: [],
+  };
+  parseArgs(dummyArgs);
+
+  expect(consoleInfo).toHaveBeenCalledTimes(2);
+});

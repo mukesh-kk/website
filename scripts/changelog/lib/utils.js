@@ -28,8 +28,7 @@ export const getPrParticipants = (pr) => {
     .map(({ login }) => login)
     .filter((login) => !["roboquat", author].includes(login))
     .sort();
-  const allParticipants = [author, ...participants].join(",");
-  return allParticipants;
+  return [author, ...participants].join(",");
 };
 
 export const parseOldReleaseNote = (pr) => {
