@@ -34,7 +34,7 @@ A workspace creation is a linear process (from a high-level perspective) except 
 1. If your container image cache isn't available, it will be built.
 2. The container image will be downloaded each time for your workspace.
 
-### 3: Clone Repositories
+### 3: Clone Git Repo(s)
 
 - Normally, only the repository is cloned from which you created the workspace.
   - Your workspace may be created from any repository context (i.e issue, pull-request, branch and so on)
