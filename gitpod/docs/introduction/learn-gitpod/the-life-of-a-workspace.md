@@ -60,9 +60,9 @@ There are different kinds of [`tasks`](/docs/configure/workspaces/tasks), they r
 
 The [tasks page](/docs/configure/workspaces/tasks#prebuild-and-new-workspaces) should provide you more details but here's a brief overview:
 
-- `before` tasks are run before `init` and `command`.
-- `init` tasks are run after `before`. If you're using prebuilds, `init` tasks will block further progress before completion.
-- `command` tasks are run after IDE start.
+- `before` tasks are run before `init` and `command`, it is for installing the global dependencies.
+- `init` tasks are run after `before`. If you're using [Gitpod prebuilds](/docs/configure/projects/prebuilds), `init` tasks will block further progress before completion, it is for installing required dependencies for your project or maybe building the project.
+- `command` tasks are run after IDE start, it is usually for starting any service of your project.
 
 Task terminal outputs are saved inside `/workspace/.gitpod` directory if you wish to inspect them externally.
 
