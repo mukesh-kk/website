@@ -25,8 +25,8 @@ title: IntelliJ IDEA
 4. **Start (or restart) your workspace** - Either start a workspace directly from within the [JetBrains Gateway](/docs/integrations/jetbrains-gateway) via the Gitpod plugin **OR** open a new workspace directly in Gitpod where on workspace start you will be prompted to open {title} for that workspace.
 
 <figure>
-<video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating Gitpod IDE preferences to {title}" src="/images/editors/select-jetbrains-ide.mp4"></video>
-    <figcaption>Updating Gitpod IDE preferences to {title}</figcaption>
+  <img src="/images/editors/select-jetbrains-ide.gif">
+  <figcaption>Updating Gitpod IDE preferences to {title}</figcaption>
 </figure>
 
 <figure>
@@ -35,7 +35,7 @@ title: IntelliJ IDEA
 </figure>
 
 <figure>
-<video playsinline autoplay no-controls loop muted  class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating the Gitpod plugin in JetBrains Gateway" src="/images/editors/update-jetbrains-gateway-settings.mp4"></video>
+<video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating the Gitpod plugin in JetBrains Gateway" src="/images/editors/update-jetbrains-gateway-settings.mp4"></video>
     <figcaption>Updating the Gitpod plugin in JetBrains Gateway</figcaption>
 </figure>
 

@@ -544,7 +544,9 @@ ports:
 
 ### `ports[n].name`
 
-Define a name for the port, will be shown as a column in the output of `gp ports list` and as a title of port in the `Remote Explorer` under the VS Code Browser sidebar. [More detail](/docs/configure/workspaces/ports#specifying-port-names--descriptions)
+Define a name for the port, which will be shown as a column in the output of `gp ports list` and in the `Port` column inside of the ports list in VS Code Browser and Desktop.
+
+[More detail](/docs/configure/workspaces/ports#specifying-port-names--descriptions)
 
 <div class="overflow-x-auto">
 
@@ -556,7 +558,9 @@ Define a name for the port, will be shown as a column in the output of `gp ports
 
 ### `ports[n].description`
 
-Adds a description to the port, will be shown as a column in the output of `gp ports list` and as a tooltip (on hover) of the port in the `Remote Explorer` in VS Code Browser sidebar.
+Adds a description to the port, which will be shown as a column in the output of `gp ports list`.
+
+You can find the port's description in the ports view table column, following the `Address` field (the same description can be found in the `Remote Explorer` as a tooltip [on hover] of the port).
 
 <div class="overflow-x-auto">
 

@@ -28,6 +28,14 @@ products.set("pycharm", {
   productTitle: "PyCharm",
   productDocCode: "pycharm",
 });
+products.set("rubymine", {
+  productTitle: "RubyMine",
+  productDocCode: "ruby",
+});
+products.set("webstorm", {
+  productTitle: "WebStorm",
+  productDocCode: "webstorm",
+});
 
 const keys = new Set();
 keys.add("productId");

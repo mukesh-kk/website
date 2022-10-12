@@ -471,7 +471,7 @@ export const ides: Ide[] = [
     availibility: "beta",
     label: "IntelliJ IDEA",
     screenshots: {
-      desktop: "intellij.png",
+      desktop: "Intellij.png",
     },
     icon: "intellij.svg",
   },
@@ -495,19 +495,19 @@ export const ides: Ide[] = [
   },
   {
     name: "rubymine",
-    availibility: "soon",
+    availibility: "beta",
     label: "RubyMine",
     screenshots: {
-      desktop: "",
+      desktop: "rubymine.png",
     },
     icon: "rubymine.svg",
   },
   {
     name: "webstorm",
-    availibility: "soon",
-    label: "GoLand",
+    availibility: "beta",
+    label: "WebStorm",
     screenshots: {
-      desktop: "",
+      desktop: "webstorm.png",
     },
     icon: "webstorm.svg",
   },

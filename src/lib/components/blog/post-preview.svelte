@@ -32,7 +32,7 @@
   class:pointer-events-none={!availability}
   tabindex={!availability && -1}
   class:bg-sand-dark={!isMostRecent}
-  class="flex flex-col max-w-sm lg:max-w-none stroked group {!isMostRecent
+  class="flex flex-col max-w-sm lg:max-w-none text-left stroked group {!isMostRecent
     ? 'bg-sand-dark dark:bg-card'
     : ''} {layout === 'column'
     ? ''

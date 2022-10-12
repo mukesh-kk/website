@@ -6,6 +6,7 @@ title: Ports
 <script context="module">
   export const prerender = true;
   import IdeToggle from "$lib/components/docs/ide-toggle.svelte";
+  import Action from "$lib/components/action.svelte";
 </script>
 
 # Ports
@@ -70,23 +71,53 @@ ports:
     onOpen: open-browser
 ```
 
-### Specifying port names & descriptions
+### Specify port names & descriptions
 
 You can give ports a `name` and a `description` (both optional). These properties will help you to add context about what the port is being used for.
 
-You can execute [`gp ports list`](/docs/references/gitpod-cli#list-1) to output a table-formatted list of ports along with their status, URL, name and description.
+<IdeToggle id="ide-toggle-ports">
 
-<figure>
-    <img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Display port name and description on vscode Remote Explorer" src="/images/docs/ports-with-name-cmd.png" />
-    <figcaption>Display ports info with gp cli</figcaption>
-</figure>
+<div slot="vscodebrowser">
+    <p>
+        Every exposed port's information and its corresponding actions can be found in the <Action>PORTS</Action> tab inside of VS Code Browser.
+    </p>
+    <figure>
+        <img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="The PORTS tab in VS Code Browser with a single port's actions" src="/images/docs/ports-view-vscode.png" />
+        <figcaption>The <Action>PORTS</Action> tab in VS Code Browser with a single port's actions</figcaption>
+    </figure>
+</div>
 
-The port's name and description will be displayed in the Remote Explorer of VS Code Browser's sidebar immediately after you change them in your [`.gitpod.yml`](/docs/references/gitpod-yml).
+<div slot="vscodedesktop">
+    <p>
+        Every exposed port's information and its corresponding actions can be found in the <Action>EXPOSED PORTS</Action> tab inside of VS Code Desktop.
+    </p>
+    <figure>
+        <img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="The EXPOSED PORTS view in VS Code Desktop with a single port's actions" src="/images/docs/ports-view-vscodedesktop.png" />
+        <figcaption>The <Action>EXPOSED PORTS</Action> view in VS Code Desktop with a single port's actions</figcaption>
+    </figure>
+</div>
 
-<figure>
-    <img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Display port name and description on vscode Remote Explorer" src="/images/docs/ports-with-name-vscode.png" />
-    <figcaption>Display port name and description on VS Code Browser's Remote Explorer</figcaption>
-</figure>
+<div slot="jetbrains">
+    <p>
+        You can execute <a href="/docs/references/gitpod-cli#list-1"><code>gp ports list</code></a> in the terminal to output a table-formatted list of ports along with their status, URL, name and description.
+    </p>
+    <figure>
+        <img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Display ports info with the Gitpod CLI" src="/images/docs/ports-with-name-cmd.png" />
+        <figcaption>Display ports info with the Gitpod CLI</figcaption>
+    </figure>
+</div>
+
+<div slot="commandline">
+    <p>
+        You can execute <a href="/docs/references/gitpod-cli#list-1"><code>gp ports list</code></a> to output a table-formatted list of ports along with their status, URL, name and description.
+    </p>
+    <figure>
+        <img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Display ports info with the Gitpod CLI" src="/images/docs/ports-with-name-cmd.png" />
+        <figcaption>Display ports info with the Gitpod CLI</figcaption>
+    </figure>
+</div>
+
+</IdeToggle>
 
 The property `visibility` configures who can access a port:
 
@@ -95,7 +126,7 @@ The property `visibility` configures who can access a port:
 
 ### Configure port visibility
 
-Port visibility can be set in [`.gitpod.yml`](/docs/references/gitpod-yml), changed via [the Gitpod CLI](/docs/references/gitpod-cli), or manually changed within the IDE or editor.
+Port visibility can be set in [`.gitpod.yml`](/docs/references/gitpod-yml), changed via the [Gitpod CLI](/docs/references/gitpod-cli), or manually changed within the IDE or editor.
 
 <IdeToggle id="ide-toggle-ports">
 
@@ -122,7 +153,7 @@ All port configurations can be applied to ranges as well as single ports.
 
 **Example:** Prevent notifications for ports between 3000 and 8999.
 
-Ports won't be shown in VS Code Browser's Remote Explorer or in the `gp` CLI until they are opened.
+Ports won't be shown in VS Code's <Action>PORTS</Action> view or in the [Gitpod CLI](/docs/references/gitpod-cli) until they are opened.
 
 ```yaml
 ports:
