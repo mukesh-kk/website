@@ -6,14 +6,12 @@ export const get: import("@sveltejs/kit").RequestHandler = async ({
   locals,
 }) => {
   const changelogEntries = Object.entries(
-    import.meta.glob("/src/lib/contents/changelog/*.md", { as: "raw" })
-  )
-    .filter(([path]) => !path.endsWith("_template.md"))
-    .reduce((acc, [filePath, content]) => {
-      const fileName = basename(filePath);
-      acc[fileName] = content;
-      return acc;
-    }, {});
+    import.meta.glob("/src/lib/contents/changelog/*/index.md", { as: "raw" })
+  ).reduce((acc, [filePath, content]) => {
+    const fileName = `${filePath.split("/").reverse()[1]}.md`;
+    acc[fileName] = content;
+    return acc;
+  }, {});
   const releaseId = url.searchParams.get("releaseId");
   const fileName = releaseId
     ? `${releaseId}.md`

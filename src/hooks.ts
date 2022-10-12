@@ -32,12 +32,12 @@ const handleBlogPosts = async ({ event, resolve }) => {
 };
 
 const handleChangelogEntries = async ({ event, resolve }) => {
-  const newChangelogEntries = await Promise.all(
+  const changelogEntries = await Promise.all(
     Object.entries(
       import.meta.glob("/src/lib/contents/changelog/*/index.md")
     ).map(async ([path, mod]) => {
       const { default: content, metadata } = await mod();
-      const fileName = path.split("/").reverse()[1] + ".md";
+      const fileName = `${path.split("/").reverse()[1]}.md`;
       return {
         ...metadata,
         content: content.render().html,
@@ -45,21 +45,6 @@ const handleChangelogEntries = async ({ event, resolve }) => {
       };
     })
   );
-  const oldChangelogEntries = await Promise.all(
-    Object.entries(import.meta.glob("/src/lib/contents/changelog/*.md"))
-      .filter(([path]) => !path.endsWith("_template.md"))
-      .map(async ([path, mod]) => {
-        const { default: content, metadata } = await mod();
-        const fileName = basename(path);
-        return {
-          ...metadata,
-          excerpt: (await compile(metadata.excerpt)).code.trim(),
-          content: content.render().html,
-          fileName,
-        };
-      })
-  );
-  const changelogEntries = [...newChangelogEntries, ...oldChangelogEntries];
   changelogEntries.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
   event.locals.changelogEntries = changelogEntries;
   return await resolve(event);
