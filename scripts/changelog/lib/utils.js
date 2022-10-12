@@ -44,12 +44,15 @@ export const parseOldReleaseNote = (pr) => {
  */
 export const parseNewReleaseNote = (pr) => {
   const data = unified().use(remarkParse).parse(pr.body);
+  const blockName = "Release Notes";
   const releaseNotesStart = data.children.find(
     (node) =>
       node.type === "heading" &&
       node.depth === 2 &&
-      node.children[0].value === "Release Notes"
+      node.children[0].value.toLowerCase() === blockName.toLowerCase()
   )?.position.end.offset;
+
+  if (!releaseNotesStart) return null;
 
   const releaseNotesEnd =
     data.children.find(
@@ -58,8 +61,6 @@ export const parseNewReleaseNote = (pr) => {
         node.depth === 2 &&
         node.position.start.offset > releaseNotesStart
     )?.position.start.offset - 1;
-
-  if (!releaseNotesStart) return;
 
   const releaseNotes = pr.body.slice(
     releaseNotesStart,

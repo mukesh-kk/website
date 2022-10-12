@@ -1,5 +1,6 @@
 import {
   parseOldReleaseNote,
+  parseNewReleaseNote,
   ensureGithubToken,
   sortByCategoryOrder,
   readPartial,
@@ -12,6 +13,37 @@ import fs from "fs/promises";
 
 const consoleError = jest.spyOn(console, "error").mockImplementation(() => {});
 const exit = jest.spyOn(process, "exit").mockImplementation(() => {});
+
+test("New release blocks get parsed correctly", () => {
+  const prWithInvalidHeadingLevel = {
+    body: `
+      # Release Notes
+      Content
+    `,
+  };
+
+  const prWithValidBlock = {
+    body: "## Release Notes\nContent",
+  };
+
+  const prWithWeirdCase = {
+    body: "## ReLeAsE nOtEs\nContent",
+  };
+
+  const prWithMultipleBlocks = {
+    body: "## Release Notes\nContent\n## Release Notes\nContent2",
+  };
+
+  const prWithNoBlock = {
+    body: "## Description\nContent\n## Other Notes\nContent2",
+  };
+
+  expect(parseNewReleaseNote(prWithInvalidHeadingLevel)).toBeNull();
+  expect(parseNewReleaseNote(prWithValidBlock)).toBe("Content");
+  expect(parseNewReleaseNote(prWithWeirdCase)).toBe("Content");
+  expect(parseNewReleaseNote(prWithMultipleBlocks)).toBe("Content");
+  expect(parseNewReleaseNote(prWithNoBlock)).toBeNull();
+});
 
 test("Formatting of old release note blocks works for valid release notes", () => {
   const pr = {
