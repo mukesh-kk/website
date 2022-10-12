@@ -20,9 +20,9 @@ A workspace creation is a linear process (from a high-level perspective) except 
 
 ### 1: Workspace provisioning
 
-1. New workspaces start with from a single `git` "context", e.g. [GitHub](/docs/configure/authentication/github), [GitLab](/docs/configure/authentication/gitlab), [Bitbucket](/docs/configure/authentication/bitbucket) (read more about [Context URLs](/docs/introduction/learn-gitpod/context-url)). If there is already a running workspace from the same git context, you will be prompted to open the running workspace or to start a new one.
-2. The workspace resources (e.g. CPU and RAM) are allocated based on your configured [Workspace class](/docs/configure/workspaces/workspace-classes#workspace-classes).
-3. Gitpod checks for the existence of an [`image` property](/docs/references/gitpod-yml#image) in a committed `.gitpod.yml` within the repo provided as your `git` context for a workspace.
+- New workspaces start with from a single `git` "context", e.g. [GitHub](/docs/configure/authentication/github), [GitLab](/docs/configure/authentication/gitlab), [Bitbucket](/docs/configure/authentication/bitbucket) (read more about [Context URLs](/docs/introduction/learn-gitpod/context-url)). If there is already a running workspace from the same git context, you will be prompted to open the running workspace or to start a new one.
+- The workspace resources (e.g. CPU and RAM) are allocated based on your configured [Workspace class](/docs/configure/workspaces/workspace-classes#workspace-classes).
+- Gitpod checks for the existence of an [`image` property](/docs/references/gitpod-yml#image) in a committed `.gitpod.yml` within the repo provided as your `git` context for a workspace.
 
 ### 2: Workspace image
 
@@ -30,8 +30,8 @@ A workspace creation is a linear process (from a high-level perspective) except 
 
 #### 2.1: Docker container build and pull
 
-1. If your container image cache isn't available, it will be built.
-2. The container image will be downloaded each time for your workspace.
+- If your container image cache isn't available, it will be built.
+- The container image will be downloaded each time for your workspace.
 
 ### 3: Clone Git repo(s)
 
@@ -81,9 +81,9 @@ This step is done in the background (i.e. non-blocking) so your IDE can start ah
 
 Your workspace may stop for one of these reasons:
 
-1. User issuing a command to stop the workspace (for example executing `gp stop`)
-2. User inactivity triggering a [Workspace Timeout](#timeouts)
-3. User is suspected of abusing Gitpod's [Terms of Service](/terms).
+- User issuing a command to stop the workspace (for example executing `gp stop`)
+- User inactivity triggering a [Workspace Timeout](#timeouts)
+- User is suspected of abusing Gitpod's [Terms of Service](/terms).
 
 So what happens to your workspace files? The following applies:
 
