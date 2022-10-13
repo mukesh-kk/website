@@ -27,7 +27,7 @@ npm run generate:jb
 
 ### Generate Changelog
 
-> **Note:** Add `CHANGELOG_GITHUB_ACCESS_TOKEN` to environment variables. Create a personal access token at [GitHub Settings](https://github.com/settings/tokens/new?scopes=repo,user)
+> **Note**: Add `CHANGELOG_GITHUB_ACCESS_TOKEN` to environment variables. Create a personal access token at [GitHub Settings](https://github.com/settings/tokens/new?scopes=repo,user)
 
 ```sh
 npm run generate:changelog
