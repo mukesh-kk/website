@@ -14,70 +14,141 @@ Gitpod makes creating fresh workspaces as easy as clicking a [button on a reposi
 Gitpod's continuous dev environments encourages you to create fresh workspaces rather than restarting older ones.
 This ensures that you are starting from a clean slate with proper configuration.
 
+## Workspace Loading States
+
+<!-- TODO: Look at dashboard for language use -->
+
+### Workspace Start
+
+Lorem Ipsum
+
+### Workspace Running
+
+Lorem Ipsum
+
+### Workspace Stop
+
+Lorem Ipsum
+
+### Workspace Restart
+
+Lorem Ipsum
+
 ## Workspace loading phases (New)
 
 A workspace creation is a linear process (from a high-level perspective) except for a few things, which we will see later.
 
-### 1: Workspace provisioning
+<!--
 
-- New workspaces start with from a single `git` "context", e.g. [GitHub](/docs/configure/authentication/github), [GitLab](/docs/configure/authentication/gitlab), [Bitbucket](/docs/configure/authentication/bitbucket) (read more about [Context URLs](/docs/introduction/learn-gitpod/context-url)). If there is already a running workspace from the same git context, you will be prompted to open the running workspace or to start a new one.
 - The workspace resources (e.g. CPU and RAM) are allocated based on your configured [Workspace class](/docs/configure/workspaces/workspace-classes#workspace-classes).
-- Gitpod checks for the existence of an [`image` property](/docs/references/gitpod-yml#image) in a committed `.gitpod.yml` within the repo provided as your `git` context for a workspace.
 
-### 2: Workspace image
-
-- Unless specified with the `image` property in the `.gitpod.yml`, workspaces will start based on the [**workspace-full**](https://hub.docker.com/r/gitpod/workspace-full) image.
-
-#### 2.1: Docker container build and pull
-
-- If your container image cache isn't available, it will be built.
 - The container image will be downloaded each time for your workspace.
 
-### 3: Clone Git repo(s)
+- Your workspace may be created from any repository context (i.e. issue, pull-request, branch and so on)
 
-- Normally, only the repository is cloned from which you created the workspace.
-  - Your workspace may be created from any repository context (i.e. issue, pull-request, branch and so on)
-  - `git` submodules are initialized as well.
-- Multiple repositories can also be cloned using the [`additionalRepositories`](/docs/references/gitpod-yml/#additionalrepositories) property, [multi-repo docs](/docs/configure/workspaces/multi-repo) feature.
-- `/workspace/.gitpod/ready` file is created after cloning is completed.
+- Task terminal outputs are saved inside `/workspace/.gitpod` directory if you wish to inspect them externally.
+-
+-->
+
+### 1: Establishing Workspace Context
+
+All workspaces start with from a single Git "context", e.g. [GitHub](/docs/configure/authentication/github), [GitLab](/docs/configure/authentication/gitlab), [Bitbucket](/docs/configure/authentication/bitbucket).
+
+If there is already a running workspace from the same git context, you will be prompted to open the running workspace or to start a new one.
+
+<!-- TODO: Add screenshot for "open existing workspace" -->
+
+See [Context URLs](/docs/introduction/learn-gitpod/context-url) for more.
+
+### 2: Establish Workspace Image
+
+Gitpod checks for the existence of a [Workspace Image](/docs/configure/workspaces/workspace-image) via the [`image`](/docs/references/gitpod-yml#image) property in a committed `.gitpod.yml`, which is taken from the Git context of the workspace.
+
+If no `image` property is supplied, workspaces default to the [**workspace-full**](https://hub.docker.com/r/gitpod/workspace-full) image.
+
+<!-- TODO: Look into OCI compatibility https://github.com/opencontainers/image-spec -->
+
+> **Note:** Currently, only Docker images are supported with Gitpod.
+
+<!-- TODO: We need to mention what even is an "image" -->
+<!-- TODO: We could give one or two examples of tools installed in the workspace-full image -->
+<!-- TODO: We don't have a good landing page for Workspace Full documentation -->
+
+See [Workspace Images](https://github.com/gitpod-io/workspace-images) for more.
+
+### 3: Build Workspace Image
+
+If your Workspace Image cache isn't available, the image will be built.
+
+### 4: Provision Workspace
+
+Once the Git context is established, and the Workspace Image is built, a workspace is provisioned.
+
+### 5: Clone Git repo(s)
+
+The specified Git context is cloned into the provisioned workspace.
+
+- `git` submodules are also initialized on workspace
+- To clone more than one repo, use the [multi-repo](/docs/configure/workspaces/multi-repo) feature
+
+<!-- - `/workspace/.gitpod/ready` file is created after cloning is completed -->
 
 ### 4: Install Dotfiles
 
-[Dotfiles](/docs/configure/user-settings/dotfiles) allows you to customize every workspace according to your personal needs. Dotfiles are useful ways to extend any existing workspace configuration with personal user configuration or overrides. A Dotfile is a GitHub repo that is (optionally) configured by a user of Gitpod in their [preferences](https://gitpod.io/preferences).
+[Dotfiles](/docs/configure/user-settings/dotfiles) allows you to customize workspaces according to your personal needs.
 
-If your dotfiles repository is configured in [preferences](https://gitpod.io/preferences), the following steps will be executed:
+Dotfiles can be configured by linking to a public repository in [preferences](https://gitpod.io/preferences)
 
-- Your dotfiles repository is `git` cloned at `~/.dotfiles` directory.
-- Installation script is executed if you have one inside your dotfiles repo (i.e. `install.sh` and [more](/docs/configure/user-settings/dotfiles))
-  - Gitpod will automatically symlink all files recursively from `~/.dotfiles` to `~`, _if you do not have an installation script_.
-  - Your installation script can run for upto 120s (2 minutes), it will receive a `SIGKILL` error, if it exceeds the limit.
-- Any further progress will be halted until your dotfiles is fully installed.
-- Logs file can be found at `~/.dotfiles.log`
+<!-- TODO: Should we link to /docs/configure/user-settings rather than preferences directly? -->
 
-### 5: Workspace tasks
+If configured:
 
-There are different kinds of [`tasks`](/docs/configure/workspaces/tasks), they run on different stages.
+- Dotfiles repository cloned to `~/.dotfiles` directory
+- The installation script is executed (e.g. `install.sh`)
+- Dotfiles installation is limited to 2 minutes
 
-The [tasks page](/docs/configure/workspaces/tasks#prebuild-and-new-workspaces) should provide you more details but here's a brief overview:
+<!-- TODO: Any further progress will be halted until your dotfiles is fully installed. -->
+<!-- TODO: Figure out "Gitpod will automatically symlink all files recursively from `~/.dotfiles` to `~`, _if you do not have an installation script_." -->
+<!-- TODO: More "it will receive a `SIGKILL` error, if it exceeds the limit." to Dotfiles page -->
+<!-- TODO: Logs file can be found at `~/.dotfiles.log` -->
 
-- `before` tasks are run before `init` and `command`, it is for installing the global dependencies.
-- `init` tasks are run after `before`. If you're using [Gitpod prebuilds](/docs/configure/projects/prebuilds), `init` tasks will block further progress before completion, it is for installing required dependencies for your project or maybe building the project.
-- `command` tasks are run after IDE start, it is usually for starting any service of your project.
+### 5: Execute "Before" Task
 
-Task terminal outputs are saved inside `/workspace/.gitpod` directory if you wish to inspect them externally.
+<!-- TODO: Should this be "Workspace Tasks"? -->
 
-### 6: Execute IDE
+[Workspace Tasks](/docs/configure/workspaces/tasks) are setup processes for a [Project](/docs/configure/projects) executed on every workspace start.
 
-#### 6.1: Extensions installation and settings sync
+<!-- TODO: Project or repository? -->
 
-- Your IDE (i.e. [VSCode](/docs/references/ides-and-editors/vscode-extensions#installing-an-extension), [JetBrains](/docs/references/ides-and-editors/intellij#preconfigure-for-repository)) specific extensions defined on `.gitpod.yml` are auto installed.
-- If you're using VSCode, your user settings are synced from the [`settings-sync` server](/docs/references/ides-and-editors/settings-sync), this includes color-themes, extensions, fonts, etc.
+- (optional) `before` task run to install any global dependencies
+
+<!-- TODO: Where should we introduce `init` -->
+<!-- TODO: Is this with Prebuilds or not? -->
+<!-- TODO: "Task terminal outputs are saved inside `/workspace/.gitpod` directory if you wish to inspect them externally." -->
+
+See [Gitpod prebuilds](/docs/configure/projects/prebuilds) for more.
+
+### 6: Initialize IDE
+
+Your chosen IDE or editor is started.
+
+- (optional) [VSCode](/docs/references/ides-and-editors/vscode-extensions#installing-an-extension) extensions installed.
+- (optional) [JetBrains](/docs/references/ides-and-editors/intellij#preconfigure-for-repository) plugins installed.
+- (optional) VS Code [Settings Sync](/docs/references/ides-and-editors/settings-sync) installed e.g. fonts and themes
+
+<!-- TODO: Should we add optional flag to the section -->
 
 This step is done in the background (i.e. non-blocking) so your IDE can start ahead of time.
 
 **Your selected IDE is launched** 🎉
 
-### 7: Workspace stopping
+### 7: Execute "Command" Task
+
+Once the IDE is started, any `command` tasks are now executed.
+
+See [Workspace Tasks](/docs/configure/workspaces/tasks) for more.
+
+### 8: Stop Workspace
 
 Your workspace may stop for one of these reasons:
 
@@ -89,6 +160,18 @@ So what happens to your workspace files? The following applies:
 
 - [All files inside `/workspace` directory is persisted.](#changes-are-saved)
 - [Garbase collection](#garbage-collection)
+
+### 8: Restart Workspace
+
+Lorem Ipsum
+
+<!-- TODO -->
+
+### 8: Delete Workspace
+
+Lorem Ipsum
+
+<!-- TODO -->
 
 <!--
 
