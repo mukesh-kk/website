@@ -11,7 +11,7 @@ export const helpMenu = () => {
   console.info(
     `
       --help: Show this help text
-      --token: Github token to use for the API calls. If not provided, the script will try to use the CHANGELOG_GITHUB_ACCESS_TOKEN environment variable
+      --token: GitHub token to use for the API calls. If not provided, the script will try to use the CHANGELOG_GITHUB_ACCESS_TOKEN environment variable
       --dryRun: Do not write the changelog file, just print the output to the console
       --onlyPrs: Only show the PRs section of the changelog. Only effective with --dryRun
       --force: Forcefully overwrite the changelog file, removing any manual changes to index.md
