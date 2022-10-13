@@ -11,7 +11,6 @@ Contributing is as easy as starting a new workspace:
 
 [![Open in Gitpod](https://www.gitpod.io/svg/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/website)
 
-
 ## CLI Commands
 
 ### Generate Blog Post Template
@@ -26,6 +25,14 @@ npm run generate:blog-post
 npm run generate:jb
 ```
 
+### Generate Changelog
+
+> **Note**: Add `CHANGELOG_GITHUB_ACCESS_TOKEN` to environment variables. Create a personal access token at [GitHub Settings](https://github.com/settings/tokens/new?scopes=repo,user)
+
+```sh
+npm run generate:changelog
+```
+
 ## Technology stack
 
 This website uses the following technologies:
@@ -34,6 +41,7 @@ This website uses the following technologies:
 - [SvelteKit](https://kit.svelte.dev)
 - [mdsvex](https://mdsvex.com)
 - [Tailwind CSS](https://tailwindcss.com)
-    > **Note**: Custom CSS was used initially. This is considered legacy and any PR going forward requires Tailwind CSS.
+
+  > **Note**: Custom CSS was used initially. This is considered legacy and any PR going forward requires Tailwind CSS.
 
 - [Netlify](https://www.netlify.com)
