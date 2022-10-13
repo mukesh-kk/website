@@ -52,6 +52,7 @@
             activeSequenceNumber = number;
             scrollIntoView(`#${getItemId(number)}`);
           }}
+          title="Carousel item"
           class="inline-block h-[15px] w-[15px] {number === activeSequenceNumber
             ? 'bg-light-grey dark:bg-body'
             : 'bg-divider dark:bg-light-black'}  rounded-full transition-all duration-200"

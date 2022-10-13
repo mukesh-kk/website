@@ -98,9 +98,13 @@
       </ButtonsWrapper>
       <div>
         <div class="hero__icons">
-          <img src="/svg/gitlab.svg" alt="GitLab logo" />
-          <GithubMark alt="GitHub logo" />
-          <img src="/svg/bitbucket.svg" alt="Bitbucket logo" />
+          <img src="/svg/gitlab.svg" alt="GitLab logo" title="GitLab logo" />
+          <GithubMark alt="GitHub logo" title="GitHub logo" />
+          <img
+            src="/svg/bitbucket.svg"
+            alt="Bitbucket logo"
+            title="Bitbucket logo"
+          />
         </div>
         <p class="text-p-small mt-macro">Start from any Git context.</p>
       </div>

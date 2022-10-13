@@ -203,11 +203,11 @@ const gitpodColum: FeatureTableColumn = {
           availability: true,
         },
         {
-          term: "Pricing (Saas)",
+          term: "Pricing (SaaS)",
           text: "Free for 50h/month",
         },
         {
-          term: "Pircing (Self-hosted)",
+          term: "Pricing (Self-hosted)",
           text: "Free tier available",
         },
         {
@@ -288,11 +288,11 @@ const coderColumn: FeatureTableColumn = {
           availability: false,
         },
         {
-          term: "Pricing (Sass)",
+          term: "Pricing (SaaS)",
           availability: false,
         },
         {
-          term: "Pircing (Self-hosted)",
+          term: "Pricing (Self-hosted)",
           text: "$$$",
         },
         {

@@ -14,12 +14,17 @@ A workspace gets configured through a `.gitpod.yml` file, located at the root of
 ```yaml
 # Commands to start on workspace startup
 tasks:
-  - init: yarn install
+  - name: Setup & Build
+    before: yarn global add express
+    init: yarn install
     command: yarn build
+
 # Ports to expose on workspace startup
 ports:
-  - port: 8000
+  - port: 3000
     onOpen: open-preview
+    name: Website
+    description: Website Preview
 ```
 
 To see a full reference of all available properties, please refer to the [`.gitpod.yml reference`](/docs/references/gitpod-yml) page.

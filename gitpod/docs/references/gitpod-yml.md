@@ -323,7 +323,7 @@ Define whether Gitpod creates prebuilds for pull requests from forks.
 
 ## `image`
 
-Define a custom Docker image to be used for workspaces. To learn more, please review [Custom Docker Image](/docs/configure/workspaces/workspace-image).
+Define a custom Docker image to be used for workspaces. To learn more, please review [Custom Docker Image](/docs/configure/workspaces/workspace-image#configure-a-custom-dockerfile).
 
 Public images are hosted on [Docker Hub](https://hub.docker.com/u/gitpod/) and can be referenced by their name, e.g. `ubuntu:latest`.
 

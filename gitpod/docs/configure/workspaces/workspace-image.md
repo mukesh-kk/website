@@ -11,7 +11,7 @@ title: Workspace Image
 
 By default, Gitpod uses a standard Docker Image called [`Workspace-Full`](https://github.com/gitpod-io/workspace-images/blob/481f7600b725e0ab507fbf8377641a562a475625/dazzle.yaml#L18) as the foundation for workspaces. Workspaces started based on this default image come pre-installed with Docker, Nix, Go, Java, Node.js, C/C++, Python, Ruby, Rust, PHP as well as tools such as Homebrew, Tailscale, Nginx and several more.
 
-If this image does not include the tools you need for your project, you can provide a public Docker image or your own [Dockerfile](#using-a-dockerfile). This provides you with the flexibility to install the tools & libraries required for your project.
+If this image does not include the tools you need for your project, you can provide a public Docker image or your own [Dockerfile](#configure-a-custom-dockerfile). This provides you with the flexibility to install the tools & libraries required for your project.
 
 > **Note:** Gitpod supports Debian/Ubuntu based Docker images. Alpine images do not include [libgcc and libstdc++](https://code.visualstudio.com/docs/remote/linux#_tips-by-linux-distribution) which breaks Visual Studio Code. See also [Issue #3356](https://github.com/gitpod-io/gitpod/issues/3356).
 
@@ -93,6 +93,29 @@ RUN sudo install-packages \
 Once committed and pushed, Gitpod will automatically build this Dockerfile when (or [before](/docs/configure/projects/prebuilds)) new workspaces are created.
 
 See also [Gero's blog post](/blog/docker-in-gitpod) running through an example.
+
+### Custom base image
+
+While it is recommended to extend one of the <a href="https://hub.docker.com/u/gitpod/" target="_blank">Gitpod-provided base images</a> for custom Dockerfiles to ensure the image has the required dependencies for a workspace, it is possible to configure a Dockerfile with a public (Debian/Ubuntu-based) image as its base.
+
+There are some requirements though for a public base image to work properly as a workspace. See the below Dockerfile as a reference. For instance, you'll need to set up the `gitpod` user with the right UID, and install `git` to enable your configured dotfiles for the workspace.
+
+```dockerfile
+FROM ubuntu:latest
+
+# Install:
+# - git, for git operations (to e.g. push your work). Also required for setting up your configured dotfiles in the workspace.
+# - sudo, while not required, is recommended to be installed, since the workspace user (`gitpod`) is non-root and won't be able to install and use `sudo` to install any other tools in a live workspace.
+RUN apt-get update && apt-get install -yq \
+    git \
+    sudo \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
+
+# Create the gitpod user. UID must be 33333.
+RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
+
+USER gitpod
+```
 
 ## Trying out changes to your Dockerfile
 
