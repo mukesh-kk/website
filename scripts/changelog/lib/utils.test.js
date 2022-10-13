@@ -161,7 +161,7 @@ test("Reading partials works correctly", async () => {
 
 test("Reading partials fails correctly on non-existing files", async () => {
   const releaseDate = "2020-04-20";
-  const result = await readPartial("vscode", releaseDate);
+  const result = await readPartial("jetbrains", releaseDate);
 
   expect(result).toBe(null);
 });
