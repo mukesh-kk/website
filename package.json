@@ -28,7 +28,7 @@
     "prepare": "husky install",
     "generate:adr": "adr new",
     "generate:blog-post": "plop --plopfile ./generators/index.cjs blog-post",
-    "generate:chagelog": "node ./scripts/changelog",
+    "generate:changelog": "node ./scripts/changelog",
     "generate:jb": "node ./generators/ide/jb-gen.js",
     "cypress:open": "cypress open --browser firefox",
     "test:e2e": "cypress run --headless --browser firefox",
