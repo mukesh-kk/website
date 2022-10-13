@@ -12,7 +12,7 @@ import { sayHello } from "./cli.js";
 
 const argv = minimist(process.argv.slice(2));
 
-export const createOctokitClient = async (token) => {
+export const createOctokitClient = async (/** @type {string} */ token) => {
   const OctokitWithPlugins = Octokit.plugin(paginateGraphql);
   const octokit = new OctokitWithPlugins({
     auth: token,
@@ -105,29 +105,9 @@ export const processRepository = async (options) => {
     }
 
     // We group the PRs by their labels or prefix
-    const category = prCategories.find((category) => {
-      const releaseNote = parseReleaseNote(pr);
-      const byLabel = category.labels?.some((label) =>
-        pr.labels.nodes?.some((prLabel) => prLabel.name === label)
-      );
-      const byPrefix =
-        category.prefixes?.some(
-          (prefix) =>
-            releaseNote.startsWith(`[${prefix}]`) ||
-            pr.title.startsWith(`[${prefix}]`)
-        ) ?? false;
-
-      if (!byLabel && byPrefix) {
-        console.warn(
-          pr.title,
-          "is categorized as",
-          category.name,
-          "but it doesn't have the label",
-          category.labels.join(", ")
-        );
-      }
-      return byLabel || byPrefix;
-    });
+    const category = prCategories.find((category) =>
+      findCategoryForPr(pr, category)
+    );
     if (category) {
       category.prs.push(pr);
     } else {
@@ -196,6 +176,30 @@ export const ensureGithubToken = (mockedToken) => {
   }
 
   return githubToken;
+};
+
+export const findCategoryForPr = (pr, category) => {
+  const releaseNote = parseReleaseNote(pr);
+  const byLabel = category.labels?.some((label) =>
+    pr.labels.nodes?.some((prLabel) => prLabel.name === label)
+  );
+  const byPrefix =
+    category.prefixes?.some(
+      (prefix) =>
+        releaseNote.startsWith(`[${prefix}]`) ||
+        pr.title.startsWith(`[${prefix}]`)
+    ) ?? false;
+
+  if (!byLabel && byPrefix) {
+    console.warn(
+      pr.title,
+      "is categorized as",
+      category.name,
+      "but it doesn't have the label",
+      category.labels.join(", ")
+    );
+  }
+  return byLabel || byPrefix;
 };
 
 /**
