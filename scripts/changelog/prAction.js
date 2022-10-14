@@ -35,6 +35,8 @@ const main = async () => {
             url
             title
             body
+            closed
+            merged
             author {
               login
             }
@@ -75,10 +77,29 @@ const main = async () => {
     category = "Other (fixes and improvements)";
   }
 
+  const isDeployed = pr.labels.nodes.some((label) => label.name === "deployed");
+
+  let status;
+  if (pr.open) {
+    status =
+      "May be included in the next changelog (waiting for merge + deploy)";
+  } else if (pr.merged && isDeployed) {
+    status = "Included in the next changelog";
+  } else if (pr.closed && !pr.merged) {
+    status = "Not included in the next changelog (closed without merge)";
+  } else if (pr.merged && !isDeployed) {
+    status = "Not included in the next changelog (merged but not deployed)";
+  }
+
   let comment = `${autoPrefix}\n`;
   comment += "## Changelog entry\n";
   comment += `This is a preview of how the changelog script interpreted your PR:\n`;
+
+  comment += "### Status\n";
+  comment += `${status}\n`;
+
   comment += `### Release Note(s)\n${releaseNote}\n\n`;
+
   comment += `### Category\n${category}`;
   comment += `\n\nWe have automatically detected this PR as belonging to the ${category} category. If you feel this is incorrect, please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js), where you can find all of the available categories + the labels and PR title prefixes which we use for category when categorizing.`;
 
