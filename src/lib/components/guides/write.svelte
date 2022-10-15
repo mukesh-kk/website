@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="bg-card stroked dark:bg-card shadow-normal rounded-4xl max-w-2xl py-small px-xx-small sm:px-small mx-auto mt-huge mb-xx-large text-center"
+  class="bg-card stroked dark:bg-card shadow-normal rounded-4xl max-w-2xl py-small px-xx-small sm:px-small mx-auto mt-huge mb-xxx-large text-center"
 >
   <h2 class="h3">Write your guide</h2>
   <p class="text-p-large my-xx-small">

@@ -232,7 +232,7 @@
 
 <Card
   size="small"
-  class="shadow-normal p-xx-small sm:py-small sm:px-x-small md:p-medium sm:mx-8 mb-xx-large"
+  class="shadow-normal p-xx-small sm:py-small sm:px-x-small md:p-medium sm:mx-8 mb-xxx-large"
 >
   <Section id="form" style="margin: 0; padding: 0">
     <div bind:this={sectionStart} data-analytics={`{"dnt":true}`}>

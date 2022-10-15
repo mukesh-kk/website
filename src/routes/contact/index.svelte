@@ -25,7 +25,7 @@
 >
   <div
     slot="content"
-    class="grid sm:grid-cols-2 max-w-xl mx-auto xl:max-w-none xl:grid-cols-4 gap-micro justify-center mt-small sm:mb-xx-large"
+    class="grid sm:grid-cols-2 max-w-xl mx-auto xl:max-w-none xl:grid-cols-4 gap-micro justify-center mt-small sm:mb-xxx-large"
   >
     {#each contactActions as action}
       <CardSmall

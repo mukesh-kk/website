@@ -19,7 +19,7 @@
 
 <style lang="postcss">
   .blog-layout {
-    @apply mb-xx-large;
+    @apply mb-xxx-large;
 
     @media (max-width: 972px) {
       @apply mb-x-large;

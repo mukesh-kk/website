@@ -117,6 +117,8 @@ RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
 USER gitpod
 ```
 
+**Tailscale:** see [the Tailscale integration docs](/docs/integrations/tailscale#integration) for setting up Tailscale in a custom Dockerfile.
+
 ## Trying out changes to your Dockerfile
 
 ### In the existing workspace

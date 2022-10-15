@@ -42,7 +42,7 @@
   }}
 />
 
-<Wrapper class="pt-small pb-x-large md:pb-xx-large">
+<Wrapper class="pt-small pb-x-large md:pb-xxx-large">
   <div class="entry max-w-[800px] mx-auto flex flex-col md:flex-row">
     <div class="content-changelog">
       <BackLink />

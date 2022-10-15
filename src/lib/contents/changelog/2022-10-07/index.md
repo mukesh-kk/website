@@ -24,6 +24,10 @@ For feedback, please raise an [issue](https://github.com/gitpod-io/gitpod/issues
 
 This release includes security fixes addressing information leakage in logs; see the [security announcement log](https://www.gitpod.io/security/log) for more information.
 
+### 2022.09.1 hotfix (published on 14.7.2022)
+
+[#13821](https://github.com/gitpod-io/gitpod/pull/13821) This hotfix includes a change to fix the regression caused by `protected_secrets` (see [security announcement log](https://www.gitpod.io/security/log) for more information) when working with self-signed certs.
+
 ### Highlights
 
 #### Preflight checks on the Gitpod configuration

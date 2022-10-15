@@ -22,10 +22,13 @@ If you’re already using Tailscale, the following steps need to be done (see ht
 ```Dockerfile
 USER root
 
+# Install jq (if not done already). Required for the .gitpod.yml tasks below.
+
 RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add - \
      && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list \
-     && apt-get update \
-     && apt-get install -y tailscale
+     && apt-get update && apt-get install -y \
+     tailscale \
+     jq
 ```
 
 2. Start `tailscale` on workspace start and maintain the machine state across workspaces by adding the following tasks to your `.gitpod.yml`.

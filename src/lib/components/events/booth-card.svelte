@@ -8,7 +8,7 @@
   class="flex flex-col shadow-normal py-small justify-between md:p-x-large px-xx-small"
   size="medium"
 >
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-small lg:gap-xx-large">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-small lg:gap-xxx-large">
     <img
       class="w-full hidden lg:block mx-auto max-w-md md:max-w-lg dark:hidden"
       alt="JetBrains’ IDEs within Gitpod"

@@ -7,7 +7,7 @@
 
 <style lang="postcss">
   section {
-    @apply mt-xx-large;
+    @apply mt-xxx-large;
 
     &:first-of-type:not(:only-of-type) {
       @media (max-width: 768px) {
@@ -16,7 +16,7 @@
     }
 
     &:last-of-type {
-      @apply mb-xx-large;
+      @apply mb-xxx-large;
     }
 
     @media (max-width: 972px) {
