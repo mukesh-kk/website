@@ -56,7 +56,7 @@ All workspaces start with from a single Git "context", e.g. [GitHub](/docs/confi
 
 If there is already a running workspace from the same git context, you will be prompted to open the running workspace or to start a new one.
 
-<!-- TODO: Add screenshot for "open existing workspace" -->
+![Workspace Already Exist](/images/workspace-life/workspace-already-exist.png)
 
 See [Context URLs](/docs/introduction/learn-gitpod/context-url) for more.
 
@@ -150,6 +150,10 @@ See [Workspace Tasks](/docs/configure/workspaces/tasks) for more.
 
 ### 8: Stop Workspace
 
+<!-- TODO: Find correct Position for screenshot  -->
+
+![Stop workspace from dashboard](/images/workspace-life/stop-workspace.png)
+
 Your workspace may stop for one of these reasons:
 
 - User issuing a command to stop the workspace (for example executing `gp stop`)
@@ -165,11 +169,15 @@ So what happens to your workspace files? The following applies:
 
 Lorem Ipsum
 
+<img src="/images/workspace-life/restart-workspace.png" alt="Restart workspace from webapp" class="h-100 w-100" loading="lazy"/>
+
 <!-- TODO -->
 
 ### 8: Delete Workspace
 
 Lorem Ipsum
+
+![Delete workspace from dashboard](/images/workspace-life/delete-workspace.png)
 
 <!-- TODO -->
 
