@@ -64,3 +64,9 @@ export const getFormattedMonthBoundaries = (...args) => [
   getStartOfMonth(...args),
   getEndOfMonth(...args),
 ];
+
+export const getMonthName = (monthNumber) => {
+  const format = new Intl.DateTimeFormat("en-GB", { month: "long" }).format;
+  const date = new Date(Date.UTC(2074, --monthNumber));
+  return format(date);
+};

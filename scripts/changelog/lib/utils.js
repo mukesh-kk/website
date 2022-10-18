@@ -2,6 +2,7 @@ import { unified } from "unified/lib/index.js";
 import { readFile } from "fs/promises";
 import { Octokit } from "octokit";
 import { paginateGraphql } from "@octokit/plugin-paginate-graphql";
+import { createPullRequest } from "octokit-plugin-create-pull-request";
 import minimist from "minimist";
 import remarkParse from "remark-parse";
 import metadataParser from "markdown-yaml-metadata-parser";
@@ -13,7 +14,8 @@ import { sayHello } from "./cli.js";
 const argv = minimist(process.argv.slice(2));
 
 export const createOctokitClient = async (/** @type {string} */ token) => {
-  const OctokitWithPlugins = Octokit.plugin(paginateGraphql);
+  const OctokitWithPlugins =
+    Octokit.plugin(paginateGraphql).plugin(createPullRequest);
   const octokit = new OctokitWithPlugins({
     auth: token,
   });

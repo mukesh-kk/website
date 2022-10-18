@@ -1,4 +1,4 @@
-import { getStartOfMonth, getEndOfMonth } from "./dates";
+import { getStartOfMonth, getEndOfMonth, getMonthName } from "./dates";
 
 test("Given October 2022 returns first business day of that month", () => {
   const monthBoundaries = getStartOfMonth(10, 2022);
@@ -28,4 +28,9 @@ test("Given September 2022 returns last business day of that month", () => {
 test("Given February 2022 returns last business day of that month", () => {
   const monthBoundaries = getEndOfMonth(2, 2022);
   expect(monthBoundaries).toBe("2022-02-28");
+});
+
+test("Given October, returns the month name", () => {
+  const monthName = getMonthName(10);
+  expect(monthName).toBe("October");
 });

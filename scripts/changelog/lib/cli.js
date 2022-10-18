@@ -84,10 +84,10 @@ export const outputResults = (
     console.log("========================================");
     if (options.onlyPrs) {
       console.log(perCategoryPrContent);
-      process.exit(0);
+      return newChangelogFileContent;
     }
     console.log(newChangelogFileContent);
-    process.exit(0);
+    return newChangelogFileContent;
   }
 
   fs.writeFileSync(
@@ -98,4 +98,6 @@ export const outputResults = (
   console.log(
     `Changelog generated. Please edit ${changelogPath}/${releaseDate}/index.md`
   );
+
+  return newChangelogFileContent;
 };
