@@ -59,11 +59,20 @@ _Service Level Indicators and Service Level Objectives will be our North Stars._
 
 SLIs are simple once we implement those metrics. It's a simple ratio calculation over some time period. E.g.:
 
-- ![Workspace Start SLI](../../../static/images/blog/journey-to-site-reliability-engineering-at-gitpod/sli-workspace-start.gif)
+<figure>
+<video playsinline autoplay no-controls loop muted class="shadow-medium rounded-xl max-w-3xl mt-x-small" alt="Workspace Start SLI" src="/images/blog/journey-to-site-reliability-engineering-at-gitpod/sli-workspace-start.webm" type="video/webm"></video>
+    <figcaption>Workspace Start SLI</figcaption>
+</figure>
 
-- ![Workspace Latency SLI](../../../static/images/blog/journey-to-site-reliability-engineering-at-gitpod/sli-workspace-latency.gif)
+<figure>
+<video playsinline autoplay no-controls loop muted class="shadow-medium rounded-xl max-w-3xl mt-x-small" alt="Workspace Latency SLI" src="/images/blog/journey-to-site-reliability-engineering-at-gitpod/sli-workspace-latency.webm" type="video/webm"></video>
+    <figcaption>Workspace Latency SLI</figcaption>
+</figure>
 
-- ![Workspace Liveness SLI](../../../static/images/blog/journey-to-site-reliability-engineering-at-gitpod/sli-workspace-liveness.gif)
+<figure>
+<video playsinline autoplay no-controls loop muted class="shadow-medium rounded-xl max-w-3xl mt-x-small" alt="Workspace Liveness SLI" src="/images/blog/journey-to-site-reliability-engineering-at-gitpod/sli-workspace-liveness.webm" type="video/webm"></video>
+    <figcaption>Workspace Liveness SLI</figcaption>
+</figure>
 
 The SLOs, on the other hand, are a little bit more complicated. The SLO is a target of reliability that will better represent our users' "happiness", and measuring happiness is not really straightforward. We do know that aiming for 100% is not what we nor our users want though. Aiming for 100% means that 0 Workspaces can fail to start. Once we have a stable system, making changes to it, e.g. changing infrastructure to save costs or shipping a new exciting feature, is often the reason why said system becomes unstable even though those changes will often make us and our users more satisfied with our final product.
 

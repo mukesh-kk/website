@@ -394,7 +394,7 @@ See [Browser Extension](/docs/configure/user-settings/browser-extension) for mor
 ### Configure your IDE or editor
 
 <figure>
-<video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating Gitpod IDE preferences" src="/images/editors/select-jetbrains-ide.mp4"></video>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating Gitpod IDE preferences" src="/images/editors/select-jetbrains-ide.webm" type="video/webm"></video>
     <figcaption>Updating Gitpod IDE preferences to a JetBrains IDE</figcaption>
 </figure>
 

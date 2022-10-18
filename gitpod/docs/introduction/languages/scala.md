@@ -149,7 +149,10 @@ Boom! You're done! (Just a reminder, don't forget to push the changes.)
 
 To debug Scala code in Gitpod you should use the Metals extension which we just went over. Here is an example of Scala Debugging in action:
 
-![Example of debugging Scala in Gitpod](../../../static/images/docs/scala-debug.gif)
+<figure>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Example of debugging Scala in Gitpod" src="/images/docs/scala-debug.webm" type="video/webm"></video>
+    <figcaption>Example of debugging Scala in Gitpod</figcaption>
+</figure>
 
 In general when debugging Scala code, go to the main method, and click the Debug button over it! And boom you're debugging.
 

@@ -511,6 +511,15 @@ export const ides: Ide[] = [
     },
     icon: "webstorm.svg",
   },
+  {
+    name: "vim",
+    availibility: "beta",
+    label: "Vim",
+    screenshots: {
+      desktop: "vim.png",
+    },
+    icon: "vim.svg",
+  },
 ];
 
 export const featureTitles: FeatureTitle[] = [

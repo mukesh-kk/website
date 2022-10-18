@@ -21,12 +21,6 @@ export declare interface Email {
   };
 }
 
-export declare interface SheetInfo {
-  sheetTitle: string;
-  data: any[];
-  type?: string;
-}
-
 export declare interface SignupData {
   type: "newsletter" | "ambassador program" | "blog-email";
   email: string;

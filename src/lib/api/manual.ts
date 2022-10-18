@@ -1,4 +1,4 @@
-import saveFeedbackInSheet from "$lib/api/save-to-spreadsheet";
+import saveToSpreadsheet from "$lib/api/save-to-spreadsheet";
 import type { Feedback } from "$lib/api/api";
 
 const feedbackTypetoSheetTitle = {
@@ -25,7 +25,7 @@ export const submitFeedback = async (body: Feedback) => {
       body: "Please provide valid URL",
     };
   }
-  const isSavedInSheet = await saveFeedbackInSheet({
+  const isSavedInSheet = await saveToSpreadsheet({
     sheetTitle: feedbackTypetoSheetTitle[body.type],
     data: [new Date(), body.emotion, body.url, body.note, body.email],
   });

@@ -128,7 +128,10 @@ Now you can [See it in action on a new workspace](/docs/references/gitpod-yml#se
 
 Here is a quick clip on how to automatically configure debugging for Go!
 
-![Go debugging example](../../../static/images/docs/GoDebug.gif)
+<figure>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Go debugging example" src="/images/docs/GoDebug.webm" type="video/webm"></video>
+    <figcaption>Go debugging example</figcaption>
+</figure>
 
 So, basically in this video we:
 

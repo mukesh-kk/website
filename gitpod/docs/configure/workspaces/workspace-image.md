@@ -104,10 +104,14 @@ There are some requirements though for a public base image to work properly as a
 FROM ubuntu:latest
 
 # Install:
-# - git, for git operations (to e.g. push your work). Also required for setting up your configured dotfiles in the workspace.
-# - sudo, while not required, is recommended to be installed, since the workspace user (`gitpod`) is non-root and won't be able to install and use `sudo` to install any other tools in a live workspace.
+# - git (and git-lfs), for git operations (to e.g. push your work).
+#   Also required for setting up your configured dotfiles in the workspace.
+# - sudo, while not required, is recommended to be installed, since the
+#   workspace user (`gitpod`) is non-root and won't be able to install
+#   and use `sudo` to install any other tools in a live workspace.
 RUN apt-get update && apt-get install -yq \
     git \
+    git-lfs \
     sudo \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
@@ -116,6 +120,8 @@ RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
 
 USER gitpod
 ```
+
+**Additional tools & languages:** see https://github.com/gitpod-io/workspace-images/tree/main/chunks for references to configure your workspace image with common tools and languages. For instance, [this Dockerfile](https://github.com/gitpod-io/workspace-images/blob/main/chunks/tool-docker/Dockerfile) shows how to install `docker` and `docker-compose`.
 
 **Tailscale:** see [the Tailscale integration docs](/docs/integrations/tailscale#integration) for setting up Tailscale in a custom Dockerfile.
 

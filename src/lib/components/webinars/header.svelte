@@ -28,6 +28,7 @@
     <div class="flex items-center gap-micro">
       <h2 class="h5">Hosted by</h2>
       <h2 class="h5"><Logo width="120" isDark={true} /></h2>
+      <slot name="additionalHosts" />
     </div>
   </div>
 </Header>

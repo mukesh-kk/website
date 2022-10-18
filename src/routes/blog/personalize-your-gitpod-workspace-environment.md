@@ -32,7 +32,7 @@ Gitpod currently supports various popular IDEs & Editors 🎉. You can edit code
 - [Command-line-based](https://www.gitpod.io/docs/references/ides-and-editors/command-line) editors such as Vim
 
 <figure>
-<video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating Gitpod IDE preferences to {title}" src="/images/editors/select-jetbrains-ide.mp4"></video>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating Gitpod IDE preferences to {title}" src="/images/editors/select-jetbrains-ide.webm" type="video/webm"></video>
     <figcaption style="text-align: center;" >Updating Gitpod IDE preferences to choose IDE/editor of your choice</figcaption>
 </figure>
 
