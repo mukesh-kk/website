@@ -61,8 +61,10 @@ const main = async () => {
     owner,
     repo,
     issue_number: createdPr.data.number,
-    labels: ["changelog"],
+    labels: ["section: changelog"],
   });
+
+  console.info(`Created PR #${createdPr.data.number}`);
 };
 
 main();
