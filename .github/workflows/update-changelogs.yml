@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+      - name: Create changelog PR if not existing already
+        run: |
+          node scripts/changelog/prCreator.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Git User
         run: |
           git config --global user.name "github-actions[bot]"
