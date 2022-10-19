@@ -50,7 +50,7 @@ export const screencasts: Screencast[] = [
     youtubeId: "4495YOMhhgo",
     relatedDocs: [
       {
-        path: "/docs/introduction/learn-gitpod/the-life-of-a-workspace",
+        path: "/docs/introduction/learn-gitpod/workspace-lifecycle",
         title: "Life of a Workspace",
       },
     ],
@@ -121,7 +121,7 @@ export const screencasts: Screencast[] = [
     youtubeId: "n7Ca3jHFtZg",
     relatedDocs: [
       {
-        path: "/docs/introduction/learn-gitpod/the-life-of-a-workspace",
+        path: "/docs/introduction/learn-gitpod/workspace-lifecycle",
         title: "Life of a Workspace",
       },
     ],

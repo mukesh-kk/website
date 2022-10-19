@@ -26,10 +26,7 @@ export const MENU: MenuEntry[] = [
       "One workspace per task",
       "introduction/learn-gitpod/one-workspace-per-task"
     ),
-    M(
-      "The life of a workspace",
-      "introduction/learn-gitpod/the-life-of-a-workspace"
-    ),
+    M("Workspace Lifecycle", "introduction/learn-gitpod/workspace-lifecycle"),
     M("Context URL", "introduction/learn-gitpod/context-url"),
     M(".gitpod.yml", "introduction/learn-gitpod/gitpod-yaml"),
   ]),

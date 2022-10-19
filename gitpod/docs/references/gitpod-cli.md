@@ -196,7 +196,7 @@ gp tasks stop --all
 
 ## timeout
 
-Interact with workspace timeout configuration. You can learn more in [Life of a Workspace](/docs/introduction/learn-gitpod/the-life-of-a-workspace#timeouts).
+Interact with workspace timeout configuration. You can learn more in [Life of a Workspace](/docs/introduction/learn-gitpod/workspace-lifecycle#timeouts).
 
 ```sh
 gp timeout

@@ -10,6 +10,6 @@ title: Learn Gitpod
 # Learn Gitpod
 
 - [One workspace per task](/docs/introduction/learn-gitpod/one-workspace-per-task)
-- [The Life of a workspace](/docs/introduction/learn-gitpod/the-life-of-a-workspace)
-- [Context URL](/docs/introduction/learn-gitpod/the-life-of-a-workspace)
+- [The Life of a workspace](/docs/introduction/learn-gitpod/workspace-lifecycle)
+- [Context URL](/docs/introduction/learn-gitpod/workspace-lifecycle)
 - [.gitpod.yml](/docs/introduction/learn-gitpod/gitpod-yaml)
