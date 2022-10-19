@@ -1,51 +1,13 @@
-import {
-  generatePrChangelogLine,
-  processRepository,
-  sortByCategoryOrder,
-  formatChangelogCategory,
-  createOctokitClient,
-} from "./lib/utils.js";
-import { outputResults, parseArgs } from "./lib/cli.js";
-import { lineBreak, prCategories, repos } from "./lib/config.js";
+import { main } from "./changelog.js";
+import { outputResults } from "./lib/cli.js";
+
 import minimist from "minimist";
 
 const argv = minimist(process.argv.slice(2));
 
-export const main = async () => {
-  const { releaseDate, from, to, githubToken } = parseArgs(argv);
-  const octokit = await createOctokitClient(githubToken);
-
-  let categorizedPrs = prCategories;
-  for (const repo of repos) {
-    categorizedPrs = await processRepository({
-      octokit,
-      repo,
-      from,
-      to,
-      prCategories: categorizedPrs,
-    });
-  }
-
-  for await (const [index, category] of categorizedPrs.entries()) {
-    const prs = category.prs.map(generatePrChangelogLine).join("");
-    const formattedCategoryContent = await formatChangelogCategory(
-      prs,
-      category,
-      releaseDate
-    );
-    categorizedPrs[index] = { ...category, ...formattedCategoryContent };
-  }
-  const perCategoryPrContent = categorizedPrs
-    .sort(sortByCategoryOrder)
-    .filter((category) => category.content)
-    .map((category) => category.content)
-    .join(lineBreak);
-
+(async () => {
+  const { releaseDate, content } = await main();
   const { dryRun, onlyPrs, force } = argv;
 
-  outputResults(releaseDate, perCategoryPrContent, { force, dryRun, onlyPrs });
-};
-
-main().catch((error) => {
-  console.error(error);
-});
+  outputResults(releaseDate, content, { force, dryRun, onlyPrs });
+})();
