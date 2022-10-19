@@ -162,7 +162,10 @@ export const ensureGithubToken = (mockedToken) => {
   let githubToken;
 
   if (mockedToken === undefined) {
-    githubToken = argv.token || process.env.CHANGELOG_GITHUB_ACCESS_TOKEN;
+    githubToken =
+      argv.token ||
+      process.env.CHANGELOG_GITHUB_ACCESS_TOKEN ||
+      process.env.GITHUB_TOKEN;
   } else {
     githubToken = mockedToken;
   }
