@@ -57,7 +57,8 @@ The following describes each these states and their attributes.
 - **What is "Workspace Pinning"?** A pinned workspace is never deleted. You can pin a workspace via the dashboard.
 
 <!-- TODO: Does pinning need it's own section? -->
-<!-- TODO: Can we add an image here? (we should!) -->
+
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/pin-workspace.png" alt="Pin workspace from webapp" loading="lazy"/>
 
 ## Workspace loading phases
 
@@ -81,7 +82,7 @@ The following describes each these states and their attributes.
 
 All workspaces start with from a single Git "context", e.g. [GitHub](/docs/configure/authentication/github), [GitLab](/docs/configure/authentication/gitlab), [Bitbucket](/docs/configure/authentication/bitbucket). If there is already a running workspace from the same git context, you will be prompted to open the already running workspace or given the option to start a new one.
 
-![Workspace Already Exist](/images/workspace-life/workspace-already-exist.png)
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-already-exist.png" alt="Workspace Already Exist" loading="lazy"/>
 
 See [Context URLs](/docs/introduction/learn-gitpod/context-url) for more.
 
@@ -177,7 +178,7 @@ See [Workspace Tasks](/docs/configure/workspaces/tasks) for more.
 
 <!-- TODO: Find correct Position for screenshot  -->
 
-![Stop workspace from dashboard](/images/workspace-life/stop-workspace.png)
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/stop-workspace.png" alt="Stop workspace from dashboard" loading="lazy"/>
 
 Your workspace may stop for one of these reasons:
 
@@ -194,7 +195,7 @@ So what happens to your workspace files? The following applies:
 
 Lorem Ipsum
 
-<img src="/images/workspace-life/restart-workspace.png" alt="Restart workspace from webapp" class="h-100 w-100" loading="lazy"/>
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/restart-workspace.png" alt="Restart workspace from webapp" loading="lazy"/>
 
 <!-- TODO -->
 
@@ -202,7 +203,7 @@ Lorem Ipsum
 
 Lorem Ipsum
 
-![Delete workspace from dashboard](/images/workspace-life/delete-workspace.png)
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/delete-workspace.png" alt="Delete workspace from dashboard" loading="lazy"/>
 
 <!-- TODO -->
 
