@@ -41,5 +41,5 @@ export const main = async () => {
     .map((category) => category.content)
     .join(lineBreak);
 
-  return { releaseDate, content: perCategoryPrContent };
+  return { releaseDate, content: perCategoryPrContent, prs: categorizedPrs };
 };
