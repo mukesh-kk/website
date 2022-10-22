@@ -31,15 +31,17 @@ const app = new App({
       return undefined;
     }
 
-    const prLinks = category.prs.map((pr) => `<${pr.url}|#${pr.number}>`);
+    const prLinks = category.prs.map((pr, i) => `<${pr.url}|${i + 1}>`);
 
-    return `*${category.name}* - ${sum} PRs\n${prLinks.join(", ")}`;
+    return `*${category.name}* (team ${
+      category.team ?? "unassigned"
+    }) - ${sum} PRs\n${prLinks.join(", ")}`;
   });
 
   const otherPrs = prs
     .find((pr) => pr.partial === "others")
-    .prs.map((pr) => {
-      return `<${pr.url}|#${pr.number}>`;
+    .prs.map((pr, i) => {
+      return `<${pr.url}|${i + 1}>`;
     });
 
   await app.client.chat.postMessage({

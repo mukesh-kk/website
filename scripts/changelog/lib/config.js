@@ -10,6 +10,7 @@ export const repos = [
 export const prCategories = [
   {
     name: "VS Code",
+    team: "IDE",
     labels: ["editor: code (desktop)", "editor: code (browser)"],
     partial: "vscode",
     prefixes: ["code"],
@@ -18,6 +19,7 @@ export const prCategories = [
   },
   {
     name: "JetBrains",
+    team: "IDE",
     labels: ["editor: jetbrains"],
     partial: "jetbrains",
     prefixes: ["jb", "jetbrains"],
@@ -26,6 +28,7 @@ export const prCategories = [
   },
   {
     name: "Dashboard",
+    team: "WebApp",
     labels: ["component: dashboard"],
     partial: "dashboard",
     prefixes: ["dashboard"],
@@ -34,6 +37,7 @@ export const prCategories = [
   },
   {
     name: "Gitpod CLI",
+    team: "IDE",
     labels: ["component: gp cli"],
     partial: "cli",
     prefixes: ["gp-cli"],
@@ -42,6 +46,7 @@ export const prCategories = [
   },
   {
     name: "Server",
+    team: "WebApp",
     labels: ["component: server"],
     partial: "server",
     prefixes: ["server"],
@@ -50,6 +55,7 @@ export const prCategories = [
   },
   {
     name: "Website",
+    team: "DCS",
     labels: [],
     partial: "website",
     prefixes: [],
@@ -58,6 +64,7 @@ export const prCategories = [
   },
   {
     name: "Workspace",
+    team: "Workspace",
     labels: ["team: workspace"],
     partial: "workspace",
     prefixes: [],
