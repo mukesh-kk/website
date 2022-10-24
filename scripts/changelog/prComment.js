@@ -50,6 +50,13 @@ const main = async () => {
                     name
                 }
             }
+            assignees(first: 20) {
+              edges {
+                node {
+                  login
+                }
+              }
+            }
           }
         }
       }
@@ -91,9 +98,18 @@ const main = async () => {
     status = "Not included in the next changelog (merged but not deployed)";
   }
 
+  const responsible =
+    pr.assignees.edges.length > 0
+      ? pr.assignees.edges.map((assignee) => `@${assignee.node.login}`)
+      : [`@${pr.author.login}`];
+
   let comment = `${autoPrefix}\n`;
   comment += "## Changelog entry\n";
-  comment += `This is a preview of how the changelog script interpreted your PR:\n`;
+  comment += `This is a preview of how the changelog script interpreted your PR, ${responsible.join(
+    ", "
+  )}:\n`;
+
+  debugger;
 
   comment += "### Status\n";
   comment += `${status}\n`;
