@@ -2,8 +2,10 @@ import {
   createOctokitClient,
   findCategoryForPr,
   generatePrChangelogLine,
+  getChangelogPr,
 } from "./lib/utils.js";
 import { prCategories } from "./lib/config.js";
+import { getMonthName } from "./lib/dates.js";
 import fs from "fs/promises";
 import process from "process";
 
@@ -83,22 +85,18 @@ const main = async () => {
 
   const isDeployed = pr.labels.nodes.some((label) => label.name === "deployed");
   const month = getMonthName(new Date().getUTCMonth() + 1);
-  const branchName = `changelog/${month.toLowerCase()}`;
 
   let status;
   if (pr.open) {
     status =
       "May be included in the next changelog (waiting for merge + deploy)";
   } else if (pr.merged && isDeployed) {
-    const searchQuery = `is:open head:"${branchName}" repo:${owner}/website`;
-    const currentMonthPr = await octokit.rest.search.issuesAndPullRequests({
-      q: searchQuery,
-    });
+    const currentMonthPr = await getChangelogPr(month, octokit);
 
-    if (currentMonthPr.data.items.length === 0) {
+    if (!currentMonthPr) {
       status = "Included in the next changelog";
     } else {
-      status = `Included in the [${month} changelog](${currentMonthPr.data.items[0].html_url})`;
+      status = `Included in the [${month} changelog](${currentMonthPr.html_url})`;
     }
   } else if (pr.closed && !pr.merged) {
     status = "Not included in the next changelog (closed without merge)";

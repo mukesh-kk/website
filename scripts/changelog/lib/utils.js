@@ -10,6 +10,7 @@ import metadataParser from "markdown-yaml-metadata-parser";
 import { getPrsForRepo } from "./getPrs.js";
 import { changelogPath, lineBreak, excludedPrUsers } from "./config.js";
 import { sayHello } from "./cli.js";
+import { getMonthName } from "./dates.js";
 
 const argv = minimist(process.argv.slice(2));
 
@@ -244,6 +245,28 @@ export const readPartial = async (name, releaseDate) => {
   const contentMetadata = metadataParser(partialContent);
   const order = contentMetadata.metadata?.order;
   return { content: contentWithStrippedMetadata, order };
+};
+
+/**
+ * @param {number} month
+ * @param {import "octokit".Octokit } octokit
+ * @returns either null if no changelog is found, or the changelog PR object
+ */
+export const getChangelogPr = async (
+  month = getMonthName(new Date().getUTCMonth() + 1),
+  octokit
+) => {
+  const branchName = `changelog/${month.toLowerCase()}`;
+  const searchQuery = `is:open head:"${branchName}" repo:${owner}/website`;
+  const currentMonthPr = await octokit.rest.search.issuesAndPullRequests({
+    q: searchQuery,
+  });
+
+  if (currentMonthPr.data.total_count === 0) {
+    return null;
+  }
+
+  return currentMonthPr.data.items[0];
 };
 
 export const formatChangelogCategory = async (prs, category, releaseDate) => {

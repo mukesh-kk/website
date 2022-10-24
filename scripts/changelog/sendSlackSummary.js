@@ -1,8 +1,14 @@
-import { main } from "./changelog.js";
-import { getMonthName } from "./lib/dates.js";
 import bolt from "@slack/bolt";
 const { App } = bolt;
 import { formatRelative } from "date-fns";
+
+import { main } from "./changelog.js";
+import { getMonthName } from "./lib/dates.js";
+import {
+  getChangelogPr,
+  createOctokitClient,
+  ensureGithubToken,
+} from "./lib/utils.js";
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -19,10 +25,19 @@ const app = new App({
 
   console.log(releasingIn);
 
+  const octokit = createOctokitClient(ensureGithubToken());
+
+  const month = getMonthName(new Date().getUTCMonth() + 1);
+  const currentPr = await getChangelogPr(month, octokit);
+
   const stats = [
     `:calendar: Releasing ${releasingIn}`,
     `:newspaper: ${sumOfPrs} PRs in total`,
   ];
+
+  if (currentPr) {
+    stats.push(`:link: <${currentPr.html_url}|Changelog PR>`);
+  }
 
   const categoryPrs = prs.map((category) => {
     const sum = category.prs.length;
@@ -52,9 +67,7 @@ const app = new App({
         type: "header",
         text: {
           type: "plain_text",
-          text: `Changelog for ${getMonthName(
-            new Date(releaseDate).getUTCMonth() + 1
-          )}`,
+          text: `Changelog for ${month}`,
         },
       },
       {

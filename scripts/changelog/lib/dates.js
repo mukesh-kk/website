@@ -65,6 +65,12 @@ export const getFormattedMonthBoundaries = (...args) => [
   getEndOfMonth(...args),
 ];
 
+/**
+ * @param {number} monthNumber
+ * @example getMonthName(1) // January
+ * @example getMonthName(12) // December
+ * @returns {string} The name of the month
+ */
 export const getMonthName = (monthNumber) => {
   const format = new Intl.DateTimeFormat("en-GB", { month: "long" }).format;
   const date = new Date(Date.UTC(2074, --monthNumber));
