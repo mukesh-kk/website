@@ -82,13 +82,24 @@ const main = async () => {
   let category = inferredCategory?.name;
 
   const isDeployed = pr.labels.nodes.some((label) => label.name === "deployed");
+  const month = getMonthName(new Date().getUTCMonth() + 1);
+  const branchName = `changelog/${month.toLowerCase()}`;
 
   let status;
   if (pr.open) {
     status =
       "May be included in the next changelog (waiting for merge + deploy)";
   } else if (pr.merged && isDeployed) {
-    status = "Included in the next changelog";
+    const searchQuery = `is:open head:"${branchName}" repo:${owner}/website`;
+    const currentMonthPr = await octokit.rest.search.issuesAndPullRequests({
+      q: searchQuery,
+    });
+
+    if (currentMonthPr.data.items.length === 0) {
+      status = "Included in the next changelog";
+    } else {
+      status = `Included in the [${month} changelog](${currentMonthPr.data.items[0].html_url})`;
+    }
   } else if (pr.closed && !pr.merged) {
     status = "Not included in the next changelog (closed without merge)";
   } else if (pr.merged && !isDeployed) {
