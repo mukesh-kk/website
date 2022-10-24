@@ -6,6 +6,7 @@ import {
   readPartial,
   getPrParticipants,
   replaceContentOfBlock,
+  parseChangelogIdeVersions,
 } from "./utils.js";
 import { prCategories, changelogPath } from "./config.js";
 import { jest } from "@jest/globals";
@@ -196,4 +197,16 @@ test("Markdown block injection works correctly", () => {
 
   // Testing invalid data
   expect(() => replaceContentOfBlock("TEST", "", "lorem")).toThrow();
+});
+
+test("Version parsing from metadata works correctly", async () => {
+  const sampleChangelog = await fs.readFile(
+    `${changelogPath}/2022-10-31/index.md`,
+    "utf-8"
+  );
+  const data = parseChangelogIdeVersions(sampleChangelog);
+
+  // todo(ft): update values
+  expect(data?.jetbrains.version).toBe("222.4345");
+  expect(data?.code.version).toBe("1.72.3");
 });

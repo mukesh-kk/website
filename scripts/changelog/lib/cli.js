@@ -1,7 +1,7 @@
 import fs from "fs";
 import fetch from "node-fetch";
 
-import { getFormattedMonthBoundaries } from "./dates.js";
+import { getFormattedMonthBoundaries, getMonthName } from "./dates.js";
 import { changelogPath } from "./config.js";
 import { ensureGithubToken, replaceContentOfBlock } from "./utils.js";
 
@@ -71,6 +71,35 @@ export const outputResults = (
     `${changelogPath}/${releaseDate}/index.md`,
     "utf-8"
   );
+
+  //todo(ft): get the data from the API
+  const { codeCommit, codeVersion, jetbrainsVersion } = {
+    codeCommit: "",
+    codeVersion: "",
+    jetbrainsVersion: "",
+  };
+
+  newChangelogFileContent = newChangelogFileContent.replace(
+    /{{codeCommit}}/g,
+    codeCommit
+  );
+
+  newChangelogFileContent = newChangelogFileContent.replace(
+    /{{codeVersion}}/g,
+    codeVersion
+  );
+
+  newChangelogFileContent = newChangelogFileContent.replace(
+    /{{jetbrainsVersion}}/g,
+    jetbrainsVersion
+  );
+
+  const releaseMonth = getMonthName(new Date(releaseDate).getUTCMonth() + 1);
+  newChangelogFileContent = newChangelogFileContent.replace(
+    /{{releaseMonth}}/g,
+    releaseMonth
+  );
+
   newChangelogFileContent = newChangelogFileContent.replace(
     /{{releaseDate}}/g,
     releaseDate

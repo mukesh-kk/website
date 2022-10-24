@@ -272,3 +272,8 @@ export const formatChangelogCategory = async (prs, category, releaseDate) => {
     };
   }
 };
+
+export const parseChangelogIdeVersions = (changelogContent) => {
+  const meta = metadataParser(changelogContent);
+  return meta.metadata?.ides;
+};

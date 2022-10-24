@@ -1,9 +1,15 @@
 ---
-title:
-excerpt:
+title: {{releaseMonth}} Changelog
+excerpt: {{releaseMonth}} Changelog
 date: {{releaseDate}}
 image: {{releaseDate}}.jpg
-alt:
+alt: {{releaseDate}} image
+ides:
+  code:
+    commit: {{codeCommit}}
+    version: {{codeVersion}}
+  jetbrains:
+    version: {{jetbrainsVersion}}
 ---
 
 <script>
