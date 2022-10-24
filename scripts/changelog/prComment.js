@@ -80,9 +80,6 @@ const main = async () => {
   );
 
   let category = inferredCategory?.name;
-  if (!category) {
-    category = "Other (fixes and improvements)";
-  }
 
   const isDeployed = pr.labels.nodes.some((label) => label.name === "deployed");
 
@@ -103,21 +100,41 @@ const main = async () => {
       ? pr.assignees.edges.map((assignee) => `@${assignee.node.login}`)
       : [`@${pr.author.login}`];
 
+  const allCategoryLabels = prCategories
+    .map((category) => category.labels)
+    .flat();
+  const labelsContributingToCategory = pr.labels.nodes
+    .filter((label) => allCategoryLabels.includes(label.name))
+    .map((label) => label.name);
+
+  const linkifiedContributingLabels = labelsContributingToCategory.map(
+    (label) =>
+      `https://github.com/${owner}/${repo}/labels/${encodeURIComponent(label)}`
+  );
+
   let comment = `${autoPrefix}\n`;
   comment += "## Changelog entry\n";
   comment += `This is a preview of how the changelog script interpreted your PR, ${responsible.join(
     ", "
   )}:\n`;
 
-  debugger;
-
   comment += "### Status\n";
   comment += `${status}\n`;
 
   comment += `### Release Note(s)\n${releaseNote}\n\n`;
 
-  comment += `### Category\n${category}`;
-  comment += `\n\nWe have automatically detected this PR as belonging to the ${category} category. If you feel this is incorrect, please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js), where you can find all of the available categories + the labels and PR title prefixes which we use for category when categorizing.`;
+  comment += "### Category\n";
+  if (category) {
+    comment += `${category}`;
+    comment += `\n\nWe have automatically detected this PR as belonging to the \`${category}\` category (based on ${
+      labelsContributingToCategory.length > 0
+        ? linkifiedContributingLabels.join(", ")
+        : "the PR title prefix"
+    }). If you feel this is incorrect, please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js), where you can find all of the available categories + the labels and PR title prefixes which we use for category when categorizing.`;
+  } else {
+    comment +=
+      "⚠️ We have not been able to automatically detect a category for this PR. Please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js) for all available categories along with the labels you can use with them.";
+  }
 
   console.info(comment);
   const comments = await octokit.rest.issues.listComments({
