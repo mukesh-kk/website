@@ -257,7 +257,7 @@ export const getChangelogPr = async (
   octokit
 ) => {
   const branchName = `changelog/${month.toLowerCase()}`;
-  const searchQuery = `is:open head:"${branchName}" repo:${owner}/website`;
+  const searchQuery = `is:open head:"${branchName}" repo:gitpod-io/website`;
   const currentMonthPr = await octokit.rest.search.issuesAndPullRequests({
     q: searchQuery,
   });

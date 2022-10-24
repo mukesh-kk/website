@@ -25,7 +25,7 @@ const app = new App({
 
   console.log(releasingIn);
 
-  const octokit = createOctokitClient(ensureGithubToken());
+  const octokit = await createOctokitClient(ensureGithubToken());
 
   const month = getMonthName(new Date().getUTCMonth() + 1);
   const currentPr = await getChangelogPr(month, octokit);
@@ -60,7 +60,7 @@ const app = new App({
     });
 
   await app.client.chat.postMessage({
-    channel: "#changelog",
+    channel: "#general",
     text: "Here's the changelog!",
     blocks: [
       {
