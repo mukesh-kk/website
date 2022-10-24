@@ -133,7 +133,7 @@ const main = async () => {
     }). If you feel this is incorrect, please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js), where you can find all of the available categories + the labels and PR title prefixes which we use for category when categorizing.`;
   } else {
     comment +=
-      "⚠️ We have not been able to automatically detect a category for this PR. Please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js) for all available categories along with the labels you can use with them.";
+      "⚠️ We have not been able to automatically detect a category for this PR. Please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js) for all available categories along with the labels you can use with them. If this PR is left un-categorized, it will be included in the `Fixes and improvements` category at the end.";
   }
 
   console.info(comment);
