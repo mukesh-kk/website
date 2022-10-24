@@ -8,7 +8,7 @@ import remarkParse from "remark-parse";
 import metadataParser from "markdown-yaml-metadata-parser";
 
 import { getPrsForRepo } from "./getPrs.js";
-import { changelogPath, lineBreak } from "./config.js";
+import { changelogPath, lineBreak, excludedPrUsers } from "./config.js";
 import { sayHello } from "./cli.js";
 
 const argv = minimist(process.argv.slice(2));
@@ -26,10 +26,19 @@ export const createOctokitClient = async (/** @type {string} */ token) => {
 
 export const getPrParticipants = (pr) => {
   const author = pr.author?.login;
+
+  const isUnwantedUser = (user) =>
+    !excludedPrUsers.includes(user) && user !== author;
+
   const participants = pr.participants.nodes
     .map(({ login }) => login)
-    .filter((login) => !["roboquat", author].includes(login))
+    .filter(isUnwantedUser)
     .sort();
+
+  if (excludedPrUsers.includes(author)) {
+    return participants.join(", ");
+  }
+
   return [author, ...participants].join(",");
 };
 

@@ -7,6 +7,12 @@ export const repos = [
   "gitpod-io/workspace-images",
 ];
 
+export const excludedPrUsers = [
+  "dependabot[bot]",
+  "roboquat",
+  "github-actions",
+];
+
 export const prCategories = [
   {
     name: "VS Code",
