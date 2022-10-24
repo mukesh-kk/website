@@ -1,4 +1,5 @@
 import fs from "fs";
+import fetch from "node-fetch";
 
 import { getFormattedMonthBoundaries } from "./dates.js";
 import { changelogPath } from "./config.js";
@@ -100,4 +101,15 @@ export const outputResults = (
   );
 
   return newChangelogFileContent;
+};
+
+export const getDefaultThumbnailImage = async (month, releaseDate) => {
+  const url = new URL(
+    "https://og-playground-blue.vercel.app/api/gitpodchangelog"
+  );
+  url.searchParams.set("month", month);
+  url.searchParams.set("date", releaseDate);
+
+  const res = await fetch(url);
+  return await res.buffer();
 };
