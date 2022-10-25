@@ -7,6 +7,7 @@ import {
   getPrParticipants,
   replaceContentOfBlock,
   parseChangelogIdeVersions,
+  findCategoryForPr,
 } from "./utils.js";
 import { prCategories, changelogPath } from "./config.js";
 import { jest } from "@jest/globals";
@@ -199,7 +200,27 @@ test("Markdown block injection works correctly", () => {
   expect(() => replaceContentOfBlock("TEST", "", "lorem")).toThrow();
 });
 
-test("Version parsing from metadata works correctly", async () => {
+test("Categorizing PRs works correctly", () => {
+  const samplePr = {
+    title: "Make VS Code -20% faster",
+    body: "This PR makes VS Code 20% slower by doing X, Y and Z.\n\n## Release notes\n\nHello",
+    labels: {
+      nodes: [
+        {
+          name: "team-ide",
+        },
+        {
+          name: "editor: code (browser)",
+        },
+      ],
+    },
+  };
+
+  const categorizedPr = findCategoryForPr(samplePr);
+  expect(categorizedPr.path).toBe("vscode.browser");
+});
+
+test.skip("Version parsing from metadata works correctly", async () => {
   const sampleChangelog = await fs.readFile(
     `${changelogPath}/2022-10-31/index.md`,
     "utf-8"

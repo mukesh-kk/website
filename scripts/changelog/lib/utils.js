@@ -8,7 +8,12 @@ import remarkParse from "remark-parse";
 import metadataParser from "markdown-yaml-metadata-parser";
 
 import { getPrsForRepo } from "./getPrs.js";
-import { changelogPath, lineBreak, excludedPrUsers } from "./config.js";
+import {
+  changelogPath,
+  lineBreak,
+  excludedPrUsers,
+  prCategories,
+} from "./config.js";
 import { sayHello } from "./cli.js";
 import { getMonthName } from "./dates.js";
 
@@ -203,28 +208,72 @@ export const ensureGithubToken = (mockedToken) => {
   return githubToken;
 };
 
-export const findCategoryForPr = (pr, category) => {
+export const findCategoryForPr = (pr, currentCategory = prCategories) => {
   const releaseNote = parseReleaseNote(pr);
-  const byLabel = category.labels?.some((label) =>
-    pr.labels.nodes?.some((prLabel) => prLabel.name === label)
-  );
-  const byPrefix =
-    category.prefixes?.some(
-      (prefix) =>
-        releaseNote.startsWith(`[${prefix}]`) ||
-        pr.title.startsWith(`[${prefix}]`)
-    ) ?? false;
 
-  if (!byLabel && byPrefix) {
-    console.warn(
-      pr.title,
-      "is categorized as",
-      category.name,
-      "but it doesn't have the label",
-      category.labels.join(", ")
+  // We traverse the category tree to find the right (sub)category
+  // todo(ft): prefer deeper categorization -> the more specific category should be used
+  while (currentCategory) {
+    if (
+      pr.labels.nodes.some((label) =>
+        currentCategory.labels.includes(label.name)
+      )
+    ) {
+      break;
+    }
+    if (currentCategory.prefixes && currentCategory.prefixes.length > 0) {
+      if (
+        currentCategory.prefixes.some((prefix) =>
+          pr.title.startsWith(`[${prefix}]`)
+        )
+      ) {
+        break;
+      }
+      if (
+        releaseNote &&
+        currentCategory.prefixes.some((prefix) =>
+          releaseNote.startsWith(`[${prefix}]`)
+        )
+      ) {
+        break;
+      }
+    }
+
+    if (currentCategory.categories) {
+      currentCategory = currentCategory.categories.find((subcategory) => {
+        return findCategoryForPr(pr, subcategory);
+      });
+    } else {
+      currentCategory = null;
+    }
+  }
+
+  // Reverse the traversal to find the whole path of the category
+  // todo(ft): make this support more than 2 levels of nested categories
+  const path = [];
+
+  let category = currentCategory;
+  while (currentCategory) {
+    path.unshift(currentCategory.partial);
+    // find the parent category
+    currentCategory = prCategories.categories.find((category) =>
+      category.categories?.includes(currentCategory)
     );
   }
-  return byLabel || byPrefix;
+
+  return { category, path: path.join(".") || null };
+
+  /*
+    if (!byLabel && byPrefix) {
+      console.warn(
+        pr.title,
+        "is categorized as",
+        category.name,
+        "but it doesn't have the label",
+        category.labels.join(", ")
+      );
+    }
+     */
 };
 
 /**

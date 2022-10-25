@@ -96,11 +96,9 @@ const main = async () => {
     return;
   }
 
-  const inferredCategory = prCategories.find((category) =>
-    findCategoryForPr(pr, category)
-  );
+  const inferredCategory = findCategoryForPr(pr);
 
-  let category = inferredCategory?.name;
+  let category = inferredCategory?.category;
 
   const isDeployed = pr.labels.nodes.some((label) => label.name === "deployed");
   const month = getMonthName(new Date().getUTCMonth() + 1);
@@ -131,9 +129,11 @@ const main = async () => {
       ? pr.assignees.edges.map((assignee) => `@${assignee.node.login}`)
       : [`@${pr.author.login}`];
 
+  //todo(ft): fix this (take subcategories into account)
   const allCategoryLabels = prCategories
     .map((category) => category.labels)
     .flat();
+
   const labelsContributingToCategory = pr.labels.nodes
     .filter((label) => allCategoryLabels.includes(label.name))
     .map((label) => label.name);
