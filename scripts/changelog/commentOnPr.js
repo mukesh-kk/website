@@ -106,7 +106,7 @@ const main = async () => {
   const month = getMonthName(new Date().getUTCMonth() + 1);
 
   let status;
-  if (pr.state === "OPEN") {
+  if (pr.state === "OPEN" && !pr.isDraft) {
     status =
       "May be included in the next changelog (waiting for merge + deploy)";
   } else if (pr.state === "MERGED" && isDeployed) {
