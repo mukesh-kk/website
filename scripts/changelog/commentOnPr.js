@@ -108,7 +108,7 @@ const main = async () => {
   let status;
   if (pr.state === "OPEN" && !pr.isDraft) {
     status =
-      "May be included in the next changelog (waiting for merge + deploy)";
+      "May be included in the next changelog [waiting for merge + deploy]";
   } else if (pr.state === "MERGED" && isDeployed) {
     const currentMonthPr = await getChangelogPr(month, octokit);
 
@@ -118,11 +118,12 @@ const main = async () => {
       status = `Included in the [${month} changelog](${currentMonthPr.html_url})`;
     }
   } else if (pr.state === "CLOSED") {
-    status = "Not included in the next changelog (closed without merge)";
+    status = "Not included in the next changelog [closed without merge]";
   } else if (pr.state === "MERGED" && !isDeployed) {
-    status = "Not yet included in the next changelog (merged but not deployed)";
+    status = "Not yet included in the next changelog [merged but not deployed]";
   } else if (pr.isDraft) {
-    status = "Not yet included in the next changelog (draft PR)";
+    status =
+      "Not yet included in the next changelog, because this PR is a draft";
   }
 
   const responsible =
