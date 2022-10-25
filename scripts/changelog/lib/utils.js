@@ -43,6 +43,10 @@ export const getPrParticipants = (pr) => {
   return [author, ...participants].join(",");
 };
 
+/**
+ * Parser for the old-style changelog entries
+ * @returns {string | null}
+ */
 export const parseOldReleaseNote = (pr) => {
   const releaseNoteMatch = pr.body.match(/```release-notes?(.+?)```/s);
   const releaseNoteText = releaseNoteMatch && releaseNoteMatch[1].trim();
@@ -53,6 +57,7 @@ export const parseOldReleaseNote = (pr) => {
 
 /**
  * Parser for the new release note format (delimited by headings)
+ * @returns {string | null}
  */
 export const parseNewReleaseNote = (pr) => {
   const data = unified().use(remarkParse).parse(pr.body);
@@ -154,6 +159,11 @@ export const replaceContentOfBlock = (blockName, blockContent, fileContent) => {
 const prefixRegex = /\[.{1,}\] ?/g;
 export const generatePrChangelogLine = (pr) => {
   let releaseNote = parseReleaseNote(pr);
+
+  if (!releaseNote) {
+    return null;
+  }
+
   if (releaseNote.match(prefixRegex)) {
     // Remove the prefix, if any
     releaseNote = releaseNote.replace(prefixRegex, "");
