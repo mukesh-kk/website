@@ -57,14 +57,26 @@ const main = async () => {
     ],
   });
 
+  const { number: prNumber } = createdPr.data;
+
   await octokit.rest.issues.addLabels({
     owner,
     repo,
-    issue_number: createdPr.data.number,
+    issue_number: prNumber,
+    //todo(ft) after creating the changelog-update label, add it here
     labels: ["section: changelog"],
   });
 
-  console.info(`Created PR #${createdPr.data.number}`);
+  console.info(`Created PR #${prNumber}`);
+
+  const previewLink = `https://deploy-preview-${prNumber}--gitpod-kumquat.netlify.app/changelog/`;
+  await octokit.rest.issues.createComment({
+    owner,
+    repo,
+    issue_number: prNumber,
+    body: `[Preview deployment](${previewLink})`,
+  });
+  console.info(`Created comment with preview link`);
 };
 
 main();
