@@ -10,6 +10,13 @@ import {
   ensureGithubToken,
 } from "./lib/utils.js";
 
+if (!process.env.SLACK_BOT_TOKEN || !process.env.SLACK_SIGNING_SECRET) {
+  console.error(
+    "Missing Slack environment variables (SLACK_BOT_TOKEN, SLACK_SIGNING_SECRET)"
+  );
+  process.exit(1);
+}
+
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -25,7 +32,7 @@ const app = new App({
 
   console.log(releasingIn);
 
-  const octokit = await createOctokitClient(ensureGithubToken());
+  const octokit = createOctokitClient(ensureGithubToken());
 
   const month = getMonthName(new Date().getUTCMonth() + 1);
   const currentPr = await getChangelogPr(month, octokit);
@@ -60,7 +67,7 @@ const app = new App({
     });
 
   await app.client.chat.postMessage({
-    channel: "#general",
+    channel: process.env.SLACK_CHANNEL || "#changelog",
     text: "Here's the changelog!",
     blocks: [
       {

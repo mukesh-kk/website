@@ -1,22 +1,70 @@
-# Update all PRs with the `changelog-update` label with the latest changelog
-name: Update Changelogs
+name: Changelog workflow
 on:
   workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Create changelog PR'
+        required: true
+        default: false
+        type: boolean
+      slack:
+        description: 'Send Slack message'
+        required: true
+        default: false
+        type: boolean
   schedule:
+    # Run at midnight every weekday (update changelog PRs)
     - cron: '0 0 * * 1-5'
+    # Run every first day of the month at midnight (create changelog PR)
+    - cron: '0 0 1 * *'
+    # Run on every Monday (send Slack message)
+    - cron: '0 0 * * 1'
 
 jobs:
-  update:
-    name: Update Changelogs
+  create:
+    name: Create changelog PR
     runs-on: ubuntu-latest
+    if : ${{ github.event.inputs.pr == 'true' || github.event.schedule == '0 0 1 * *' }}
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm i
       - name: Create changelog PR if not existing already
         run: |
-          node scripts/changelog/prCreator.js
+          node scripts/changelog/createPr.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  slack:
+    name: Slack summary
+    runs-on: ubuntu-latest
+    if : ${{ github.event.inputs.slack == 'true' || github.event.schedule == '0 0 * * 1' }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm i
+      - name: Notify Slack
+        run: |
+          node scripts/changelog/sendSlackMessage.js
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update:
+    needs: create
+    name: Update Changelogs
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
       - name: Setup Git User
         run: |
           git config --global user.name "github-actions[bot]"
