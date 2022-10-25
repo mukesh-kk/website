@@ -37,8 +37,8 @@ const main = async () => {
             url
             title
             body
-            closed
-            merged
+            state
+            isDraft
             author {
               login
             }
@@ -72,8 +72,27 @@ const main = async () => {
   const pr = query.repository.pullRequest;
   const releaseNote = generatePrChangelogLine(pr);
 
+  const comments = await octokit.rest.issues.listComments({
+    owner,
+    repo,
+    issue_number: prNumber,
+  });
+  const existingComment = comments.data.find((comment) =>
+    comment.body.startsWith(autoPrefix)
+  );
+
   if (!releaseNote) {
     console.info("No release note found");
+
+    if (existingComment) {
+      console.info("Deleting existing comment");
+      await octokit.rest.issues.deleteComment({
+        owner,
+        repo,
+        comment_id: existingComment.id,
+      });
+    }
+
     return;
   }
 
@@ -87,10 +106,10 @@ const main = async () => {
   const month = getMonthName(new Date().getUTCMonth() + 1);
 
   let status;
-  if (pr.open) {
+  if (pr.state === "OPEN") {
     status =
       "May be included in the next changelog (waiting for merge + deploy)";
-  } else if (pr.merged && isDeployed) {
+  } else if (pr.state === "MERGED" && isDeployed) {
     const currentMonthPr = await getChangelogPr(month, octokit);
 
     if (!currentMonthPr) {
@@ -98,10 +117,12 @@ const main = async () => {
     } else {
       status = `Included in the [${month} changelog](${currentMonthPr.html_url})`;
     }
-  } else if (pr.closed && !pr.merged) {
+  } else if (pr.state === "CLOSED") {
     status = "Not included in the next changelog (closed without merge)";
-  } else if (pr.merged && !isDeployed) {
-    status = "Not included in the next changelog (merged but not deployed)";
+  } else if (pr.state === "MERGED" && !isDeployed) {
+    status = "Not yet included in the next changelog (merged but not deployed)";
+  } else if (pr.isDraft) {
+    status = "Not yet included in the next changelog (draft PR)";
   }
 
   const responsible =
@@ -146,14 +167,7 @@ const main = async () => {
   }
 
   console.info(comment);
-  const comments = await octokit.rest.issues.listComments({
-    owner,
-    repo,
-    issue_number: prNumber,
-  });
-  const existingComment = comments.data.find((comment) =>
-    comment.body.startsWith(autoPrefix)
-  );
+
   if (existingComment) {
     console.log("Updating existing comment");
 
