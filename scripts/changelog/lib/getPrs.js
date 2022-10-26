@@ -80,8 +80,8 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
       filter = byDeployed;
       from = fromAdjusted;
       break;
+    // Don't force any category for website, as it can contribute to multiple categories (e.g. docs, blog)
     case "gitpod-io/website":
-      forceLabel = "website";
       break;
     case "gitpod-io/workspace-images":
       forceLabel = "workspace.images";
