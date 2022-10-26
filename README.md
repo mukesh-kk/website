@@ -7,23 +7,29 @@
 
 Gitpod removes all friction from the developer experience to be always ready-to-code and makes software engineering more collaborative, joyful, and secure.
 
-Contributing is as easy as starting a new workspace:
+## Issues
 
-[![Open in Gitpod](https://www.gitpod.io/svg/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/website)
+**Mandatory labels:**
+
+- A `team: x` - Which team the issue belongs to
+- A `section: x` - Which area of docs it corresponds to (helps understand ownership)
+- A `type: x` - e.g. `bug`, `suggestion`, `question`
+
+Issues without `status: backlog` require triage ([link](https://github.com/gitpod-io/website/issues?q=is%3Aopen+-label%3A%22status%3A+backlog%22+))
 
 ## CLI Commands
 
-### Generate Blog Post Template
+- Generate blog post:
 
-```sh
-npm run generate:blog-post
-```
+  ```sh
+  npm run generate:blog-post
+  ```
 
-### Generate JetBrains Docs
+- Generate JetBrains pages:
 
-```sh
-npm run generate:jb
-```
+  ```sh
+  npm run generate:jb
+  ```
 
 ### Generate Changelog
 
@@ -33,15 +39,16 @@ npm run generate:jb
 npm run generate:changelog
 ```
 
-## Technology stack
-
-This website uses the following technologies:
+## Tech stack
 
 - [Svelte](https://svelte.dev)
 - [SvelteKit](https://kit.svelte.dev)
 - [mdsvex](https://mdsvex.com)
 - [Tailwind CSS](https://tailwindcss.com)
-
-  > **Note**: Custom CSS was used initially. This is considered legacy and any PR going forward requires Tailwind CSS.
-
 - [Netlify](https://www.netlify.com)
+
+## Contribute
+
+Contributing is as easy as starting a new workspace:
+
+[![Open in Gitpod](https://www.gitpod.io/svg/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/website)

@@ -190,4 +190,60 @@ unset AWS_SECRET_ACCESS_KEY
 ```
 
 </div>
+
+<div slot="azure">
+
+This section will create an Azure storage account for Gitpod object storage and backups.
+
+Generate a name for the Azure storage account. The Azure storage account name must be globally unique; using a random suffix is recommended but any unique value can be used.
+
+```bash
+export STORAGE_ACCOUNT_NAME="gitpod$(openssl rand -hex 4)"
+echo "$STORAGE_ACCOUNT_NAME"
+```
+
+Note the value of `$STORAGE_ACCOUNT_NAME` for later use.
+
+Create the storage account:
+
+```bash
+az storage account create \
+  --access-tier Hot \
+  --kind StorageV2 \
+  --location "${LOCATION}" \
+  --name "${STORAGE_ACCOUNT_NAME}" \
+  --resource-group "${RESOURCE_GROUP}" \
+  --sku Standard_LRS
+```
+
+After creating the storage account, grant access to Gitpod cluster to that storage account.
+
+```bash
+KUBELET_PRINCIPAL_ID=$(az aks show --name "${CLUSTER_NAME}" --resource-group "${RESOURCE_GROUP}" --query "identityProfile.kubeletidentity.objectId" -o tsv)
+
+STORAGE_ACCOUNT_ID=$(az storage account show \
+  --name "${STORAGE_ACCOUNT_NAME}" \
+  --output tsv \
+  --query id \
+  --resource-group "${RESOURCE_GROUP}")
+
+az role assignment create \
+    --assignee "${KUBELET_PRINCIPAL_ID}" \
+    --role "Storage Blob Data Contributor" \
+    --scope "${STORAGE_ACCOUNT_ID}"
+```
+
+Note the storage account key for later use.
+
+```bash
+STORAGE_ACCOUNT_KEY=$(az storage account keys list \
+    --account-name "${STORAGE_ACCOUNT_NAME}" \
+    --resource-group "${RESOURCE_GROUP}" \
+    --query '[?keyName==`key1`].value' \
+    --output tsv
+)
+```
+
+</div>
+
 </CloudPlatformToggle>

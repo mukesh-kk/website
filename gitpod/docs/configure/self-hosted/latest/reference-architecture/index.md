@@ -18,8 +18,6 @@ Below you will find reference architectures supported and recommended by Gitpod 
 
 > **Note:** You should see these reference architectures as a starting point for creating infrastructure that works with both Gitpod and your own infrastructure requirements and policies. However, the further you deviate from these recommended architectures, the higher the potential for Gitpod to not behave as expected.
 
-> **Note for azure users:** The azure versions of these are still being worked on. For the time being, please use the [AKS cluster set-up guide](https://github.com/gitpod-io/gitpod-microsoft-aks-guide) that will be replaced by these.
-
 |                                                                                                                                                                            |                                                                                       |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | [**Proof-of-Value Reference Architecture**](./reference-architecture/proof-of-value)<Pill variant="orange" text="alpha" class="ml-1.5"/>                                   | Aimed at creating a minimal set of infrastructure for evaluation and testing purposes |

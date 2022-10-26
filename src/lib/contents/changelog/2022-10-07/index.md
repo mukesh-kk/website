@@ -24,9 +24,16 @@ For feedback, please raise an [issue](https://github.com/gitpod-io/gitpod/issues
 
 This release includes security fixes addressing information leakage in logs; see the [security announcement log](https://www.gitpod.io/security/log) for more information.
 
+### 2022.09.2 hotfix (published on 21.7.2022)
+
+This hotfix includes:
+
+- [#13934](https://github.com/gitpod-io/gitpod/pull/13934) Fix for an issue where secrets could end up in logs because the installer was logging the env var object. For more information, see the [security announcement log](../security/log#update-21102022)
+- [#13959](https://github.com/gitpod-io/gitpod/pull/13959) This fix adds a checkbox to enable the HTTP proxy settings. Proxy settings were sometimes being incorrectly applied before this. Now, the values are still taken from the KOTS CLI input variables, but will not be applied until the option is configured in the UI.
+
 ### 2022.09.1 hotfix (published on 14.7.2022)
 
-[#13821](https://github.com/gitpod-io/gitpod/pull/13821) This hotfix includes a change to fix the regression caused by `protected_secrets` (see [security announcement log](https://www.gitpod.io/security/log) for more information) when working with self-signed certs.
+[#13821](https://github.com/gitpod-io/gitpod/pull/13821) This hotfix includes a change to fix the regression caused by `protected_secrets` (see [security announcement log](../security/log) for more information) when working with self-signed certs.
 
 ### Highlights
 

@@ -513,7 +513,6 @@ export const ides: Ide[] = [
   },
   {
     name: "vim",
-    availibility: "beta",
     label: "Vim",
     screenshots: {
       desktop: "vim.png",

@@ -21,7 +21,7 @@ For simplicity we use a GitHub template, but Gitpod works similarly with GitLab 
 
 ### Step 1: Clone Git repository
 
-- Create a new repository based on the [X11 VNC template](https://github.com/gitpod-io/template-x11-vnc).
+- Create a new repository based on the [X11 VNC template](https://github.com/gitpod-io/template-x11-vnc/generate).
 - Name it e.g. `my-x11-vnc-template`.
 
 ### Step 2: Install Gitpod app

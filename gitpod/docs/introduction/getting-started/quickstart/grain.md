@@ -21,7 +21,7 @@ For simplicity we use a GitHub template, but Gitpod works similarly with GitLab 
 
 ### Step 1: Clone Git repository
 
-- Create a new repository based on the [Grain template](https://github.com/gitpod-io/template-grain).
+- Create a new repository based on the [Grain template](https://github.com/gitpod-io/template-grain/generate).
 - Name it e.g. `my-grain-template`.
 
 ### Step 2: Install Gitpod app
