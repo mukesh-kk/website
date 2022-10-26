@@ -84,7 +84,10 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
       forceLabel = "website";
       break;
     case "gitpod-io/workspace-images":
-      forceLabel = "workspace";
+      forceLabel = "workspace.images";
+      break;
+    case "gitpod-io/gitpod-vscode-desktop":
+      forceLabel = "vscode.desktop";
       break;
   }
   console.info(`Fetching PRs for ${repo} from ${from} to ${to}`);

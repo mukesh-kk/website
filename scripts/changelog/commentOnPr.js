@@ -96,9 +96,9 @@ const main = async () => {
     return;
   }
 
-  const inferredCategory = findCategoryForPr(pr);
-
-  let category = inferredCategory?.category;
+  const categories = findCategoryForPr(pr)
+    .categories.map((category) => category.category.name)
+    .join(", ");
 
   const isDeployed = pr.labels.nodes.some((label) => label.name === "deployed");
   const month = getMonthName(new Date().getUTCMonth() + 1);
@@ -129,13 +129,22 @@ const main = async () => {
       ? pr.assignees.edges.map((assignee) => `@${assignee.node.login}`)
       : [`@${pr.author.login}`];
 
-  //todo(ft): fix this (take subcategories into account)
   const allCategoryLabels = prCategories
     .map((category) => category.labels)
     .flat();
 
+  const allSubCategoryLabels = prCategories
+    .map((category) =>
+      category.categories
+        ? category.categories.map((subCategory) => subCategory.labels)
+        : []
+    )
+    .flat(2);
+
+  const allLabels = [...allCategoryLabels, ...allSubCategoryLabels];
+
   const labelsContributingToCategory = pr.labels.nodes
-    .filter((label) => allCategoryLabels.includes(label.name))
+    .filter((label) => allLabels.includes(label.name))
     .map((label) => label.name);
 
   const linkifiedContributingLabels = labelsContributingToCategory.map(
@@ -155,9 +164,9 @@ const main = async () => {
   comment += `### Release Note(s)\n${releaseNote}\n\n`;
 
   comment += "### Category\n";
-  if (category) {
-    comment += `${category}`;
-    comment += `\n\nWe have automatically detected this PR as belonging to the \`${category}\` category (based on ${
+  if (categories) {
+    comment += `${categories}`;
+    comment += `\n\nWe have automatically detected this PR as belonging to the \`${categories}\` category (based on ${
       labelsContributingToCategory.length > 0
         ? linkifiedContributingLabels.join(", ")
         : "the PR title prefix"

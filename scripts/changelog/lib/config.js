@@ -5,6 +5,7 @@ export const repos = [
   "gitpod-io/gitpod",
   "gitpod-io/website",
   "gitpod-io/workspace-images",
+  "gitpod-io/gitpod-vscode-desktop",
 ];
 
 export const excludedPrUsers = [
@@ -23,16 +24,16 @@ export const prCategories = [
     order: 0,
     categories: [
       {
-        name: "Browser",
+        name: "VS Code Browser",
         labels: ["editor: code (browser)"],
         partial: "browser",
         order: 0,
         prs: [],
       },
       {
-        name: "Desktop",
+        name: "VS Code Desktop",
         labels: ["editor: code (desktop)"],
-        partial: "vscode",
+        partial: "desktop",
         order: 1,
         prs: [],
       },
@@ -91,6 +92,15 @@ export const prCategories = [
     partial: "workspace",
     prefixes: [],
     order: 0,
+    categories: [
+      {
+        name: "Workspace Images",
+        labels: ["feature: workspace-images"],
+        partial: "images",
+        order: 0,
+        prs: [],
+      },
+    ],
     prs: [],
   },
   // todo(ft): Installer (self-hosted), Workspace, supervisor

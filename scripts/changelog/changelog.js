@@ -34,6 +34,29 @@ export const main = async () => {
       releaseDate
     );
     categorizedPrs[index] = { ...category, ...formattedCategoryContent };
+
+    if (category.categories) {
+      for await (const [
+        subIndex,
+        subCategory,
+      ] of category.categories.entries()) {
+        const prs = subCategory.prs.map(generatePrChangelogLine).join("");
+        const formattedCategoryContent = await formatChangelogCategory(
+          prs,
+          subCategory,
+          releaseDate,
+          3
+        );
+        categorizedPrs[index].categories[subIndex] = {
+          ...subCategory,
+          ...formattedCategoryContent,
+        };
+        // Add the subcategory content to the parent category content
+        if (formattedCategoryContent?.content) {
+          categorizedPrs[index].content += formattedCategoryContent.content;
+        }
+      }
+    }
   }
   const perCategoryPrContent = categorizedPrs
     .sort(sortByCategoryOrder)

@@ -158,7 +158,7 @@ test("Reading partials works correctly", async () => {
   expect(content.trim()).toBe("# Hi VS Code!");
 
   // Clean up
-  await fs.rmdir(`${changelogPath}/${releaseDate}`, { recursive: true });
+  await fs.rm(`${changelogPath}/${releaseDate}`, { recursive: true });
 });
 
 test("Reading partials fails correctly on non-existing files", async () => {
@@ -217,7 +217,9 @@ test("Categorizing PRs works correctly", () => {
   };
 
   const categorizedPr = findCategoryForPr(samplePr);
-  expect(categorizedPr).toContain("vscode.browser");
+  expect(categorizedPr.categories.map((cat) => cat.path)).toContain(
+    "vscode.browser"
+  );
 });
 
 test.skip("Version parsing from metadata works correctly", async () => {

@@ -105,7 +105,8 @@ export const parseReleaseNote = (pr) => {
 };
 
 export const processRepository = async (options) => {
-  const { repo, prCategories, octokit, from, to } = options;
+  const { repo, octokit, from, to } = options;
+  let { prCategories } = options;
   const { prs, forceLabel = false } = await getPrsForRepo(
     octokit,
     repo,
@@ -120,19 +121,28 @@ export const processRepository = async (options) => {
 
   prs.filter(parseReleaseNote).forEach((pr) => {
     if (forceLabel) {
-      prCategories
-        .find((category) => category.partial === forceLabel)
-        .prs.push(pr);
+      if (forceLabel.split(".").length === 1) {
+        prCategories
+          .find((category) => category.partial === forceLabel)
+          .prs.push(pr);
+      } else {
+        const [category, subcategory] = forceLabel.split(".");
+        prCategories
+          .find((cat) => cat.partial === category)
+          .categories.find((sub) => sub.partial === subcategory)
+          .prs.push(pr);
+      }
       return;
     }
 
     // We group the PRs by their labels or prefix
-    const category = prCategories.find((category) =>
-      findCategoryForPr(pr, category)
-    );
-    if (category) {
-      category.prs.push(pr);
+    const { categories: recognizedPrCategories, mutatedCategories } =
+      findCategoryForPr(pr, prCategories);
+
+    if (recognizedPrCategories.length > 0) {
+      prCategories = mutatedCategories;
     } else {
+      // The PR goes into the "Other" category
       prCategories.at(-1).prs.push(pr);
     }
   });
@@ -228,12 +238,19 @@ const doesSatisfyCategory = (pr, category) => {
 // Get all categories / and or subcategories that match the PR with labels or prefix
 export const findCategoryForPr = (pr, categories = prCategories) => {
   const matchingPaths = [];
-  categories.forEach((category) => {
+  categories.forEach((category, categoryIndex) => {
     if (category.categories) {
-      for (const subcategory of category.categories) {
+      for (const [
+        subCategoryIndex,
+        subcategory,
+      ] of category.categories.entries()) {
         const { satisfies } = doesSatisfyCategory(pr, subcategory);
         if (satisfies) {
-          matchingPaths.push(`${category.partial}.${subcategory.partial}`);
+          matchingPaths.push({
+            path: `${category.partial}.${subcategory.partial}`,
+            category: subcategory,
+          });
+          categories[categoryIndex].categories[subCategoryIndex].prs.push(pr);
         }
       }
     }
@@ -249,21 +266,26 @@ export const findCategoryForPr = (pr, categories = prCategories) => {
           category.labels.join(", ")
         );
       }
-      matchingPaths.push(category.partial);
+      matchingPaths.push({ path: category.partial, category });
+
+      // Make sure we didn't already add the PR to a subcategory
+      if (!matchingPaths.some((path) => path.path !== category.partial)) {
+        categories[categoryIndex].prs.push(pr);
+      }
     }
   });
 
   // Filter to only the longest paths, as they are the most specific
-  const longestPaths = matchingPaths.filter((path) => {
+  const longestPaths = matchingPaths.filter((category) => {
     // Get all paths that start with the current path
     const pathsStartingWithCurrentPath = matchingPaths.filter((otherPath) =>
-      otherPath.startsWith(path)
+      otherPath.path.startsWith(category.path)
     );
     // If there are no other paths that start with the current path, it's the longest
     return pathsStartingWithCurrentPath.length === 1;
   });
 
-  return longestPaths;
+  return { categories: longestPaths, mutatedCategories: categories };
 };
 
 /**
@@ -318,8 +340,15 @@ export const getChangelogPr = async (
   return currentMonthPr.data.items[0];
 };
 
-export const formatChangelogCategory = async (prs, category, releaseDate) => {
-  const heading = `## ${category.name}${lineBreak}${lineBreak}`;
+export const formatChangelogCategory = async (
+  prs,
+  category,
+  releaseDate,
+  headingLevel = 2
+) => {
+  const heading = `${"#".repeat(headingLevel)} ${
+    category.name
+  }${lineBreak}${lineBreak}`;
   const partialContent = await readPartial(category.partial, releaseDate);
   if (partialContent) {
     const { order, content } = partialContent;
