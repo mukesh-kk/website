@@ -21,7 +21,7 @@ For simplicity we use a GitHub template, but Gitpod works similarly with GitLab 
 
 ### Step 1: Clone Git repository
 
-- Create a new repository based on the [TLA+ template](https://github.com/gitpod-io/template-tlaplus).
+- Create a new repository based on the [TLA+ template](https://github.com/gitpod-io/template-tlaplus/generate).
 - Name it e.g. `my-tlaplus-template`.
 
 ### Step 2: Install Gitpod app

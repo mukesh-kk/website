@@ -1,7 +1,16 @@
 import gs from "google-spreadsheet";
-import type { SheetInfo } from "./api";
 
-export default async (sheetInfo: SheetInfo): Promise<boolean | string> => {
+type SheetInfo = {
+  sheetTitle: string;
+  data: any[];
+  uniqueColumn?: number;
+};
+
+export default async ({
+  sheetTitle,
+  data,
+  uniqueColumn = 0,
+}: SheetInfo): Promise<boolean | "duplicate"> => {
   try {
     const doc = new gs.GoogleSpreadsheet(process.env.FEEDBACK_SHEET_ID);
     await doc.useServiceAccountAuth({
@@ -12,25 +21,21 @@ export default async (sheetInfo: SheetInfo): Promise<boolean | string> => {
       ).toString("utf8"),
     });
     await doc.loadInfo();
-    const sheet = doc.sheetsByTitle[sheetInfo.sheetTitle];
-    const sheetInfoData =
-      sheetInfo.type === "signup" ? sheetInfo.data[0] : sheetInfo.data[2];
-    if (
-      sheetInfo.type === "signup" ||
-      sheetInfo.type === "java-panel-discussion"
-    ) {
-      const rows = await sheet.getRows();
-      let existingEmails: string[] = [];
-      rows.map((row) => {
-        const data =
-          sheetInfo.type === "signup" ? row._rawData[0] : row._rawData[2];
-        existingEmails.push(data);
-      });
-      if (existingEmails.includes(sheetInfoData)) {
-        return "duplicate";
-      }
+    const sheet = doc.sheetsByTitle[sheetTitle];
+
+    const uniqueKey = data[uniqueColumn];
+
+    const rows = await sheet.getRows();
+    const existingKeys: string[] = rows.map(
+      (row) => row._rawData[uniqueColumn]
+    );
+
+    if (existingKeys.includes(uniqueKey)) {
+      return "duplicate";
     }
-    await sheet.addRow(sheetInfo.data);
+
+    await sheet.addRow(data);
+
     return true;
   } catch (error) {
     console.error(error);

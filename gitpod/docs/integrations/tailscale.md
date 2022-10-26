@@ -15,6 +15,8 @@ With Tailscale you can automatically and securely connect your Gitpod workspace 
 
 ## Integration
 
+> **Note:** Using [Tailscale ssh](https://tailscale.com/kb/1193/tailscale-ssh/) _to_ a workspace is not supported right now and _from_ requires Tailscale 1.32 or later. If your workspace image was created before 1.32 was available you can [force](/docs/configure/workspaces/workspace-image#manually-rebuild-a-workspace-image) a rebuild without having to update your `.gitpod.Dockerfile`.
+
 If you’re already using Tailscale, the following steps need to be done (see https://github.com/gitpod-io/demo-tailscale-with-gitpod for a working example):
 
 1. Install `tailscale` through a custom `.gitpod.Dockerfile` by adding the following layer to it.
@@ -26,9 +28,9 @@ USER root
 
 RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add - \
      && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list \
-     && apt-get update && apt-get install -y \
-     tailscale \
-     jq
+     && apt-get update \
+     && apt-get install -y tailscale jq \
+     && update-alternatives --set ip6tables /usr/sbin/ip6tables-nft
 ```
 
 2. Start `tailscale` on workspace start and maintain the machine state across workspaces by adding the following tasks to your `.gitpod.yml`.

@@ -1,0 +1,9 @@
+name: 💭 Unknown
+description: Use this issue type if you are not sure which category your request fits into
+labels: ["type: idea", "section: unknown"]
+body:
+  - type: textarea
+    attributes:
+      label: Description
+    validations:
+      required: true

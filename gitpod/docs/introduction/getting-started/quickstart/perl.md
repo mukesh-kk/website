@@ -21,7 +21,7 @@ For simplicity we use a GitHub template, but Gitpod works similarly with GitLab 
 
 ## Step 1: Clone Git repository
 
-- Create a new repository based on the [Perl template](https://github.com/gitpod-io/template-perl).
+- Create a new repository based on the [Perl template](https://github.com/gitpod-io/template-perl/generate).
 - Name it e.g. `my-perl-template`.
 
 ## Step 2: Install Gitpod app

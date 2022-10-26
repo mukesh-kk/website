@@ -3,7 +3,6 @@
 </script>
 
 <script>
-  import Founders from "$lib/components/media-kit/founders.svelte";
   import AdditionalImages from "$lib/components/media-kit/additional-images.svelte";
   import ColorsSection from "$lib/components/media-kit/colors-section.svelte";
   import LogoSection from "$lib/components/media-kit/logo-section.svelte";
@@ -34,4 +33,3 @@
 <LogoSection />
 <ColorsSection />
 <AdditionalImages />
-<Founders />

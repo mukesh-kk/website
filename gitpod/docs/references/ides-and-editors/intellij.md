@@ -25,22 +25,22 @@ title: IntelliJ IDEA
 4. **Start (or restart) your workspace** - Either start a workspace directly from within the [JetBrains Gateway](/docs/integrations/jetbrains-gateway) via the Gitpod plugin **OR** open a new workspace directly in Gitpod where on workspace start you will be prompted to open {title} for that workspace.
 
 <figure>
-  <img src="/images/editors/select-jetbrains-ide.gif">
+  <video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" src="/images/editors/select-jetbrains-ide.webm" type="video/webm"></video>
   <figcaption>Updating Gitpod IDE preferences to {title}</figcaption>
 </figure>
 
 <figure>
-<video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Opening a JetBrains IDE from Gitpod" src="/images/editors/opening-the-thin-jetbrains-client.mp4"></video>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Opening a JetBrains IDE from Gitpod" src="/images/editors/opening-the-thin-jetbrains-client.webm" type="video/webm"></video>
     <figcaption>Opening a JetBrains IDE from Gitpod</figcaption>
 </figure>
 
 <figure>
-<video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating the Gitpod plugin in JetBrains Gateway" src="/images/editors/update-jetbrains-gateway-settings.mp4"></video>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Updating the Gitpod plugin in JetBrains Gateway" src="/images/editors/update-jetbrains-gateway-settings.webm" type="video/webm"></video>
     <figcaption>Updating the Gitpod plugin in JetBrains Gateway</figcaption>
 </figure>
 
 <figure>
-<video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Opening a JetBrains IDE from Gateway" src="/images/editors/open-from-jetbrains-gateway.mp4"></video>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Opening a JetBrains IDE from Gateway" src="/images/editors/open-from-jetbrains-gateway.webm" type="video/webm"></video>
     <figcaption>Opening a JetBrains IDE from Gateway</figcaption>
 </figure>
 

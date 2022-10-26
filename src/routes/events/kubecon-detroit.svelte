@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Header from "$lib/components/events/header.svelte";
-  import OurTalks from "$lib/components/events/our-talks.svelte";
-  import OurBooth from "$lib/components/events/our-booth.svelte";
-  import PreviousKubecons from "$lib/components/events/previous-kubecons.svelte";
+  import Header from "$lib/components/events/kubecon-detroit/header.svelte";
+  import OurTalks from "$lib/components/events/kubecon-detroit/our-talks.svelte";
+  import OurBooth from "$lib/components/events/kubecon-detroit/our-booth.svelte";
+  import PreviousKubecons from "$lib/components/events/kubecon-detroit/previous-kubecons.svelte";
   import Explore from "$lib/components/explore.svelte";
   import OpenGraph from "$lib/components/open-graph.svelte";
 </script>

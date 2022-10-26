@@ -4,10 +4,3 @@ export const cookies = {
   TARGETING: "gp-targeting",
   VISITED: "gitpod-marketing-website-visited",
 };
-
-export const javaPanelDiscussionWebinar = {
-  sheetTitle: "Java Panel Discussion Registrations",
-  type: "java-panel-discussion",
-};
-
-export const webinarSheets = [javaPanelDiscussionWebinar];

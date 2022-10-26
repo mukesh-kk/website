@@ -73,12 +73,19 @@ The Rust Test Explorer makes it easy to run Rust tests.
 
 > **_Note: This extension outputs emojis by default if the crate version is set at the latest. You can disable this by using `crates.upToDateDecorator` option in your preferences_** > <br>
 
-![A crates extension demo](../../../static/images/docs/cratesDemo.gif)
+<figure>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="A crates extension demo" src="/images/docs/cratesDemo.webm" type="video/webm"></video>
+    <figcaption>A crates extension demo</figcaption>
+</figure>
+
 The VSCode extension Crates makes it easier to manage your Cargo dependency versions.
 
 ### Search Crates.io
 
-![An example of search crates.io extension](../../../static/images/docs/searchCratesio.gif)
+<figure>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="An example of search crates.io extension" src="/images/docs/searchCratesio.webm" type="video/webm"></video>
+    <figcaption>An example of search crates.io extension</figcaption>
+</figure>
 
 Do you have an idea of a library you want to use but don't know the version well just type in the name of the library and Search Crates.io will get the version.
 
@@ -144,7 +151,10 @@ image:
 
 Now that's out of the way, here is a video on how to configure the debug configuration
 
-![Rust debugging example](../../../static/images/docs/RustDebug.gif)
+<figure>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Rust debugging example" src="/images/docs/RustDebug.webm" type="video/webm"></video>
+    <figcaption>Rust debugging example</figcaption>
+</figure>
 
 So, basically in this video we:
 

@@ -1,0 +1,9 @@
+name: 📝 Content Suggestion
+description: An update to documentation content (e.g. not a tech change like a component)
+labels: ["section: docs-content"]
+body:
+  - type: textarea
+    attributes:
+      label: Description
+    validations:
+      required: true

@@ -1,0 +1,17 @@
+name: 🐛 Content Bug
+description: A content related issue such as a typo or error in existing content
+labels: ["type: bug", "section: docs-content"]
+body:
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL
+      description: The URL of the page you provide feedback for.
+      placeholder: ex. https://www.gitpod.io/docs/introduction/getting-started
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Description
+    validations:
+      required: true

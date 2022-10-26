@@ -21,7 +21,7 @@ For simplicity we use a GitHub template, but Gitpod works similarly with GitLab 
 
 ## Step 1: Clone Git repository
 
-- Create a new repository based on the [Julia template](https://github.com/gitpod-io/template-julia).
+- Create a new repository based on the [Julia template](https://github.com/gitpod-io/template-julia/generate).
 - Name it e.g. `my-julia-template`.
 
 ## Step 2: Install Gitpod app

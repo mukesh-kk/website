@@ -21,7 +21,7 @@ For simplicity we use a GitHub template, but Gitpod works similarly with GitLab 
 
 ### Step 1: Clone Git repository
 
-- Create a new repository based on the [NextJS template](https://github.com/gitpod-io/template-nextjs).
+- Create a new repository based on the [NextJS template](https://github.com/gitpod-io/template-nextjs/generate).
 - Name it e.g. `my-nextjs-template`.
 
 ### Step 2: Install Gitpod app

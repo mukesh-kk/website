@@ -15,14 +15,14 @@
       title: "Amazon Web Services (AWS)",
       value: 2,
       slotName: "aws",
-      hidden: false, // hidden since it is not ready to publish yet
+      hidden: false,
     },
     {
       mobileTitle: "Azure",
       title: "Microsoft Azure",
       value: 3,
       slotName: "azure",
-      hidden: true, // hidden since it is not ready to publish yet
+      hidden: false,
     },
   ];
   let activeValue = 1;

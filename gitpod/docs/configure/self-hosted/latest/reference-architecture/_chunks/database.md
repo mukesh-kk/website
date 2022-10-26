@@ -222,4 +222,66 @@ export MYSQL_RDS_ENDPOINT="$(aws rds describe-db-instances --db-instance-identif
 ```
 
 </div>
+
+<div slot="azure">
+
+This section will create an Azure MySQL server instance and database for Gitpod. This external database is required to run a Gitpod cluster for production purposes. Using a dedicated MySQL instance for Gitpod is recommended but a pre-existing MySQL instance may be used if it can host databases named `gitpod` and `gitpod-sessions`.
+
+First, set a MySQL server name. Azure MySQL server names must be universally unique; we recommend using a random value to avoid conflicts. Note this value for later use.
+
+```bash
+export MYSQL_INSTANCE_NAME="gitpod$(openssl rand -hex 4)"
+echo "$MYSQL_INSTANCE_NAME"
+```
+
+Set the gitpod MySQL username and password. The username of `gitpod` is recommended but is not required.
+
+```bash
+export MYSQL_GITPOD_USERNAME="gitpod"
+export MYSQL_GITPOD_PASSWORD=$(openssl rand -base64 20)
+echo "$MYSQL_GITPOD_PASSWORD"
+```
+
+With the generated instance name and password, create the Azure MySQL server.
+
+```bash
+ az mysql server create \
+    --name "${MYSQL_INSTANCE_NAME}" \
+    --resource-group "${RESOURCE_GROUP}" \
+    --location "${LOCATION}" \
+    --admin-user "${MYSQL_USERNAME}" \
+    --admin-password "${MYSQL_GITPOD_PASSWORD}" \
+    --auto-grow Enabled \
+    --public Enabled \
+    --sku-name GP_Gen5_2 \
+    --ssl-enforcement Disabled \
+    --storage-size 20480 \
+    --version "5.7"
+```
+
+After creating the MySQL server create a database called `gitpod`. When Gitpod is installed it will create an additional database called `gitpod-sessions`.
+
+```bash
+az mysql db create \
+  --name gitpod \
+  --resource-group "${RESOURCE_GROUP}" \
+  --server-name "${MYSQL_INSTANCE_NAME}"
+```
+
+Create a MySQL firewall rule allowing access from your AKS cluster to the MySQL database.
+
+> 💡 MySQL firewall rules with a start IP address of `0.0.0.0` and an end IP address of `0.0.0.0` restrict access to Azure resources. This is necessary to allow your Kubernetes cluster to connect to the database.
+> See the [Azure MySQL firewall API documentation](https://docs.microsoft.com/en-us/azure/mysql/single-server/concepts-firewall-rules#connecting-from-azure) for more information.
+
+```bash
+az mysql server firewall-rule create \
+ --name "Azure_Resources" \
+ --server-name "${MYSQL_INSTANCE_NAME}" \
+ --resource-group "${RESOURCE_GROUP}" \
+ --start-ip-address "0.0.0.0" \
+ --end-ip-address "0.0.0.0"
+```
+
+</div>
+
 </CloudPlatformToggle>

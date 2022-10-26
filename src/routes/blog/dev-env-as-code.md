@@ -12,7 +12,10 @@ title: Dev environments as code
   export const prerender = true;
 </script>
 
-![Source: http://dilbert.com/strip/2017-01-02](../../../static/images/blog/dev-env-as-code/dev-env-gilbert.gif)
+<figure>
+<video playsinline autoplay no-controls loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Dev environments as code" src="/images/blog/dev-env-as-code/dev-env-gilbert.webm" type="video/webm"></video>
+    <figcaption>Source: http://dilbert.com/strip/2017-01-02</figcaption>
+</figure>
 
 Imagine that only a decade ago system administrators deployed, configured, and maintained software systems manually. Doing so burned an endless amount of their precious lifetimes and energy.
 
