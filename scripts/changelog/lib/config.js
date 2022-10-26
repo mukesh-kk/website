@@ -55,6 +55,16 @@ export const prCategories = [
     prs: [],
   },
   {
+    name: "Docs",
+    team: "DCS",
+    labels: ["section: docs-content"],
+    partial: "docs",
+    prefixes: ["docs"],
+    order: 0,
+    prs: [],
+  },
+  //todo(ft): either remove or rename this section, it's a confusing name
+  {
     name: "Website",
     labels: [],
     partial: "website",
@@ -70,7 +80,7 @@ export const prCategories = [
     order: 0,
     prs: [],
   },
-  // todo(ft): Installer (self-hosted), Workspace, supervisor
+  // todo(ft): Installer (self-hosted), supervisor
   {
     name: "Fixes and improvements",
     labels: [],
