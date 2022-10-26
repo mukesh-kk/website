@@ -208,72 +208,62 @@ export const ensureGithubToken = (mockedToken) => {
   return githubToken;
 };
 
-export const findCategoryForPr = (pr, currentCategory = prCategories) => {
+const doesSatisfyCategory = (pr, category) => {
   const releaseNote = parseReleaseNote(pr);
 
-  // We traverse the category tree to find the right (sub)category
-  // todo(ft): prefer deeper categorization -> the more specific category should be used
-  while (currentCategory) {
-    if (
-      pr.labels.nodes.some((label) =>
-        currentCategory.labels.includes(label.name)
-      )
-    ) {
-      break;
-    }
-    if (currentCategory.prefixes && currentCategory.prefixes.length > 0) {
-      if (
-        currentCategory.prefixes.some((prefix) =>
-          pr.title.startsWith(`[${prefix}]`)
-        )
-      ) {
-        break;
+  const byLabel = category.labels?.some((label) =>
+    pr.labels.nodes?.some((prLabel) => prLabel.name === label)
+  );
+
+  const byPrefix =
+    category.prefixes?.some(
+      (prefix) =>
+        releaseNote.startsWith(`[${prefix}]`) ||
+        pr.title.startsWith(`[${prefix}]`)
+    ) ?? false;
+
+  return { satisfies: byLabel || byPrefix, byLabel, byPrefix };
+};
+
+// Get all categories / and or subcategories that match the PR with labels or prefix
+export const findCategoryForPr = (pr, categories = prCategories) => {
+  const matchingPaths = [];
+  categories.forEach((category) => {
+    if (category.categories) {
+      for (const subcategory of category.categories) {
+        const { satisfies } = doesSatisfyCategory(pr, subcategory);
+        if (satisfies) {
+          matchingPaths.push(`${category.partial}.${subcategory.partial}`);
+        }
       }
-      if (
-        releaseNote &&
-        currentCategory.prefixes.some((prefix) =>
-          releaseNote.startsWith(`[${prefix}]`)
-        )
-      ) {
-        break;
+    }
+
+    const { satisfies, byLabel, byPrefix } = doesSatisfyCategory(pr, category);
+    if (satisfies) {
+      if (!byLabel && byPrefix && category.labels.length > 0) {
+        console.warn(
+          pr.title,
+          "is categorized as",
+          category.name,
+          "but it doesn't have the label",
+          category.labels.join(", ")
+        );
       }
+      matchingPaths.push(category.partial);
     }
+  });
 
-    if (currentCategory.categories) {
-      currentCategory = currentCategory.categories.find((subcategory) => {
-        return findCategoryForPr(pr, subcategory);
-      });
-    } else {
-      currentCategory = null;
-    }
-  }
-
-  // Reverse the traversal to find the whole path of the category
-  // todo(ft): make this support more than 2 levels of nested categories
-  const path = [];
-
-  let category = currentCategory;
-  while (currentCategory) {
-    path.unshift(currentCategory.partial);
-    // find the parent category
-    currentCategory = prCategories.categories.find((category) =>
-      category.categories?.includes(currentCategory)
+  // Filter to only the longest paths, as they are the most specific
+  const longestPaths = matchingPaths.filter((path) => {
+    // Get all paths that start with the current path
+    const pathsStartingWithCurrentPath = matchingPaths.filter((otherPath) =>
+      otherPath.startsWith(path)
     );
-  }
+    // If there are no other paths that start with the current path, it's the longest
+    return pathsStartingWithCurrentPath.length === 1;
+  });
 
-  return { category, path: path.join(".") || null };
-
-  /*
-    if (!byLabel && byPrefix) {
-      console.warn(
-        pr.title,
-        "is categorized as",
-        category.name,
-        "but it doesn't have the label",
-        category.labels.join(", ")
-      );
-    }
-     */
+  return longestPaths;
 };
 
 /**

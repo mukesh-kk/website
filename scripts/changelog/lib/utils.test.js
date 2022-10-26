@@ -202,7 +202,7 @@ test("Markdown block injection works correctly", () => {
 
 test("Categorizing PRs works correctly", () => {
   const samplePr = {
-    title: "Make VS Code -20% faster",
+    title: "[code] Make VS Code -20% faster",
     body: "This PR makes VS Code 20% slower by doing X, Y and Z.\n\n## Release notes\n\nHello",
     labels: {
       nodes: [
@@ -217,7 +217,7 @@ test("Categorizing PRs works correctly", () => {
   };
 
   const categorizedPr = findCategoryForPr(samplePr);
-  expect(categorizedPr.path).toBe("vscode.browser");
+  expect(categorizedPr).toContain("vscode.browser");
 });
 
 test.skip("Version parsing from metadata works correctly", async () => {
