@@ -53,6 +53,11 @@ export const main = async () => {
         };
         // Add the subcategory content to the parent category content
         if (formattedCategoryContent?.content) {
+          if (!categorizedPrs[index].content) {
+            categorizedPrs[index].content = `## ${
+              categorizedPrs[index].name
+            }${lineBreak.repeat(2)}`;
+          }
           categorizedPrs[index].content += formattedCategoryContent.content;
         }
       }
