@@ -30,6 +30,7 @@ export const MENU: MenuEntry[] = [
       "The life of a workspace",
       "introduction/learn-gitpod/the-life-of-a-workspace"
     ),
+    M("Localhost in Gitpod", "introduction/learn-gitpod/localhost-in-gitpod"),
     M("Context URL", "introduction/learn-gitpod/context-url"),
     M(".gitpod.yml", "introduction/learn-gitpod/gitpod-yaml"),
   ]),
@@ -44,6 +45,7 @@ export const MENU: MenuEntry[] = [
   M("Configure", "configure", true),
 
   M("Workspaces", "configure/workspaces", false, [
+    M("Workspace URLs", "configure/workspaces/workspace-urls"),
     M("Workspace Image", "configure/workspaces/workspace-image"),
     M("Tasks", "configure/workspaces/tasks"),
     M("Ports", "configure/workspaces/ports"),
