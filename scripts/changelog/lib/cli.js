@@ -41,13 +41,8 @@ export const parseArgs = (argv) => {
 
 export const sayHello = async (octokit) => {
   const {
-    viewer: { login, name },
-  } = await octokit.graphql(`{
-      viewer {
-        login
-        name
-      }
-    }`);
+    data: { login, name },
+  } = await octokit.rest.users.getAuthenticated();
   console.info("Hello, %s\r\n", name || login);
 };
 

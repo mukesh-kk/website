@@ -14,7 +14,6 @@ import {
   excludedPrUsers,
   prCategories,
 } from "./config.js";
-import { sayHello } from "./cli.js";
 import { getMonthName } from "./dates.js";
 
 const argv = minimist(process.argv.slice(2));
@@ -25,8 +24,6 @@ export const createOctokitClient = async (/** @type {string} */ token) => {
   const octokit = new OctokitWithPlugins({
     auth: token,
   });
-  await sayHello(octokit);
-
   return octokit;
 };
 
