@@ -6,6 +6,7 @@ import { createPullRequest } from "octokit-plugin-create-pull-request";
 import minimist from "minimist";
 import remarkParse from "remark-parse";
 import metadataParser from "markdown-yaml-metadata-parser";
+import fs from "fs/promises";
 
 import { getPrsForRepo } from "./getPrs.js";
 import {
@@ -371,7 +372,23 @@ export const formatChangelogCategory = async (
   }
 };
 
-export const parseChangelogIdeVersions = (changelogContent) => {
-  const meta = metadataParser(changelogContent);
-  return meta.metadata?.ides;
+/**
+ *
+ * @param {string} releaseDate
+ * @returns
+ */
+export const getChangelogVersions = async (releaseDate) => {
+  try {
+    const changelogMeta = await fs.readFile(
+      `${changelogPath}/${releaseDate}/meta.json`,
+      "utf-8"
+    );
+
+    return JSON.parse(changelogMeta).versions;
+  } catch (e) {
+    if (e.code === "ENOENT") {
+      return null;
+    }
+    throw e;
+  }
 };

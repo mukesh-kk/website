@@ -4,12 +4,6 @@ excerpt: {{releaseMonth}} Changelog
 date: {{releaseDate}}
 image: {{releaseDate}}.jpg
 alt: {{releaseDate}} image
-ides:
-  code:
-    commit: {{codeCommit}}
-    version: {{codeVersion}}
-  jetbrains:
-    version: {{jetbrainsVersion}}
 ---
 
 <script>

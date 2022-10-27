@@ -3,6 +3,7 @@ import minimist from "minimist";
 
 import { main } from "./changelog.js";
 import { outputResults, getDefaultThumbnailImage } from "./lib/cli.js";
+import { changelogPath } from "./lib/config.js";
 import { getMonthName } from "./lib/dates.js";
 
 const argv = minimist(process.argv.slice(2));
@@ -20,5 +21,22 @@ const argv = minimist(process.argv.slice(2));
     const month = getMonthName(new Date().getUTCMonth() + 1);
     const image = await getDefaultThumbnailImage(month, releaseDate);
     await fs.promises.writeFile(imagePath, image, "binary");
+  }
+
+  const metadataFile = `${changelogPath}/${releaseDate}/meta.json`;
+  if (!fs.existsSync(metadataFile)) {
+    const metadata = {
+      versions: {
+        ides: {
+          vscode: {
+            version: "",
+          },
+          jetbrains: {
+            version: "",
+          },
+        },
+      },
+    };
+    await fs.promises.writeFile(metadataFile, JSON.stringify(metadata));
   }
 })();

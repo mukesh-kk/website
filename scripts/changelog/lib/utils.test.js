@@ -6,7 +6,7 @@ import {
   readPartial,
   getPrParticipants,
   replaceContentOfBlock,
-  parseChangelogIdeVersions,
+  getChangelogVersions,
   findCategoryForPr,
 } from "./utils.js";
 import { prCategories, changelogPath } from "./config.js";
@@ -222,14 +222,34 @@ test("Categorizing PRs works correctly", () => {
   );
 });
 
-test.skip("Version parsing from metadata works correctly", async () => {
-  const sampleChangelog = await fs.readFile(
-    `${changelogPath}/2022-10-31/index.md`,
-    "utf-8"
+test("Version parsing from metadata works correctly", async () => {
+  const metadata = {
+    versions: {
+      ides: {
+        vscode: {
+          version: "1.72.3",
+        },
+        jetbrains: {
+          version: "2022.2.3",
+        },
+      },
+    },
+  };
+
+  await fs.mkdir(`${changelogPath}/test/metadata`, { recursive: true });
+  await fs.writeFile(
+    `${changelogPath}/test/meta.json`,
+    JSON.stringify(metadata),
+    "utf8"
   );
-  const data = parseChangelogIdeVersions(sampleChangelog);
+  const data = await getChangelogVersions("2022-10-31");
 
   // todo(ft): update values
-  expect(data?.jetbrains.version).toBe("222.4345");
-  expect(data?.code.version).toBe("1.72.3");
+  expect(data.ides.jetbrains.version).toBe(
+    metadata.versions.ides.jetbrains.version
+  );
+  expect(data.ides.vscode.version).toBe(metadata.versions.ides.vscode.version);
+
+  // Clean up
+  await fs.rm(`${changelogPath}/test`, { recursive: true });
 });
