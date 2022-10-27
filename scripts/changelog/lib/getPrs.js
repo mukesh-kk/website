@@ -54,18 +54,6 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
           name
         }
       }
-      timelineItems(last: 100, itemTypes: [LABELED_EVENT]) {
-        edges {
-          node {
-            ... on LabeledEvent {
-              createdAt
-              label {
-                name
-              }
-            }
-          }
-        }
-      }
       url
     }`;
 
@@ -77,6 +65,38 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
         "-"
       );
       searchQuery = `repo:${repo} is:pr is:merged merged:${fromAdjusted}..${to} sort:updated-desc label:deployed -label:release-note-none -project:gitpod-io/22`;
+      apiQuery = `
+      ... on PullRequest {
+        body
+        title
+        number
+        author {
+          login
+        }
+        participants(first: 20) {
+          nodes {
+            login
+          }
+        }
+        labels (first: 50) {
+          nodes {
+            name
+          }
+        }
+        timelineItems(last: 100, itemTypes: [LABELED_EVENT]) {
+          edges {
+            node {
+              ... on LabeledEvent {
+                createdAt
+                label {
+                  name
+                }
+              }
+            }
+          }
+        }
+        url
+      }`;
       filter = byDeployed;
       from = fromAdjusted;
       break;
@@ -88,6 +108,30 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
       break;
     case "gitpod-io/gitpod-vscode-desktop":
       forceLabel = "vscode.desktop";
+      apiQuery = `
+      ... on PullRequest {
+        body
+        title
+        number
+        author {
+          login
+        }
+        participants(first: 20) {
+          nodes {
+            login
+          }
+        }
+        labels (first: 50) {
+          nodes {
+            name
+          }
+        }
+        mergeCommit {
+          oid
+        }
+        url
+      }`;
+      filter = isPrReleasedBasedOnReleases;
       break;
   }
   console.info(`Fetching PRs for ${repo} from ${from} to ${to}`);
@@ -113,9 +157,35 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
     return { prs: [], forceLabel };
   }
 
-  const filteredPrs = prs.filter(filter);
+  const filteredPrs = prs.filter((pr) => filter(pr, octokit, repo));
   console.log(
     `Found ${filteredPrs.length} PRs after filtering for ${repo} (from ${prs.length} total)`
   );
   return { prs: filteredPrs, forceLabel };
+};
+
+/**
+ * Checks if a PR is already released based on the releases of the repo
+ * @param {*} pr The Pull Request to consider
+ * @param {*} octokit The pre-authenticated Octokit client
+ * @param {string} repository The repo to consider
+ * @returns {boolean}
+ */
+export const isPrReleasedBasedOnReleases = async (pr, octokit, repository) => {
+  const [owner, repo] = repository.split("/");
+  const latestRelease = await octokit.rest.repos.getLatestRelease({
+    owner,
+    repo,
+  });
+
+  const latestCommitOnLatestReleaseTag = latestRelease.data.target_commitish;
+  const commitComparison = await octokit.rest.repos.compareCommits({
+    owner,
+    repo,
+    base: latestCommitOnLatestReleaseTag,
+    head: pr.mergeCommit.oid,
+  });
+
+  //todo(ft): also filter if the PR is older than the release we checked for in the last changelog
+  return commitComparison.data.status !== "ahead";
 };
