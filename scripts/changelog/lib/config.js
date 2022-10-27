@@ -85,16 +85,6 @@ export const prCategories = [
     order: 0,
     prs: [],
   },
-  //todo(ft): either remove or rename this section, it's a confusing name
-  {
-    name: "Website",
-    team: "DCS",
-    labels: [],
-    partial: "website",
-    prefixes: [],
-    order: 0,
-    prs: [],
-  },
   {
     name: "Workspace",
     team: "Workspace",
