@@ -4,7 +4,11 @@ import {
   getFormattedMonthBoundaries,
 } from "./dates.js";
 import minimist from "minimist";
-import { getChangelogVersions, getPastChangelogName } from "./utils.js";
+import {
+  getChangelogVersions,
+  getPastChangelogName,
+  writeMeta,
+} from "./utils.js";
 
 const argv = minimist(process.argv.slice(2));
 
@@ -186,7 +190,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
     return { prs: [], forceLabel };
   }
 
-  const filteredPrs = prs.filter((pr) => filter(pr, octokit, repo));
+  const filteredPrs = prs.filter((pr) => filter(pr, octokit, repo, to));
   filteredPrs.sort(sort);
   console.log(
     `Found ${filteredPrs.length} PRs after filtering for ${repo} (from ${prs.length} total)`
@@ -214,6 +218,12 @@ export const isPrReleasedBasedOnReleases = async (
     repo,
   });
 
+  await writeMeta(releaseDate, {
+    repos: {
+      [repository]: { version: latestRelease.data.tag_name },
+    },
+  });
+
   const latestCommitOnLatestReleaseTag = latestRelease.data.target_commitish;
   const commitComparison = await octokit.rest.repos.compareCommits({
     owner,
@@ -229,7 +239,10 @@ export const isPrReleasedBasedOnReleases = async (
     await getPastChangelogName(releaseDate, 1)
   );
 
-  if (!previousChangelogReleaseVersionMeta) {
+  if (
+    !previousChangelogReleaseVersionMeta ||
+    !previousChangelogReleaseVersionMeta?.repos?.[repository]
+  ) {
     console.warn("No previous changelog release found");
     return !isCurrentCommitAheadOfLatestRelease;
   }

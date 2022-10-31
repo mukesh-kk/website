@@ -373,9 +373,7 @@ export const formatChangelogCategory = async (
 };
 
 /**
- *
  * @param {string} releaseDate
- * @returns
  */
 export const getChangelogVersions = async (releaseDate) => {
   try {
@@ -394,9 +392,9 @@ export const getChangelogVersions = async (releaseDate) => {
 };
 
 /**
- *
  * @param {string} releaseDate The release date of the current changelog
  * @param {number} offset how many changelogs to go back in time (0 = current changelog, 1 = previous changelog, etc.)
+ * @returns the name of a changelog in the past. If no changelog is found, returns null.
  */
 export const getPastChangelogName = async (releaseDate, offset) => {
   const changelogDir = await fs.readdir(changelogPath, {
@@ -406,6 +404,11 @@ export const getPastChangelogName = async (releaseDate, offset) => {
   const sortedChangelogs = changelogDir
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name)
+    .filter((changelogName) => {
+      const changelogDate = new Date(changelogName);
+      const releaseDateDate = new Date(releaseDate);
+      return changelogDate < releaseDateDate;
+    })
     .sort((a, b) => {
       return new Date(b) - new Date(a);
     });
@@ -419,4 +422,20 @@ export const getPastChangelogName = async (releaseDate, offset) => {
   }
 
   return sortedChangelogs[offset];
+};
+
+/**
+ *
+ * @param {string} releaseDate
+ * @param {*} versions
+ */
+export const writeMeta = async (releaseDate, versions) => {
+  const existingMeta = await getChangelogVersions(releaseDate);
+  const meta = {
+    versions: existingMeta ? { ...existingMeta, ...versions } : versions,
+  };
+  await fs.writeFile(
+    `${changelogPath}/${releaseDate}/meta.json`,
+    JSON.stringify(meta, null, 2)
+  );
 };
