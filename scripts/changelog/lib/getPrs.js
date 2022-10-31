@@ -8,7 +8,7 @@ import { getChangelogVersions, getPastChangelogName } from "./utils.js";
 
 const argv = minimist(process.argv.slice(2));
 
-const byDeployed = (pr) => {
+const isDeployedInCurrentMonth = (pr) => {
   const timelineItems = pr.timelineItems.edges.map((edge) => edge.node);
 
   const [from, to] =
@@ -32,11 +32,36 @@ const byDeployed = (pr) => {
   return deployedWithinDateBoundaries;
 };
 
+const compareMerged = (a, b) => {
+  const aDate = new Date(a.mergedAt);
+  const bDate = new Date(b.mergedAt);
+  return bDate - aDate;
+};
+
+const compareDeployed = (a, b) => {
+  const timelineItemsForPrA = a.timelineItems.edges.map((edge) => edge.node);
+  const timelineItemsForPrB = b.timelineItems.edges.map((edge) => edge.node);
+
+  const deployedAtForPrA = timelineItemsForPrA.find(
+    (item) => item.label.name === "deployed"
+  ).createdAt;
+
+  const deployedAtForPrB = timelineItemsForPrB.find(
+    (item) => item.label.name === "deployed"
+  ).createdAt;
+
+  const aDate = new Date(deployedAtForPrA);
+  const bDate = new Date(deployedAtForPrB);
+
+  return bDate - aDate;
+};
+
 export const getPrsForRepo = async (octokit, repo, from, to) => {
   // forceLabel is used for repos that can all contribute to the same section (like OpenVSCode Server only contributes to VS Code)
   let forceLabel;
   let searchQuery = `repo:${repo} is:pr is:merged merged:${from}..${to} sort:updated-desc`;
   let filter = () => true;
+  let sort = compareMerged;
   let apiQuery = `
     ... on PullRequest {
       body
@@ -55,6 +80,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
           name
         }
       }
+      mergedAt
       url
     }`;
 
@@ -98,7 +124,8 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
         }
         url
       }`;
-      filter = byDeployed;
+      filter = isDeployedInCurrentMonth;
+      sort = compareDeployed;
       from = fromAdjusted;
       break;
     // Don't force any category for website, as it can contribute to multiple categories (e.g. docs, blog)
@@ -130,6 +157,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
         mergeCommit {
           oid
         }
+        mergedAt
         url
       }`;
       filter = isPrReleasedBasedOnReleases;
@@ -159,6 +187,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
   }
 
   const filteredPrs = prs.filter((pr) => filter(pr, octokit, repo));
+  filteredPrs.sort(sort);
   console.log(
     `Found ${filteredPrs.length} PRs after filtering for ${repo} (from ${prs.length} total)`
   );
