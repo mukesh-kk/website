@@ -8,6 +8,7 @@ import {
   replaceContentOfBlock,
   getChangelogVersions,
   findCategoryForPr,
+  getPastChangelogName,
 } from "./utils.js";
 import { prCategories, changelogPath } from "./config.js";
 import { jest } from "@jest/globals";
@@ -252,4 +253,11 @@ test("Version parsing from metadata works correctly", async () => {
 
   // Clean up
   await fs.rm(`${changelogPath}/test`, { recursive: true });
+});
+
+test("Getting a past changelog works correctly", async () => {
+  const releaseDate = "2022-10-31";
+
+  expect(await getPastChangelogName(releaseDate, 0)).toBe(releaseDate);
+  expect(await getPastChangelogName(releaseDate, 2)).toBe("2022-09-30");
 });

@@ -4,6 +4,7 @@ import {
   getFormattedMonthBoundaries,
 } from "./dates.js";
 import minimist from "minimist";
+import { getChangelogVersions, getPastChangelogName } from "./utils.js";
 
 const argv = minimist(process.argv.slice(2));
 
@@ -169,9 +170,15 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
  * @param {*} pr The Pull Request to consider
  * @param {*} octokit The pre-authenticated Octokit client
  * @param {string} repository The repo to consider
+ * @param {string} releaseDate The date of the release of the changelog
  * @returns {boolean}
  */
-export const isPrReleasedBasedOnReleases = async (pr, octokit, repository) => {
+export const isPrReleasedBasedOnReleases = async (
+  pr,
+  octokit,
+  repository,
+  releaseDate
+) => {
   const [owner, repo] = repository.split("/");
   const latestRelease = await octokit.rest.repos.getLatestRelease({
     owner,
@@ -186,6 +193,41 @@ export const isPrReleasedBasedOnReleases = async (pr, octokit, repository) => {
     head: pr.mergeCommit.oid,
   });
 
-  //todo(ft): also filter if the PR is older than the release we checked for in the last changelog
-  return commitComparison.data.status !== "ahead";
+  const isCurrentCommitAheadOfLatestRelease =
+    commitComparison.data.status === "ahead";
+
+  const previousChangelogReleaseVersionMeta = await getChangelogVersions(
+    await getPastChangelogName(releaseDate, 1)
+  );
+
+  if (!previousChangelogReleaseVersionMeta) {
+    console.warn("No previous changelog release found");
+    return !isCurrentCommitAheadOfLatestRelease;
+  }
+
+  const previousCHangelogReleaseVersion =
+    previousChangelogReleaseVersionMeta.repos[repository].version;
+  const previousChangelogRelease = await octokit.rest.repos.getReleaseByTag({
+    owner,
+    repo,
+    tag: previousCHangelogReleaseVersion,
+  });
+
+  const previousChangelogReleaseCommit =
+    previousChangelogRelease.data.target_commitish;
+  const commitComparisonToPreviousChangelogRelease =
+    await octokit.rest.repos.compareCommits({
+      owner,
+      repo,
+      base: previousChangelogReleaseCommit,
+      head: pr.mergeCommit.oid,
+    });
+
+  const isCurrentCommitAheadOfPreviousChangelogRelease =
+    commitComparisonToPreviousChangelogRelease.data.status === "ahead";
+
+  return (
+    !isCurrentCommitAheadOfLatestRelease &&
+    isCurrentCommitAheadOfPreviousChangelogRelease
+  );
 };

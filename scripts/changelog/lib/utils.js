@@ -392,3 +392,31 @@ export const getChangelogVersions = async (releaseDate) => {
     throw e;
   }
 };
+
+/**
+ *
+ * @param {string} releaseDate The release date of the current changelog
+ * @param {number} offset how many changelogs to go back in time (0 = current changelog, 1 = previous changelog, etc.)
+ */
+export const getPastChangelogName = async (releaseDate, offset) => {
+  const changelogDir = await fs.readdir(changelogPath, {
+    withFileTypes: true,
+  });
+
+  const sortedChangelogs = changelogDir
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
+    .sort((a, b) => {
+      return new Date(b) - new Date(a);
+    });
+
+  if (sortedChangelogs[0] !== releaseDate) {
+    sortedChangelogs.unshift(releaseDate);
+  }
+
+  if (offset >= sortedChangelogs.length) {
+    return null;
+  }
+
+  return sortedChangelogs[offset];
+};
