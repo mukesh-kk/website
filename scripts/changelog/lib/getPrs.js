@@ -42,11 +42,11 @@ const compareDeployed = (a, b) => {
   const timelineItemsForPrA = a.timelineItems.edges.map((edge) => edge.node);
   const timelineItemsForPrB = b.timelineItems.edges.map((edge) => edge.node);
 
-  const deployedAtForPrA = timelineItemsForPrA.findLast(
+  const deployedAtForPrA = timelineItemsForPrA.find(
     (item) => item.label.name === "deployed"
   ).createdAt;
 
-  const deployedAtForPrB = timelineItemsForPrB.findLast(
+  const deployedAtForPrB = timelineItemsForPrB.find(
     (item) => item.label.name === "deployed"
   ).createdAt;
 
