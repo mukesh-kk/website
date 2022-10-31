@@ -32,8 +32,8 @@ export const getMonthBoundaries = (preferredMonth, preferredYear) => {
   let offset = 0;
   let lastDay = null;
   let firstDay = null;
-  const year = preferredYear || date.getFullYear();
-  const month = preferredMonth || date.getMonth() + 1;
+  const year = preferredYear || date.getUTCFullYear();
+  const month = preferredMonth || date.getUTCMonth() + 1;
 
   do {
     lastDay = new Date(year, month, offset);
