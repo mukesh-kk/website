@@ -21,7 +21,7 @@ const isDeployedInCurrentMonth = (pr) => {
   const start = new Date(from);
   start.setHours(0, 0, 0, 0);
 
-  const deployedWithinDateBoundaries = timelineItems.findLast((item) => {
+  const deployedWithinDateBoundaries = timelineItems.find((item) => {
     if (item.label.name !== "deployed") {
       return false;
     }
