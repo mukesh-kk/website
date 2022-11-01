@@ -18,7 +18,7 @@ There are two ways to access a workspace via SSH using an SSH key or an Access T
 ![Copy SSH key from modal](/images/docs/ssh-key-modal-dark-light-theme.png)
 ![Copy SSH key from modal](/images/docs/ssh-key-modal-dark-theme.png)
 
-1. **SSH Key** (recommended) - By creating your own public/private SSH key pair, and uploading the public key to Gitpod you can directly SSH into a Gitpod workspace. Uploading a private key means that you do not need to keep re-visiting the Gitpod dashboard to retrieve an SSH command. It is also a more secure approach. See [configure SSH](/docs/configure/user-settings/ssh) for more.
+1. **SSH Key** (recommended) - By creating your own public/private SSH key pair, and uploading the public key to Gitpod you can directly SSH into a Gitpod workspace. Uploading a public key means that you do not need to keep re-visiting the Gitpod dashboard to retrieve an SSH command. It is also a more secure approach. See [configure SSH](/docs/configure/user-settings/ssh) for more.
 
 2. **Access Token** - Alternatively, you can access a workspace using the copy/paste SSH command. This approach uses an access token which is reset on every workspace start. This approach is useful for quick SSH access, or when installing an SSH key locally is not possible, such as on some devices.
 

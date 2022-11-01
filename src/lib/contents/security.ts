@@ -11,7 +11,7 @@ export const secureParagraphs = [
 export const programFeatures: Card[] = [
   {
     title: "Compliance",
-    text: "<p>Gitpod is a European company committed to security and data privacy. We provide our users with the ability to access and control the information that we collect about them.</p><p>Gitpod is built with security in mind and we continuously invest in security best practices. We are currently in the process of becoming SOC 2 compliant and you can request a copy of our SOC2 audit report as soon as it's available.</p>",
+    text: "<p>Gitpod maintains compliance with the European General Data Protection Regulation (GDPR) and provides users with the ability to access and control the information that is collected about them. To clients we provide a Data Processing Agreement (DPA) incorporating the Standard Contractual Clauses (SCC) for International Data Transfer. </p><p> Gitpod is built with security in mind and we continuously invest in security best practices. We are conducting annual SOC 2 Type II audits to assess the appropriateness of our controls. You can request a copy of our SOC 2 report under a Non-Disclosure Agreement (NDA).</p>",
     icon: {
       src: "/svg/security/compliance.svg",
     },

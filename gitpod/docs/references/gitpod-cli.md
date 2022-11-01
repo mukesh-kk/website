@@ -226,13 +226,13 @@ gp timeout show
 
 ## info
 
-Displays information about the current workspace, such as its ID, workspace class, and URL.
+Displays information about the current [workspace](/docs/configure/workspaces) (such as the workspace ID and URL) and also the [workspace class](/docs/configure/workspaces/workspace-classes).
 
 ```sh
 gp info
 ```
 
-You can also use `gp info --json` to get the output in JSON format.
+Use `gp info --json` to get the output in JSON format for programmatic use in (e.g. in shell scripts).
 
 ## ports
 
@@ -291,4 +291,4 @@ Displays the current workspace's class info along with the used and available CP
 gp top
 ```
 
-You can also use `gp top --json` to get output in JSON format if you want to access them.
+Use `gp top --json` to get the output in JSON format for programmatic use in (e.g. in shell scripts).
