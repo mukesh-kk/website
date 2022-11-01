@@ -291,7 +291,11 @@ export const findCategoryForPr = (pr, categories = prCategories) => {
  */
 export const sortByCategoryOrder = (a, b) => {
   if (a.order === b.order) {
-    return a.name.localeCompare(b.name);
+    // Sort by order in the config
+    const aIndex = prCategories.findIndex((cat) => cat.partial === a.partial);
+    const bIndex = prCategories.findIndex((cat) => cat.partial === b.partial);
+
+    return aIndex - bIndex;
   }
   return a.order - b.order;
 };

@@ -16,6 +16,15 @@ export const excludedPrUsers = [
 
 export const prCategories = [
   {
+    name: "Dashboard",
+    team: "WebApp",
+    labels: ["component: dashboard", "component: server"],
+    partial: "dashboard",
+    prefixes: ["dashboard", "server"],
+    order: 0,
+    prs: [],
+  },
+  {
     name: "VS Code",
     team: "IDE",
     labels: [],
@@ -50,29 +59,11 @@ export const prCategories = [
     prs: [],
   },
   {
-    name: "Dashboard",
-    team: "WebApp",
-    labels: ["component: dashboard", "component: server"],
-    partial: "dashboard",
-    prefixes: ["dashboard", "server"],
-    order: 0,
-    prs: [],
-  },
-  {
     name: "Gitpod CLI",
     team: "IDE",
     labels: ["component: gp cli"],
     partial: "cli",
     prefixes: ["gp-cli"],
-    order: 0,
-    prs: [],
-  },
-  {
-    name: "Documentation",
-    team: "DCS",
-    labels: ["section: docs-content"],
-    partial: "docs",
-    prefixes: ["docs"],
     order: 0,
     prs: [],
   },
@@ -92,6 +83,15 @@ export const prCategories = [
         prs: [],
       },
     ],
+    prs: [],
+  },
+  {
+    name: "Documentation",
+    team: "DCS",
+    labels: ["section: docs-content"],
+    partial: "docs",
+    prefixes: ["docs"],
+    order: 0,
     prs: [],
   },
   // todo(ft): Installer (self-hosted), supervisor
