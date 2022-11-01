@@ -245,14 +245,14 @@ test("Version parsing from metadata works correctly", async () => {
   );
   const data = await getChangelogVersions("2022-10-31");
 
+  // Clean up
+  await fs.rm(`${changelogPath}/test/`, { recursive: true });
+
   // todo(ft): update values
   expect(data.ides.jetbrains.version).toBe(
     metadata.versions.ides.jetbrains.version
   );
   expect(data.ides.vscode.version).toBe(metadata.versions.ides.vscode.version);
-
-  // Clean up
-  await fs.rm(`${changelogPath}/test`, { recursive: true });
 });
 
 test("Getting a past changelog works correctly", async () => {
