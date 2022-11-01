@@ -21,7 +21,7 @@ Below are some environment variables which are set automatically by Gitpod and a
 - `GITPOD_WORKSPACE_URL`: The unique URL of the workspace.
 - `GITPOD_REPO_ROOT`: Path to the directory where your git repository was cloned inside the workspace.
 
-> **Protip:** Try running **`env | grep GITPOD_`** on a workspace terminal to see all the Gitpod specific environment variables. These can be useful for scripting a dynamic workspace behavior.
+> **Tip:** Try running **`env | grep GITPOD_`** on a workspace terminal to see all the Gitpod specific environment variables. These can be useful for scripting a dynamic workspace behavior.
 
 #### Reserved Prefix
 

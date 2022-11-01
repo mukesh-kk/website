@@ -19,7 +19,7 @@ Still, you may wish to customize Gitpod, or to extend it with new features. You 
 
 To install a VS Code extension in Gitpod, simply go to the left vertical menu, and open the Extensions view. There you can search for an extension and install it with one click.
 
-For [VS Code Browser](vscode-browser), we use the [Open VSX](https://open-vsx.org/) registry. If you can't find an extension you use in your local VS Code, please read the "[Where do I find extensions?](#where-do-i-find-extensions)" section below.
+For [VS Code Browser](vscode-browser), we use the [Open VSX](#open-vsx) registry. If you can't find an extension you use in your local VS Code, please read the "[Where do I find extensions?](#where-do-i-find-extensions)" section below.
 
 If the extension is helpful to anyone who works on the project, you can add it to the `.gitpod.yml` configuration file so that it gets installed for anyone who works on the project. To do that:
 
@@ -58,12 +58,44 @@ Gitpod already comes with a number of commonly used VS Code extensions pre-insta
 
 You can view all pre-installed extensions by navigating to VS Code's Extensions section on the left-hand side. In the "Search Extensions in Marketplace" input field, type `@builtin` to see the built-in extensions.
 
-## Where do I find extensions?
+## Use of Microsoft-owned extensions in Gitpod
 
-If you cannot find an extension by searching in Gitpod using [VS Code Browser](vscode-browser), it probably means that the extension hasn't been added to the [Open VSX](https://open-vsx.org/) registry yet.
+You can only use extensions available on the [Open VSX](#open-vsx) registry with [VS Code Browser](vscode-browser) on Gitpod. Microsoft only permits use of their marketplace via "Microsoft’s publicly supported interfaces" (see their [ToS](https://cdn.vsassets.io/v/M190_20210811.1/_content/Microsoft-Visual-Studio-Marketplace-Terms-of-Use.pdf) section `1f`), and this restriction applies to the Gitpod VS Code Browser integration. If you wish to use extensions from Microsoft's VS Code Marketplace, you must use [VS Code Desktop](vscode). 
 
-In that case, please reach out to the extension author and politely ask them to publish their extension to the vendor-neutral, open source Open VSX registry. The "[How to Publish an Extension](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions)" docs provide step-by-step instructions.
+The following extensions are therefore not available in VS Code Browser:
 
-Please note that `.vsix` files downloaded from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode) should not be installed in Gitpod, because Microsoft prohibits the direct use of their marketplace by any non-Microsoft software, even though most extensions are actually open source and not developed or maintained by Microsoft.
+- [Microsoft Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+- [Microsoft C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+- [Microsoft .Net](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscode-dotnet-runtime)
+- [Microsoft C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+- [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 
-You can also develop and install your own extensions. Note that installing a `.vsix` file in Gitpod will not list that extension anywhere publicly except in your own `.gitpod.yml`, so you can also install private extensions that way.
+## Install VS Code extensions from a VSIX file
+
+It is possible to develop, install and test your own custom VS Code extensions in Gitpod. While developing the extension, you can test it by uploading the `.vsix` file to your Gitpod workspace. 
+
+**Please note:** 
+
+* You can install any private extensions using manual VSIX installation. 
+* Installing a `.vsix` in Gitpod does not list that extension anywhere public.
+* Any `.vsix` referenced in the `.gitpod.yml` must be publicly accessible.
+
+## Open VSX
+
+Open VSX is an open source VS Code extensions registry. For VS Code Browser in Gitpod, we use the public Open VSX instance provided by the [Eclipse Foundation](https://www.eclipse.org/), [open-vsx.org](https://open-vsx.org/).
+
+### Why do we need Open VSX?
+
+VS Code Browser is prohibited from accessing the Microsoft VS Code Extensions marketplace. 
+
+See [Use of Microsoft owned extensions in Gitpod](#use-of-microsoft-owned-extensions-in-gitpod) for more. 
+
+### Where do I find extensions?
+
+If you cannot find an extension by searching in Gitpod using [VS Code Browser](vscode-browser), the extension, in many cases, was not yet added to the [Open VSX](https://open-vsx.org/) registry.
+
+In that case, please reach out to the extension author and politely ask them to publish their extension to the vendor-neutral, open-source Open VSX registry. The ["how to Publish an Extension"](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions) docs provide step-by-step instructions.
+
+> **Note**: `.vsix` files downloaded from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode) should not be installed in Gitpod.
+
+See [Use of Microsoft owned extensions in Gitpod](#use-of-microsoft-owned-extensions-in-gitpod) for more.
