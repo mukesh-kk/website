@@ -68,7 +68,7 @@ export const prCategories = [
     prs: [],
   },
   {
-    name: "Docs",
+    name: "Documentation",
     team: "DCS",
     labels: ["section: docs-content"],
     partial: "docs",
