@@ -16,41 +16,46 @@ Rather than having a single local environment that you update, with Gitpod you h
 
 We encourage you to move all project configuration into code (see [.gitpod.yml](/docs/introduction/learn-gitpod/gitpod-yaml)), so you open new workspaces easily, and "throw them away" (see [Workspace Deleted](/docs/configure/workspaces/workspace-lifecycle#workspace-deleted)) when you're finished with your task.
 
-## Workspace Loading States
+## How does a Workspace start?
 
-A workspace can be in different states.
+When you open a workspace, workspace can be in different states. The state of the workspace is indicated by the color of the workspace indicator in the left to that workspace in the [dashboard](https://gitpod.io/workspaces).
 
-The following describes each these states and their attributes.
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/dashboard-indicator.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
 
-<!-- TODO: Look at dashboard for language use -->
+The following describes each of these states and their attributes.
 
-### Workspace Start
+### Workspace initializing
 
-- Where a workspace is provisioned and running
-- Source control is downloaded into the workspace
-- If configured, a prebuild image is used
+When you open a workspace, it will be in the "initializing" state. This means that the workspace is being created and the initialization process is running.
 
-### Workspace Running
+- Where a workspace is provisioned and initialized.
+- Source control is downloaded into the workspace.
+- If configured, a prebuild image is used.
 
-- An active container is provisioned within Gitpod
-- Workspace can be accessed immediately without waiting
+### Workspace running
 
-### Workspace Stop
+- An active container is provisioned within Gitpod.
+- Workspace can be accessed immediately without waiting.
 
-- There is no active workspace in Gitpod
-- All files and directories are preserved
-- Uses the same workspace ID when restarted
-- A start is required before the workspace can be used
+### Workspace stop
 
-### Workspace Deleted
+- There is no active workspace in Gitpod.
+- All files and directories are preserved.
+- Uses the same workspace ID when restarted.
+- A start is required before the workspace can be used.
+
+### Workspace deleted
 
 - Workspaces are typically deleted after 2 weeks
 
 > **Note:** Pinned workspaces are never automatically deleted.
 
-### Workspace Restart
+### Workspace restart
 
-Lorem Ipsum
+There is no restart button in the UI. Instead, you can do the following to restart a workspace:
+
+- Stop the workspace, if it is running.
+- Start the workspace again.
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/restart-workspace.png" alt="Restart workspace from webapp" loading="lazy"/>
 
