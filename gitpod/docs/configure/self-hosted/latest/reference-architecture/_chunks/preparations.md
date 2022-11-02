@@ -94,4 +94,53 @@ All commands that follow assume you have set an environment variable of `AWS_REG
 
 </div>
 
+<div slot="azure">
+
+To deploy Gitpod on [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes), you must have an Azure subscription and account with permission deploy AKS clusters and associated component services, including the following:
+
+- AKS Clusters
+- Virtual networks
+- MySQL Databases
+- Storage accounts
+- Azure Container Registries
+- Load balancers
+- Azure DNS managed domains (and rights to assign roles on managed zones)
+- Rights to make role assignments in Azure Active Directory
+
+This guide uses the Azure CLI to create resources for your Gitpod installation and requires active Azure credentials. Credentials can be fetched by one of the following options:
+
+- [Sign in interactively](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli#sign-in-interactively)
+- [Sign in with a Service Principal](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal) (recommended for production installations)
+
+**Tools**
+
+This guide uses the following tools:
+
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
+
+If `kubectl` is not present the Azure CLI can be used to install `kubectl`:
+
+```bash
+sudo az aks install-cli
+```
+
+**Location and Resource Group**
+
+Azure uses _resource groups_ to logically group related resources. This guide uses a dedicated resource group for the Gitpod AKS cluster and all component resources. Creating a new resource group for Gitpod resources is recommended but a pre-existing resource group may be used if necessary.
+
+Set environment variables indicating the resource group and location where Gitpod resources will be created:
+
+```bash
+export RESOURCE_GROUP="gitpod"
+export LOCATION="centralus"
+```
+
+Then create a new resource group:
+
+```bash
+az group create --location $LOCATION --name "$RESOURCE_GROUP"
+```
+
+</div>
+
 </CloudPlatformToggle>

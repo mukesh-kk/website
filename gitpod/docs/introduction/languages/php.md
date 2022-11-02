@@ -104,6 +104,14 @@ RUN sudo pecl channel-update pecl.php.net && \
 
 where `<EXTENSION>` is the PHP extension you want to install, e.g. `xdebug`.
 
+## Setting GitHub token to Composer
+
+Some composer plugins like [symfony/flex](https://github.com/symfony/flex) does direct API call against GitHub to fetch additional information. These unauthenticated requests will be rate-limited and may fail your task steps. To fix this behavior we can use the default credential-helper to obtain a GitHub Token and configure composer properly
+
+```bash
+composer config --global github-oauth.github.com $(printf '%s\n' host=github.com | gp credential-helper get | sort | head -2 | tail -1 | sed 's;password=;;')
+```
+
 ## Further Reading
 
 - <a class="no-nowrap" href="https://notes.etin.space/posts/gitpodifying-a-new-laravel-application">Gitpodifying a new Laravel Application</a> by Etin Obaseki

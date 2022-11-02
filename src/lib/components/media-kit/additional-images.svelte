@@ -45,4 +45,8 @@
       <ImageBox {image} />
     {/each}
   </div>
+  <p class="text-large">
+    Please <a href="/contact/support">contact us</a> for any intended use not covered
+    by these guidelines.
+  </p>
 </Section>

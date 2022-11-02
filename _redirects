@@ -263,4 +263,11 @@ https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /docs/self-hosted/latest/reference-architecture/proof-of-value /docs/configure/self-hosted/latest/reference-architecture/proof-of-value
 /docs/self-hosted/latest/cluster-set-up /docs/configure/self-hosted/latest/reference-architecture/single-cluster-ref-arch
 /docs/self-hosted/latest/advanced/requirements /docs/configure/self-hosted/latest/requirements
+/docs/self-hosted/latest/advanced/customization /docs/configure/self-hosted/latest/advanced/customization
+/docs/self-hosted/latest/advanced/eks-with-alb-and-nlb /docs/configure/self-hosted/latest/advanced/eks-with-alb-and-nlb
+/docs/self-hosted/latest/advanced/tls /docs/configure/self-hosted/latest/advanced/tls
+/docs/self-hosted/latest/advanced/air-gap /docs/configure/self-hosted/latest/advanced/air-gap
+/docs/self-hosted/latest/advanced/resource-configuration /docs/configure/self-hosted/latest/advanced/resource-configuration
+/docs/self-hosted/latest/advanced/default-workspace-image /docs/configure/self-hosted/latest/advanced/default-workspace-image
+/docs/self-hosted/latest/advanced/private-registries /docs/configure/self-hosted/latest/advanced/private-registries
 docs/ides-and-editors/jetbrains-gateway /docs/integrations/jetbrains-gateway

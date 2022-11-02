@@ -1,0 +1,17 @@
+name: 🐞 Technical Bug
+description: A technical bug, such as wrong font, navigation issue, related to an existing page.
+labels: ["type: bug", "section: docs-non-content"]
+body:
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL
+      description: The URL of the page you provide feedback for.
+      placeholder: ex. https://www.gitpod.io/docs/introduction/getting-started
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Description
+    validations:
+      required: true

@@ -1,4 +1,4 @@
-import saveEmailInSheet from "$lib/api/save-to-spreadsheet";
+import saveToSpreadsheet from "$lib/api/save-to-spreadsheet";
 import type { SignupData } from "./api";
 
 const signupTypeToSheetTitle = {
@@ -9,10 +9,9 @@ const signupTypeToSheetTitle = {
 
 export const signup = async (body: SignupData) => {
   console.log(body);
-  const isSavedInSheet = await saveEmailInSheet({
+  const isSavedInSheet = await saveToSpreadsheet({
     sheetTitle: signupTypeToSheetTitle[body.type],
     data: [body.email],
-    type: "signup",
   });
 
   let statusCode;

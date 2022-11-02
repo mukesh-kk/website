@@ -24,11 +24,11 @@ You need to assign the following labels to the node pools to enforce that the Gi
 
 The following table gives an overview of the node types for the different cloud providers that are used by this reference architecture.
 
-|                              | GCP               | AWS           |
-| ---------------------------- | ----------------- | ------------- |
-| Services Node Pool           | `n2d-standard-4`  | `m6i.xlarge`  |
-| Regular Workspace Node Pool  | `n2d-standard-16` | `m6i.4xlarge` |
-| Headless Workspace Node Pool | `n2d-standard-16` | `m6i.4xlarge` |
+|                              | GCP               | AWS           | Azure             |
+| ---------------------------- | ----------------- | ------------- | ----------------- |
+| Services Node Pool           | `n2d-standard-4`  | `m6i.xlarge`  | `Standard_D4_v4`  |
+| Regular Workspace Node Pool  | `n2d-standard-16` | `m6i.4xlarge` | `Standard_D16_v4` |
+| Headless Workspace Node Pool | `n2d-standard-16` | `m6i.4xlarge` | `Standard_D16_v4` |
 
 <CloudPlatformToggle id="cloud-platform-toggle-cluster">
 
@@ -746,4 +746,91 @@ aws iam delete-policy --policy-arn 'arn:aws:iam::12344:policy/gitpod_s3_access_p
 ```
 
 </div>
+
+<div slot="azure">
+
+This section will create a Kubernetes cluster based on the latest supported version of AKS, create node pools for Gitpod services, regular workspaces, and headless workspaces, and will fetch cluster credentials.
+
+First, determine the latest version of AKS suitable for Gitpod.
+
+> Gitpod supports Kubernetes 1.21 or later, but using the latest supported version of AKS is recommended.
+
+```bash
+AKS_VERSION=$(az aks get-versions \
+    --location $LOCATION \
+    --query "orchestrators[?contains(orchestratorVersion, '1.24.')].orchestratorVersion | [-1]" -o tsv)
+```
+
+Create the AKS cluster and a default node pool. Gitpod services and other supporting components will run on this node pool.
+
+```bash
+az aks create \
+    --name "${CLUSTER_NAME}" \
+    --nodepool-name "services" \
+    --location "${LOCATION}" \
+    --resource-group "${RESOURCE_GROUP}" \
+    --kubernetes-version "${AKS_VERSION}" \
+    --network-plugin kubenet \
+    --network-policy calico \
+    --enable-cluster-autoscaler \
+    --enable-managed-identity \
+    --min-count "1" \
+    --max-count "4" \
+    --max-pods "110" \
+    --node-osdisk-size "100" \
+    --node-vm-size "Standard_D4_v4" \
+    --nodepool-labels \
+        gitpod.io/workload_meta=true \
+        gitpod.io/workload_ide=true \
+        gitpod.io/workload_workspace_services=true \
+    --no-ssh-key \
+    --vm-set-type "VirtualMachineScaleSets"
+```
+
+Create a node pool for regular workspaces.
+
+```bash
+az aks nodepool add \
+    --name "regularws" \
+    --cluster-name "${CLUSTER_NAME}" \
+    --resource-group "${RESOURCE_GROUP}" \
+    --kubernetes-version "${AKS_VERSION}" \
+    --labels gitpod.io/workload_workspace_regular=true \
+    --enable-cluster-autoscaler \
+    --min-count "1" \
+    --max-count "50" \
+    --max-pods "110" \
+    --node-osdisk-size "512" \
+    --node-vm-size "Standard_D16_v4"
+```
+
+Create a node pool for headless workspaces.
+
+```bash
+az aks nodepool add \
+    --name "headlessws" \
+    --cluster-name "${CLUSTER_NAME}" \
+    --resource-group "${RESOURCE_GROUP}" \
+    --kubernetes-version "${AKS_VERSION}" \
+    --labels gitpod.io/workload_workspace_headless=true \
+    --enable-cluster-autoscaler \
+    --node-count "1" \
+    --min-count "1" \
+    --max-count "50" \
+    --max-pods "110" \
+    --node-osdisk-size "512" \
+    --node-vm-size "Standard_D16_v4"
+```
+
+After the cluster and node pools have been created, fetch the AKS credentials. These credentials will be used to install external-dns, cert-manager, and install Gitpod itself.
+
+```bash
+az aks get-credentials \
+    --name "${CLUSTER_NAME}" \
+    --resource-group "${RESOURCE_GROUP}" \
+    --overwrite-existing
+```
+
+</div>
+
 </CloudPlatformToggle>

@@ -49,7 +49,7 @@ There are a few important things to note about workspace snapshots:
 </div>
 
 <div slot="commandline">
-    You can run `gp snapshot` from any workspace to generate a snapshot URL.
+    You can run <code>gp snapshot</code> from any workspace to generate a snapshot URL.
 </div>
 
 </IdeToggle>

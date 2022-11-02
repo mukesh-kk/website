@@ -72,3 +72,36 @@ mainConfiguration: https://github.com/gitpod-io/demo-multi-repo-frontend
 ```
 
 Try it out at https://github.com/gitpod-io/demo-multi-repo-backend
+
+## Adding additional repo folders to VSCode Explorer
+
+![VSCode workspace folders](.../../../static/images/docs/vscode-workspace-folders.png)
+
+You might want to see the [`additionalRepositories`](#cloning-additional-repositories) on your VSCode.
+
+To do so:
+  1. Create a file called `main.code-workspace` (for example) on your main(e.g. frontend) repository that everyone is expected to open via Gitpod.
+  2. Now you can define the folder paths:
+```json
+{
+  // All paths are relative to your main repo
+  // The additional repos are cloned inside /workspace dir
+	"folders": [
+		{
+			"path": "." // Main repo that you will open in Gitpod (e.g. frontend)
+		},
+		{
+			"path": "../backend" // Additional repo
+		},
+		{
+			"path": "../db" // Additional repo
+		},
+	],
+
+}
+```
+  3. Specify your `.code-workspace` file path on `.gitpod.yml`:
+```yaml
+workspaceLocation: frontend/main.code-workspace # Relative to /workspace dir
+```
+  4. [See it in action!](/docs/introduction/learn-gitpod/gitpod-yaml#see-it-in-action)

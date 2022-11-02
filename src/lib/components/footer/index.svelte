@@ -30,53 +30,28 @@
 
 <div class="pb-8 bg-card text-p-footer" data-id="footer">
   <footer
-    class="py-large m-auto px-xx-small md:max-w-4xl md:py-small md:px-xx-small"
+    class="py-large m-auto px-xx-small md:max-w-6xl md:py-small md:px-xx-small"
   >
     <div
-      class="flex gap-x-x-small sm:gap-x-medium md:gap-0 justify-between flex-wrap pb-micro md:pb-small"
+      class="flex gap-x-x-small sm:gap-x-small md:gap-0 justify-between flex-wrap pb-micro md:pb-small"
     >
       <Section title="Gitpod">
-        <li><FooterLink href="/">Home</FooterLink></li>
+        <li>
+          <FooterLink href="/docs/introduction/getting-started"
+            >Getting started</FooterLink
+          >
+        </li>
+        <li><FooterLink href="/docs">Documentation</FooterLink></li>
         <li><FooterLink href="/pricing">Pricing</FooterLink></li>
-        <li><FooterLink href="/changelog">Changelog</FooterLink></li>
         <li><FooterLink href="/self-hosted">Self-Hosted</FooterLink></li>
+        <li><FooterLink href="/customers">Customers</FooterLink></li>
+        <li><FooterLink href="/support">Support</FooterLink></li>
         <li>
-          <FooterLink href="/for/startups" class="flex items-center">
-            Gitpod for Startups
-          </FooterLink>
-        </li>
-        <li>
-          <FooterLink href="/for/opensource" class="flex items-center"
-            >Gitpod for Open Source</FooterLink
+          <FooterLink
+            href="https://github.com/gitpod-io/gitpod/issues/new?assignees=&labels=type%3A+bug&template=bug_report.yml"
+            target="_blank"
+            rel="noopener">Report a bug</FooterLink
           >
-        </li>
-        <li>
-          <FooterLink href="/for/enterprise" class="flex items-center"
-            >Gitpod for Enterprises</FooterLink
-          >
-        </li>
-        <li>
-          <FooterLink href="/for/education" class="flex items-center"
-            >Gitpod for Education</FooterLink
-          >
-        </li>
-        <li>
-          <FooterLink href="/vs/github-codespaces"
-            >Gitpod vs GitHub <br />Codespaces
-          </FooterLink>
-        </li>
-        <li>
-          <FooterLink href="/vs/local-development"
-            >Gitpod vs Local <br />Development
-          </FooterLink>
-        </li>
-        <li>
-          <FooterLink href="/vs/jetbrains-space">
-            Gitpod vs JetBrains <br />Space
-          </FooterLink>
-        </li>
-        <li>
-          <FooterLink href="/vs/coder">Gitpod vs Coder</FooterLink>
         </li>
         <li>
           <FooterLink
@@ -86,25 +61,56 @@
           >
         </li>
       </Section>
-      <Section title="Developer">
-        <li><FooterLink href="/#get-started">Getting started</FooterLink></li>
+      <Section title="Resources">
+        <li><FooterLink href="/community">Community</FooterLink></li>
+        <li><FooterLink href="/blog">Blog</FooterLink></li>
+        <li><FooterLink href="/changelog">Changelog</FooterLink></li>
         <li>
           <FooterLink href="/screencasts/getting-started-with-gitpod"
             >Screencasts</FooterLink
           >
         </li>
-        <li><FooterLink href="/blog">Blog</FooterLink></li>
-        <li><FooterLink href="/docs">Documentation</FooterLink></li>
-        <li><FooterLink href="/support">Support</FooterLink></li>
         <li><FooterLink href="/guides">Guides</FooterLink></li>
+      </Section>
+      <Section title="Use Cases">
         <li>
-          <FooterLink
-            href="https://github.com/gitpod-io/gitpod/issues/new?assignees=&labels=type%3A+bug&template=bug_report.yml"
-            target="_blank"
-            rel="noopener">Report a bug</FooterLink
+          <FooterLink href="/for/startups" class="flex items-center">
+            Startups
+          </FooterLink>
+        </li>
+        <li>
+          <FooterLink href="/for/opensource" class="flex items-center"
+            >Open Source</FooterLink
           >
         </li>
-        <li><FooterLink href="/community">Community</FooterLink></li>
+        <li>
+          <FooterLink href="/for/enterprise" class="flex items-center"
+            >Enterprises</FooterLink
+          >
+        </li>
+        <li>
+          <FooterLink href="/for/education" class="flex items-center"
+            >Education</FooterLink
+          >
+        </li>
+      </Section>
+      <Section title="Compare">
+        <li>
+          <FooterLink href="/vs/local-development"
+            >Local Development
+          </FooterLink>
+        </li>
+        <li>
+          <FooterLink href="/vs/github-codespaces"
+            >GitHub Codespaces
+          </FooterLink>
+        </li>
+        <li>
+          <FooterLink href="/vs/jetbrains-space">JetBrains Space</FooterLink>
+        </li>
+        <li>
+          <FooterLink href="/vs/coder">Coder</FooterLink>
+        </li>
       </Section>
       <Section title="Company">
         <li><FooterLink href="/about">About</FooterLink></li>
@@ -116,25 +122,24 @@
             highlight>Careers</FooterLink
           >
         </li>
-        <li><FooterLink href="/customers">Customers</FooterLink></li>
         <li><FooterLink href="/contact">Contact</FooterLink></li>
-        <li><FooterLink href="/media-kit">Media Kit</FooterLink></li>
+        <li><FooterLink href="/media-kit">Media kit</FooterLink></li>
         <li><FooterLink href="/security">Security</FooterLink></li>
       </Section>
       <Section title="Legal">
         <li><FooterLink href="/imprint">Imprint</FooterLink></li>
         <li>
-          <FooterLink href="/terms">Terms of Service</FooterLink>
+          <FooterLink href="/terms">Terms of service</FooterLink>
         </li>
         <li>
-          <FooterLink href="/privacy">Privacy Policy</FooterLink>
+          <FooterLink href="/privacy">Privacy policy</FooterLink>
         </li>
         <li>
-          <FooterLink href="/cookies">Cookie Policy</FooterLink>
+          <FooterLink href="/cookies">Cookie policy</FooterLink>
         </li>
         <li>
-          <button on:click={() => (isModalOpen = true)}
-            >Cookie Preferences</button
+          <FooterLink on:click={() => (isModalOpen = true)} href=""
+            >Cookie preferences</FooterLink
           >
         </li>
       </Section>
@@ -172,7 +177,7 @@
               alt={link.alt}
               height="24"
               width="24"
-              class="m-3"
+              class="m-2"
             />
           </FooterLink>
         {/each}

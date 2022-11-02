@@ -1,0 +1,9 @@
+name: ✨ Technical Suggestion
+description: Request a technical change to the website, e.g. new component, update to navigation, etc.
+labels: ["section: docs-non-content", "type: suggestion"]
+body:
+  - type: textarea
+    attributes:
+      label: Description
+    validations:
+      required: true

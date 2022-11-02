@@ -29,4 +29,52 @@ ECR is currently not supported, so configuring the registry will require using a
 To configure Gitpod to use the bucket created, ensure you select `In-cluster Registry`, and `S3 storage` in the installation UI. Then input the values of the bucket you've created. When setting the endpoint, please include the region such that `s3.amazonaws.com` becomes `s3.eu-west-1.amazonaws.com`.
 
 </div>
+
+<div slot="azure">
+
+This section will create an Amazon Container Registry for workspace images.
+
+First, generate a name for the ACR instance. ACR instance names must be unique; using a random suffix is recommended but any unique registry name is sufficient.
+
+```bash
+REGISTRY_NAME="gitpod$(openssl rand -hex 4)"
+```
+
+Note the value of `$REGISTRY_NAME` for later use.
+
+Create the container registry:
+
+```bash
+az acr create \
+  --admin-enabled true \
+  --location "${LOCATION}" \
+  --name "${REGISTRY_NAME}" \
+  --resource-group "${RESOURCE_GROUP}" \
+  --sku Premium
+```
+
+The registry server, username, and password will be needed when Gitpod is installed; note these values for later.
+
+```bash
+AZURE_REGISTRY_URL=$(az acr show \
+    --name "${REGISTRY_NAME}" \
+    --output tsv \
+    --query loginServer \
+    --resource-group "${RESOURCE_GROUP}")
+
+AZURE_REGISTRY_USERNAME=$(az acr credential show \
+    --name "${REGISTRY_NAME}" \
+    --output tsv \
+    --query username \
+    --resource-group "${RESOURCE_GROUP}")
+
+AZURE_REGISTRY_PASSWORD=$(az acr credential show \
+    --name "${REGISTRY_NAME}" \
+    --output tsv \
+    --query "passwords[0].value" \
+    --resource-group "${RESOURCE_GROUP}")
+```
+
+</div>
+
 </CloudPlatformToggle>

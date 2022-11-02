@@ -29,14 +29,14 @@ All you have to do is visit the Gitpod dashboard, click the more actions menu at
 You’re SSH’ed into your Gitpod workspace—“ready to code”.
 
 <figure>
-    <img src="/images/docs/ssh-copy-paste-dashboard.gif" alt="Copy pasting the SSH command from the dashboard">
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Copy pasting the SSH command from the dashboard" src="/images/docs/ssh-copy-paste-dashboard.webm" type="video/webm"></video>
     <figcaption>Copy pasting the SSH command from the dashboard</figcaption>
 </figure>
 
 You can also copy/paste your SSH access from the workspace start page, which is shown to users who have selected a desktop IDE or editor as their [preference](https://gitpod.io/preferences).
 
 <figure>
-    <img src="/images/docs/ssh-copy-paste-workspace-start.gif" alt="Copy pasting the SSH command from the workspace start page">
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Copy pasting the SSH command from the workspace start page" src="/images/docs/ssh-copy-paste-workspace-start.webm" type="video/webm"></video>
     <figcaption>Copy pasting the SSH command from the workspace start page</figcaption>
 </figure>
 

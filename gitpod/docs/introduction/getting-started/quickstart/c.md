@@ -21,7 +21,7 @@ For simplicity we use a GitHub template, but Gitpod works similarly with GitLab 
 
 ## Step 1: Clone Git repository
 
-- Create a new repository based on the [C template](https://github.com/gitpod-io/template-c).
+- Create a new repository based on the [C template](https://github.com/gitpod-io/template-c/generate).
 - Name it e.g. `my-c-template`.
 
 ## Step 2: Install Gitpod app

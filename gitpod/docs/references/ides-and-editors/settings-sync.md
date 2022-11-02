@@ -5,6 +5,7 @@ title: VS Code settings sync
 
 <script context="module">
   export const prerender = true;
+  import Keybind from "$lib/components/keybind.svelte";
 </script>
 
 # VS Code settings sync
@@ -83,4 +84,17 @@ Settings in VS Code Desktop might differ from your remote settings, follow the i
 <figure>
 <img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Merge or replace VS Code Settings" src="/images/editors/resolve-merge-conflicts.png">
     <figcaption>Merge or replace VS Code Settings</figcaption>
+</figure>
+
+## FAQs
+
+### How do I disable VS Code Settings Sync?
+
+Search for `settings sync off` in your VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) and hit <Keybind>Enter</Keybind>.
+
+> **Note:** This will only work properly inside of VS Code Desktop. If you choose to disable Settings Sync inside of VS Code Browser, you will have to disable it in every new workspace and every time a workspace restarts.
+
+<figure>
+<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Disable Gitpod settings sync" src="/images/editors/disable-settings-sync.png">
+    <figcaption>Searching for "setting sync" on the Command Palette</figcaption>
 </figure>

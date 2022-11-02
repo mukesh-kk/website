@@ -76,6 +76,22 @@ export const authors: { [idx: string]: Author } = {
     },
     description: "",
   },
+  andreafalzetti: {
+    name: "Andrea Falzetti",
+    socialProfiles: {
+      github: "andreafalzetti",
+      twitter: "",
+    },
+    description: "",
+  },
+  felladrin: {
+    name: "Victor Nogueira",
+    socialProfiles: {
+      github: "felladrin",
+      twitter: "",
+    },
+    description: "",
+  },
   aledbf: {
     name: "Manuel Alejandro de Brito Fontes",
     socialProfiles: {

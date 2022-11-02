@@ -45,11 +45,19 @@ The VPC needs public and private subnets. All managed node groups and Gitpod ser
 If installing Calico, follow their [installation steps](https://projectcalico.docs.tigera.io/getting-started/kubernetes/managed-public-cloud/eks) and ensure you modify the `hostNetwork: True` option on the cert-manager installation options later.
 
 </div>
+<div slot="azure">
+
+Azure automatically provisions [Azure public load balancers](https://docs.microsoft.com/en-us/azure/aks/load-balancer-standard) that load balance public Gitpod services and provide public Internet connectivity for Gitpod's workloads. No additional configuration is required.
+
+</div>
+
 </CloudPlatformToggle>
 
 ### External DNS
 
 You also need to configure your **DNS server**. If you have your own DNS server for your domain, make sure the domain with all wildcards points to your load balancer.
+
+Creating a dedicated DNS zone is recommended when using cert-manager or external-dns but is not required. A pre-existing DNS zone may be used as long as the **cert-manager** and/or **external-dns** services are authorized to manage DNS records within that zone. If you are providing your own TLS certificates and will manually create A records pointing to Gitpod's public load balancer IP addresses then creating a zone is unnecessary.
 
 <CloudPlatformToggle id="cloud-platform-toggle-dns">
 <div slot="gcp">
@@ -202,11 +210,72 @@ helm upgrade \
 With Route53 created, you can now proceed to install cert-manager. Cert-manager is needed for Gitpod's internal networking even if you are managing DNS yourself.
 
 </div>
+
+<div slot="azure">
+
+This section will create an Azure managed zone, grant the AKS cluster permission to manage records in that zone, and install external-dns.
+
+Begin by creating a new Azure managed zone. For example, if you plan on hosting Gitpod at `gitpod.svcs.example.com` then create a managed zone called `svcs.example.com`.
+
+```bash
+DOMAIN_NAME="svcs.example.com"
+az network dns zone create --name $DOMAIN_NAME --resource-group $RESOURCE_GROUP
+```
+
+Authorize the AKS cluster to control DNS records in the zone:
+
+```bash
+ZONE_ID=$(az network dns zone show --name "${DOMAIN_NAME}" --resource-group "${RESOURCE_GROUP}" --query "id" -o tsv)
+KUBELET_OBJECT_ID=$(az aks show --name "${CLUSTER_NAME}" --resource-group "${RESOURCE_GROUP}" --query "identityProfile.kubeletidentity.objectId" -o tsv)
+
+az role assignment create \
+    --assignee "${KUBELET_OBJECT_ID}" \
+    --role "DNS Zone Contributor" \
+    --scope "${ZONE_ID}"
+```
+
+> This role assignment uses [AKS Kubelet Identity](https://cert-manager.io/docs/configuration/acme/dns01/azuredns/#managed-identity-using-aks-kubelet-identity)
+> to authorizes the entire AKS cluster to manage DNS records in the given zone, including cert-manager and external-dns.
+
+Look up the AKS kubelet client identity; external-dns will use this identity when authenticating to the Azure API.
+
+```bash
+KUBELET_CLIENT_ID=$(az aks show --name "${CLUSTER_NAME}" --resource-group "${RESOURCE_GROUP}" --query "identityProfile.kubeletidentity.clientId" -o tsv)
+```
+
+Then install the external-dns Helm chart:
+
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+helm upgrade \
+    --install \
+    --atomic \
+    --wait \
+    --cleanup-on-fail \
+    --create-namespace \
+    --namespace external-dns \
+    --reset-values \
+    --set provider=azure \
+    --set azure.resourceGroup="${RESOURCE_GROUP}" \
+    --set azure.subscriptionId="${AZURE_SUBSCRIPTION_ID}" \
+    --set azure.tenantId="${AZURE_TENANT_ID}" \
+    --set azure.useManagedIdentityExtension=true \
+    --set azure.userAssignedIdentityID="${KUBELET_CLIENT_ID}" \
+    --set logFormat=json \
+    external-dns \
+    bitnami/external-dns
+```
+
+</div>
+
 </CloudPlatformToggle>
 
 ### cert-manager
 
-Gitpod secures its internal communication between components with **TLS certificates**. You need to have a **[cert-manager](https://cert-manager.io/)** instance in your cluster that is responsible for issuing these certificates. There are different ways to install cert-manager. If you don’t have a cert-manager instance in your cluster, please refer to the [cert-manager docs](https://cert-manager.io/docs/) to choose an installation method.
+Gitpod uses TLS secure external traffic bound for Gitpod as well as identifying, authorizing, and securing internal traffic between Gitpod's internal components. While you can provide your own TLS certificate for securing external connections to Gitpod, cert-manager is required to generate internal TLS certificates.
+
+Refer to the [cert-manager DNS01 docs](https://cert-manager.io/docs/configuration/acme/dns01/) for more information.
 
 <CloudPlatformToggle>
 <div slot="gcp">
@@ -265,11 +334,36 @@ kubectl patch deployment cert-manager -n cert-manager -p \
 ```
 
 </div>
+
+<div slot="azure">
+
+Install cert-manager with the following command:
+
+```bash
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm upgrade \
+    --install \
+    --atomic \
+    --wait \
+    --cleanup-on-fail \
+    --create-namespace \
+    --namespace='cert-manager' \
+    --reset-values \
+    --set installCRDs=true \
+    --set 'extraArgs={--dns01-recursive-nameservers-only=true,--dns01-recursive-nameservers=8.8.8.8:53\,1.1.1.1:53}' \
+    cert-manager \
+    jetstack/cert-manager
+```
+
+</div>
 </CloudPlatformToggle>
 
 ### TLS certificate
 
-In this reference architecture, we use cert-manager to also create **TLS certificates for the Gitpod domain**. Since we need wildcard certificates for the subdomains, you must use the [DNS-01 challenge](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge). In case you already have TLS certificates for your domain, you can skip this step and use your own certificates during the installation.
+In this reference architecture, we use cert-manager to also create **TLS certificates for the Gitpod domain**. Since we need wildcard certificates for the subdomains, you must use the [DNS-01 challenge](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge).
+
+Using a certificate issued by Let's Encrypt is recommended as it minimizes overhead involving TLS certificates and managing CA certificate trust, but is not required. If you already have TLS certificates for your Gitpod installation with suitable DNS names you can skip this step and use your own certificates during the installation.
 
 <CloudPlatformToggle id="cloud-platform-toggle-cert-manager-tls">
 <div slot="gcp">
@@ -349,4 +443,44 @@ spec:
 > See the [AWS Route53 endpoints and quotas documentation](https://docs.aws.amazon.com/general/latest/gr/r53.html) for more information.
 
 </div>
+
+<div slot="azure">
+
+This section will create a cert-manager ClusterIssuer that will generate publicly trusted certificates using Let's Encrypt.
+
+First, determine your Azure subscription ID. You can typically determine your subscription ID from your Azure CLI credentials.
+
+```bash
+AZURE_SUBSCRIPTION_ID="$(az account subscription list --query '[0].subscriptionId' --output tsv)"
+```
+
+Then create a file named `issuer.yaml` containing the following content, expanding the `$AZURE_SUBSCRIPTION_ID`, `$RESOURCE_GROUP`, and `$DOMAIN_NAME` variables:
+
+```yaml
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: gitpod-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: issuer-account-key
+    solvers:
+      - dns01:
+          azureDNS:
+            subscriptionID: $AZURE_SUBSCRIPTION_ID
+            resourceGroupName: $RESOURCE_GROUP
+            hostedZoneName: $DOMAIN_NAME
+```
+
+Then apply the ClusterIssuer resource:
+
+```bash
+kubectl apply -f issuer.yaml
+```
+
+> This example ClusterIssuer depends on [Azure Managed Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) to authorize requests from cert-manager to the AzureDNS API.
+> Refer to the [cert-manager AzureDNS DNS01](https://cert-manager.io/docs/configuration/acme/dns01/azuredns/) documentation for more information on cert-manager API authorization.
+
 </CloudPlatformToggle>

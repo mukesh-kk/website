@@ -178,7 +178,10 @@ The inverse is supported, too. I.e. clicking the file icon on the top right of a
 
 In addition to Markdown, Gitpod now also supports previewing AsciiDoc as you type.
 
-![asciidoc](../../../../../static/images/docs/release-notes/2019-02-15/asciidoc-support.gif)
+<figure>
+<video controls playsinline autoplay loop muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="ASCIIdoc Support" src="/images/docs/release-notes/2019-02-15/asciidoc-support.webm" type="video/webm"></video>
+    <figcaption>ASCIIdoc Support</figcaption>
+</figure>
 
 ## Many Bugfixes, small features and other improvements
 

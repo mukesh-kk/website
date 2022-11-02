@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Email, EmailToType } from "$lib/api/api";
+  import type { EmailToType } from "$lib/api/api";
 
   import InputsHalf from "$lib/components/contact/inputs-half.svelte";
   import Input from "$lib/components/ui-library/input/input.svelte";
@@ -58,19 +58,15 @@
     }
     isSubmissionInProgress = true;
 
-    const email: Email = {
-      toType,
-      data: {
-        name: formData.name.value,
-        email: formData.email.value,
-        company: formData.companyWebsite.value,
-      },
-    };
-
     try {
-      const response = await fetch("/api/submit-form", {
+      const response = await fetch("/api/register-webinar", {
         method: "POST",
-        body: JSON.stringify(email),
+        body: JSON.stringify({
+          type: toType,
+          name: formData.name.value,
+          email: formData.email.value,
+          company: formData.companyWebsite.value,
+        }),
       });
 
       if (response.ok) {

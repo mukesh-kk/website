@@ -212,8 +212,8 @@ export const MENU: MenuEntry[] = [
     M("PyCharm", "references/ides-and-editors/pycharm", false, [], "beta"),
     M("CLion", "references/ides-and-editors/clion", false, [], "soon"),
     M("Rider", "references/ides-and-editors/rider", false, [], "soon"),
-    M("RubyMine", "references/ides-and-editors/rubymine", false, [], "soon"),
-    M("WebStorm", "references/ides-and-editors/webstorm", false, [], "soon"),
+    M("RubyMine", "references/ides-and-editors/rubymine", false, [], "beta"),
+    M("WebStorm", "references/ides-and-editors/webstorm", false, [], "beta"),
     M(
       "Local Companion",
       "references/ides-and-editors/local-companion",

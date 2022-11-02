@@ -239,7 +239,7 @@
 <div class="wrapper flex flex-col lg:flex-row">
   <Card
     size="small"
-    class="shadow-normal p-xx-small sm:py-small sm:px-x-small md:p-medium lg:mb-xx-large md:min-w-[650px] !max-w-[832px]"
+    class="shadow-normal p-xx-small sm:py-small sm:px-x-small md:p-medium lg:mb-xxx-large md:min-w-[650px] !max-w-[832px]"
     styles="margin-top: 0"
     style="flex: 0 0 65%;"
   >

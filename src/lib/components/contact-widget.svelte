@@ -187,6 +187,7 @@
         on:click={() => {
           areButtonsShown = !areButtonsShown;
         }}
+        title="Contact support"
       >
         <div class="icon-wrapper" bind:this={iconWrapper}>
           <svelte:component

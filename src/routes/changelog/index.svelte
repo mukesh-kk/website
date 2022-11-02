@@ -32,8 +32,8 @@
     keywords:
       "updates, product, changes, features, releases, bugs, fixes, version, updates, improvements",
     // Update this each monthly release and enter the changelog URL into https://cards-dev.twitter.com/validator to force twitter to refresh it
-    image: "images/changelog/2022-09-30-og.png",
-    imageTwitter: "images/changelog/2022-09-30-og.png",
+    image: "images/changelog/2022-10-31-og.jpg",
+    imageTwitter: "images/changelog/2022-10-31-og.jpg",
   }}
 />
 
@@ -60,14 +60,14 @@
 </div>
 
 <div
-  class="flex flex-col space-y-x-large md:space-y-xx-large divide-y divide-divider"
+  class="flex flex-col space-y-x-large md:space-y-xxx-large divide-y divide-divider"
 >
   {#each changelogEntries as { date, title, content, image, alt }, i}
     <div
-      class="changelog-entry flex flex-col md:flex-row last:pb-x-large md:last:pb-xx-large {i !==
+      class="changelog-entry flex flex-col md:flex-row last:pb-x-large md:last:pb-xxx-large {i !==
         0 &&
         i !== changelogEntries.length &&
-        'pt-x-large md:pt-xx-large'}"
+        'pt-x-large md:pt-xxx-large'}"
     >
       <ChangelogDate
         date={formatDate(date)}

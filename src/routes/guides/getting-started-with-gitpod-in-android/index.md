@@ -25,7 +25,7 @@ To get started, all you need is a browser. I use the [Kiwi](https://kiwibrowser.
 - There is a chromium [bug](https://bugs.chromium.org/p/chromium/issues/detail?id=1202651) with mouse cursor hover. If you face this bug, you must toggle off your installed accessibility services while using Kiwi.
 - I recommend toggling off “**Prefer native applications**” on Kiwi from its **Settings > Accessibility**.
 <figure>
-<video preload="metadata" controls muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Toggle off auto native app opening" src="/images/guides/getting-started-with-gitpod-in-android/kiwi_settings.mp4"></video>
+<video preload="metadata" controls muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Toggle off auto native app opening" src="/images/guides/getting-started-with-gitpod-in-android/kiwi_settings.mp4" type="video/webm"></video>
 </figure>
 
 ![conversation 1](../../../../static/images/guides/getting-started-with-gitpod-in-android/convo.svg "kumquat asks")
@@ -70,7 +70,7 @@ We can also utilize some software-based things; these can be helpful whether you
 
 - Increase the **Smallest/Minimal Weight** on your phone's [**Developer options**](https://developer.android.com/studio/debug/dev-options#enable). It can be also referred as [DPI](https://en.wikipedia.org/wiki/Dots_per_inch). It will make things take less space on your tiny screen when the value is increased. **Please remember that it can brick some devices when increased too much, so don't go too far.**
 <figure>
-<video preload="metadata" controls muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="modify DPI without root" src="/images/guides/getting-started-with-gitpod-in-android/modify_dpi.mp4"></video>
+<video preload="metadata" controls muted class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="modify DPI without root" src="/images/guides/getting-started-with-gitpod-in-android/modify_dpi.mp4" type="video/webm"></video>
 </figure>
 
 # Extra Tips & tricks

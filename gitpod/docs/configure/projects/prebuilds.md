@@ -47,12 +47,10 @@ To use global installs like 'npm install -g', we suggest using a custom Dockerfi
 
 To create a new project:
 
-- Go to https://gitpod.io/new.
+- Click on _New Project_ in the Projects page of one your teams.
 - If necessary, you will be prompted for additional authorization to install and configure the Gitpod GitHub app,
   so that Gitpod can watch your repositories and trigger prebuilds.
 - Select the repository for your project.
-- To share projects with other users, create the project in a team, otherwise use your own account.
-- A sample `.gitpod.yml` with an init task will be included in your next workspace (unless the file already exists.)
 
 #### Project environment variables
 
