@@ -19,7 +19,7 @@ On any given day, you may be involved in tasks such as the following:
 
 For each of these tasks, you start a clean, ephemeral Gitpod workspace. You can even start **multiple workspaces in parallel**. For example, while you're working on a feature, you can start a second workspace to review a production hotfix. When the review is complete, you close the browser tab of that workspace and continue to work on your feature. This works for any GitLab, GitHub or Bitbucket project.
 
-You can learn more about the [Life of a workspace](/docs/introduction/learn-gitpod/workspace-lifecycle).
+You can learn more about the [Life of a workspace](/docs/configure/workspaces/workspace-lifecycle).
 
 `youtube: n7Ca3jHFtZg`
 

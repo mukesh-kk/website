@@ -12,8 +12,8 @@ https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /docs/20_Browser_Extension /docs/configure/user-settings/browser-extension
 /docs/30_workspaces /docs/introduction/learn-gitpod/one-workspace-per-task
 /docs/31_context_urls /docs/introduction/learn-gitpod/context-url
-/docs/32_life_of_workspace /docs/introduction/learn-gitpod/workspace-lifecycle
-/docs/32_Life_of_Workspace /docs/introduction/learn-gitpod/workspace-lifecycle
+/docs/32_life_of_workspace /docs/configure/workspaces/workspace-lifecycle
+/docs/32_Life_of_Workspace /docs/configure/workspaces/workspace-lifecycle
 /docs/33_sharing_and_collaboration /docs/configure/workspaces/collaboration
 /docs/33_Sharing_and_Collaboration /docs/configure/workspaces/collaboration
 /docs/34_command_line_interface /docs/references/gitpod-cli
@@ -211,9 +211,9 @@ https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /docs/config-docker /docs/configure/workspaces/workspace-image
 /docs/develop /docs/introduction/learn-gitpod
 /docs/workspaces /docs/introduction/learn-gitpod/one-workspace-per-task
-/docs/the-life-of-workspace /docs/introduction/learn-gitpod/workspace-lifecycle
-/docs/life-of-workspace /docs/introduction/learn-gitpod/workspace-lifecycle
-/docs/introduction/learn-gitpod/the-life-of-a-workspace /docs/introduction/learn-gitpod/workspace-lifecycle
+/docs/the-life-of-workspace /docs/configure/workspaces/workspace-lifecycle
+/docs/life-of-workspace /docs/configure/workspaces/workspace-lifecycle
+/docs/introduction/learn-gitpod/the-life-of-a-workspace /docs/configure/workspaces/workspace-lifecycle
 /docs/references/product-compatibility-matrix /docs/references/compatibility
 /docs/references/roadmap /docs/help/public-roadmap
 /docs/checkout-location /docs/configure/workspaces

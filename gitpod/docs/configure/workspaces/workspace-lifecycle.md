@@ -1,5 +1,5 @@
 ---
-section: learn-gitpod
+section: workspaces
 title: The life of a workspace
 ---
 
@@ -14,7 +14,7 @@ Gitpod brings a new way to think about your developer environment.
 
 Rather than having a single local environment that you update, with Gitpod you have many "workspaces"—run them in parallel if you need!
 
-We encourage you to move all project configuration into code (see [.gitpod.yml](/docs/introduction/learn-gitpod/gitpod-yaml)), so you open new workspaces easily, and "throw them away" (see [Workspace Deleted](/docs/introduction/learn-gitpod/workspace-lifecycle#workspace-deleted)) when you're finished with your task.
+We encourage you to move all project configuration into code (see [.gitpod.yml](/docs/introduction/learn-gitpod/gitpod-yaml)), so you open new workspaces easily, and "throw them away" (see [Workspace Deleted](/docs/configure/workspaces/workspace-lifecycle#workspace-deleted)) when you're finished with your task.
 
 ## Workspace Loading States
 
