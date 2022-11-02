@@ -62,6 +62,12 @@ Lorem Ipsum
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/delete-workspace.png" alt="Delete workspace from dashboard" loading="lazy"/>
 
+<!-- TODO -->
+
+### Workspace Snapshot
+
+Lorem Ipsum
+
 <!-- TODO: How often is this configured for in Self-Hosted -->
 
 ### FAQ
