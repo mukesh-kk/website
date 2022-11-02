@@ -54,19 +54,11 @@ Lorem Ipsum
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/restart-workspace.png" alt="Restart workspace from webapp" loading="lazy"/>
 
-<!-- TODO -->
-
-### Workspace Delete
-
-Lorem Ipsum
-
-<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/delete-workspace.png" alt="Delete workspace from dashboard" loading="lazy"/>
-
-<!-- TODO -->
-
 ### Workspace Snapshot
 
-Lorem Ipsum
+You can create a snapshot of a workspace to save its state. This is useful if you want to keep a workspace around for a longer time, or if you want to share it with others. Read more about [Snapshots](/docs/configure/workspaces/collaboration).
+
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/gitpod-snapshot.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
 
 <!-- TODO: How often is this configured for in Self-Hosted -->
 
