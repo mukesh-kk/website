@@ -48,6 +48,20 @@ The following describes each these states and their attributes.
 
 > **Note:** Pinned workspaces are never automatically deleted.
 
+### Workspace Restart
+
+Lorem Ipsum
+
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/restart-workspace.png" alt="Restart workspace from webapp" loading="lazy"/>
+
+<!-- TODO -->
+
+### Workspace Delete
+
+Lorem Ipsum
+
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/delete-workspace.png" alt="Delete workspace from dashboard" loading="lazy"/>
+
 <!-- TODO: How often is this configured for in Self-Hosted -->
 
 ### FAQ
@@ -78,7 +92,7 @@ The following describes each these states and their attributes.
 -
 -->
 
-### 1: Establishing Workspace Context
+### Establishing Workspace Context
 
 All workspaces start with from a single Git "context", e.g. [GitHub](/docs/configure/authentication/github), [GitLab](/docs/configure/authentication/gitlab), [Bitbucket](/docs/configure/authentication/bitbucket). If there is already a running workspace from the same git context, you will be prompted to open the already running workspace or given the option to start a new one.
 
@@ -86,7 +100,7 @@ All workspaces start with from a single Git "context", e.g. [GitHub](/docs/confi
 
 See [Context URLs](/docs/introduction/learn-gitpod/context-url) for more.
 
-### 2: Establish Workspace Image
+### Establish Workspace Image
 
 Gitpod checks for the existence of a [Workspace Image](/docs/configure/workspaces/workspace-image) via the [`image`](/docs/references/gitpod-yml#image) property in a committed `.gitpod.yml`, which is taken from the Git context of the workspace.
 
@@ -102,15 +116,15 @@ If no `image` property is supplied, workspaces default to the [**workspace-full*
 
 See [Workspace Images](https://github.com/gitpod-io/workspace-images) for more.
 
-### 3: Build Workspace Image
+### Build Workspace Image
 
 If your Workspace Image cache isn't available, the image will be built.
 
-### 4: Provision Workspace
+### Provision Workspace
 
 Once the Git context is established, and the Workspace Image is built, a workspace is provisioned.
 
-### 5: Clone Git repo(s)
+### Clone Git repo(s)
 
 The specified Git context is cloned into the provisioned workspace.
 
@@ -119,7 +133,7 @@ The specified Git context is cloned into the provisioned workspace.
 
 <!-- - `/workspace/.gitpod/ready` file is created after cloning is completed -->
 
-### 4: Install Dotfiles
+### Install Dotfiles
 
 [Dotfiles](/docs/configure/user-settings/dotfiles) allows you to customize workspaces according to your personal needs.
 
@@ -138,7 +152,7 @@ If configured:
 <!-- TODO: More "it will receive a `SIGKILL` error, if it exceeds the limit." to Dotfiles page -->
 <!-- TODO: Logs file can be found at `~/.dotfiles.log` -->
 
-### 5: Execute "Before" Task
+### Execute "Before" Task
 
 <!-- TODO: Should this be "Workspace Tasks"? -->
 
@@ -154,7 +168,7 @@ If configured:
 
 See [Gitpod prebuilds](/docs/configure/projects/prebuilds) for more.
 
-### 6: Initialize IDE
+### Initialize IDE
 
 Your chosen IDE or editor is started.
 
@@ -168,13 +182,13 @@ This step is done in the background (i.e. non-blocking) so your IDE can start ah
 
 **Your selected IDE is launched** 🎉
 
-### 7: Execute "Command" Task
+### Execute "Command" Task
 
 Once the IDE is started, any `command` tasks are now executed.
 
 See [Workspace Tasks](/docs/configure/workspaces/tasks) for more.
 
-### 8: Stop Workspace
+### Stop Workspace
 
 <!-- TODO: Find correct Position for screenshot  -->
 
@@ -190,20 +204,6 @@ So what happens to your workspace files? The following applies:
 
 - [All files inside `/workspace` directory is persisted.](#changes-are-saved)
 - [Garbase collection](#garbage-collection)
-
-### 8: Restart Workspace
-
-Lorem Ipsum
-
-<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/restart-workspace.png" alt="Restart workspace from webapp" loading="lazy"/>
-
-<!-- TODO -->
-
-### 8: Delete Workspace
-
-Lorem Ipsum
-
-<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/delete-workspace.png" alt="Delete workspace from dashboard" loading="lazy"/>
 
 <!-- TODO -->
 
