@@ -28,6 +28,8 @@
 
   const selfHostingSubject = "Self-hosting Gitpod";
 
+  const earlyAccessSubject = "Early Access Request";
+
   const otherSubject = "Other";
   const subjects = [
     "Question",
@@ -36,11 +38,14 @@
     studentUnlimitedSubject,
     selfHostingSubject,
     "Open Source Sponsorship",
+    earlyAccessSubject,
     "Security",
     otherSubject,
   ];
 
   let isCloudPlatformsSelectShown = false;
+
+  let isEarlyAccessSubjectSelected = false;
 
   let cloudInfrastructure = {
     el: null,
@@ -112,6 +117,16 @@
 
   $: isSelfHostedSelected =
     isCloudPlatformsSelectShown && formData.cloudInfrastructure;
+
+  // TODO: Provide more form options for future early access features
+
+  // set isEarlyAccessSubjectSelected to true if earlyAccess subject is selected
+  // and false if any other subject is selected
+  $: if (formData.selectedSubject.value === earlyAccessSubject) {
+    isEarlyAccessSubjectSelected = true;
+  } else {
+    isEarlyAccessSubjectSelected = false;
+  }
 
   let isFormDirty = false;
   let isEmailSent = false;
@@ -379,21 +394,41 @@
               </InputsHalf>
             {/if}
             <div>
-              <Textarea
-                id="message"
-                label="Your message*"
-                name="message"
-                hasError={isFormDirty && !formData.message.valid}
-                bind:value={formData.message.value}
-                bind:element={formData.message.el}
-                on:change={() => {
-                  formData.message.valid =
-                    formData.message.value &&
-                    formData.message.el.validity.valid;
-                }}
-                cols="30"
-                rows="10"
-              />
+              {#if isEarlyAccessSubjectSelected}
+                <Textarea
+                  label="Your message*"
+                  hasError={isFormDirty && !formData.message.valid}
+                  id="message"
+                  name="message"
+                  value="Please give me early access to Usage Based Pricing."
+                  bind:element={formData.message.el}
+                  on:change={() => {
+                    formData.message.valid =
+                      formData.message.value &&
+                      formData.message.el.validity.valid;
+                  }}
+                  type="text"
+                  autocomplete="message"
+                  rows="5"
+                  class="max-w-[45rem]"
+                />
+              {:else}
+                <Textarea
+                  id="message"
+                  label="Your message*"
+                  name="message"
+                  hasError={isFormDirty && !formData.message.valid}
+                  bind:value={formData.message.value}
+                  bind:element={formData.message.el}
+                  on:change={() => {
+                    formData.message.valid =
+                      formData.message.value &&
+                      formData.message.el.validity.valid;
+                  }}
+                  cols="30"
+                  rows="10"
+                />
+              {/if}
             </div>
             <div>
               <Checkbox
