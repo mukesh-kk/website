@@ -402,11 +402,6 @@
                   name="message"
                   value="Please give me early access to Usage Based Pricing."
                   bind:element={formData.message.el}
-                  on:change={() => {
-                    formData.message.valid =
-                      formData.message.value &&
-                      formData.message.el.validity.valid;
-                  }}
                   type="text"
                   autocomplete="message"
                   rows="5"
