@@ -10,6 +10,8 @@ title: The life of a workspace
 
 # Workspace Lifecycle
 
+Gitpod brings a new way to think about your developer environment. Rather than having a single local environment that you update, with Gitpod you can have many "workspaces".
+
 <!--
 
 ! If you update the diagrams, make sure you replace the above, immutable URL !
@@ -20,25 +22,32 @@ Source for diagrams:
 
 - Workspace Loading States: https://excalidraw.com/#json=YhAs2UxIgxluxARhW65U4,Ndh2R9QxUHpSI_UY9jEfyw
 -->
-<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-state-transitions.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
 
-Gitpod brings a new way to think about your developer environment.
+## Introduction to Workspace States
 
-Rather than having a single local environment that you update, with Gitpod you have many "workspaces"—run them in parallel if you need!
+1. 🟠 **Starting** - Workspace provisioning and loading, inaccessible.
+2. 🟢 **Running** - Workspace loaded, accessible for developing within.
+3. 🔴 **Stopped** - Workspace no longer provisioned (file system preserved).
 
-We encourage you to move all project configuration into code (see [.gitpod.yml](/docs/introduction/learn-gitpod/gitpod-yaml)), so you open new workspaces easily, and "throw them away" (see [Workspace Deleted](/docs/configure/workspaces/workspace-lifecycle#workspace-deleted)) when you're finished with your task.
+> **Important:** Only files in the `workspace` directory are kept between state transitions.
 
-## How does a Workspace start?
+### Viewing Workspace State
 
-<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-loading-states.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
-
-When you open a workspace, workspace can be in different states. The state of the workspace is indicated by the color of the workspace indicator in the left to that workspace in the [dashboard](https://gitpod.io/workspaces).
+The state of the workspace is indicated by the color of the workspace indicator. For example, in the Gitpod [dashboard](https://gitpod.io/workspaces), workspace state is shown on the workspace list.
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/dashboard-indicator.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
 
+_An example running workspace_
+
+## Workspace State Transitions
+
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-state-transitions.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
+
+- [Workspace Initilaizing](#workspace-initializing)
+
 The following describes each of these states and their attributes.
 
-### Workspace initializing
+### Workspace Starting
 
 When you open a workspace, it will be in the "initializing" state. This means that the workspace is being created and the initialization process is running.
 
@@ -46,30 +55,23 @@ When you open a workspace, it will be in the "initializing" state. This means th
 - Source control is downloaded into the workspace.
 - If configured, a prebuild image is used.
 
-### Workspace running
+### Workspace Running
 
 - An active container is provisioned within Gitpod.
 - Workspace can be accessed immediately without waiting.
 
-### Workspace stop
+### Workspace Stopped
 
 - There is no active workspace in Gitpod.
 - All files and directories are preserved.
 - Uses the same workspace ID when restarted.
 - A start is required before the workspace can be used.
 
-### Workspace deleted
+## Other Workspace States
 
-- Workspaces are typically deleted after 2 weeks
+### Workspace Restart
 
-> **Note:** Pinned workspaces are never automatically deleted.
-
-### Workspace restart
-
-There is no restart button in the UI. Instead, you can do the following to restart a workspace:
-
-- Stop the workspace, if it is running.
-- Start the workspace again.
+To restart a workspace initiate a stop of the workspace followed by a start.
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/restart-workspace.png" alt="Restart workspace from webapp" loading="lazy"/>
 
@@ -79,21 +81,28 @@ You can create a snapshot of a workspace to save its state. This is useful if yo
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/gitpod-snapshot.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
 
-<!-- TODO: How often is this configured for in Self-Hosted -->
+### Workspace Pinned
 
-### FAQ
+A pinned workspace is never deleted.
 
-- **How can you restart a workspace?** There is no official "restart" of a workspace. To restart a workspace stop and start your workspace.
-
-- **What is "Workspace Pinning"?** A pinned workspace is never deleted. You can pin a workspace via the dashboard.
-
-<!-- TODO: Does pinning need it's own section? -->
+You can pin a workspace via the dashboard.
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/pin-workspace.png" alt="Pin workspace from webapp" loading="lazy"/>
 
-## Workspace loading phases
+### Workspace Deleted
 
-> **Note:** The following loading process applies to **new workspaces** only.
+Workspaces are deleted after 14 days. Pinned workspaces are never deleted automatically.
+
+<!-- TODO: Say how/where a user can see the cycle. -->
+<!-- TODO: Show screenshot of "workspace list" with helper info ("Workspaces that have been stopped for more than 24 hours. Inactive workspaces are automatically deleted after 14 days. Learn more") -->
+
+## Workspace Loading Phases
+
+There are several loading phases as a workspace transitions from started, to running, to stopped. Understanding how Gitpod workspaces loading phases work can help when configuring your project.
+
+> **Note:** Conditional phases are marked with (\*)
+
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-loading-states.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
 
 <!--
 
@@ -109,19 +118,19 @@ You can create a snapshot of a workspace to save its state. This is useful if yo
 -
 -->
 
-### Establishing Workspace Context
+### 1. Establishing Workspace Context
 
-All workspaces start with from a single Git "context", e.g. [GitHub](/docs/configure/authentication/github), [GitLab](/docs/configure/authentication/gitlab), [Bitbucket](/docs/configure/authentication/bitbucket). If there is already a running workspace from the same git context, you will be prompted to open the already running workspace or given the option to start a new one.
+All workspaces start from a Git "context", e.g. [GitHub](/docs/configure/authentication/github), [GitLab](/docs/configure/authentication/gitlab), [Bitbucket](/docs/configure/authentication/bitbucket).
+
+If there is already a running workspace from the same git context, you will be prompted to open the running workspace or you will be given the option to start a new one.
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-already-exist.png" alt="Workspace Already Exist" loading="lazy"/>
 
 See [Context URLs](/docs/introduction/learn-gitpod/context-url) for more.
 
-### Establish Workspace Image
+### 2. Establish Workspace Image
 
-Gitpod checks for the existence of a [Workspace Image](/docs/configure/workspaces/workspace-image) via the [`image`](/docs/references/gitpod-yml#image) property in a committed `.gitpod.yml`, which is taken from the Git context of the workspace.
-
-If no `image` property is supplied, workspaces default to the [**workspace-full**](https://hub.docker.com/r/gitpod/workspace-full) image.
+Gitpod checks for the existence of a [workspace image](/docs/configure/workspaces/workspace-image) via the [`image`](/docs/references/gitpod-yml#image) property in a committed `.gitpod.yml`, which is taken from the Git context of the workspace. If no image property is supplied, workspaces default to the [**workspace-full**](https://hub.docker.com/r/gitpod/workspace-full) image.
 
 <!-- TODO: Look into OCI compatibility https://github.com/opencontainers/image-spec -->
 
@@ -133,15 +142,17 @@ If no `image` property is supplied, workspaces default to the [**workspace-full*
 
 See [Workspace Images](https://github.com/gitpod-io/workspace-images) for more.
 
-### Build Workspace Image
+### 3. \*Build Workspace Image
 
 If your Workspace Image cache isn't available, the image will be built.
 
-### Provision Workspace
+> **Conditional:** If a Prebuild is configured, this phase is skipped.
+
+### 4. Provision Workspace
 
 Once the Git context is established, and the Workspace Image is built, a workspace is provisioned.
 
-### Clone Git repo(s)
+### 5. Clone Git repo(s)
 
 The specified Git context is cloned into the provisioned workspace.
 
@@ -150,7 +161,7 @@ The specified Git context is cloned into the provisioned workspace.
 
 <!-- - `/workspace/.gitpod/ready` file is created after cloning is completed -->
 
-### Install Dotfiles
+### 6. \*Install Dotfiles
 
 [Dotfiles](/docs/configure/user-settings/dotfiles) allows you to customize workspaces according to your personal needs.
 
@@ -169,7 +180,9 @@ If configured:
 <!-- TODO: More "it will receive a `SIGKILL` error, if it exceeds the limit." to Dotfiles page -->
 <!-- TODO: Logs file can be found at `~/.dotfiles.log` -->
 
-### Execute "Before" Task
+> **Conditional:** Only runs if Dotfiles are configured for the user.
+
+### 7. \*Execute `before` Task
 
 <!-- TODO: Should this be "Workspace Tasks"? -->
 
@@ -185,7 +198,13 @@ If configured:
 
 See [Gitpod prebuilds](/docs/configure/projects/prebuilds) for more.
 
-### Initialize IDE
+> **Conditional:** Only runs if project `.gitpod.yml` contains a `before` definition.
+
+### 7. \*Execute `init` Task
+
+> **Conditional:** Only runs if project `.gitpod.yml` contains a `init` definition.
+
+### 8. Initialize IDE
 
 Your chosen IDE or editor is started.
 
@@ -199,13 +218,15 @@ This step is done in the background (i.e. non-blocking) so your IDE can start ah
 
 **Your selected IDE is launched** 🎉
 
-### Execute "Command" Task
+### 9. \*Execute "Command" Task
 
 Once the IDE is started, any `command` tasks are now executed.
 
 See [Workspace Tasks](/docs/configure/workspaces/tasks) for more.
 
-### Stop Workspace
+> **Conditional:** Only runs if project `.gitpod.yml` contains a `command` definition.
+
+### 10. Stop Workspace
 
 <!-- TODO: Find correct Position for screenshot  -->
 
