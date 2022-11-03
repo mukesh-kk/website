@@ -202,7 +202,7 @@ test("Markdown block injection works correctly", () => {
 });
 
 test("Categorizing PRs works correctly", () => {
-  const samplePr = {
+  const samplePrLabelled = {
     title: "[code] Make VS Code -20% faster",
     body: "This PR makes VS Code 20% slower by doing X, Y and Z.\n\n## Release notes\n\nHello",
     labels: {
@@ -217,10 +217,32 @@ test("Categorizing PRs works correctly", () => {
     },
   };
 
-  const categorizedPr = findCategoryForPr(samplePr);
-  expect(categorizedPr.categories.map((cat) => cat.path)).toContain(
+  const categorizedPrLabelled = findCategoryForPr(samplePrLabelled);
+  expect(categorizedPrLabelled.categories.map((cat) => cat.path)).toContain(
     "vscode.browser"
   );
+
+  const samplePrDescriptionForced = {
+    title: "Make VS Code -20% faster",
+    body: "This PR makes VS Code 20% slower by doing X, Y and Z.\n\n## Release notes\n\nCategory: VS Code Browser, JetBrains\nHello",
+    labels: {
+      nodes: [
+        {
+          name: "team-ide",
+        },
+        {
+          name: "editor: code (browser)",
+        },
+      ],
+    },
+  };
+
+  const categorizedPrDescriptionForced = findCategoryForPr(
+    samplePrDescriptionForced
+  );
+  expect(
+    categorizedPrDescriptionForced.categories.map((cat) => cat.path)
+  ).toContain("jetbrains");
 });
 
 test("Version parsing from metadata works correctly", async () => {
@@ -255,7 +277,8 @@ test("Version parsing from metadata works correctly", async () => {
   expect(data.ides.vscode.version).toBe(metadata.versions.ides.vscode.version);
 });
 
-test("Getting a past changelog works correctly", async () => {
+//todo(ft): un-skip when we unify SaaS and self-hosted changelogs
+test.skip("Getting a past changelog works correctly", async () => {
   const releaseDate = "2022-10-31";
 
   expect(await getPastChangelogName(releaseDate, 0)).toBe(releaseDate);

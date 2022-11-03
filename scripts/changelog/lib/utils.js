@@ -233,45 +233,100 @@ const doesSatisfyCategory = (pr, category) => {
   return { satisfies: byLabel || byPrefix, byLabel, byPrefix };
 };
 
+const parseReleaseNoteCategory = (releaseNote) => {
+  const categoryMetaRegex = /^Category: ?.*/g;
+  const categoryMeta = releaseNote.match(categoryMetaRegex);
+
+  if (!categoryMeta) return null;
+
+  const categories = categoryMeta[0]
+    .replace("Category: ", "")
+    .split(",")
+    .map((category) => category.trim());
+
+  return categories;
+};
+
 // Get all categories / and or subcategories that match the PR with labels or prefix
 export const findCategoryForPr = (pr, categories = prCategories) => {
   const matchingPaths = [];
-  categories.forEach((category, categoryIndex) => {
-    if (category.categories) {
-      for (const [
-        subCategoryIndex,
-        subcategory,
-      ] of category.categories.entries()) {
-        const { satisfies } = doesSatisfyCategory(pr, subcategory);
-        if (satisfies) {
-          matchingPaths.push({
-            path: `${category.partial}.${subcategory.partial}`,
-            category: subcategory,
-          });
-          categories[categoryIndex].categories[subCategoryIndex].prs.push(pr);
-        }
-      }
-    }
 
-    const { satisfies, byLabel, byPrefix } = doesSatisfyCategory(pr, category);
-    if (satisfies) {
-      if (!byLabel && byPrefix && category.labels.length > 0) {
-        console.warn(
-          pr.title,
-          "is categorized as",
-          category.name,
-          "but it doesn't have the label",
-          category.labels.join(", ")
-        );
-      }
-      matchingPaths.push({ path: category.partial, category });
+  // This is used when the user wants to force a category, overriding the inferred selection we make
+  const categoryOverride = parseReleaseNoteCategory(parseReleaseNote(pr));
 
-      // Make sure we didn't already add the PR to a subcategory
-      if (!matchingPaths.some((path) => path.path !== category.partial)) {
+  if (categoryOverride) {
+    categoryOverride.forEach((category) => {
+      const categoryPath = categories.find((cat) => cat.name === category);
+      const categoryIndex = categories.findIndex(
+        (cat) => cat.name === category
+      );
+
+      const subCategoryCategoryIndex = categories.findIndex(
+        (category) =>
+          category.categories &&
+          category.categories.some((sub) => sub.name === category)
+      );
+
+      if (subCategoryCategoryIndex !== -1) {
+        const subCategoryIndex = categories[
+          subCategoryCategoryIndex
+        ].categories.findIndex((sub) => sub.name === category);
+        matchingPaths.push({
+          category: categories[subCategoryCategoryIndex][subCategoryIndex],
+          path: `${categories[subCategoryCategoryIndex].partial}.${categories[subCategoryCategoryIndex].categories[subCategoryIndex].partial}`,
+        });
+        categories[subCategoryCategoryIndex].categories[
+          subCategoryIndex
+        ].prs.push(pr);
+      } else if (categoryPath) {
+        matchingPaths.push({
+          category: categoryPath,
+          path: categoryPath.partial,
+        });
         categories[categoryIndex].prs.push(pr);
       }
-    }
-  });
+    });
+  } else {
+    categories.forEach((category, categoryIndex) => {
+      if (category.categories) {
+        for (const [
+          subCategoryIndex,
+          subcategory,
+        ] of category.categories.entries()) {
+          const { satisfies } = doesSatisfyCategory(pr, subcategory);
+          if (satisfies) {
+            matchingPaths.push({
+              path: `${category.partial}.${subcategory.partial}`,
+              category: subcategory,
+            });
+            categories[categoryIndex].categories[subCategoryIndex].prs.push(pr);
+          }
+        }
+      }
+
+      const { satisfies, byLabel, byPrefix } = doesSatisfyCategory(
+        pr,
+        category
+      );
+      if (satisfies) {
+        if (!byLabel && byPrefix && category.labels.length > 0) {
+          console.warn(
+            pr.title,
+            "is categorized as",
+            category.name,
+            "but it doesn't have the label",
+            category.labels.join(", ")
+          );
+        }
+        matchingPaths.push({ path: category.partial, category });
+
+        // Make sure we didn't already add the PR to a subcategory
+        if (!matchingPaths.some((path) => path.path !== category.partial)) {
+          categories[categoryIndex].prs.push(pr);
+        }
+      }
+    });
+  }
 
   // Filter to only the longest paths, as they are the most specific
   const longestPaths = matchingPaths.filter((category) => {
