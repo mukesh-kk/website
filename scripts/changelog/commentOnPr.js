@@ -3,6 +3,7 @@ import {
   findCategoryForPr,
   generatePrChangelogLine,
   getChangelogPr,
+  parseReleaseNote,
   parseReleaseNoteCategory,
 } from "./lib/utils.js";
 import { prCategories } from "./lib/config.js";
@@ -143,7 +144,7 @@ const main = async () => {
     .flat(2);
 
   const allLabels = [...allCategoryLabels, ...allSubCategoryLabels];
-  const isCategoryOverridden = !!parseReleaseNoteCategory(pr.body);
+  const isCategoryOverridden = !!parseReleaseNoteCategory(parseReleaseNote(pr));
 
   const labelsContributingToCategory = pr.labels.nodes
     .filter((label) => allLabels.includes(label.name))
@@ -168,7 +169,7 @@ const main = async () => {
   comment += "### Category\n";
   if (categories) {
     comment += `${categories}`;
-    comment += `\n\nWe have automatically detected this PR as belonging to the \`${categories}\` category`;
+    comment += `\n\nWe have automatically detected this PR as belonging to the \`${categories}\` category `;
     if (!isCategoryOverridden) {
       comment += `(based on ${
         labelsContributingToCategory.length > 0

@@ -239,6 +239,10 @@ const doesSatisfyCategory = (pr, category) => {
   return { satisfies: byLabel || byPrefix, byLabel, byPrefix };
 };
 
+/**
+ * @param {string} releaseNote
+ * @returns {string[]}
+ */
 export const parseReleaseNoteCategory = (releaseNote) => {
   const categoryMeta = releaseNote.match(categoryMetaRegex);
 
@@ -260,24 +264,28 @@ export const findCategoryForPr = (pr, categories = prCategories) => {
   const categoryOverride = parseReleaseNoteCategory(parseReleaseNote(pr));
 
   if (categoryOverride) {
-    categoryOverride.forEach((category) => {
-      const categoryPath = categories.find((cat) => cat.name === category);
-      const categoryIndex = categories.findIndex(
-        (cat) => cat.name === category
-      );
+    categoryOverride.forEach((categoryLookedFor) => {
+      const isCorrectName = (category) =>
+        category.name.toLowerCase() === categoryLookedFor.toLowerCase();
 
-      const subCategoryCategoryIndex = categories.findIndex(
-        (category) =>
-          category.categories &&
-          category.categories.some((sub) => sub.name === category)
-      );
+      const categoryPath = categories.find(isCorrectName);
+      const categoryIndex = categories.findIndex(isCorrectName);
+
+      console.log(categoryLookedFor, categoryPath);
+
+      const subCategoryCategoryIndex = categories.findIndex((category) => {
+        if (!category.categories) return false;
+        return category.categories.some(isCorrectName);
+      });
 
       if (subCategoryCategoryIndex !== -1) {
-        const subCategoryIndex = categories[
-          subCategoryCategoryIndex
-        ].categories.findIndex((sub) => sub.name === category);
+        const subCategoryIndex =
+          categories[subCategoryCategoryIndex].categories.findIndex(
+            isCorrectName
+          );
         matchingPaths.push({
-          category: categories[subCategoryCategoryIndex][subCategoryIndex],
+          category:
+            categories[subCategoryCategoryIndex].categories[subCategoryIndex],
           path: `${categories[subCategoryCategoryIndex].partial}.${categories[subCategoryCategoryIndex].categories[subCategoryIndex].partial}`,
         });
         categories[subCategoryCategoryIndex].categories[
@@ -342,6 +350,8 @@ export const findCategoryForPr = (pr, categories = prCategories) => {
     // If there are no other paths that start with the current path, it's the longest
     return pathsStartingWithCurrentPath.length === 1;
   });
+
+  console.log(longestPaths);
 
   return { categories: longestPaths, mutatedCategories: categories };
 };

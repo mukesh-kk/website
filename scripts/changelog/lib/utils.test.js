@@ -242,7 +242,7 @@ test("Categorizing PRs works correctly", () => {
   );
   expect(
     categorizedPrDescriptionForced.categories.map((cat) => cat.path)
-  ).toContain("jetbrains");
+  ).toContain("vscode.browser", "jetbrains");
 });
 
 test("Version parsing from metadata works correctly", async () => {
