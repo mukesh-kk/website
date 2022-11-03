@@ -10,6 +10,18 @@ title: The life of a workspace
 
 # Workspace Lifecycle
 
+<!--
+
+! If you update the diagrams, make sure you replace the above, immutable URL !
+
+Source for diagrams:
+
+- Workspace State Transitions: https://excalidraw.com/#json=BkyMQX-KKELQ24ckTwckG,GyFsH4IFgR4ZHietedhbng
+
+- Workspace Loading States: https://excalidraw.com/#json=YhAs2UxIgxluxARhW65U4,Ndh2R9QxUHpSI_UY9jEfyw
+-->
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-state-transitions.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
+
 Gitpod brings a new way to think about your developer environment.
 
 Rather than having a single local environment that you update, with Gitpod you have many "workspaces"—run them in parallel if you need!
@@ -17,6 +29,8 @@ Rather than having a single local environment that you update, with Gitpod you h
 We encourage you to move all project configuration into code (see [.gitpod.yml](/docs/introduction/learn-gitpod/gitpod-yaml)), so you open new workspaces easily, and "throw them away" (see [Workspace Deleted](/docs/configure/workspaces/workspace-lifecycle#workspace-deleted)) when you're finished with your task.
 
 ## How does a Workspace start?
+
+<img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-loading-states.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
 
 When you open a workspace, workspace can be in different states. The state of the workspace is indicated by the color of the workspace indicator in the left to that workspace in the [dashboard](https://gitpod.io/workspaces).
 
