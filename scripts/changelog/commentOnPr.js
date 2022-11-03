@@ -3,6 +3,7 @@ import {
   findCategoryForPr,
   generatePrChangelogLine,
   getChangelogPr,
+  parseReleaseNoteCategory,
 } from "./lib/utils.js";
 import { prCategories } from "./lib/config.js";
 import { getMonthName } from "./lib/dates.js";
@@ -142,6 +143,7 @@ const main = async () => {
     .flat(2);
 
   const allLabels = [...allCategoryLabels, ...allSubCategoryLabels];
+  const isCategoryOverridden = !!parseReleaseNoteCategory(pr.body);
 
   const labelsContributingToCategory = pr.labels.nodes
     .filter((label) => allLabels.includes(label.name))
@@ -166,11 +168,18 @@ const main = async () => {
   comment += "### Category\n";
   if (categories) {
     comment += `${categories}`;
-    comment += `\n\nWe have automatically detected this PR as belonging to the \`${categories}\` category (based on ${
-      labelsContributingToCategory.length > 0
-        ? linkifiedContributingLabels.join(", ")
-        : "the PR title prefix"
-    }). If you feel this is incorrect, please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js), where you can find all of the available categories + the labels and PR title prefixes which we use when categorizing.`;
+    comment += `\n\nWe have automatically detected this PR as belonging to the \`${categories}\` category`;
+    if (!isCategoryOverridden) {
+      comment += `(based on ${
+        labelsContributingToCategory.length > 0
+          ? linkifiedContributingLabels.join(", ")
+          : "the PR title prefix"
+      }).`;
+    } else {
+      comment += `(based on the release note text).`;
+    }
+
+    comment += ` If you feel this is incorrect, please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js), where you can find all of the available categories + the labels and PR title prefixes which we use when categorizing.`;
   } else {
     comment +=
       "⚠️ We have not been able to automatically detect a category for this PR. Please see the [category list](https://github.com/gitpod-io/website/blob/main/scripts/changelog/lib/config.js) for all available categories along with the labels you can use with them. If this PR is left un-categorized, it will be included in the `Fixes and improvements` category at the end of the changelog.";

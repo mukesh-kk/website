@@ -239,7 +239,7 @@ const doesSatisfyCategory = (pr, category) => {
   return { satisfies: byLabel || byPrefix, byLabel, byPrefix };
 };
 
-const parseReleaseNoteCategory = (releaseNote) => {
+export const parseReleaseNoteCategory = (releaseNote) => {
   const categoryMeta = releaseNote.match(categoryMetaRegex);
 
   if (!categoryMeta) return null;
