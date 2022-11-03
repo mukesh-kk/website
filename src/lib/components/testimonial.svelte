@@ -3,7 +3,8 @@
   export let testimonial: Testimonial;
   export let id: string = "";
 
-  const { name, avatar, role, org, text } = testimonial;
+  const { name, avatar, role, org, text, subtext } = testimonial;
+  export let grayscale = true;
 </script>
 
 <style lang="scss">
@@ -48,7 +49,9 @@
   <div
     class="testimonial stroked stroked-light w-96 p-xx-small overflow-hidden rounded-2xl bg-white dark:bg-card transition-shadow duration-300 ease-in-out text-body"
   >
-    <div>{@html text}</div>
+    {#if text}
+      <div>{@html text}</div>
+    {/if}
     <div class="mt-4 flex">
       <div
         class="bg-wrapper p-0.5 h-[55px] w-[55px] flex justify-center items-center rounded-full"
@@ -58,7 +61,7 @@
           alt={name}
           width="50"
           height="50"
-          class="rounded-full filter grayscale"
+          class="rounded-full {grayscale ? 'filter grayscale' : ''}"
         />
       </div>
       <div class="ml-3">
@@ -68,5 +71,10 @@
         <p class="role">{role} {@html org}</p>
       </div>
     </div>
+    {#if subtext}
+      <p class="mt-x-small">
+        {subtext}
+      </p>
+    {/if}
   </div>
 </div>

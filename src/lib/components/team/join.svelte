@@ -11,7 +11,7 @@
 >
   <div slot="content" class="flex flex-col items-center">
     <LinkButton
-      href="https://www.gitpod.io/careers"
+      href="/careers"
       variant="primary"
       size="large"
       class="mt-x-small"

@@ -25,7 +25,7 @@
 </style>
 
 <div
-  class="testimonial stroked py-small px-xx-small stroked-light max-w-sm p-xx-small overflow-hidden rounded-2xl flex flex-col justify-between bg-white dark:bg-card transition-shadow duration-300 ease-in-out text-body"
+  class="testimonial stroked py-x-small px-xx-small stroked-light max-w-sm p-xx-small overflow-hidden rounded-2xl flex flex-col justify-between bg-white dark:bg-card transition-shadow duration-300 ease-in-out text-body"
 >
   <div>
     {#if img}
@@ -33,7 +33,7 @@
     {/if}
     <div>{@html text}</div>
   </div>
-  <div class="mt-4 flex">
+  <div class="mt-x-small flex">
     <div
       class="bg-wrapper p-0.5 h-[55px] w-[55px] flex justify-center items-center rounded-full"
     >
@@ -49,7 +49,7 @@
       <p class="mb-0 font-semibold text-small leading-6 text-important">
         {name}
       </p>
-      <p class="role">{role ? role : ""} @{@html org}</p>
+      <p class="role">{role ? role : ""} {@html org ? org : ""}</p>
     </div>
   </div>
 </div>

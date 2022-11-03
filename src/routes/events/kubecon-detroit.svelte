@@ -1,3 +1,7 @@
+<script context="module" lang="ts">
+  export const prerender = true;
+</script>
+
 <script lang="ts">
   import Header from "$lib/components/events/kubecon-detroit/header.svelte";
   import OurTalks from "$lib/components/events/kubecon-detroit/our-talks.svelte";

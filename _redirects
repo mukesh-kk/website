@@ -1,11 +1,11 @@
 https://blog.gitpod.io/* https://www.gitpod.io/blog/:splat 301!
 https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /blog/gitlab-integration/+ /blog/gitlab-integration
-/careers https://gitpod.crew.work/jobs
 /chat https://discord.com/invite/gitpod
 /code-of-conduct https://github.com/gitpod-io/.github/blob/main/CODE_OF_CONDUCT.md
 /configure/editor /docs/editors/vscode
 /direction https://www.notion.so/gitpod/Gitpod-s-Direction-be35d064c0704fbda61c542b84e07ef6
+/cde https://www.gitpod.io/cde
 /docs/10_getting_started /docs/introduction/getting-started
 /docs/10_Getting_Started /docs/introduction/getting-started
 /docs/20_browser_extension /docs/configure/user-settings/browser-extension

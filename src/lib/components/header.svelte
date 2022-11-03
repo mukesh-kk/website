@@ -22,7 +22,7 @@
 >
   <slot name="top" />
   {#if title}
-    <h1 class="h1 !mb-micro md:!mb-xx-small">{@html title}</h1>
+    <h1 class="h1 !mb-micro md:!mb-x-small">{@html title}</h1>
   {/if}
   {#if text}
     <p class={textClassNames}>{@html text}</p>

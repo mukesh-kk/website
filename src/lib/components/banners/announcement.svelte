@@ -29,9 +29,11 @@
   >
     <span class="flex-1 text-lg text-right">🤝 </span>
     <p class="flex-2 px-4 md:px-2">
-      ⚡ Joint JetBrains x Gitpod webinar on Java remote development | <a
-        href="/webinars/java-remote-development"
-        on:click={closeBanner}>Register now</a
+      🍊 Gitpod raises $25M Series A to build Cloud Development Environments
+      (CDEs) | <a
+        href="/blog/future-of-software-cdes"
+        sveltekit:prefetch
+        on:click={closeBanner}>Read more</a
       >
     </p>
     <div class="flex-1 flex justify-end">

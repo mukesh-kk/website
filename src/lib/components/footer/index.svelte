@@ -41,7 +41,9 @@
             >Getting started</FooterLink
           >
         </li>
-        <li><FooterLink href="/docs">Documentation</FooterLink></li>
+        <li>
+          <FooterLink href="/cde">CDE</FooterLink>
+        </li>
         <li><FooterLink href="/pricing">Pricing</FooterLink></li>
         <li><FooterLink href="/self-hosted">Self-Hosted</FooterLink></li>
         <li><FooterLink href="/customers">Customers</FooterLink></li>
@@ -62,6 +64,7 @@
         </li>
       </Section>
       <Section title="Resources">
+        <li><FooterLink href="/docs">Documentation</FooterLink></li>
         <li><FooterLink href="/community">Community</FooterLink></li>
         <li><FooterLink href="/blog">Blog</FooterLink></li>
         <li><FooterLink href="/changelog">Changelog</FooterLink></li>
@@ -116,11 +119,7 @@
         <li><FooterLink href="/about">About</FooterLink></li>
         <li><FooterLink href="/about/team">Team</FooterLink></li>
         <li>
-          <FooterLink
-            href="https://www.gitpod.io/careers"
-            target="_blank"
-            highlight>Careers</FooterLink
-          >
+          <FooterLink href="/careers" highlight>Careers</FooterLink>
         </li>
         <li><FooterLink href="/contact">Contact</FooterLink></li>
         <li><FooterLink href="/media-kit">Media kit</FooterLink></li>
