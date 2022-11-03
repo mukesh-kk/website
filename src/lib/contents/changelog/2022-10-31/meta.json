@@ -1,0 +1,18 @@
+{
+  "versions": {
+    "ides": {
+      "vscode": {
+        "version": "1.72.3",
+        "commit": "15e7467806334e6bdd73dfbdefebaec2c3c2efeb"
+      },
+      "jetbrains": {
+        "version": "2022.2.3"
+      }
+    },
+    "repos": {
+      "gitpod-io/gitpod-vscode-desktop": {
+        "version": "v0.0.61"
+      }
+    }
+  }
+}
