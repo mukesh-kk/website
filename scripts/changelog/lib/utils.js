@@ -170,11 +170,17 @@ export const replaceContentOfBlock = (blockName, blockContent, fileContent) => {
 };
 
 const prefixRegex = /\[.{1,}\] ?/g;
+const categoryMetaRegex = /^Category: ?.*/g;
+
 export const generatePrChangelogLine = (pr) => {
   let releaseNote = parseReleaseNote(pr);
 
   if (!releaseNote) {
     return null;
+  }
+
+  if (releaseNote.match(categoryMetaRegex)) {
+    releaseNote = releaseNote.replace(categoryMetaRegex, "").trim();
   }
 
   if (releaseNote.match(prefixRegex)) {
@@ -234,7 +240,6 @@ const doesSatisfyCategory = (pr, category) => {
 };
 
 const parseReleaseNoteCategory = (releaseNote) => {
-  const categoryMetaRegex = /^Category: ?.*/g;
   const categoryMeta = releaseNote.match(categoryMetaRegex);
 
   if (!categoryMeta) return null;
