@@ -53,6 +53,16 @@ Example to start a interactive guide of `.gitpod.yml` configuration file:
 gp init -i
 ```
 
+**Example output**
+
+```sh
+Use the arrow keys to navigate: ↓ ↑ → ←
+? Workspace Docker image:
+  ▸ default
+    custom image
+    docker file
+```
+
 ## open
 
 Modern editors/IDE's support command line tooling to open a file (e.g. VS Code `code foo.txt`). In Gitpod, this can be done using `gp open <filename>`.
@@ -68,7 +78,7 @@ gp open README.md
 
 `gp preview` opens a URL. The default is to show the URL in a preview pane within the editor or IDE directly. Alternatively, you can show the preview a new tab with the `--external` flag.
 
-Make sure you provide a valid URL, i.e. including the protocol. For example, http://localhost:8080.
+Make sure you provide a valid URL, i.e. including the protocol. For example, <http://localhost:8080>.
 
 You can also use `gp preview <url> --external` to open the URL in a new browser tab.
 
@@ -106,6 +116,12 @@ For instance, you can use following to get your all Gitpod environment variables
 gp env
 ```
 
+**Example output**:
+
+```sh
+ENVIRONMENT_NAME=Value
+```
+
 ## sync-await
 
 In situations where you work with multiple terminals and one depends on a task in another terminal to complete, `gp sync-await <name>` waits until you call `gp sync-done <name>` in another terminal.
@@ -132,6 +148,12 @@ For sharing a complete clone of a workspace with others, `gp snapshot` is basica
 gp snapshot
 ```
 
+**Example output**:
+
+```sh
+https://gitpod.io/#snapshot/<SNAPSHOT_ID>
+```
+
 ## stop
 
 `gp stop` is the CLI method of stopping a workspace.
@@ -156,6 +178,15 @@ Returns a table-formatted list of tasks, their name, state and the ID of the ter
 gp tasks list
 ```
 
+**Example output**:
+
+```sh
+| TERMINAL ID   | NAME        | STATE   |
+| ------------- | ----------- | ------- |
+| <TERMINAL_ID> | TASK_NAME_1 | running |
+| <TERMINAL_ID> | TASK_NAME_2 | running |
+```
+
 ### attach
 
 Creates a connection from a user terminal to a given workspace's task terminal. The session is interactive. Once attached, both stdin and stdout are streamed between the user and the remote terminal. Allowing the user to run commands directly in the task terminal.
@@ -164,6 +195,15 @@ Run without arguments to get a selection prompt. When only one task is running, 
 
 ```sh
 gp tasks attach
+```
+
+**Example output**:
+
+```sh
+Use the arrow keys to navigate: ↓ ↑ → ←
+? What task do you want attach to?:
+  ▸ TASK_NAME_1
+    TASK_NAME_2
 ```
 
 Alternatively, specify the `Terminal ID` that you can see with `gp tasks list`:
@@ -202,6 +242,24 @@ Interact with workspace timeout configuration. You can learn more in [Life of a 
 gp timeout
 ```
 
+**Example output**:
+
+```sh
+Interact with workspace timeout configuration
+
+Usage:
+  gp timeout [command]
+
+Available Commands:
+  extend      Extend timeout of current workspace
+  show        Show the current workspace timeout
+
+Flags:
+  -h, --help   help for timeout
+
+Use "gp timeout [command] --help" for more information about a command.
+```
+
 ### extend
 
 Extends the current workspace's timeout.
@@ -224,6 +282,12 @@ Shows the current workspace's timeout.
 gp timeout show
 ```
 
+**Example output**:
+
+```sh
+30m
+```
+
 ## info
 
 Displays information about the current [workspace](/docs/configure/workspaces) (such as the workspace ID and URL) and also the [workspace class](/docs/configure/workspaces/workspace-classes).
@@ -232,7 +296,35 @@ Displays information about the current [workspace](/docs/configure/workspaces) (
 gp info
 ```
 
+**Example output**:
+
+```sh
+Workspace ID    : WORKSPACE_ID
+Instance ID     : INSTANCE_ID
+Workspace class : Large: Up to 8vCPU, 16GB memory, 50GB disk
+Workspace URL   : https://WORKSPACE_ID.CLUSTER_HOST
+Cluster host    : CLUSTER_HOST
+```
+
 Use `gp info --json` to get the output in JSON format for programmatic use in (e.g. in shell scripts).
+
+```sh
+gp info --json
+```
+
+**Example output**:
+
+```json
+{
+  "workspace_id": "WORKSPACE_ID",
+  "instance_id": "INSTANCE_ID",
+  "workspace_class": {
+    "id": "Large: Up to 8vCPU, 16GB memory, 50GB"
+  },
+  "workspace_url": "https://WORKSPACE_ID.CLUSTER_HOST",
+  "cluster_host": "CLUSTER_HOST"
+}
+```
 
 ## ports
 
@@ -244,6 +336,16 @@ Outputs a table-formatted list of ports along with their status, URL, name and d
 
 ```sh
 gp ports list
+```
+
+**Example output**:
+
+```sh
+| PORT  |     STATUS     |                   URL                   |     NAME & DESCRIPTION      |
+| :---: | :------------: | :-------------------------------------: | :-------------------------: |
+| 3000  | open (public)  | https://3000-WORKSPACE_ID.CLUSTER_HOST  | Website: Preview of Website |
+| 5900  | open (private) | https://5900-WORKSPACE_ID.CLUSTER_HOST  |       VNC: VNC Server       |
+| 49152 | open (private) | https://49152-WORKSPACE_ID.CLUSTER_HOST |                             |
 ```
 
 ### expose
@@ -277,10 +379,22 @@ Here's an example which will make port `3000` public:
 gp ports visibility 3000:public
 ```
 
+**Example output**:
+
+```sh
+port 3000 is now public
+```
+
 Here's an example which will make port `3000` private:
 
 ```sh
 gp ports visibility 3000:private
+```
+
+**Example output**:
+
+```sh
+port 3000 is now private
 ```
 
 ## top
@@ -291,4 +405,32 @@ Displays the current workspace's class info along with the used and available CP
 gp top
 ```
 
+**Example output**:
+
+```sh
+Workspace class  :
+CPU (millicores) : 46m/8000m (0%)
+Memory (bytes)   : 4298Mi/16384Mi (26%)
+```
+
 Use `gp top --json` to get the output in JSON format for programmatic use in (e.g. in shell scripts).
+
+**Example output**:
+
+```sh
+{
+  "resources": {
+    "memory": {
+      "used": 4567375872,
+      "limit": 17179869184
+    },
+    "cpu": {
+      "used": 54,
+      "limit": 3000
+    }
+  },
+  "workspace_class": {
+    "id": "g1-large-pvc"
+  }
+}
+```
