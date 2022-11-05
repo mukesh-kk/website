@@ -21,9 +21,8 @@ const argv = minimist(process.argv.slice(2));
 
 const prefixRegex = /\[.{1,}\] ?/g;
 const categoryMetaRegex = /^Category: ?.*/g;
-// Todo(ft): don't force 2nd level headings
 const annotatedPartialSectionWithPrsRegex =
-  /## .* ?\((https:\/\/github.com\/.*\/.*\/pull\/\d+)+\)/;
+  /#+ .*\((https:\/\/github.com\/.*\/.*\/pull\/\d+)+\)/;
 
 export const createOctokitClient = async (/** @type {string} */ token) => {
   const OctokitWithPlugins =
