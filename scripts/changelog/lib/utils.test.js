@@ -149,7 +149,8 @@ test("Category sorting works correctly", () => {
 
 test("Reading partials works correctly", async () => {
   const releaseDate = "2020-04-20";
-  const dataToWrite = "---\norder: 1\n---\n\n# Hi VS Code!";
+  const dataToWrite =
+    "---\norder: 1\n---\n\n# Hi VS Code!\n\n## Initial commit (https://github.com/gitpod-io/gitpod/pull/69)";
   await fs.mkdir(`${changelogPath}/${releaseDate}`, { recursive: true });
   await fs.writeFile(`${changelogPath}/${releaseDate}/vscode.md`, dataToWrite);
 

@@ -29,9 +29,8 @@ export const main = async () => {
   }
 
   for await (const [index, category] of categorizedPrs.entries()) {
-    const prs = category.prs.map(generatePrChangelogLine).join("");
     const formattedCategoryContent = await formatChangelogCategory(
-      prs,
+      category.prs,
       category,
       releaseDate
     );
@@ -42,9 +41,8 @@ export const main = async () => {
         subIndex,
         subCategory,
       ] of category.categories.entries()) {
-        const prs = subCategory.prs.map(generatePrChangelogLine).join("");
         const formattedCategoryContent = await formatChangelogCategory(
-          prs,
+          subCategory.prs,
           subCategory,
           releaseDate,
           3

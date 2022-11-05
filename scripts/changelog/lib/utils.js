@@ -19,6 +19,12 @@ import { getMonthName } from "./dates.js";
 
 const argv = minimist(process.argv.slice(2));
 
+const prefixRegex = /\[.{1,}\] ?/g;
+const categoryMetaRegex = /^Category: ?.*/g;
+// Todo(ft): don't force 2nd level headings
+const annotatedPartialSectionWithPrsRegex =
+  /## .* ?\((https:\/\/github.com\/.*\/.*\/pull\/\d+)+\)/;
+
 export const createOctokitClient = async (/** @type {string} */ token) => {
   const OctokitWithPlugins =
     Octokit.plugin(paginateGraphql).plugin(createPullRequest);
@@ -168,9 +174,6 @@ export const replaceContentOfBlock = (blockName, blockContent, fileContent) => {
 
   return newContent;
 };
-
-const prefixRegex = /\[.{1,}\] ?/g;
-const categoryMetaRegex = /^Category: ?.*/g;
 
 export const generatePrChangelogLine = (pr) => {
   let releaseNote = parseReleaseNote(pr);
@@ -370,7 +373,7 @@ export const sortByCategoryOrder = (a, b) => {
   return a.order - b.order;
 };
 
-export const readPartial = async (name, releaseDate) => {
+export const readPartial = async (name, releaseDate, prs) => {
   const partialContent = await readFile(
     `${changelogPath}/${releaseDate}/${name}.md`,
     "utf8"
@@ -384,10 +387,35 @@ export const readPartial = async (name, releaseDate) => {
     return null;
   }
 
-  const contentWithStrippedMetadata = partialContent.replace(/---.*---/gs, "");
+  let contentWithStrippedMetadata = partialContent.replace(/---.*---/gs, "");
   const contentMetadata = metadataParser(partialContent);
+
+  const headingPrMatch = contentWithStrippedMetadata.match(
+    annotatedPartialSectionWithPrsRegex
+  );
+  const linkedPrMatches = headingPrMatch[1].split(" ");
+
+  if (linkedPrMatches) {
+    linkedPrMatches.forEach((prUrl) => {
+      const url = new URL(prUrl);
+      const prNumber = url.pathname.split("/").pop();
+
+      contentWithStrippedMetadata = contentWithStrippedMetadata.replace(
+        prUrl,
+        `[#${prNumber}](${prUrl})`
+      );
+    });
+    // Remove the PRs from the PRs array, as they are already in the partial
+    linkedPrMatches.forEach((prUrl) => {
+      const url = new URL(prUrl);
+      const prNumber = url.pathname.split("/").pop();
+      const prIndex = prs.findIndex((pr) => pr.number === parseInt(prNumber));
+      prs.splice(prIndex, 1);
+    });
+  }
+
   const order = contentMetadata.metadata?.order;
-  return { content: contentWithStrippedMetadata, order };
+  return { content: contentWithStrippedMetadata, order, undocumentedPrs: prs };
 };
 
 /**
@@ -421,27 +449,30 @@ export const formatChangelogCategory = async (
   const heading = `${"#".repeat(headingLevel)} ${
     category.name
   }${lineBreak}${lineBreak}`;
-  const partialContent = await readPartial(category.partial, releaseDate);
-  if (partialContent) {
-    const { order, content } = partialContent;
-    if (partialContent.content) {
-      if (prs) {
+
+  const partial = await readPartial(category.partial, releaseDate, prs);
+  const prsToDisplay = partial?.undocumentedPrs || prs;
+  const formattedPrs = prsToDisplay.map(generatePrChangelogLine).join("");
+
+  if (partial) {
+    if (partial.content) {
+      if (formattedPrs) {
         // There are PRs in this category, so we prepend the partial content to them
         return {
-          order: order,
-          content: `${heading}${content}${lineBreak}${lineBreak}${prs}`,
+          order: partial.order,
+          content: `${heading}${partial.content}${lineBreak}${lineBreak}${formattedPrs}`,
         };
       } else {
         // There are no PRs for this category, so we only include the partial
         return {
-          order: order,
-          content: `${heading}${content}${lineBreak}${lineBreak}`,
+          order: partial.order,
+          content: `${heading}${partial.content}${lineBreak}${lineBreak}`,
         };
       }
     }
-  } else if (prs) {
+  } else if (formattedPrs) {
     return {
-      content: `${heading}${prs}${lineBreak}`,
+      content: `${heading}${formattedPrs}${lineBreak}`,
     };
   }
 };
