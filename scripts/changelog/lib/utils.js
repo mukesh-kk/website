@@ -400,6 +400,7 @@ export const readPartial = async (name, releaseDate, prs) => {
       const url = new URL(prUrl);
       const prNumber = url.pathname.split("/").pop();
 
+      // todo(ft): we shouldn't replace just by looking at the URL, because it could have been referenced in another part of the partial.
       contentWithStrippedMetadata = contentWithStrippedMetadata.replace(
         prUrl,
         `[#${prNumber}](${prUrl})`
