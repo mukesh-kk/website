@@ -399,11 +399,17 @@ export const readPartial = async (name, releaseDate, prs) => {
       const url = new URL(prUrl);
       const prNumber = url.pathname.split("/").pop();
 
-      // todo(ft): we shouldn't replace just by looking at the URL, because it could have been referenced in another part of the partial.
-      contentWithStrippedMetadata = contentWithStrippedMetadata.replace(
-        prUrl,
-        `[#${prNumber}](${prUrl})`
+      const contentToReplace = contentWithStrippedMetadata.slice(
+        headingPrMatch.index,
+        headingPrMatch.index + headingPrMatch[0].length
       );
+
+      contentWithStrippedMetadata =
+        contentWithStrippedMetadata.slice(0, headingPrMatch.index) +
+        contentToReplace.replace(prUrl, `[#${prNumber}](${prUrl})`) +
+        contentWithStrippedMetadata.slice(
+          headingPrMatch.index + headingPrMatch[0].length
+        );
     });
     // Remove the PRs from the PRs array, as they are already in the partial
     linkedPrMatches.forEach((prUrl) => {
