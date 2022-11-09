@@ -49,11 +49,11 @@ The following describes each of these states and their attributes.
 
 ### Workspace Starting
 
-When you open a workspace, it will be in the "initializing" state. This means that the workspace is being created and the initialization process is running.
+When you open a workspace, it will be in the "starting" state. This means that the workspace is being created and the initialization process is running.
 
 - Where a workspace is provisioned and initialized.
-- Source control is downloaded into the workspace.
-- If configured, a prebuild image is used.
+- If configured and available, a prebuild snapshot is used.
+- Otherwise, source control is downloaded into the workspace.
 
 ### Workspace Running
 
@@ -64,7 +64,7 @@ When you open a workspace, it will be in the "initializing" state. This means th
 
 - There is no active workspace in Gitpod.
 - All files and directories are preserved.
-- Uses the same workspace ID when restarted.
+- If restarted, same workspace ID is used.
 - A start is required before the workspace can be used.
 
 ## Other Workspace States
