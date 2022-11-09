@@ -18,7 +18,7 @@ Gitpod brings a new way to think about your developer environment. Rather than h
 
 Source for diagrams:
 
-- Workspace State Transitions: https://excalidraw.com/#json=BkyMQX-KKELQ24ckTwckG,GyFsH4IFgR4ZHietedhbng
+- Workspace State Transitions: https://excalidraw.com/#json=nwc5oamhnwx9IEI6Uiym5,eiA4a7whu4_vcoDVFDC5CA
 
 - Workspace Loading States: https://excalidraw.com/#json=YhAs2UxIgxluxARhW65U4,Ndh2R9QxUHpSI_UY9jEfyw
 -->
@@ -27,7 +27,8 @@ Source for diagrams:
 
 1. 🟠 **Starting** - Workspace provisioning and loading, inaccessible.
 2. 🟢 **Running** - Workspace loaded, accessible for developing within.
-3. 🔴 **Stopped** - Workspace no longer provisioned (file system preserved).
+3. 🟠 **Stopping** - Workspace is being stopped & backups happen.
+4. 🔴 **Stopped** - Workspace no longer provisioned (file system preserved).
 
 > **Important:** Only files in the `workspace` directory are kept between state transitions.
 
@@ -43,7 +44,7 @@ _An example running workspace_
 
 <img class="shadow-medium rounded-xl max-w-3xl mt-x-small" src="/images/workspace-life/workspace-state-transitions.png" alt="Gitpod Snapshot from VS Code" loading="lazy"/>
 
-- [Workspace Initilaizing](#workspace-initializing)
+- Workspace Initilaizing
 
 The following describes each of these states and their attributes.
 
