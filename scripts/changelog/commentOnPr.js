@@ -98,8 +98,11 @@ const main = async () => {
     return;
   }
 
-  const categories = findCategoryForPr(pr)
-    .categories.map((category) => category.category.name)
+  const categories = findCategoryForPr(pr).categories.map(
+    (category) => category.category.name
+  );
+  const formattedCategories = categories
+    .map((category) => `\`${category}\``)
     .join(", ");
 
   const isDeployed = pr.labels.nodes.some((label) => label.name === "deployed");
@@ -167,9 +170,15 @@ const main = async () => {
   comment += `### Release Note(s)\n${releaseNote}\n\n`;
 
   comment += "### Category\n";
-  if (categories) {
-    comment += `${categories}`;
-    comment += `\n\nWe have automatically detected this PR as belonging to the \`${categories}\` category `;
+  if (formattedCategories) {
+    comment += `${formattedCategories}`;
+    comment += `\n\nWe have automatically detected this PR as belonging to the `;
+    if (categories.length > 1) {
+      comment += `categories ${formattedCategories}`;
+    } else {
+      comment += `${formattedCategories} category `;
+    }
+    comment += `\n\nWe have automatically detected this PR as belonging to the \`${formattedCategories}\` category `;
     if (!isCategoryOverridden) {
       comment += `(based on ${
         labelsContributingToCategory.length > 0
