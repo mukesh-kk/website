@@ -487,11 +487,12 @@ export const formatChangelogCategory = async (
  */
 export const readMeta = async (releaseDate) => {
   try {
-    const changelogMeta = await fs.readFile(
-      `${changelogPath}/${releaseDate}/meta.json`,
-      "utf-8"
-    );
-
+    const changelogMetaPath = `${changelogPath}/${releaseDate}/meta.json`;
+    const changelogMeta = await fs.readFile(changelogMetaPath, "utf-8");
+    if (!changelogMeta) {
+      console.error("No changelog meta found in its file");
+      return null;
+    }
     return JSON.parse(changelogMeta);
   } catch (e) {
     if (e.code === "ENOENT") {

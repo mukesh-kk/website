@@ -1,8 +1,7 @@
 import {
-  formatDate,
-  dateFormat,
-  getFormattedMonthBoundaries,
-} from "./dates.js";
+  isDeployedInCurrentPeriod,
+  isPrReleasedBasedOnReleases,
+} from "./prFilters.js";
 import minimist from "minimist";
 import {
   computeLastDeployedOrMerged,
@@ -11,31 +10,7 @@ import {
   writeMeta,
 } from "./utils.js";
 
-const argv = minimist(process.argv.slice(2));
-
-const isDeployedInCurrentMonth = (pr) => {
-  const timelineItems = pr.timelineItems.edges.map((edge) => edge.node);
-
-  const [from, to] =
-    argv._[0] && argv._[1]
-      ? [argv._[0], argv._[1]]
-      : getFormattedMonthBoundaries();
-
-  const end = new Date(to);
-  end.setHours(23, 59, 59, 999);
-  const start = new Date(from);
-  start.setHours(0, 0, 0, 0);
-
-  const deployedWithinDateBoundaries = timelineItems.find((item) => {
-    if (item.label.name !== "deployed") {
-      return false;
-    }
-    const { createdAt: rawDate } = item;
-    const createdAt = new Date(rawDate);
-    return createdAt >= start && createdAt <= end;
-  });
-  return deployedWithinDateBoundaries;
-};
+export const argv = minimist(process.argv.slice(2));
 
 const compareMerged = (a, b) => {
   const aDate = new Date(a.mergedAt);
@@ -64,10 +39,21 @@ const compareDeployed = (a, b) => {
 export const getPrsForRepo = async (octokit, repo, from, to) => {
   // forceLabel is used for repos that can all contribute to the same section (like OpenVSCode Server only contributes to VS Code)
   let forceLabel;
-  let searchQuery = `repo:${repo} is:pr is:merged merged:${from}..${to} sort:updated-desc`;
   let filter = () => true;
   let sort = compareMerged;
   let writeAutoMeta = true;
+
+  // If the user doesn't provide an explicit starting point, we use the point we left off in the last month's changelog
+  if (!argv._[1]) {
+    const previousChangelogName = await getPastChangelogName(to, 0);
+    const previousChangelogMeta = await readMeta(previousChangelogName);
+    const repoInfo = previousChangelogMeta?.versions.repos?.[repo];
+    if (repoInfo && repoInfo.lastUpdated) {
+      from = repoInfo.lastUpdated;
+      console.info("Fetching PRs from where the last changelog left off");
+    }
+  }
+  let searchQuery = `repo:${repo} is:pr is:merged merged:${from}..${to} sort:updated-desc`;
 
   let apiQuery = `
     ... on PullRequest {
@@ -93,11 +79,9 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
 
   switch (repo) {
     case "gitpod-io/gitpod":
-      const fromAdjusted = formatDate(
-        new Date(from).getTime() - 60 * 24 * 60 * 60 * 1000,
-        dateFormat,
-        "-"
-      );
+      const fromAdjusted = new Date(
+        new Date(from).getTime() - 60 * 24 * 60 * 60 * 1000
+      ).toISOString();
       searchQuery = `repo:${repo} is:pr is:merged merged:${fromAdjusted}..${to} sort:updated-desc label:deployed -label:release-note-none -project:gitpod-io/22`;
       apiQuery = `
       ... on PullRequest {
@@ -131,9 +115,8 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
         }
         url
       }`;
-      filter = isDeployedInCurrentMonth;
+      filter = isDeployedInCurrentPeriod;
       sort = compareDeployed;
-      from = fromAdjusted;
       break;
     // Don't force any category for website, as it can contribute to multiple categories (e.g. docs, blog)
     case "gitpod-io/website":
@@ -171,7 +154,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
       writeAutoMeta = false;
       break;
   }
-  console.info(`Fetching PRs for ${repo} from ${from} to ${to}`);
+  console.info(`Fetching PRs for ${repo}`);
   console.info(`Search query: ${searchQuery}`);
   const { search } = await octokit.graphql.paginate(
     `query paginate($cursor: String) {
@@ -194,7 +177,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
     return { prs: [], forceLabel };
   }
 
-  const filteredPrs = prs.filter((pr) => filter(pr, octokit, repo, to));
+  const filteredPrs = prs.filter((pr) => filter(pr, octokit, repo, from, to));
   filteredPrs.sort(sort);
 
   if (writeAutoMeta) {
@@ -203,7 +186,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
       versions: {
         repos: {
           [repo]: {
-            lastUpdated: computeLastDeployedOrMerged(filteredPrs.at(-1)),
+            lastUpdated: computeLastDeployedOrMerged(filteredPrs.at(0)),
           },
         },
       },
@@ -214,82 +197,4 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
     `Found ${filteredPrs.length} PRs after filtering for ${repo} (from ${prs.length} total)`
   );
   return { prs: filteredPrs, forceLabel };
-};
-
-/**
- * Checks if a PR is already released based on the releases of the repo
- * @param {*} pr The Pull Request to consider
- * @param {*} octokit The pre-authenticated Octokit client
- * @param {string} repository The repo to consider
- * @param {string} releaseDate The date of the release of the changelog
- * @returns {boolean}
- */
-export const isPrReleasedBasedOnReleases = async (
-  pr,
-  octokit,
-  repository,
-  releaseDate
-) => {
-  const [owner, repo] = repository.split("/");
-  const latestRelease = await octokit.rest.repos.getLatestRelease({
-    owner,
-    repo,
-  });
-
-  await writeMeta(releaseDate, {
-    versions: {
-      repos: {
-        [repository]: { version: latestRelease.data.tag_name },
-      },
-    },
-  });
-
-  const latestCommitOnLatestReleaseTag = latestRelease.data.target_commitish;
-  const commitComparison = await octokit.rest.repos.compareCommits({
-    owner,
-    repo,
-    base: latestCommitOnLatestReleaseTag,
-    head: pr.mergeCommit.oid,
-  });
-
-  const isCurrentCommitAheadOfLatestRelease =
-    commitComparison.data.status === "ahead";
-
-  const previousChangelogReleaseVersionMeta = await readMeta(
-    await getPastChangelogName(releaseDate, 1)
-  );
-
-  if (
-    !previousChangelogReleaseVersionMeta ||
-    !previousChangelogReleaseVersionMeta?.repos?.[repository]
-  ) {
-    console.warn("No previous changelog release found");
-    return !isCurrentCommitAheadOfLatestRelease;
-  }
-
-  const previousCHangelogReleaseVersion =
-    previousChangelogReleaseVersionMeta.repos[repository].version;
-  const previousChangelogRelease = await octokit.rest.repos.getReleaseByTag({
-    owner,
-    repo,
-    tag: previousCHangelogReleaseVersion,
-  });
-
-  const previousChangelogReleaseCommit =
-    previousChangelogRelease.data.target_commitish;
-  const commitComparisonToPreviousChangelogRelease =
-    await octokit.rest.repos.compareCommits({
-      owner,
-      repo,
-      base: previousChangelogReleaseCommit,
-      head: pr.mergeCommit.oid,
-    });
-
-  const isCurrentCommitAheadOfPreviousChangelogRelease =
-    commitComparisonToPreviousChangelogRelease.data.status === "ahead";
-
-  return (
-    !isCurrentCommitAheadOfLatestRelease &&
-    isCurrentCommitAheadOfPreviousChangelogRelease
-  );
 };
