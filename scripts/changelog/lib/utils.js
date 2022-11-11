@@ -7,6 +7,7 @@ import minimist from "minimist";
 import remarkParse from "remark-parse";
 import metadataParser from "markdown-yaml-metadata-parser";
 import fs from "fs/promises";
+import merge from "lodash/merge.js";
 
 import { getPrsForRepo } from "./getPrs.js";
 import {
@@ -353,8 +354,6 @@ export const findCategoryForPr = (pr, categories = prCategories) => {
     return pathsStartingWithCurrentPath.length === 1;
   });
 
-  console.log(longestPaths);
-
   return { categories: longestPaths, mutatedCategories: categories };
 };
 
@@ -486,14 +485,14 @@ export const formatChangelogCategory = async (
 /**
  * @param {string} releaseDate
  */
-export const getChangelogVersions = async (releaseDate) => {
+export const readMeta = async (releaseDate) => {
   try {
     const changelogMeta = await fs.readFile(
       `${changelogPath}/${releaseDate}/meta.json`,
       "utf-8"
     );
 
-    return JSON.parse(changelogMeta).versions;
+    return JSON.parse(changelogMeta);
   } catch (e) {
     if (e.code === "ENOENT") {
       return null;
@@ -507,7 +506,7 @@ export const getChangelogVersions = async (releaseDate) => {
  * @param {number} offset how many changelogs to go back in time (0 = current changelog, 1 = previous changelog, etc.)
  * @returns the name of a changelog in the past. If no changelog is found, returns null.
  */
-export const getPastChangelogName = async (releaseDate, offset) => {
+export const getPastChangelogName = async (releaseDate, offset = 1) => {
   const changelogDir = await fs.readdir(changelogPath, {
     withFileTypes: true,
   });
@@ -536,17 +535,45 @@ export const getPastChangelogName = async (releaseDate, offset) => {
 };
 
 /**
- *
+ * This function adds metadata to a changelog's meta.json file
  * @param {string} releaseDate
- * @param {*} versions
+ * @param {*} newMeta
  */
-export const writeMeta = async (releaseDate, versions) => {
-  const existingMeta = await getChangelogVersions(releaseDate);
-  const meta = {
-    versions: existingMeta ? { ...existingMeta, ...versions } : versions,
-  };
+export const writeMeta = async (releaseDate, newMeta) => {
+  let existingMeta = await readMeta(releaseDate);
+
+  if (!existingMeta) {
+    const previousChangelogName = await getPastChangelogName(releaseDate);
+    if (previousChangelogName) {
+      existingMeta = await readMeta(previousChangelogName);
+    }
+  }
+
+  if (!newMeta) {
+    console.warn("No metadata to write");
+    return;
+  }
+
+  const meta = merge(existingMeta || {}, newMeta);
   await fs.writeFile(
     `${changelogPath}/${releaseDate}/meta.json`,
     JSON.stringify(meta, null, 2)
   );
+};
+
+/**
+ * This function takes a PR as an argument and returns the date and time when the deployed label was added to the PR.
+ * @returns {string} The date and time when the deployed label was added to the PR in ISO 8601 format (the one GitHub search syntax likes).
+ */
+export const computeLastDeployedOrMerged = (pr) => {
+  const timelineItems = pr.timelineItems?.edges.map((edge) => edge.node);
+
+  if (!timelineItems) {
+    return pr.mergedAt;
+  }
+
+  const deployedLabelTimelineItem = timelineItems.find(
+    (item) => item.label.name === "deployed"
+  );
+  return deployedLabelTimelineItem.createdAt;
 };

@@ -22,7 +22,6 @@ const main = async () => {
   });
 
   if (prs.length > 0) {
-    debugger;
     console.error(prs.map((pr) => `#${pr.number}`).join(", "));
     console.error("Changelog PRs already exist, exiting");
     return;

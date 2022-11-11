@@ -5,7 +5,8 @@ import {
 } from "./dates.js";
 import minimist from "minimist";
 import {
-  getChangelogVersions,
+  computeLastDeployedOrMerged,
+  readMeta,
   getPastChangelogName,
   writeMeta,
 } from "./utils.js";
@@ -66,6 +67,8 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
   let searchQuery = `repo:${repo} is:pr is:merged merged:${from}..${to} sort:updated-desc`;
   let filter = () => true;
   let sort = compareMerged;
+  let writeAutoMeta = true;
+
   let apiQuery = `
     ... on PullRequest {
       body
@@ -165,6 +168,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
         url
       }`;
       filter = isPrReleasedBasedOnReleases;
+      writeAutoMeta = false;
       break;
   }
   console.info(`Fetching PRs for ${repo} from ${from} to ${to}`);
@@ -192,6 +196,20 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
 
   const filteredPrs = prs.filter((pr) => filter(pr, octokit, repo, to));
   filteredPrs.sort(sort);
+
+  if (writeAutoMeta) {
+    // Write the date of the last PR merged in the repo to meta.json
+    writeMeta(to, {
+      versions: {
+        repos: {
+          [repo]: {
+            lastUpdated: computeLastDeployedOrMerged(filteredPrs.at(-1)),
+          },
+        },
+      },
+    });
+  }
+
   console.log(
     `Found ${filteredPrs.length} PRs after filtering for ${repo} (from ${prs.length} total)`
   );
@@ -219,8 +237,10 @@ export const isPrReleasedBasedOnReleases = async (
   });
 
   await writeMeta(releaseDate, {
-    repos: {
-      [repository]: { version: latestRelease.data.tag_name },
+    versions: {
+      repos: {
+        [repository]: { version: latestRelease.data.tag_name },
+      },
     },
   });
 
@@ -235,7 +255,7 @@ export const isPrReleasedBasedOnReleases = async (
   const isCurrentCommitAheadOfLatestRelease =
     commitComparison.data.status === "ahead";
 
-  const previousChangelogReleaseVersionMeta = await getChangelogVersions(
+  const previousChangelogReleaseVersionMeta = await readMeta(
     await getPastChangelogName(releaseDate, 1)
   );
 
