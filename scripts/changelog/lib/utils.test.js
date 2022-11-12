@@ -9,6 +9,7 @@ import {
   readMeta,
   findCategoryForPr,
   getPastChangelogName,
+  computeLastDeployedOrMerged,
 } from "./utils.js";
 import { prCategories, changelogPath } from "./config.js";
 import { jest } from "@jest/globals";
@@ -288,4 +289,57 @@ test("Getting a past changelog works correctly", async () => {
 
   expect(await getPastChangelogName(releaseDate, 0)).toBe(releaseDate);
   expect(await getPastChangelogName(releaseDate, 1)).toBe("2022-09-30");
+});
+
+test("Computing a changelog checkpoint works correctly", async () => {
+  const samplePrWithDeployedLabel = {
+    timelineItems: {
+      edges: [
+        {
+          node: {
+            createdAt: "2022-10-24T16:29:00Z",
+            label: {
+              name: "editor: code (browser)",
+            },
+          },
+        },
+        {
+          node: {
+            createdAt: "2022-10-24T17:01:06Z",
+            label: {
+              name: "editor: code (browser)",
+            },
+          },
+        },
+        {
+          node: {
+            createdAt: "2022-11-12T14:43:34Z",
+            label: {
+              name: "deployed",
+            },
+          },
+        },
+        {
+          node: {
+            createdAt: "2022-11-12T15:24:15Z",
+            label: {
+              name: "deployed",
+            },
+          },
+        },
+      ],
+    },
+    url: "https://github.com/gitpod-io/gitpod/pull/13376",
+  };
+
+  const sampleMergedPr = {
+    mergedAt: "2022-11-12T15:24:15Z",
+  };
+
+  expect(computeLastDeployedOrMerged(samplePrWithDeployedLabel)).toBe(
+    "2022-11-12T15:24:15Z"
+  );
+  expect(computeLastDeployedOrMerged(sampleMergedPr)).toBe(
+    "2022-11-12T15:24:15Z"
+  );
 });
