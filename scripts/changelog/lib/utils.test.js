@@ -6,7 +6,7 @@ import {
   readPartial,
   getPrParticipants,
   replaceContentOfBlock,
-  getChangelogVersions,
+  readMeta,
   findCategoryForPr,
   getPastChangelogName,
 } from "./utils.js";
@@ -154,10 +154,12 @@ test("Reading partials works correctly", async () => {
   await fs.mkdir(`${changelogPath}/${releaseDate}`, { recursive: true });
   await fs.writeFile(`${changelogPath}/${releaseDate}/vscode.md`, dataToWrite);
 
-  const { order, content } = await readPartial("vscode", releaseDate);
+  const { order, content } = await readPartial("vscode", releaseDate, []);
 
   expect(order).toBe(1);
-  expect(content.trim()).toBe("# Hi VS Code!");
+  expect(content.trim()).toBe(
+    "# Hi VS Code!\n\n## Initial commit ([#69](https://github.com/gitpod-io/gitpod/pull/69))"
+  );
 
   // Clean up
   await fs.rm(`${changelogPath}/${releaseDate}`, { recursive: true });
@@ -165,7 +167,7 @@ test("Reading partials works correctly", async () => {
 
 test("Reading partials fails correctly on non-existing files", async () => {
   const releaseDate = "2020-04-20";
-  const result = await readPartial("jetbrains", releaseDate);
+  const result = await readPartial("jetbrains", releaseDate, []);
 
   expect(result).toBe(null);
 });
@@ -266,22 +268,24 @@ test("Version parsing from metadata works correctly", async () => {
     JSON.stringify(metadata),
     "utf8"
   );
-  const data = await getChangelogVersions("2022-10-31");
+  const data = await readMeta("2022-10-31");
 
   // Clean up
   await fs.rm(`${changelogPath}/test/`, { recursive: true });
 
   // todo(ft): update values
-  expect(data.ides.jetbrains.version).toBe(
+  expect(data.versions.ides.jetbrains.version).toBe(
     metadata.versions.ides.jetbrains.version
   );
-  expect(data.ides.vscode.version).toBe(metadata.versions.ides.vscode.version);
+  expect(data.versions.ides.vscode.version).toBe(
+    metadata.versions.ides.vscode.version
+  );
 });
 
 //todo(ft): un-skip when we unify SaaS and self-hosted changelogs
-test.skip("Getting a past changelog works correctly", async () => {
+test("Getting a past changelog works correctly", async () => {
   const releaseDate = "2022-10-31";
 
   expect(await getPastChangelogName(releaseDate, 0)).toBe(releaseDate);
-  expect(await getPastChangelogName(releaseDate, 2)).toBe("2022-09-30");
+  expect(await getPastChangelogName(releaseDate, 1)).toBe("2022-09-30");
 });

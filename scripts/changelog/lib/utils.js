@@ -274,8 +274,6 @@ export const findCategoryForPr = (pr, categories = prCategories) => {
       const categoryPath = categories.find(isCorrectName);
       const categoryIndex = categories.findIndex(isCorrectName);
 
-      console.log(categoryLookedFor, categoryPath);
-
       const subCategoryCategoryIndex = categories.findIndex((category) => {
         if (!category.categories) return false;
         return category.categories.some(isCorrectName);
@@ -508,17 +506,31 @@ export const readMeta = async (releaseDate) => {
  * @returns the name of a changelog in the past. If no changelog is found, returns null.
  */
 export const getPastChangelogName = async (releaseDate, offset = 1) => {
-  const changelogDir = await fs.readdir(changelogPath, {
+  const fs = await import("fs");
+  const changelogDir = await fs.promises.readdir(changelogPath, {
     withFileTypes: true,
   });
 
   const sortedChangelogs = changelogDir
     .filter((dirent) => dirent.isDirectory())
+    .filter((dirent) => {
+      const changelogDirPath = `${changelogPath}/${dirent.name}`;
+      const changelogDirFiles = fs.readdirSync(changelogDirPath);
+      return changelogDirFiles.includes("index.md");
+    })
     .map((dirent) => dirent.name)
     .filter((changelogName) => {
       const changelogDate = new Date(changelogName);
       const releaseDateDate = new Date(releaseDate);
       return changelogDate < releaseDateDate;
+    })
+    .filter((changelogName) => {
+      const changelogContent = fs.readFileSync(
+        `${changelogPath}/${changelogName}/index.md`,
+        "utf8"
+      );
+      const metadata = metadataParser(changelogContent);
+      return metadata.metadata?.tag !== "self-hosted";
     })
     .sort((a, b) => {
       return new Date(b) - new Date(a);
