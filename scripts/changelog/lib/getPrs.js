@@ -22,6 +22,10 @@ const compareDeployed = (a, b) => {
   const timelineItemsForPrA = a.timelineItems.edges.map((edge) => edge.node);
   const timelineItemsForPrB = b.timelineItems.edges.map((edge) => edge.node);
 
+  // We want to find the last time the deployed label was added to the PR (this helps when a deployment was rolled back and re-deployed again)
+  timelineItemsForPrA.reverse();
+  timelineItemsForPrB.reverse();
+
   const deployedAtForPrA = timelineItemsForPrA.find(
     (item) => item.label.name === "deployed"
   ).createdAt;

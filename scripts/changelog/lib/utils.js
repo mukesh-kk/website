@@ -585,6 +585,9 @@ export const computeLastDeployedOrMerged = (pr) => {
     return pr.mergedAt;
   }
 
+  // We want to find the last time the deployed label was added to the PR (this helps when a deployment was rolled back and re-deployed again)
+  timelineItems.reverse();
+
   const deployedLabelTimelineItem = timelineItems.find(
     (item) => item.label.name === "deployed"
   );

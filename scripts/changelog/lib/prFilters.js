@@ -79,6 +79,9 @@ export const isDeployedInCurrentPeriod = (pr, _octokit, _repo, from, to) => {
   end.setHours(23, 59, 59, 999);
   const start = new Date(from);
 
+  // We want to find the last time the deployed label was added to the PR (this helps when a deployment was rolled back and re-deployed again)
+  timelineItems.reverse();
+
   const deployedWithinDateBoundaries = timelineItems.find((item) => {
     if (item.label.name !== "deployed") {
       return false;
