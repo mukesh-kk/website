@@ -22,6 +22,59 @@ data={{
 
 # Getting started
 
+<!-- TODO: Add a visual overview, like map of the content -->
+
+## Code in the cloud
+
+<!-- TODO: Remember, we shouldn't mention features here at all, only value / outcome -->
+
+When you move your development environment to the cloud, you can have more computing resources, you can multitask on multiple code tasks at the same time.
+
+1. Open Workspace from any Git Context `gitpod.io/#`
+
+<!-- TODO: We might want to mention workspace classes -->
+<!-- TODO: Give a CTA for the best Gitpod example we have -->
+
+<!-- Show:
+- VS Code Browser
+- VS Code Desktop
+- JetBrains Desktop
+- CLI / Terminal / Vim (Desktop vim on Iterm)
+-->
+<!-- TODO: This needs a new thumbnail -->
+
+`youtube: w65POyu3ZUQ`
+
+<!-- TODO: This could be too much here -->
+
+**Learn more**
+
+- For more performance, see [Workspace Classes](docs/configure/workspaces/workspace-classes)
+
+## Your environment, your tools
+
+At Gitpod we believe we should "[integrate, not dictate](/blog/gitpod-core-values)". So, you can choose your own IDE or editor, extend your workspace with Dotfiles, etc.
+
+`youtube: VYHsd1zI_tE`
+
+- [JetBrains Gateway](/docs/integrations/jetbrains-gateway)
+- [VS Code Browser](/docs/references/ides-and-editors/vscode-browser)
+- [VS Code Desktop](/docs/references/ides-and-editors/vscode)
+
+## Gitpodify your project
+
+You've created your first Gitpod workspace. But that's not everything! The power of Gitpod comes when you codify your project using a `.gitpod.yml` file,
+
+<!-- TODO: Gitpodify with `.gitpod.yml` -->
+
+**Learn more:**
+
+- For faster workspace starts, see [prebuilds](/docs/configure/projects/prebuilds)
+
+## Collaborate with Gitpod
+
+`youtube: TrY15zN98p8`
+
 Gitpod can provide fully initialized, perfectly set-up developer environments for any kind of software project. This page helps you understand how to provide such a configuration for _your project_.
 `youtube: w65POyu3ZUQ`
 

@@ -30,9 +30,18 @@ data={{
   }}
 />
 
-<GetStarted />
+## What is Gitpod?
 
-## Latest updates
+<!-- TODO: Link to learn pages -->
+<!-- TODO: Concise, or visual overview of Gitpod -->
+
+## Getting Started
+
+`youtube: w65POyu3ZUQ`
+
+<!-- <GetStarted /> -->
+
+## What's new in Gitpod? 🎁
 
 <Timeline />
 
