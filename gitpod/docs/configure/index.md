@@ -39,6 +39,7 @@ Workspaces can be created on their own, or as part of a [Project](/docs/configur
 - [Browser Bookmarklet](/docs/configure/user-settings/browser-bookmarklet)
 - [Dotfiles](/docs/configure/user-settings/dotfiles)
 - [SSH](/docs/configure/user-settings/ssh)
+- [Notifications](/docs/configure/user-settings/notifications)
 
 ## Projects
 

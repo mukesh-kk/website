@@ -64,6 +64,7 @@ export const MENU: MenuEntry[] = [
     M("Browser bookmarklet", "configure/user-settings/browser-bookmarklet"),
     M("Dotfiles", "configure/user-settings/dotfiles", false, []),
     M("SSH", "configure/user-settings/ssh"),
+    M("Notifications", "configure/user-settings/notifications"),
   ]),
 
   M(
