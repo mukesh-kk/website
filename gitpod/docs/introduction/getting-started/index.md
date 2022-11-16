@@ -49,7 +49,7 @@ When you move your development environment to the cloud, you can have more compu
 
 **Learn more**
 
-- For more performance, see [Workspace Classes](docs/configure/workspaces/workspace-classes)
+- For more performance, see [Workspace Classes](/docs/configure/workspaces/workspace-classes)
 
 ## Your environment, your tools
 
