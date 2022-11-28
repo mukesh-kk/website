@@ -7,6 +7,7 @@ import minimist from "minimist";
 import remarkParse from "remark-parse";
 import metadataParser from "markdown-yaml-metadata-parser";
 import fs from "fs/promises";
+import fsSync from "fs";
 import merge from "lodash/merge.js";
 
 import { getPrsForRepo } from "./getPrs.js";
@@ -554,11 +555,13 @@ export const getPastChangelogName = async (releaseDate, offset = 1) => {
  */
 export const writeMeta = async (releaseDate, newMeta) => {
   let existingMeta = await readMeta(releaseDate);
-
   if (!existingMeta) {
     const previousChangelogName = await getPastChangelogName(releaseDate);
     if (previousChangelogName) {
       existingMeta = await readMeta(previousChangelogName);
+    }
+    if (!fsSync.existsSync(`${changelogPath}/${releaseDate}`)) {
+      await fs.mkdir(`${changelogPath}/${releaseDate}`);
     }
   }
 
