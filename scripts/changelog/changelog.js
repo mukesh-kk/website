@@ -1,5 +1,4 @@
 import {
-  generatePrChangelogLine,
   processRepository,
   sortByCategoryOrder,
   formatChangelogCategory,
