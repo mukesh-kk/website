@@ -579,11 +579,11 @@ export const writeMeta = async (releaseDate, newMeta) => {
  * @returns {string} The date and time when the deployed label was added to the PR in ISO 8601 format (the one GitHub search syntax likes).
  */
 export const computeLastDeployedOrMerged = (pr) => {
-  const timelineItems = pr.timelineItems?.edges.map((edge) => edge.node);
-
-  if (!timelineItems) {
+  if (!pr.timelineItems) {
     return pr.mergedAt;
   }
+
+  const timelineItems = pr.timelineItems?.edges.map((edge) => edge.node);
 
   // We want to find the last time the deployed label was added to the PR (this helps when a deployment was rolled back and re-deployed again)
   timelineItems.reverse();

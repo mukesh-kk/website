@@ -177,7 +177,7 @@ export const getPrsForRepo = async (octokit, repo, from, to) => {
   );
 
   const prs = search.edges.map((edge) => edge.node);
-  if (!prs) {
+  if (prs.length === 0) {
     return { prs: [], forceLabel };
   }
 

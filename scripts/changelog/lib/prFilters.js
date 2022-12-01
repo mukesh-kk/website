@@ -1,3 +1,5 @@
+import { writeMeta, readMeta, getPastChangelogName } from "./utils.js";
+
 /**
  * Checks if a PR is already released based on the releases of the repo
  * @param {*} pr The Pull Request to consider
