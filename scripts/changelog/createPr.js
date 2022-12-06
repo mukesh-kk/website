@@ -37,7 +37,7 @@ const main = async () => {
     repo,
     title,
     draft: true,
-    body: `An automatic update to the changelog for ${month}`,
+    body: `An automatic update to the changelog for ${month}.\n\n## Links\n\nCurrent changelog RFC: [internal Notion](https://www.notion.so/gitpod/Towards-Continuous-Changelogs-c536b054ea0b4f2fa92fbb3ff41cc4e6)`,
     head: branchName,
     update: true,
     changes: [
