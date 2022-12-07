@@ -2,7 +2,6 @@ import type { Pricing } from "$lib/types/pricing";
 import { isEurope } from "$lib/utils/helpers";
 import type { Card } from "$lib/types/card";
 // @ts-ignore
-import RedeemOffer from "$lib/components/pricing/redeem-offer.svelte";
 import type {
   FeatureTable,
   FeatureTableColumn,
@@ -96,14 +95,6 @@ export const empowermentFeatures: Card[] = [
     link: {
       text: "View Startups Program",
       href: "/for/startups",
-    },
-  },
-  {
-    title: "Students & teachers",
-    text: "For those still learning the ropes, you can get our Unleashed Plan for <strong>€8 per month</strong> instead of €36/month.",
-    modal: {
-      btnText: "Redeem offer",
-      modalContentComponent: RedeemOffer,
     },
   },
 ];
@@ -487,7 +478,7 @@ export const pricingTableToc: FeatureTableToc[] = [
   },
 ];
 
-export let pricingTable: FeatureTable = {
+export const pricingTable: FeatureTable = {
   toc: pricingTableToc,
   columns: [
     freePlanTableData,
@@ -504,15 +495,6 @@ export const pricingFAQ: FAQ = {
       title: "Can I always use Gitpod for free?",
       content:
         '<p> Yes! Gitpod is always for free for public and private repositories for up to 50h per month. If you need more hours or would like to unlock more features, you can upgrade your subscription at any time. If you’re a professional open-source developer and need more hours, you can apply to our free <a href="/for/opensource" >Professional Open Source plan</a >. </p>',
-    },
-    {
-      title:
-        "Do you offer discounts for students and educational institutions?",
-      content: `<p> Yes, qualified educational institutions may receive a special discount. Please <a href="/contact/sales">Contact us</a>. If you are a student, you may use the Student Unlimited Plan for ${
-        isEurope() ? "€8" : "$9"
-      } per month (usually ${
-        isEurope() ? "€35" : "$39"
-      }). See <button on:click data-open-modal='redeem-student-offer' class="font-bold text-body hover:text-important transition duration-200">Gitpod for Students</button> for more information. </p>`,
     },
     {
       title: "How can I pay?",

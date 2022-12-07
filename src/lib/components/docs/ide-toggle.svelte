@@ -92,6 +92,12 @@
   };
 </script>
 
+<style lang="postcss">
+  article :global(p) {
+    @apply mb-0;
+  }
+</style>
+
 <div class="my-8 mt-0">
   <header>
     <nav>

@@ -22,7 +22,7 @@
         to the team. Everyone deserves an equal opportunity to be successful at
         Gitpod.
       </p>
-      <LinkButton href="https://www.gitpod.io/careers" variant="primary">
+      <LinkButton href="/careers" variant="primary">
         Become part of the team
       </LinkButton>
     </div>

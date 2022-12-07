@@ -1,11 +1,11 @@
 https://blog.gitpod.io/* https://www.gitpod.io/blog/:splat 301!
 https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /blog/gitlab-integration/+ /blog/gitlab-integration
-/careers https://gitpod.crew.work/jobs
 /chat https://discord.com/invite/gitpod
 /code-of-conduct https://github.com/gitpod-io/.github/blob/main/CODE_OF_CONDUCT.md
 /configure/editor /docs/editors/vscode
 /direction https://www.notion.so/gitpod/Gitpod-s-Direction-be35d064c0704fbda61c542b84e07ef6
+/cde https://www.gitpod.io/cde
 /docs/10_getting_started /docs/introduction/getting-started
 /docs/10_Getting_Started /docs/introduction/getting-started
 /docs/20_browser_extension /docs/configure/user-settings/browser-extension
@@ -70,7 +70,6 @@ https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /docs/ides-and-editors/command-line /docs/references/ides-and-editors/command-line
 /docs/ides-and-editors/faqs /docs/references/ides-and-editors/faqs
 /docs/index.html /docs
-/docs/integrations/jetbrains /docs/editors
 /docs/java_in_gitpod /docs/java-in-gitpod
 /docs/java-in-gitpod /docs/introduction/languages/java
 /docs/julia_in_gitpod /docs/julia-in-gitpod
@@ -88,7 +87,7 @@ https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /docs/self-hosted/latest/self-hosted /docs/configure/self-hosted/latest
 /docs/self-hosted/latest/installation/on-kubernetes /docs/configure/self-hosted/latest/installation
 /docs/vue-in-gitpod /docs/languages/vue
-/docs/editors/jetbrains-private-beta /docs/editors/
+/docs/editors/jetbrains-private-beta /docs/references/ides-and-editors
 /education /pricing#do-you-offer-discounts-for-students-and-educational-institutions
 /gitpod-business.html /pricing
 /gitpod-vs-codespaces /vs/github-codespaces
@@ -248,7 +247,8 @@ https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /docs/examples /docs/introduction/languages
 /docs/subscriptions /docs/configure/billing
 /docs/team-billing /docs/configure/billing/team-billing
-/docs/usage-based-billing /docs/configure/billing/usage-based-billing
+/docs/usage-based-billing /docs/configure/billing/pay-as-you-go
+/docs/configure/billing/usage-based-billing /docs/configure/billing/pay-as-you-go
 /docs/teams /docs/configure/billing/team-plans
 /docs/multi-repo-workspaces /docs/configure/workspaces/multi-repo
 /docs/workspace-classes /docs/configure/workspaces/workspace-classes
@@ -271,3 +271,10 @@ https://community.gitpod.io/* https://www.gitpod.io/chat 301!
 /docs/self-hosted/latest/advanced/default-workspace-image /docs/configure/self-hosted/latest/advanced/default-workspace-image
 /docs/self-hosted/latest/advanced/private-registries /docs/configure/self-hosted/latest/advanced/private-registries
 docs/ides-and-editors/jetbrains-gateway /docs/integrations/jetbrains-gateway
+/docs/vscode-extensions /docs/references/ides-and-editors/vscode-extensions
+/docs/integrations/jetbrains /docs/integrations/jetbrains-gateway
+/docs/editors /docs/references/ides-and-editors
+
+
+/changelog/november-changelog /changelog/november-gitpod-release-2022
+/github-student-developer-pack /for/education

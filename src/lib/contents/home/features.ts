@@ -42,7 +42,7 @@ export const codeAnywhereFeature: Feature = {
 
 export const features: Feature[] = [
   {
-    title: "Remote development without friction",
+    title: "Cloud development without friction",
     paragraph:
       "Gitpod continuously builds your git branches like a CI server so that you can start coding right away - no more waiting for dependencies to download and builds to finish.",
     moreButton: {

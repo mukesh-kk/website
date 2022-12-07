@@ -16,6 +16,7 @@
   <p>
     Oh no, this quickstart does not exist yet. Please <a
       target="_blank"
+      rel="noreferrer"
       href="https://github.com/gitpod-io/website/issues/new?labels=documentation&title=[Docs%20-%20Quickstart]%20-%20Requesting%20{$searchQuery}"
       >let us know</a
     >.

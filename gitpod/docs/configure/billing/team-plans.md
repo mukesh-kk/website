@@ -1,6 +1,6 @@
 ---
 section: billing
-title: Team plans
+title: Billing - Team plans
 ---
 
 <script context="module">

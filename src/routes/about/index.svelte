@@ -18,12 +18,6 @@
   import Articles from "$lib/components/articles.svelte";
 </script>
 
-<style lang="postcss">
-  .othercompanies span {
-    @apply px-2 py-[0.3rem] rounded-xl bg-tertiary dark:text-dark-grey;
-  }
-</style>
-
 <OpenGraph
   data={{
     description:
@@ -34,7 +28,7 @@
 
 <Header
   title="About Gitpod"
-  text="Gitpod is an open source developer platform automating the provisioning 
+  text="Gitpod is an open source developer platform automating the provisioning
   of ready-to-code developer environments."
   textClassNames="max-w-[770px] text-large mx-auto mb-x-small"
   tight={true}
@@ -75,7 +69,7 @@
     description: "Come join us.",
     link: {
       text: "See openings",
-      href: "https://www.gitpod.io/careers",
+      href: "/careers",
     },
     secondaryLink: null,
   }}

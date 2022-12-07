@@ -1,6 +1,6 @@
 import type { Screencast } from "$lib/types/screencasts";
 
-export let topics = [
+export const topics = [
   "Getting started",
   "Advanced",
   "Customisations",

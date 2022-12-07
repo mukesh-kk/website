@@ -10,7 +10,12 @@
   textClassNames="mb-x-small"
 >
   <div slot="content" class="flex flex-col items-center">
-    <LinkButton href="#" variant="primary" size="large" class="mb-small">
+    <LinkButton
+      href="/about/team"
+      variant="primary"
+      size="large"
+      class="mb-small"
+    >
       Meet the team
     </LinkButton>
 

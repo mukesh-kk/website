@@ -28,7 +28,7 @@
     : 'py-4 text-xl rounded-2xl'}"
   {href}
   target="_blank"
-  rel="noopener"
+  rel="noopener noreferrer"
   ><span class="">{icon}</span>
   <External class="inline-block my-0 mx-2 h-3 w-3" />
   <slot />

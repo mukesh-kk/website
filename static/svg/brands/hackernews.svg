@@ -19,7 +19,7 @@
     fill="url(#a)"
     mask="url(#cut-out)"
   />
-  
+
   <defs>
     <linearGradient
       id="a"

@@ -42,7 +42,7 @@
     <div class="w-[136px]">
       <p class="h5 text-important font-bold mb-macro">Website</p>
       <p>
-        <a href={details.website.href} target="_blank">
+        <a href={details.website.href} rel="noreferrer" target="_blank">
           {details.website.text}
         </a>
       </p>

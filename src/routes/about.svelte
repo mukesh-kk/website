@@ -68,7 +68,7 @@
     description: "Come join us.",
     link: {
       text: "See openings",
-      href: "https://www.gitpod.io/careers",
+      href: "/careers",
     },
     secondaryLink: null,
   }}

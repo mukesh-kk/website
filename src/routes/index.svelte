@@ -53,7 +53,7 @@
   <Features {features} />
 </div>
 <SectionScreenshot />
-<UsedBy title="Used by 500k+ developers" class="py-small" />
+<UsedBy title="Used by 750k+ developers" class="py-small" />
 <Features features={otherFeatures} />
 <Section>
   <Resources {cards} headingLevel="h2" />

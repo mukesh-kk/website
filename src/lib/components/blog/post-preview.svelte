@@ -13,6 +13,8 @@
   export let teaserHeightClass: string = "h-64";
   export let availability: boolean = true;
   export let headlineOrder: "h3" | "" = "";
+  export let badge: string = "";
+  export let textWidth: string = "";
 
   const generateURL = () => {
     if (post && post.href) return post.href;
@@ -36,7 +38,7 @@
     ? 'bg-sand-dark dark:bg-card'
     : ''} {layout === 'column'
     ? ''
-    : 'lg:flex-row lg:max-w-6xl mx-auto'} rounded-xl bg-card transition-all duration-200 {availability &&
+    : 'lg:flex-row min-h-[200px] w-full'} rounded-xl bg-card transition-all duration-200 {availability &&
     'hover:shadow-normal focus:shadow-normal'}"
   data-analytics={`{"context":"grid","variant":"preview"}`}
 >
@@ -48,7 +50,7 @@
         class="object-cover m-auto overflow-hidden rounded-t-xl bg-center bg-cover w-full {teaserHeightClass} {layout ===
         'column'
           ? ''
-          : 'lg:rounded-l-xl lg:rounded-tr-none lg:w-60 lg:h-full'}"
+          : 'lg:rounded-l-xl aspect-square lg:rounded-tr-none lg:w-60 lg:h-full'}"
         style={`background-image: url(${
           post.isNotAnActualPost
             ? post.image
@@ -60,9 +62,12 @@
   <div
     class="{layout === 'column'
       ? 'flex-col h-full flex-nowrap'
-      : 'flex-wrap'} flex lg:justify-between p-xx-small pt-x-small"
+      : 'flex-wrap gap-y-micro w-full gap-x-small'} flex lg:justify-between p-xx-small"
   >
-    <div>
+    <div class="{textWidth ? textWidth : 'max-w-3xl'} ">
+      {#if badge}
+        <Pill class="mb-micro" text={badge} variant="orange" />
+      {/if}
       {#if !availability}
         <Pill text="soon" variant="pink" />
       {/if}
@@ -83,7 +88,7 @@
       </div>
       <p>{post.excerpt}</p>
     </div>
-    <p class="mt-micro">
+    <p>
       <span>
         {#if post.author}
           <Avatars

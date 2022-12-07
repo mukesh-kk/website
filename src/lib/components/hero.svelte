@@ -3,6 +3,10 @@
   import LinkButton from "$lib/components/ui-library/link-button";
   import ButtonsWrapper from "./buttons-wrapper.svelte";
 
+  let className = "";
+
+  export { className as class };
+
   type Link = {
     text: string;
     href: string;
@@ -17,7 +21,7 @@
     alt: string;
     darkSrc?: string;
     isCut?: boolean;
-  };
+  } = { alt: "", src: "" };
   export let btnPrimary: Link;
   export let btnSecondary: Link = null;
   const { src, alt, darkSrc, isCut = true } = image;
@@ -40,7 +44,7 @@
 <Section
   class="{isCut
     ? 'cut flex items-center justify-between'
-    : 'hero relative'} text-center lg:text-left pb-x-large lg:pb-0"
+    : 'hero relative'} text-center lg:text-left pb-x-large lg:pb-0 {className}"
 >
   <div
     class="text-box mx-auto {isCut
@@ -77,22 +81,23 @@
       {/if}
     </ButtonsWrapper>
   </div>
-  <img
-    class="
+  {#if image.src}
+    <img
+      class="
       max-w-lg
       -z-10 hidden
       lg:block {darkSrc ? 'dark:lg:hidden' : ''}
       w-[35vw]
       {isCut
-      ? 'xl:transform xl:translate-x-24 xl:translate-y-[20%] xl:scale-150'
-      : 'absolute right-0 top-1/2 transform -translate-y-[40%]'}
+        ? 'xl:transform xl:translate-x-24 xl:translate-y-[20%] xl:scale-150'
+        : 'absolute right-0 top-1/2 transform -translate-y-[40%]'}
     "
-    {src}
-    {alt}
-  />
-  {#if darkSrc}
-    <img
-      class="
+      {src}
+      {alt}
+    />
+    {#if darkSrc}
+      <img
+        class="
         max-w-lg
         -z-10 hidden
         dark:lg:block
@@ -100,11 +105,12 @@
         transfrom
         scale-[1.12]
         {isCut
-        ? 'xl:transform xl:translate-x-24 xl:translate-y-[20%] xl:scale-[1.66]'
-        : 'absolute right-0 top-1/2 -translate-y-[40%]'}
+          ? 'xl:transform xl:translate-x-24 xl:translate-y-[20%] xl:scale-[1.66]'
+          : 'absolute right-0 top-1/2 -translate-y-[40%]'}
       "
-      src={darkSrc}
-      {alt}
-    />
+        src={darkSrc}
+        {alt}
+      />
+    {/if}
   {/if}
 </Section>

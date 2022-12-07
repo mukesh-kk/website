@@ -39,7 +39,7 @@
   };
 </script>
 
-<div class="flex divide-x divide-divider mt-x-small mb-xx-small">
+<div class="flex divide-x divide-divider mt-x-small lg:m-0 mb-xx-small">
   <button
     class="px-macro py-1"
     title="Switch to System's prefered color scheme."

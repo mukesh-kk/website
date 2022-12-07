@@ -82,7 +82,7 @@
 <UsedBy
   isCard={false}
   class="py-small"
-  title="Trusted by +500k developers"
+  title="Trusted by 750k+ developers"
   isCustomerStoriesLinkShown={false}
 />
 

@@ -9,6 +9,10 @@
   import PlansAndPricing from "$lib/components/pricing/plans-and-pricing.svelte";
   import { pricingPlans } from "$lib/contents/self-hosted";
   import ViewAllFeatures from "$lib/components/self-hosted/view-all-features.svelte";
+  import Card from "$lib/components/ui-library/card/card.svelte";
+  import LinkButton from "$lib/components/ui-library/link-button";
+  import DedicatedInfo from "$lib/components/pricing/dedicated-info.svelte";
+  import Section from "$lib/components/section.svelte";
 </script>
 
 <OpenGraph
@@ -21,6 +25,33 @@
   }}
 />
 <PlansAndPricing {pricingPlans} />
+<DedicatedInfo />
+<Section>
+  <Card
+    size="medium"
+    class="flex items-center max-w-2xl mx-auto p-x-small md:px-small md:py-medium gap-medium shadow-normal"
+  >
+    <img
+      src="/images/support/monitor.png"
+      alt="Monitor"
+      class="w-40 dark:hidden"
+    />
+    <img
+      src="/images/support/monitor-dark.png"
+      alt="Monitor"
+      class="w-40 hidden dark:block transform scale-110"
+    />
+    <div>
+      <h2 class="h4">Get a demo</h2>
+      <p class="mb-micro">
+        And learn how your engineering organization can scale with Gitpod.
+      </p>
+      <LinkButton href="/contact/get-demo" variant="primary">
+        Get a demo
+      </LinkButton>
+    </div>
+  </Card>
+</Section>
 <ViewAllFeatures />
 <Faqs />
 <Explore

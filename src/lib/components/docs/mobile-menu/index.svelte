@@ -8,6 +8,7 @@
 
   import docsCurrentSectionStore from "$lib/stores/docs-current-section";
   import EditInGitpod from "../edit-in-gitpod.svelte";
+  import { docsMeta } from "$lib/stores/docs-meta";
   import docsCurrentSubsectionStore from "$lib/stores/docs-current-subsection";
   import { sanitizeSelfHosted } from "$lib/utils/helpers";
   import type { MenuEntry } from "$lib/types/menu-entry";
@@ -54,6 +55,6 @@
     {/if}
   {/if}
   <div class="mt-4">
-    <EditInGitpod renderedOn="mobile" />
+    <EditInGitpod isIndex={$docsMeta.isIndex} renderedOn="mobile" />
   </div>
 </div>

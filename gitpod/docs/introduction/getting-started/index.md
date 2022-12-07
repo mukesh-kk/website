@@ -70,7 +70,7 @@ Next, let's help Gitpod understand your repository to automate the developer env
 
 ## Help Gitpod understand your repository
 
-When you started your first workspace above, Gitpod didn't do much. In fact, all it did was starting the workspace and `git clone` your source code.
+When you started your first workspace above, Gitpod didn't do much. In fact, all it did was start the workspace and `git clone` your source code.
 To develop, you still would have to install dependencies, run build scripts and start the development server every time you start a workspace... We can do better, so let's automate that!
 
 1. In the workspace terminal, make sure you are in your project's root directory (`pwd` should be `/workspace/<repo>`).

@@ -52,7 +52,7 @@
     ? 'pt-xx-small'
     : 'pt-x-small'} pb-small flex-col justify-between items-center bg-card px-0 mt-0 mx-macro mb-x-small text-center transition-all duration-200"
   brandShadow={spiced}
-  stroked={false}
+  stroked={true}
 >
   <div class="flex flex-col" class:w-full={plans}>
     {#if spiced}
@@ -83,7 +83,7 @@
             size="small"
             class="pt-x-small px-micro sm:px-x-small pb-small max-w-[310px]"
             background="white"
-            stroked={false}
+            stroked={true}
           >
             <h3 class="h4">{title}</h3>
             <FeaturesList {features} />

@@ -58,7 +58,7 @@
       trackingName: "twitter",
     },
     {
-      href: `http://www.reddit.com/submit?url=${encodeURIComponent(
+      href: `https://www.reddit.com/submit?url=${encodeURIComponent(
         `${baseUrl}${slug}&title=${title}`
       )}`,
       icon: {
@@ -69,7 +69,7 @@
     },
     {
       name: "HackerNews",
-      href: `http://news.ycombinator.com/submitlink?u=${encodeURIComponent(
+      href: `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(
         `${baseUrl}${slug}`
       )}&t=${encodeURIComponent(title)}`,
       icon: {
@@ -81,7 +81,7 @@
   ];
 </script>
 
-<style>
+<style lang="postcss">
   .prose :global(nav.toc) {
     @apply hidden;
   }

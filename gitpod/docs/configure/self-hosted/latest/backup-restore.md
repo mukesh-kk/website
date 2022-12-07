@@ -53,7 +53,7 @@ Although you could simply re-install Gitpod using the regular [installation path
 
 [Velero](https://velero.io/) is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes. It is used by KOTS to connect to your backup location. It supports many [data sources](https://docs.replicated.com/enterprise/snapshots-storage-destinations), including AWS, Azure and GCP storage solutions.
 
-Please follow the installation instructions as per the [Velero documentation](https://velero.io/docs/latest/basic-install). KOTS requires [Restic integration](https://velero.io/docs/latest/restic) to function correctly, which can be added by appending the `--use-restic` flag to the `velero install` command.
+Please follow the installation instructions as per the [Velero documentation](https://velero.io/docs/latest/basic-install). KOTS requires [Restic integration](https://velero.io/docs/v1.9/restic) to function correctly, which can be added by appending the `--use-restic` flag to the `velero install` command.
 
 #### Triggering Your First Backup
 

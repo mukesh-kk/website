@@ -1,6 +1,7 @@
 export type DocsMeta = {
   section: string;
   title: string;
+  isIndex: boolean;
   headings?: MarkdownHeader[];
 };
 export type MarkdownHeader = {

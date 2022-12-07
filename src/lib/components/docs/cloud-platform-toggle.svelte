@@ -34,6 +34,12 @@
   export let open = false;
 </script>
 
+<style lang="postcss">
+  article :global(p) {
+    @apply mb-0;
+  }
+</style>
+
 <details open={open || null} {id}>
   <summary class="text-p-medium"
     ><b>Cloud provider specific instructions</b></summary
@@ -64,29 +70,29 @@
     </ul>
     {#if $$slots.gcp}
       {#if activeValue === 1}
-        <div
+        <article
           class="px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card"
         >
           <slot name="gcp" />
-        </div>
+        </article>
       {/if}
     {/if}
     {#if $$slots.aws}
       {#if activeValue === 2}
-        <div
-          class="px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card"
-        >
+        <article>
+          class="px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white
+          dark:bg-card" >
           <slot name="aws" />
-        </div>
+        </article>
       {/if}
     {/if}
     {#if $$slots.azure}
       {#if activeValue === 3}
-        <div
+        <article
           class="px-4 py-4 rounded-b-2xl rounded-tr-2xl border-t-0 bg-white dark:bg-card"
         >
           <slot name="azure" />
-        </div>
+        </article>
       {/if}
     {/if}
   </div>

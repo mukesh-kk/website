@@ -10,8 +10,9 @@
   <h2 class="!mt-0">More about DevX Digest</h2>
   <p class="text-medium mb-x-small">
     Sign up for our newsletter or follow <a
-      href="https://twitter.com/@devxconf"
-      target="_blank">@devxconf</a
+      rel="noreferrer"
+      href="https://twitter.com/@devxcommunity"
+      target="_blank">@devxcommunity</a
     > on Twitter to stay updated.
   </p>
   <ButtonsWrapper class="justify-center mt-x-small">

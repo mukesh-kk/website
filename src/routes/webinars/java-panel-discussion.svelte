@@ -1,4 +1,8 @@
-<script>
+<script context="module" lang="ts">
+  export const prerender = true;
+</script>
+
+<script lang="ts">
   import Articles from "$lib/components/articles.svelte";
   import Explore from "$lib/components/explore.svelte";
   import OpenGraph from "$lib/components/open-graph.svelte";
@@ -38,7 +42,7 @@
       webinarDescription="Open conversation about Java remote development covering best practices. What does not work well yet, and what had to click to make it work."
     />
 
-    <div class="lgx:hidden ">
+    <div class="lgx:hidden">
       <Card
         size="small"
         class="px-3 sm:px-xx-small py-micro md:py-xx-small max-w-full shadow-normal"
@@ -95,7 +99,7 @@
 
 <Articles
   title="Additional resources"
-  text="If you are curious to learn more on remote development, 
+  text="If you are curious to learn more on remote development,
     have a read through these blog posts."
   textMaxW="max-w-2xl"
   slugs={[

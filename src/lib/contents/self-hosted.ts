@@ -554,11 +554,6 @@ export const selfhostedFAQ: FAQ = {
         '<p> Currently, <strong>Gitpod Self-Hosted</strong> can only be purchased on request. Please <a href="/enterprise-license">request a license key</a> and we\'ll contact you. If you have any questions, please <a href="/contact/sales">Get in touch</a>. All our plans can be paid via invoice. </p>',
     },
     {
-      title: "Do you offer discounts for educational institutions?",
-      content:
-        '<p> Yes, qualified educational institutions may receive a special discount. Please <a href="/contact/sales">Contact sales</a>. </p>',
-    },
-    {
       title: "Still have more questions?",
       content:
         '<p> We are happy to answer them, please <a href="/contact/support" >Get in Touch</a >. </p>',

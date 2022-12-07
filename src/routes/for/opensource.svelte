@@ -60,7 +60,7 @@
 <ProgramBenefits cards={programBenefits} />
 
 <Eligibility
-  text="To qualify for Gitpod’s Opensource program, need to meet one of these criteria:"
+  text="To qualify for Gitpod’s Opensource program, need to meet one of these criteria: (If it is approved, we will send you an email)"
   list={[
     "You are a maintainer, core contributor to a well-established free software or open-source project.",
     "You regularly contribute to free software or open source communities in other ways (e.g. producing regular content like blog posts, videos, live streams, translations, or organizing meet-ups, conferences, hackathons, etc).",

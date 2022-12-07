@@ -30,7 +30,7 @@
 </script>
 
 <div
-  class="flex flex-col justify-between w-full items-center text-center {clazz}"
+  class="flex h-full flex-col justify-between w-full items-center text-center {clazz}"
   style={styles}
 >
   <div>

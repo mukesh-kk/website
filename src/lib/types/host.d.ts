@@ -4,7 +4,7 @@ export type Host = {
   avatar: Image;
   name: string;
   jobTitle: string;
-  companyLogo: {
+  companyLogo?: {
     component: any;
     props?: any;
   };

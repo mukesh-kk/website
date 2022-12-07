@@ -35,7 +35,7 @@ All talks are now available for watching via this [playlist on YouTube](https://
 
 ## Funding open source
 
-[![🤯 @gitpod is starting an Open-Source Sustainability Fund to help FOSS maintainers. What is more amazing that based on voting, Emacs's lsp-mode received almost 3% of the initial pool from @devxconf! Check https://gitpod.io/blog/gitpod-open-source-sustainability-fund/ for more.](../../../static/images/blog/devxconf-wrap/tweet-yonchovski.png)](https://twitter.com/yonchovski/status/1390659877740158976)
+[![🤯 @gitpod is starting an Open-Source Sustainability Fund to help FOSS maintainers. What is more amazing that based on voting, Emacs's lsp-mode received almost 3% of the initial pool from @devxcommunity! Check https://gitpod.io/blog/gitpod-open-source-sustainability-fund/ for more.](../../../static/images/blog/devxconf-wrap/tweet-yonchovski.png)](https://twitter.com/yonchovski/status/1390659877740158976)
 
 The truth is free software isn't free. How much is a task going to cost in person hours? Hours have rates. Rates require payment. Yet, an entire community of developers provide their services outside of their day job to produce tools consumed by businesses.
 

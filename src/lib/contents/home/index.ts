@@ -535,7 +535,7 @@ export const featureTitles: FeatureTitle[] = [
     sub: "cost savings compared to a VDI solution",
   },
   {
-    main: "+500k",
+    main: "750k+",
     sub: "developers are using Gitpod",
   },
 ];

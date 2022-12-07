@@ -24,7 +24,7 @@ export const get: RequestHandler = async ({ params }) => {
         },
       };
     }
-    let title = slugToTitle(params.slug);
+    const title = slugToTitle(params.slug);
     const allFiles = import.meta.glob(`/src/routes/docs/**/*.md`, {
       as: "raw",
     });
@@ -73,10 +73,13 @@ export const get: RequestHandler = async ({ params }) => {
       ],
     });
 
+    const frontmatter = {
+      ...compiledMarkdown.data.fm,
+      isIndex: filePath.endsWith("index.md"),
+    };
+
     return {
-      body: {
-        ...compiledMarkdown.data.fm,
-      },
+      body: frontmatter,
     };
   } catch (e) {
     console.log(e.message);

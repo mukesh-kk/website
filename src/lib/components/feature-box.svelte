@@ -13,14 +13,6 @@
   div :global(.feature-box section) {
     @apply m-0 !important;
   }
-
-  div :global(.feature-box:last-of-type) {
-    @apply mb-xxx-large;
-
-    @media (max-width: 972px) {
-      @apply mb-x-large;
-    }
-  }
 </style>
 
 <div>

@@ -6,7 +6,7 @@
   export let pricingPlans: Pricing[];
 </script>
 
-<style lang="scss">
+<style lang="postcss">
   .top :global(a) {
     @apply underline;
   }

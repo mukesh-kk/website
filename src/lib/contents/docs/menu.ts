@@ -61,6 +61,7 @@ export const MENU: MenuEntry[] = [
     M("Browser bookmarklet", "configure/user-settings/browser-bookmarklet"),
     M("Dotfiles", "configure/user-settings/dotfiles", false, []),
     M("SSH", "configure/user-settings/ssh"),
+    M("Access Tokens", "configure/user-settings/access-tokens"),
   ]),
 
   M(
@@ -181,8 +182,8 @@ export const MENU: MenuEntry[] = [
     M("Team plans", "configure/billing/team-plans"),
     M("Team billing", "configure/billing/team-billing", false, [], "beta"),
     M(
-      "Usage-based billing",
-      "configure/billing/usage-based-billing",
+      "Pay-as-you-go",
+      "configure/billing/pay-as-you-go",
       false,
       [],
       "Early Access"
@@ -210,8 +211,8 @@ export const MENU: MenuEntry[] = [
     M("GoLand", "references/ides-and-editors/goland", false, [], "beta"),
     M("PhpStorm", "references/ides-and-editors/phpstorm", false, [], "beta"),
     M("PyCharm", "references/ides-and-editors/pycharm", false, [], "beta"),
-    M("CLion", "references/ides-and-editors/clion", false, [], "soon"),
-    M("Rider", "references/ides-and-editors/rider", false, [], "soon"),
+    M("CLion", "references/ides-and-editors/clion", false, [], "beta"),
+    M("Rider", "references/ides-and-editors/rider", false, [], "beta"),
     M("RubyMine", "references/ides-and-editors/rubymine", false, [], "beta"),
     M("WebStorm", "references/ides-and-editors/webstorm", false, [], "beta"),
     M(

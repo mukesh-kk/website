@@ -3,12 +3,17 @@
 
   export let title: string;
   export let text: string = "";
+
+  let clazz = "";
+  export { clazz as class };
 </script>
 
-<h2 class="h3 text-center mb-8">{title}</h2>
-{#if text}
-  <p class="text-center">
-    {@html text}
-  </p>
-{/if}
-<GitpodIllustration />
+<div class={clazz}>
+  <h2 class="h3 text-center mb-8">{title}</h2>
+  {#if text}
+    <p class="text-center">
+      {@html text}
+    </p>
+  {/if}
+  <GitpodIllustration />
+</div>

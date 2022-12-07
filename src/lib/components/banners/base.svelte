@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { slide } from "svelte/transition";
-  import displayBanner from "$lib/stores/display-banner";
+  import displayBanner from "../../stores/display-banner";
 
   let clazz = "";
   export { clazz as class };
@@ -14,7 +14,8 @@
   const closeBanner = () => {
     showBanner = false;
     window.localStorage.setItem(storageKey, "true");
-    if (clazz === "announcement-banner") {
+    if (clazz.includes("announcement-banner")) {
+      displayBanner.set(false);
       document.body.classList.remove("banner-is-shown");
       document.documentElement.classList.remove("display-banner");
     }
@@ -22,7 +23,9 @@
 
   onMount(() => {
     showBanner = !window.localStorage.getItem(storageKey);
-    displayBanner.set(showBanner && display);
+    if (clazz.includes("announcement-banner")) {
+      displayBanner.set(showBanner && display);
+    }
     if (clazz.includes("announcement-banner")) {
       if (display && showBanner) {
         document.documentElement.classList.add("display-banner");

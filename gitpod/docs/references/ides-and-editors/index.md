@@ -42,4 +42,6 @@ The three main ways to edit code or access a Gitpod workspace:
 - [PyCharm](ides-and-editors/pycharm)
 - [RubyMine](ides-and-editors/rubymine)
 - [WebStorm](ides-and-editors/webstorm)
+- [Rider](ides-and-editors/rider)
+- [CLion](ides-and-editors/clion)
 - [Command Line (e.g. Vim)](ides-and-editors/command-line)

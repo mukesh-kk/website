@@ -13,25 +13,7 @@ export const codespacesToc: FeatureTableToc[] = [
   {
     type: "text",
     data: {
-      text: "Pricing (Hosted)",
-    },
-  },
-  {
-    type: "text",
-    data: {
-      text: "Free Tier",
-    },
-  },
-  {
-    type: "text",
-    data: {
       text: "License",
-    },
-  },
-  {
-    type: "text",
-    data: {
-      text: "Availability",
     },
   },
   {
@@ -155,20 +137,8 @@ export const gitpodColumns: FeatureTableColumn = {
     {
       items: [
         {
-          term: "Pricing (Hosted)",
-          text: "Free for Open-Source",
-        },
-        {
-          term: "Free Tier",
-          text: "50h per month",
-        },
-        {
           term: "License",
           text: "Open Source",
-        },
-        {
-          term: "Availability",
-          text: "Everyone",
         },
         {
           term: "GitHub Integration",
@@ -241,20 +211,8 @@ export const codespacesColumn: FeatureTableColumn = {
     {
       items: [
         {
-          term: "Pricing (Hosted)",
-          text: "$$$",
-        },
-        {
-          term: "Free Tier",
-          availability: false,
-        },
-        {
           term: "License",
           text: "Proprietary",
-        },
-        {
-          term: "Availability",
-          text: "Teams, Enterprise",
         },
         {
           term: "GitHub Integration",
@@ -310,7 +268,7 @@ export const codespacesColumn: FeatureTableColumn = {
         },
         {
           term: "Multi-IDE Support",
-          availability: false,
+          availability: true,
         },
       ],
     },

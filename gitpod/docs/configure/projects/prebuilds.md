@@ -1,11 +1,24 @@
 ---
 section: projects
-title: Prebuilds
+title: Gitpod Prebuilds
 ---
 
 <script context="module">
   export const prerender = true;
 </script>
+
+<script lang="ts">
+  import OpenGraph from "$lib/components/open-graph.svelte";
+</script>
+
+<OpenGraph
+data={{
+    description:
+      "Learn how to configure prebuilds for your Gitpod projects.",
+    title: "Gitpod Prebuilds",
+    keywords: "prebuilds, Gitpod, faster workspace start, faster workspace init, faster workspace creation",
+  }}
+/>
 
 # Prebuilds
 
@@ -13,7 +26,9 @@ Prebuilds reduce wait time, by installing dependencies or running builds **befor
 
 `youtube: ZtlJ0PakUHQ`
 
-## gitpod.yml
+## .gitpod.yml
+
+Prebuilds are typically configured using an `init` [task](/docs/configure/workspaces/tasks) in your gitpod.yml.
 
 In the example below, the `init` task installs npm packages into the node_modules directory of the workspace. The `command` task runs 'npm start' on every workspace startup.
 
@@ -24,6 +39,17 @@ tasks:
   - command: |
       npm start
 ```
+
+## Projects and prebuilds
+
+For prebuilds to run automatically, you also need a [project](/docs/configure#projects) for your repository.
+
+To create a new project:
+
+- Click on _New Project_ in the Projects page of one your teams.
+- If necessary, you will be prompted for additional authorization to install and configure the Gitpod GitHub app,
+  so that Gitpod can watch your repositories and trigger prebuilds.
+- Select the repository for your project.
 
 ## Prebuilds are shared
 
@@ -41,17 +67,6 @@ Prebuilds save **only** the workspace directory. Other directories like the home
 
 To use global installs like 'npm install -g', we suggest using a custom Dockerfile or a `before` task, which runs before the init task, and runs again before the command task.
 
-## Projects and prebuilds
-
-[Projects](/docs/configure#projects) are a convenient way to manage prebuilds and workspaces for your repository.
-
-To create a new project:
-
-- Click on _New Project_ in the Projects page of one your teams.
-- If necessary, you will be prompted for additional authorization to install and configure the Gitpod GitHub app,
-  so that Gitpod can watch your repositories and trigger prebuilds.
-- Select the repository for your project.
-
 #### Project environment variables
 
 Environment variables which are defined in project settings will be visible in prebuilds. This is useful for prebuilds to access restricted services.
@@ -61,51 +76,11 @@ Care should be taken with secrets in prebuilds. Do not save secrets in a way whi
 
 ## Configuring prebuilds manually.
 
-#### GitHub
+All prebuilds require a [Gitpod project](/docs/configure/projects#add-a-new-project) for the repository.
 
-To enable prebuilt workspaces for a GitHub repository, follow these steps:
+For a GitLab or Bitbucket repository, allow Gitpod to install repository webhooks, by granting `api` permissions in your [git provider integrations](https://gitpod.io/integrations)
 
-1. Go to the [Gitpod GitHub app](https://github.com/apps/gitpod-io) and click `Configure`
-2. Choose the organization or account you wish to install the Gitpod app for, then click `Install`
-3. You will be forwarded to Gitpod where you can confirm the installation
-
-#### GitLab
-
-To enable prebuilt workspaces for a GitLab repository, follow these steps:
-
-1. Allow Gitpod to install repository webhooks, by granting `api` permissions in [Git Provider Integrations](https://gitpod.io/integrations)
-2. Trigger a first prebuild manually, by prefixing the repository URL with `gitpod.io/#prebuild/` e.g. like so:
-
-```
-gitpod.io/#prebuild/https://gitlab.com/gitpod-io/gitpod
-```
-
-This will [start a prebuild](#manual-execution-of-prebuild), and also install a webhook that will trigger new Gitpod prebuilds for every new push to any of your branches to your repository.
-
-If you want to trigger new Gitpod prebuilds for specific branches only, you can configure this in your GitLab [project settings](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#branch-filtering).
-
-#### Bitbucket
-
-To enable prebuilt workspaces for a Bitbucket repository, follow these steps:
-
-1. Allow Gitpod to install repository webhooks, by granting `webhook` permissions in [Git Provider Integrations](https://gitpod.io/integrations)
-2. Trigger a first prebuild manually, by prefixing the repository URL with `gitpod.io/#prebuild/` e.g. like so:
-
-```
-gitpod.io/#prebuild/https://bitbucket.org/gitpod-io/gitpod
-```
-
-This will [start a prebuild](#manual-execution-of-prebuild), and also install a webhook that will trigger new Gitpod prebuilds for every new push to any of your branches to your repository.
-
-### Manual prebuilds
-
-It is also possible to trigger a new prebuild manually using the `gitpod.io/#prebuild/` URL prefix:
-
-```
-https://gitpod.io/#prebuild/https://github.com/ORG/REPO
-```
-
-## Configure prebuilds
+For GitLab, if you want to trigger new Gitpod prebuilds for specific branches only, you can configure this in your GitLab [project settings](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#branch-filtering).
 
 By default, Gitpod prepares prebuilt workspaces for all changes on the default branch and for pull/merge requests coming from the same repository.
 

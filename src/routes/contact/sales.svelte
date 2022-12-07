@@ -223,7 +223,7 @@
 <OpenGraph
   data={{
     description: "We’ll help you find the best plan for your business.",
-    title: "Contact Sales",
+    title: "Contact Sales - Book a demo",
   }}
 />
 
@@ -400,7 +400,7 @@
               </InputsHalf>
               <div>
                 <Textarea
-                  label="Your message*"
+                  label="How can we help you?*"
                   id="message"
                   name="message"
                   hasError={isFormDirty && !formData.message.valid}

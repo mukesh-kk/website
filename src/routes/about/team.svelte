@@ -63,7 +63,7 @@
       "Help us shape Gitpod’s future from anywhere in the world. Come join us!",
     link: {
       text: "See open positions",
-      href: "https://www.gitpod.io/careers",
+      href: "/careers",
     },
     secondaryLink: null,
   }}

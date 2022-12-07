@@ -11,7 +11,7 @@ export const secureParagraphs = [
 export const programFeatures: Card[] = [
   {
     title: "Compliance",
-    text: "<p>Gitpod maintains compliance with the European General Data Protection Regulation (GDPR) and provides users with the ability to access and control the information that is collected about them. To clients we provide a Data Processing Agreement (DPA) incorporating the Standard Contractual Clauses (SCC) for International Data Transfer. </p><p> Gitpod is built with security in mind and we continuously invest in security best practices. We are conducting annual SOC 2 Type II audits to assess the appropriateness of our controls. You can request a copy of our SOC 2 report under a Non-Disclosure Agreement (NDA).</p>",
+    text: '<p>Gitpod maintains compliance with the European General Data Protection Regulation (GDPR) and provides users with the ability to access and control the information that is collected about them. To clients we provide a Data Processing Agreement (DPA) incorporating the Standard Contractual Clauses (SCC) for International Data Transfers. </p><p> Gitpod is built with security in mind. We continuously invest in security best practices and conduct annual SOC 2 Type II audits to assess the appropriateness of our controls. You can request a copy of our report inside our public <a href="https://app.safebase.io/portal/71ccd717-aa2d-4a1e-942e-c768d37e9e0c/preview?productId=default" target="_blank" rel="noreferrer">Trust Center</a> (NDA required).</p>',
     icon: {
       src: "/svg/security/compliance.svg",
     },

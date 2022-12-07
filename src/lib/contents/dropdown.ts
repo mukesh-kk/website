@@ -28,4 +28,9 @@ export const links: {
     href: "/screencasts",
     description: "Short videos to get started",
   },
+  {
+    text: "Events",
+    href: "/events",
+    description: "Upcoming events and event recordings",
+  },
 ];

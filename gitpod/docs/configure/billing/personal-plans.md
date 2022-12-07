@@ -1,6 +1,6 @@
 ---
 section: billing
-title: Personal plans
+title: Billing - Personal plans
 ---
 
 <script context="module">

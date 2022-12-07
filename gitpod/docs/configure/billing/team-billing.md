@@ -1,6 +1,6 @@
 ---
 section: billing
-title: Team billing
+title: Billing - Team billing
 ---
 
 <script context="module">
@@ -19,7 +19,7 @@ title: Team billing
 >
 > If you prefer to continue to manage membership of [**Team plans**](/docs/configure/billing/team-billing) manually, you can.
 >
-> The next iteration of Team billing will replace Team plans with [Usage-based billing](/docs/configure/billing/usage-based-billing).
+> The next iteration of Team billing will replace Team plans with [Pay-as-you-go](/docs/configure/billing/pay-as-you-go).
 
 Team billing allows you to pay for your whole team with a single subscription. You can choose between the **Team Professional** plan, or the **Team Unleashed** plan.
 

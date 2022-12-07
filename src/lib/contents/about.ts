@@ -16,7 +16,7 @@ export const featureTitles: FeatureTitle[] = [
   },
   {
     main: "A user base of",
-    sub: "+500k",
+    sub: "750k+",
   },
 ];
 

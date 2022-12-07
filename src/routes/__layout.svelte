@@ -70,7 +70,7 @@
   }
 </script>
 
-<style>
+<style lang="postcss">
   :global(#svelte-announcer) {
     @apply sr-only;
   }

@@ -1,0 +1,24 @@
+name: Cypress End-to-end tests 🧪
+on: [pull_request]
+jobs:
+  run-e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+      - name: Install dependencies 📦
+        run: npm install
+      - name: Start Development Server 🏗️
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm run dev
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
+          runTests: false
+          install: false
+      - name: Run e2e tests 🧪
+        uses: cypress-io/github-action@v4
+        with:
+          # we have already installed all dependencies above
+          install: false
+          command: npm run test:e2e

@@ -8,6 +8,8 @@ import "prismjs/components/prism-markdown.min.js";
 import "prismjs/components/prism-sql.min.js";
 import "prismjs/components/prism-toml.min.js";
 import "prismjs/components/prism-promql.min.js";
+import "prismjs/components/prism-go.min.js";
+import "prismjs/components/prism-typescript.min.js";
 import { escapeSvelte } from "mdsvex";
 
 const langMap = {

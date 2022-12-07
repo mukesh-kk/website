@@ -7,12 +7,7 @@ import GitProviders from "../components/svgs/enterprise/git-providers.svelte";
 import { linuxSource } from "./terminal";
 import Jetbrains from "$lib/components/svgs/brands/jetbrains.svelte";
 import type { Quote } from "$lib/types/quote";
-import {
-  factorialQuote,
-  redwoodJsQuote,
-  sharesIoQuote,
-  vizlibQuote,
-} from "./customers";
+import { factorialQuote, sharesIoQuote, vizlibQuote } from "./customers";
 import { jetbrainsQuote } from "./jetbrains-space";
 
 export const exploreContents: ExploreSection = {
@@ -50,7 +45,7 @@ export const featureCards: Card[] = [
   },
 ];
 
-export let partnershipCards: PartnershipCard[] = [
+export const partnershipCards: PartnershipCard[] = [
   {
     title: "GitLab",
     img: {

@@ -11,6 +11,7 @@ export type Feature = {
   paragraph: string;
   moreButton?: moreButton;
   secondaryButton?: { text: string; href: string };
+  ctaButton?: { text: string; href: string };
   featureList?: string[];
   image?: {
     darkSrc?: string;

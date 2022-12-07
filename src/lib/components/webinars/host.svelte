@@ -8,15 +8,17 @@
 </script>
 
 <Card size="small" background="white" class="max-w-[368px] p-x-small">
-  <div class="flex mb-x-small">
+  <div class="flex mb-xx-small">
     <div class="mr-micro">
       <GradientStrokeAvatar image={avatar} />
     </div>
     <div>
       <h3 class="text-base mb-0">{name}</h3>
       <p class="text-base mb-macro">{jobTitle}</p>
-      <svelte:component this={companyLogo.component} {...companyLogo.props} />
+      {#if companyLogo}
+        <svelte:component this={companyLogo.component} {...companyLogo.props} />
+      {/if}
     </div>
   </div>
-  <p>{text}</p>
+  <p>{@html text}</p>
 </Card>

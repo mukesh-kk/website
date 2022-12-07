@@ -1,14 +1,5 @@
-<script context="module" lang="ts">
-  declare global {
-    interface Window {
-      onYouTubeIframeAPIReady: any;
-    }
-    var YT: any;
-  }
-</script>
-
 <script lang="ts">
-  import { afterUpdate } from "svelte";
+  import LiteYouTube from "svelte-lite-youtube-embed";
   import { trackEvent } from "./segment.svelte";
   import Share from "./share.svelte";
   import Card from "$lib/components/ui-library/card";
@@ -16,50 +7,17 @@
 
   export let embedId: string;
   export let title: string;
-
   export let coverImage: string = null;
   let isConcealed = Boolean(coverImage);
 
-  const randomId = "yt-player-" + Math.random().toString(36).slice(2, 5);
-  const VIDEO_PLAYING = 1;
-  let videoStarted = false;
-
-  const setUpVideo = () => {
-    const onStateChange = (e: any) => {
-      if (e.data == VIDEO_PLAYING) {
-        if (!videoStarted) {
-          trackEvent("screencast_started", {
-            id: embedId,
-            name: title,
-            url: window.location.href,
-            path: window.location.pathname,
-          });
-        }
-        videoStarted = true;
-      }
-    };
-
-    new YT.Player(randomId, {
-      events: { onStateChange },
+  const videoLoadedSuccessfully = () => {
+    trackEvent("screencast_started", {
+      id: embedId,
+      name: title,
+      url: window.location.href,
+      path: window.location.pathname,
     });
   };
-
-  afterUpdate(() => {
-    if (typeof YT === "undefined") {
-      var tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // Youtube script will automatically call the following function
-      window.onYouTubeIframeAPIReady = () => {
-        setUpVideo();
-      };
-    } else {
-      videoStarted = false;
-      setUpVideo();
-    }
-  });
 
   export const youtubeURL = `https://youtube.com/watch?v=${embedId}`;
 
@@ -75,7 +33,7 @@
       trackingName: "twitter",
     },
     {
-      href: `http://www.reddit.com/submit?url=${encodeURIComponent(
+      href: `https://www.reddit.com/submit?url=${encodeURIComponent(
         youtubeURL
       )}`,
       icon: {
@@ -86,7 +44,7 @@
     },
     {
       name: "Hacker News",
-      href: `http://news.ycombinator.com/submitlink?u=${encodeURIComponent(
+      href: `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(
         youtubeURL
       )}`,
       icon: {
@@ -103,6 +61,9 @@
     display: block;
     content: "";
     padding-top: 56.25%;
+  }
+  div :global(.lite-youtube) {
+    max-width: 100%;
   }
 </style>
 
@@ -141,20 +102,16 @@
         </div>
       </button>
     {:else}
-      <iframe
-        id={randomId}
-        src={`https://www.youtube-nocookie.com/embed/${embedId}?enablejsapi=1&autoplay=${
-          coverImage ? 1 : 0 // Autoplay when revealed from the cover image, but not when there's no cover
-        }`}
-        {title}
-        width="560"
-        height="315"
-        autoplay={Boolean(coverImage)}
-        frameBorder="0"
-        class="absolute top-0 left-0 w-full h-full max-w-full"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      />
+      <div class=".lite-youtube">
+        <LiteYouTube
+          videoId={`${embedId}`}
+          videoTitle={`${title}`}
+          params="enablejsapi=1"
+          posterQuality="maxresdefault"
+          noCookie={true}
+          on:iframeLoaded={videoLoadedSuccessfully}
+        />
+      </div>
     {/if}
   </Card>
   <Share

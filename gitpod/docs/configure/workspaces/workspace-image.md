@@ -176,3 +176,25 @@ We are working on allowing Docker builds directly from within workspaces, but un
 Sometimes you find yourself in situations where you want to manually rebuild a workspace image, for example if packages you rely on released a security fix.
 
 You can trigger a workspace image rebuild with the following URL pattern: `https://gitpod.io/#imagebuild/<your-repo-url>`.
+
+## Configure a custom shell
+
+> **Feedback needed**: Custom shell support is in the works. The below shows a method for running some of the `~/.bashrc.d` startup scripts. To leave feedback on the approach, please see this GitHub issue: [#10105](https://github.com/gitpod-io/gitpod/issues/10105).
+
+For example, if you wish to default your workspace-image to `zsh`, you could do it from your [custom dockerfile](#custom-docker-image) with the following line:
+
+```dockerfile
+ENV SHELL=/usr/bin/zsh
+```
+
+Tip: You could also create an environment variable at https://gitpod.io/variables called `SHELL` with `*/*` scope for setting a personal default SHELL.
+
+Caveat: Shells like `fish`, `zsh` and etc. are not POSIX-compliant or bash-compatible, so your Gitpod tasks might error if you use some POSIX or bash specific features in your task scripts.
+
+### Load bash environment in custom shell
+
+Currently we put some startup scripts for the workspace-images at `~/.bashrc.d`, that means if you change your SHELL from `bash` to something else, they will not auto run. You could run the following command from your SHELL to workaround:
+
+```bash
+bash -lic 'true'
+```
