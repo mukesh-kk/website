@@ -63,7 +63,7 @@ When you open a workspace, it will be in the "starting" state. This means that t
 
 ### Workspace Stopped
 
-- There is no active workspace in Gitpod.
+- No provisioned container is running (e.g. ports and URLs are not accessible).
 - All files and directories inside `/workspace` are preserved.
 - If restarted, same workspace ID is used.
 - A start is required before the workspace can be used.
