@@ -201,11 +201,11 @@ See [Gitpod prebuilds](/docs/configure/projects/prebuilds) for more.
 
 > **Conditional:** Only runs if project `.gitpod.yml` contains a `before` definition.
 
-### 7. \*Execute `init` Task
+### 8. \*Execute `init` Task
 
 > **Conditional:** Only runs if project `.gitpod.yml` contains a `init` definition.
 
-### 8. Initialize IDE
+### 9. Initialize IDE
 
 Your chosen IDE or editor is started.
 
@@ -219,7 +219,7 @@ This step is done in the background (i.e. non-blocking) so your IDE can start ah
 
 **Your selected IDE is launched** 🎉
 
-### 9. \*Execute "Command" Task
+### 10. \*Execute "Command" Task
 
 Once the IDE is started, any `command` tasks are now executed.
 
@@ -227,7 +227,7 @@ See [Workspace Tasks](/docs/configure/workspaces/tasks) for more.
 
 > **Conditional:** Only runs if project `.gitpod.yml` contains a `command` definition.
 
-### 10. Stop Workspace
+### 11. Stop Workspace
 
 <!-- TODO: Find correct Position for screenshot  -->
 
