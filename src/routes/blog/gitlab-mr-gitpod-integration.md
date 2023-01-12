@@ -12,7 +12,7 @@ title: New Gitpod Button has landed on GitLab Merge Request Pages
   export const prerender = true;
 </script>
 
-Reviewing merge requests is part of a developer's everday life. The quality of code reviews is a crucial aspect of the development process. In reality, it often leads to just skiming the code changes and approving the merge request with a simple “LGTM”. One reason is that doing code reviews requires a context switch for the reviewer. For a careful review one needs to checkout the branch of the merge request, navigate through the code changes, build and test the changed software, … and hope that there will be no configuration drift or other inferences with the existing local developement setup.
+Reviewing merge requests is part of a developer's everday life. The quality of code reviews is a crucial aspect of the development process. In reality, it often leads to just skiming the code changes and approving the merge request with a simple “LGTM”. One reason is that doing code reviews requires a context switch for the reviewer. For a careful review one needs to checkout the branch of the merge request, navigate through the code changes, build and test the changed software, … and hope that there will be no configuration drift or other inferences with the existing local development setup.
 
 This is a situation where ephemeral development environments show their full strength. With Gitpod, you get a fresh development environment just for your review. It has everything set-up for reviewing the changes and will be closed once the job is done. For a head-to-head comparison between local and cloud based workflows for MRs I recommend reading [Mike's blog post](/blog/i-said-goodbye-to-local-development-and-so-can-you#switch-context).
 
