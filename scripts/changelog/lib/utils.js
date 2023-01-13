@@ -75,6 +75,8 @@ export const parseNewReleaseNote = (pr) => {
   const releaseNotesStart = data.children.find(
     (node) =>
       node.type === "heading" &&
+      node.children.length > 0 &&
+      node.children[0].type === "text" &&
       node.depth === 2 &&
       node.children[0].value.toLowerCase() === blockName.toLowerCase()
   )?.position.end.offset;
