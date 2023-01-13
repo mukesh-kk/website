@@ -4,33 +4,44 @@ export const links: {
   description: string;
 }[] = [
   {
-    text: "Changelog",
-    href: "/changelog",
-    description: "Latest updates and feature releases ",
+    text: "Docs",
+    href: "/docs",
+    description: "Access Gitpod's documentation",
   },
   {
-    text: "Guides",
-    href: "/guides",
-    description: "How to use Gitpod with any project",
+    text: "Help center",
+    href: "/contact/support",
+    description: "View status, get help or contact support",
   },
   {
-    text: "Community",
-    href: "/community",
-    description: "Connect with like-minded people",
+    text: "Get started",
+    href: "/docs/introduction/getting-started",
+    description: "Guide to start your first workspace",
+  },
+];
+
+export const templates: {
+  text: string;
+  href: string;
+}[] = [
+  {
+    text: "JavaScript",
+    href: "/docs/introduction/languages/javascript",
   },
   {
-    text: "Blog",
-    href: "/blog",
-    description: "Articles, news and opinions",
+    text: "Python",
+    href: "/docs/introduction/languages/python",
   },
   {
-    text: "Screencasts",
-    href: "/screencasts",
-    description: "Short videos to get started",
+    text: "Java",
+    href: "/docs/introduction/languages/java",
   },
   {
-    text: "Events",
-    href: "/events",
-    description: "Upcoming events and event recordings",
+    text: "Go",
+    href: "/docs/introduction/languages/go",
+  },
+  {
+    text: "Rust",
+    href: "/docs/introduction/languages/rust",
   },
 ];

@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { links } from "$lib/contents/dropdown";
+  import { links, templates } from "$lib/contents/dropdown";
   import { onMount } from "svelte";
 
   import { fade } from "svelte/transition";
   import Arrow from "../svgs/arrow.svelte";
+  import FullArrowRight from "../svgs/full-arrow-right.svelte";
   import displayBanner from "$lib/stores/display-banner";
 
   let shown: boolean = false;
@@ -29,14 +30,14 @@
 </script>
 
 <style lang="postcss">
-  a {
+  a.card {
     &:hover,
     &:focus {
       @apply border-divider text-body bg-sand-light;
     }
   }
 
-  :global(body.dark) a {
+  :global(body.dark) a.card {
     &:hover,
     &:focus {
       @apply bg-card;
@@ -74,17 +75,18 @@
 {#if shown}
   <div
     class:extended={$displayBanner}
-    class="fixed top-20 left-0 w-screen flex justify-center bg-bg border-y border-divider !m-0 shadow-md"
+    class="fixed top-20 left-0 w-screen flex justify-center bg-bg border-divider !m-0 shadow-md"
     in:fade={{ duration: 300 }}
     bind:this={wrapperEl}
   >
     <div
-      class="grid grid-cols-3 gap-x-large pt-x-small pb-small"
+      class="grid grid-cols-2 gap-x-small pt-xx-small pb-xx-small"
       bind:this={linksGrid}
     >
       {#each links as { href, text, description }}
         <a
           class="
+            card
             py-micro
             pl-xx-small
             pr-medium
@@ -101,6 +103,27 @@
           <p>{description}</p>
         </a>
       {/each}
+    </div>
+    <div class="border-l border-divider">
+      <div class="text-important font-bold gap-x-small pt-xx-small ml-14">
+        Templates
+      </div>
+      <div class="list-none">
+        {#each templates as { href, text }}
+          <a class="!important" {href}>
+            <p class="mb-1 ml-14 my-2 card">
+              {text}
+            </p>
+          </a>
+        {/each}
+      </div>
+      <a
+        class="flex ml-14 text-xs my-2 !important"
+        href="/docs/introduction/getting-started/quickstart"
+      >
+        <FullArrowRight width="12" heightt="12" />
+        <p>View all</p>
+      </a>
     </div>
   </div>
 {/if}
