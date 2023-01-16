@@ -9,99 +9,70 @@ title: Go in Gitpod
 
 # Go in Gitpod
 
-Gitpod supports Go right out of the box, but there are still ways to optimize your Go experience within Gitpod.
+Gitpod includes Go in the default image, but if you need to customize your Go version or IDE setup in Gitpod, this guide will help you.
 
-## Example Repositories
+## Prerequisites
 
-Here are a few Go example projects that are already automated with Gitpod:
+This guide assumes familiarity with:
 
-<div class="overflow-x-auto">
+[Docker](https://docs.docker.com/), [YAML](https://yaml.org/spec/1.1/), [Linux](https://www.linux.org/), [Bash](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html) and Linux [environment variables](https://wiki.archlinux.org/title/environment_variables).
 
-| Repository                                             | Description                                               |                                                                                                                        Try It |
-| ------------------------------------------------------ | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------: |
-| [prometheus](https://github.com/prometheus/prometheus) | The Prometheus monitoring system and time series database | [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/prometheus/prometheus) |
-| [go-swagger](https://github.com/go-swagger/go-swagger) | A simple yet powerful representation of your RESTful API  | [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/go-swagger/go-swagger) |
-| [go-gin-app](https://github.com/gitpod-io/go-gin-app)  | Gin example running in Gitpod                             |  [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/go-gin-app) |
-| [gosh-terminal](https://github.com/gosh-terminal/gosh) | A terminal implemented in Go where you can do anything    |    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gosh-terminal/gosh) |
+## Getting started / Quick Start
 
-</div>
+`youtube: w65POyu3ZUQ`
 
-## Workspace Configuration
+To see a full working Go application, take a look at [gitpod-samples/template-golang-cli](https://github.com/gitpod-samples/template-golang-cli). To update an existing Go application, follow the steps below in this guide.
 
-### VSCode Extensions
+<a href="https://gitpod.io/#https://github.com/gitpod-samples/template-golang-cli">
+    <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Push" align="center" >
+</a>
 
-<div class="overflow-x-auto">
+## Installing Dependencies
 
-| Name                                                                                               | Description                                                                                |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [Go Test Explorer](https://marketplace.visualstudio.com/items?itemName=premparihar.gotestexplorer) | Provides Test Explorer for Go which allows you to run your tests at the click of a button! |
+### The default base image
 
-</div>
+The default Gitpod workspace image default is [workspace-full](https://github.com/gitpod-io/workspace-images) based on [Ubuntu](https://ubuntu.com/).
 
-To install Go Test Explorer for your repository, add the following to your [.gitpod.yml](/docs/references/gitpod-yml)
+This base image includes:
 
-```YAML
-vscode:
-  extensions:
-    - premparihar.gotestexplorer
+- [Go](https://golang.org/) `v1.19.1` (`go version`)
+
+> **Note:** We discuss how to set up a [custom base image](/docs/introduction/languages/go#setting-up-a-custom-dockerfile) later in the guide.
+
+### Updating Go Versions
+
+Gitpod uses the latest stable version of Go by default. If you want to use a different version, you can use the [Go Version Manager](https://github.com/moovweb/gvm) to install and manage multiple versions of Go or you can following their [official guide](https://go.dev/doc/manage-install).
+
+### Setting up a custom Dcokerfile
+
+`youtube: jFsbmcXCRf8`
+
+To ensure Gitpod workspaces always start with the correct dependencies, configure a Dockerfile:
+
+1. Create a `.gitpod.yml`
+
+```bash
+touch .gitpod.yml
 ```
 
-### **[Start-up tasks](/docs/configure/workspaces/tasks)**
+2. Create a custom Dockerfile
 
-Here is how to have your dependencies automatically fetched before you open your Gitpod workspace!
+```bash
+touch .gitpod.Dockerfile
+```
+
+3. Reference your newly created Dockerfile in your `.gitpod.yml`
 
 ```yaml
-tasks:
-  - init: go get -v -t -d ./...
-```
-
-A full example of a [.gitpod.yml](/docs/references/gitpod-yml) file might look like this
-
-```yaml
-image: gitpod/workspace-full
-
-tasks:
-  - init: go get -v -t -d ./...
-
-vscode:
-  extensions:
-    - premparihar.gotestexplorer
-```
-
-### Using the `dep` dependency manager in Gitpod
-
-If your project uses the [`dep`](https://golang.github.io/dep/) dependency manager then you need to add a [.gitpod.Dockerfile](/docs/configure/workspaces/workspace-image) to your project. A basic example that extends the default workspace image might be something like:
-
-```dockerfile
-FROM gitpod/workspace-full
-
-USER gitpod
-
-RUN brew install dep
-```
-
-Also, don't forget to reference the above Dockerfile in your `.gitpod.yml` configuration file, like so:
-
-```YAML
 image:
   file: .gitpod.Dockerfile
-
-tasks:
-  - init: dep ensure
-
-vscode:
-  extensions:
-    - premparihar.gotestexplorer
 ```
 
-# Installing custom `go` version on a minimal workspace
-
-Let's say you want go v1.17, follow along!
-At first, add a [.gitpod.Dockerfile](/docs/configure/workspaces/workspace-image) file on your repo with the following content in it:
+4. Update your `.gitpod.Dockerfile` to install your preferred [dependency versions](https://go.dev/project)
 
 ```dockerfile
 # You can find the new timestamped tags here: https://hub.docker.com/r/gitpod/workspace-base/tags
-FROM gitpod/workspace-base:2022-04-26-07-40-59
+FROM gitpod/workspace-base:latest
 
 # Change your version here
 ENV GO_VERSION=1.17
@@ -115,16 +86,56 @@ RUN curl -fsSL https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz | tar
                       'export PATH=$GOPATH/bin:$PATH' > $HOME/.bashrc.d/300-go
 ```
 
-Secondly, reference the above Dockerfile in your `.gitpod.yml` configuration file, like so:
+5. Commit and push both `.gitpod.yml` and `.gitpod.Dockerfile`
 
-```yaml
-image:
-  file: .gitpod.Dockerfile
+```bash
+git commit -m "configuring gitpod with go" && git push
 ```
 
-Now you can [See it in action on a new workspace](/docs/references/gitpod-yml#see-it-in-action)
+6. Start a **new workspace** from the branch with the committed `.gitpod.Dockerfile`
 
-## Debugging
+For example, opening: `gitpod.io/#https://github.com/gitpod-io/gitpod`
+
+7. Test your dependencies are correct in the new workspace
+
+```bash
+go version
+```
+
+> **Note:** If your changes are not taking effect, ensure your workspace is building from the correct [context](/docs/introduction/learn-gitpod/context-url), where your `gitpod.yml` or `gitpod.Dockerfile` are checked in to version control and are on the branch or commit that you are opening.
+
+See [configure Docker](/docs/configure/workspaces/workspace-image) for more.
+
+### Using the `dep` dependency manager in Gitpod
+
+If your project uses the [`dep` _(deprecated - v0.5.4)_](https://golang.github.io/dep/) dependency manager then you need to add a [.gitpod.Dockerfile](/docs/configure/workspaces/workspace-image) to your project. A basic example that extends the default workspace image might be something like:
+
+```dockerfile
+FROM gitpod/workspace-full
+
+USER gitpod
+
+RUN sudo apt-get install go-dep
+```
+
+Also, don't forget to reference the above Dockerfile in your `.gitpod.yml` configuration file, like so:
+
+```YAML
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: dep ensure
+
+vscode:
+  extensions:
+    - golang.go
+    - premparihar.gotestexplorer
+```
+
+## Debugging your Go application in Gitpod
+
+### Debugging your Go applications in VS Code
 
 Here is a quick clip on how to automatically configure debugging for Go!
 
@@ -165,11 +176,25 @@ Then, simply open the Go file you want to debug, open the Debug panel (in the le
 
 <br>
 
-To see a basic repository with Go debugging enabled, please check out [gitpod-io/Gitpod-Go-Debug](https://github.com/gitpod-io/Gitpod-Go-Debug):
+To see a basic repository with Go debugging, please check out [gitpod-samples/template-golang-cli](https://github.com/gitpod-samples/template-golang-cli):
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/Gitpod-Go-Debug)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-samples/template-golang-cli)
 
-## Using `$GOPATH`
+### Debugging your Go applications in GoLand
+
+Steps to debug your Go application in GoLand:
+
+1. Open your project in Gitpod with GoLand.
+2. Open the `main.go` file in the editor.
+3. Click on the `Run` menu and select `Edit Configurations...`.
+4. Click on the `+` button and select `Go Application`.
+5. In the `Go Application` window, enter the name of the configuration and the path to the file you want to debug.
+6. Click on the `Apply` button.
+7. Click on the `Debug` button to start debugging your Go application.
+
+<img class="shadow-medium rounded-xl max-w-xl mt-x-small" src="/images/docs/goland-debug.webp" alt="Debug on GoLand in Gitpod" loading="lazy"/>
+
+### Using `$GOPATH`
 
 Older Go projects without module support need a <a href="https://golang.org/doc/code.html#Organization" target="_blank">specific workspace layout</a>:
 the source code of your repository and its dependencies must be in the directories
@@ -186,11 +211,11 @@ how we do that for the example <a href="https://github.com/gitpod-io/definitely-
 checkoutLocation: "src/github.com/demo-apps/go-gin-app"
 workspaceLocation: "."
 tasks:
-  - init: >
+  - init: |
       cd /workspace/src/github.com/demo-apps/go-gin-app &&
       go get -v ./... &&
       go build -o app
-    command: >
+    command: |
       cd /workspace/src/github.com/demo-apps/go-gin-app &&
       ./app
 ```
@@ -205,7 +230,19 @@ In more detail:
 - To build the app, we run `go build -o app`.
 - Lastly, we start the application.
 
+## Example Repositories
+
+Here are a few Go example projects that are already automated with Gitpod:
+
+|                       Repository                       |                        Description                        |                                                                                                                        Try It |
+| :----------------------------------------------------: | :-------------------------------------------------------: | ----------------------------------------------------------------------------------------------------------------------------: |
+| [prometheus](https://github.com/prometheus/prometheus) | The Prometheus monitoring system and time series database | [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/prometheus/prometheus) |
+| [go-swagger](https://github.com/go-swagger/go-swagger) | A simple yet powerful representation of your RESTful API  | [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/go-swagger/go-swagger) |
+| [go-gin-app](https://github.com/gitpod-io/go-gin-app)  |               Gin example running in Gitpod               |  [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/go-gin-app) |
+| [gosh-terminal](https://github.com/gosh-terminal/gosh) |  A terminal implemented in Go where you can do anything   |    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gosh-terminal/gosh) |
+
 ## Further Reading
 
 - [VSCode/Go Documentation](https://code.visualstudio.com/docs/languages/go) The stuff here also applies to Gitpod!
+- [JetBrains/GoLand Documentation](https://www.jetbrains.com/help/go) The stuff here also applies to Gitpod!
 - [VSCode/Go debugging](https://github.com/Microsoft/vscode-go/wiki/Debugging-Go-code-using-VS-Code) VSCode's Documentation on Go debugging

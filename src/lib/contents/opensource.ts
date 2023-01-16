@@ -97,7 +97,7 @@ export const programBenefits: Card[] = [
     },
     transform: "scale(.95)",
     title: "Gitpod for free",
-    text: "Maintainers get unlimited hours for usage on public repos. Contributors to your project are provided with a generous free plan for up to 50h a month, including private repos. For projects that run their own infrastructure complimentary <a href='/self-hosted'>Gitpod Self-Hosted</a> licenses are also available.",
+    text: "Maintainers get 2500 credits each month for use on public repos. This is equivalent to 250 hours of Standard workspace usage.",
   },
   {
     icon: {
@@ -123,14 +123,9 @@ export const faqs: FAQ = {
   headline: "FAQs",
   items: [
     {
-      title: "My Gitpod account has been automatically upgraded?",
-      content:
-        "Over 18,000 people in the GitHub ecosystem were pre-qualified on the 16th of Feburary 2022 for complimentary professional open source accounts with unlimited hours. If you are in the short-list your account will be automatically upgraded either upon account creation or when you next start a workspace with your existing account. No action is required. See the <a href='/blog/gitpod-for-opensource'>announcement blog post</a> and this <a href='https://github.com/gitpod-io/gitpod/issues/8212'>pull-request for specifics</a>.",
-    },
-    {
       title: "I'm not eligible but still want to use Gitpod",
       content:
-        "We have a very generous <a href='/pricing'>free plan</a> for up to 50h a month, including private repos.",
+        "We have a very generous <a href='/pricing'>free plan</a> which includes 500 credits, or up to 50h a month of Standard workspace usage, including private repos.",
     },
   ],
 };
@@ -206,7 +201,7 @@ export const exploreContents: ExploreSection = {
   title: "Apply Now",
   description:
     "Spend less time reviewing pull-requests, onboarding contributors and more time on building great things.",
-  note: "Upgrade your account to our complimentary professional open source plan.",
+  note: "Upgrade your account to our complimentary Open Source plan.",
   link: {
     text: "Apply Now",
     href: "https://bit.ly/gitpod-for-opensource-application-form",

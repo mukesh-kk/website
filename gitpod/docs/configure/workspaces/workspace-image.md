@@ -9,13 +9,13 @@ title: Workspace Image
 
 # Workspace Image
 
-By default, Gitpod uses a standard Docker Image called [`Workspace-Full`](https://github.com/gitpod-io/workspace-images/blob/481f7600b725e0ab507fbf8377641a562a475625/dazzle.yaml#L18) as the foundation for workspaces. Workspaces started based on this default image come pre-installed with Docker, Nix, Go, Java, Node.js, C/C++, Python, Ruby, Rust, PHP as well as tools such as Homebrew, Tailscale, Nginx and several more.
+By default, Gitpod uses a standard Docker Image called [`Workspace-Full`](https://github.com/gitpod-io/workspace-images/blob/481f7600b725e0ab507fbf8377641a562a475625/dazzle.yaml#L18) as the foundation for workspaces. Workspaces started based on this default image come pre-installed with Docker, Nix, Go, Java, Node.js, C/C++, Python, Ruby, Rust, Clojure as well as tools such as Homebrew, Tailscale, Nginx and several more.
 
 If this image does not include the tools you need for your project, you can provide a public Docker image or your own [Dockerfile](#configure-a-custom-dockerfile). This provides you with the flexibility to install the tools & libraries required for your project.
 
 > **Note:** Gitpod supports Debian/Ubuntu based Docker images. Alpine images do not include [libgcc and libstdc++](https://code.visualstudio.com/docs/remote/linux#_tips-by-linux-distribution) which breaks Visual Studio Code. See also [Issue #3356](https://github.com/gitpod-io/gitpod/issues/3356).
 
-## Configure a public Docker image
+## Use a public Docker image
 
 You can define a public Docker image in your `.gitpod.yml` file with the following configuration:
 
@@ -33,7 +33,17 @@ For public images, feel free to specify a tag, e.g. `image: node:buster` if you 
 
 For Gitpod images, we recommend using timestamped tag for maximum reproducibility, for example `image: gitpod/workspace-full:2022-05-08-14-31-53` (taken from the `Tags` panel on [this dockerhub page](https://hub.docker.com/r/gitpod/workspace-full/tags) for example)
 
-## Configure a custom Dockerfile
+## Use a private Docker image
+
+> This is currently in [Alpha](/docs/help/public-roadmap/release-cycle).
+
+You may also use private Docker images.
+
+To do so you must provide the registry authentication details to Gitpod by setting `GITPOD_IMAGE_AUTH` with the following value `<registry-domain>:<base64-encoded 'username:password'>` as a [Project-level environment variable](/docs/configure/projects/environment-variables#project-specific-environment-variables).
+
+For example, if the registry is `docker.io`, the username is `foo` and the password is `bar`, the `GITPOD_IMAGE_AUTH` environment variable value may be calculated using the command `echo -n "docker.io:"; echo -n "foo:bar" | base64 -w0` which outputs `docker.io:Zm9vOmJhcg==`.
+
+## Use a custom Dockerfile
 
 This option provides you with the most flexibility. Start by adding the following configuration in your `.gitpod.yml` file:
 
@@ -57,6 +67,8 @@ RUN brew install fzf
 
 > ⚠️ **Caveat:** > `COPY` instructions in a Dockerfile is only evaluated once and then cached.
 > [See this](#manually-rebuild-a-workspace-image) to break the cache and trigger a rebuild.
+
+> ⚠️ **Caveat:** The base image of a custom Dockerfile must be public.
 
 **Docker support**: If you use the `gitpod/workspace-full` image, you get Docker support built-in to your environment.
 
@@ -164,3 +176,25 @@ We are working on allowing Docker builds directly from within workspaces, but un
 Sometimes you find yourself in situations where you want to manually rebuild a workspace image, for example if packages you rely on released a security fix.
 
 You can trigger a workspace image rebuild with the following URL pattern: `https://gitpod.io/#imagebuild/<your-repo-url>`.
+
+## Configure a custom shell
+
+> **Feedback needed**: Custom shell support is in the works. The below shows a method for running some of the `~/.bashrc.d` startup scripts. To leave feedback on the approach, please see this GitHub issue: [#10105](https://github.com/gitpod-io/gitpod/issues/10105).
+
+For example, if you wish to default your workspace-image to `zsh`, you could do it from your [custom dockerfile](#custom-docker-image) with the following line:
+
+```dockerfile
+ENV SHELL=/usr/bin/zsh
+```
+
+Tip: You could also create an environment variable at https://gitpod.io/variables called `SHELL` with `*/*` scope for setting a personal default SHELL.
+
+Caveat: Shells like `fish`, `zsh` and etc. are not POSIX-compliant or bash-compatible, so your Gitpod tasks might error if you use some POSIX or bash specific features in your task scripts.
+
+### Load bash environment in custom shell
+
+Currently we put some startup scripts for the workspace-images at `~/.bashrc.d`, that means if you change your SHELL from `bash` to something else, they will not auto run. You could run the following command from your SHELL to workaround:
+
+```bash
+bash -lic 'true'
+```

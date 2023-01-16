@@ -23,7 +23,7 @@ This edition is particularly exciting as we’ve launched **DevX Pod** which is 
 Our first episode features [Cirpo](https://twitter.com/cirpo), Head of Developer Experience at DAZN Engineering and [Lou](https://twitter.com/loujaybee), Product Manager at Gitpod. In a previous life, Lou worked with Cirpo as one of the founding figures in DevX at DAZN, they even wrote [a blog post](https://medium.com/dazn-tech/developer-experience-dx-at-dazn-e6de9a0208d2) all about their values, focus, team structure, learnings and more.
 
 ![DevX Podcast Episode 1](../../../static/images/blog/building-devx-teams/podcast.png)
-_DevX Pod is avaliable wherever you get your podcasts!_
+_DevX Pod is available wherever you get your podcasts!_
 
 Unlike more “external-facing” DevX content that is seen more often in the wild, this episode focused more on “internal-facing” DevX i.e. from the POV of an internal team (also known sometimes as platform/tooling/infrastructure teams) where improving developer experience was the full-time responsibility.
 

@@ -8,7 +8,7 @@
   export let isGetADemoLinkShown: boolean = true;
   export let link: { href: string; text: string } = {
     href: "https://gitpod.io/workspaces/",
-    text: "Try now",
+    text: "Start for free",
   };
 </script>
 
@@ -22,8 +22,12 @@
       {link.text}
     </LinkButton>
     {#if isGetADemoLinkShown}
-      <LinkButton variant="cta" size="large" href="/contact/get-demo">
-        Get a demo
+      <LinkButton
+        variant="cta"
+        size="large"
+        href="/contact/sales?subject=enterprise"
+      >
+        Talk to sales
       </LinkButton>
     {/if}
   </ButtonsWrapper>

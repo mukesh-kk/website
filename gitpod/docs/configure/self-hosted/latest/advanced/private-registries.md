@@ -10,6 +10,11 @@ title: Private Registries
 
 # Using private image registries with Gitpod Self-Hosted
 
+> ⚠️ **Self-hosted as a product is no longer supported**
+>
+> The last official update of this product is the [November 2022 self-hosted release](https://www.gitpod.io/changelog/november-self-hosted-release). We no longer sell commercial self-hosted licenses. If you want to self-host Gitpod, you can still request our [free community license](https://www.gitpod.io/community-license). However, we no longer offer support or updates for it. If you are interested in an isolated, private installation of Gitpod, take a look at [Gitpod Dedicated](/dedicated).
+> Read [our blog on Gitpod Dedicated](/blog/introducing-gitpod-dedicated) to learn why we made the decision to discontinue self-hosted.
+
 This guide outlines the considerations to take when using images for workspaces that originate from private image registries that are not stored in the image registry already configured in the KOTS Installation UI. This is useful when, for example, you want to pull private base images from one registry and then store the built images in another.
 
 Please refer to the [Docker image documentation](/docs/configure/workspaces/workspace-image) for more information about workspace images.

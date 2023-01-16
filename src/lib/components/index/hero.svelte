@@ -82,18 +82,18 @@
       Always<br /> ready to code.
     </h1>
     <p id="choose-project-observer-target" class="hero__intro-text text-large">
-      Spin up fresh, automated dev environments<br />
-      for each task, in the cloud, in seconds.
+      Spin up fresh cloud development environments<br />
+      for each task, fully automated, in seconds.
     </p>
     <div class="hero__action">
       <ButtonsWrapper class="mt-x-small lg:mt-small mb-x-small">
         <LinkButton
           variant="primary"
           href="https://gitpod.io/workspaces/"
-          size="large">Try now</LinkButton
+          size="large">Start for free</LinkButton
         >
-        <LinkButton variant="cta" href="/contact/get-demo" size="large"
-          >Get a demo</LinkButton
+        <LinkButton variant="cta" href="contact/sales" size="large"
+          >Contact sales</LinkButton
         >
       </ButtonsWrapper>
       <div>
@@ -112,14 +112,14 @@
   </div>
   <div class="hero__illustration">
     <img
-      src="/images/illustration-large.png"
+      src="/images/illustration-large.webp"
       alt="Gitpod in a Nutshell"
       width="700"
       height="724"
       class="block dark:hidden"
     />
     <img
-      src="/images/illustrattion-large-dark.png"
+      src="/images/illustrattion-large-dark.webp"
       alt="Gitpod in a Nutshell"
       width="700"
       height="724"

@@ -2,7 +2,15 @@
   import GreyDash from "$lib/components/svgs/grey-dash.svelte";
   import GreenTick from "$lib/components/svgs/green-tick.svelte";
   import type { FeatureItemDetail } from "../feature-table";
+  import { isEurope } from "$lib/utils/helpers";
+  import { onMount } from "svelte";
   export let definition: FeatureItemDetail;
+
+  let europe = true;
+
+  onMount(() => {
+    europe = isEurope();
+  });
 </script>
 
 <style lang="postcss">
@@ -30,7 +38,9 @@
 {:else}
   <div class="flex items-start justify-center">
     {#if definition.text}
-      {@html definition.text}
+      {@html `${definition.isCurrency ? (europe ? "€" : "$") : ""}${
+        definition.text
+      }`}
     {/if}
     {#if definition.availability}
       <GreenTick />

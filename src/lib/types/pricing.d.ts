@@ -7,8 +7,10 @@ type Plan = {
 
 export type Pricing = {
   title: string;
+  prependedPrice?: string;
+  showCurrency?: boolean;
   price: string;
-  duration?: string;
+  description: string;
   features?: Features;
   btnText?: string;
   btnHref?: string;

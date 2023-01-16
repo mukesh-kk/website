@@ -11,6 +11,8 @@
   export let href: string;
   export let textAlign: "left" | "center" = "center";
 
+  const isPrefetchable = href.startsWith("https://") ? undefined : true;
+
   const classMap = {
     primary:
       "bg-primary text-important dark:text-black hover:bg-quaternary focus:bg-quaternary",
@@ -53,7 +55,7 @@
     {className}
     {disabled ? classMap.disabled : ''}
   "
-  sveltekit:prefetch
+  sveltekit:prefetch={isPrefetchable}
   class:text-center={textAlign === "center"}
   class:text-left={textAlign === "left"}
   target={href.includes("https://") ? "_blank" : ""}

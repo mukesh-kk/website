@@ -103,5 +103,3 @@ The Infrastructure as Software company [Pulumi](https://www.pulumi.com/) has als
 _https://twitter.com/mattstratton/status/1426213495826096131?s=20_
 
 🎉 Thanks for reading! Hopefully, you’re convinced and can see the benefits of defining your workshops as code by now. As [recently announced](/blog/cloud-based-development-for-everyone), Gitpod is available to everyone, and our free tier is open to every developer with a GitLab, GitHub, and/or Bitbucket account.
-
-If you need help integrating with Gitpod or automating your existing workshop schedule a ☕️ catchup with me via https://ghuntley.com/meet or geoff@gitpod.io. 🧡

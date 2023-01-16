@@ -17,6 +17,6 @@
 
 <ul class="space-y-3 mt-micro">
   {#each list as item}
-    <li class="flex {textClassNames}">{item}</li>
+    <li class="flex {textClassNames}">{@html item}</li>
   {/each}
 </ul>

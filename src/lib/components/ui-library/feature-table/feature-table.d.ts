@@ -11,6 +11,7 @@ export type FeatureItemDetail = {
   term: string;
   list?: string[];
   text?: string;
+  isCurrency?: boolean = false;
   availability?: boolean;
 };
 

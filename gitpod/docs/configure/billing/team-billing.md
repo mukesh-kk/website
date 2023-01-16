@@ -1,6 +1,6 @@
 ---
 section: billing
-title: Team billing
+title: Billing - Team billing
 ---
 
 <script context="module">
@@ -9,17 +9,9 @@ title: Team billing
 
 # Team billing
 
-> Team billing is part of [Teams & Projects](/docs/configure), currently in [Beta](/docs/help/public-roadmap/release-cycle).
+> The plans below have been superseded by our [new billing model](/docs/configure/billing).
 
-> **NOTE**
-> This first iteration of Team billing improves Team plans by:
->
-> 1. Auto-subscribing new members when they join or leave the team.
-> 2. Pro-rata billing for new members who join in the middle of a billing cycle.
->
-> If you prefer to continue to manage membership of [**Team plans**](/docs/configure/billing/team-billing) manually, you can.
->
-> The next iteration of Team billing will replace Team plans with [Usage-based billing](/docs/configure/billing/usage-based-billing).
+> This page is for users who are looking to manage or cancel their existing team billing plans.
 
 Team billing allows you to pay for your whole team with a single subscription. You can choose between the **Team Professional** plan, or the **Team Unleashed** plan.
 
@@ -30,6 +22,8 @@ Team billing can be accessed under Team Settings if you are a Team owner.
 ![Team billing New](../../../static/images/docs/team-billing-new.png)
 
 Once a plan is active, Team billing will auto-subscribe new members, and the count will update automatically.
+
+Look for the green button to manage your payment details or to cancel your subscription.
 
 ![Team billing New](../../../static/images/docs/team-billing-subscribed.png)
 

@@ -2,6 +2,7 @@
 import awsSvelte from "$lib/components/svgs/aws.svelte";
 // @ts-ignore
 import githubMarkSvelte from "$lib/components/svgs/github-mark.svelte";
+import type { Card } from "$lib/types/card";
 import type { verticalFeature } from "$lib/types/feature";
 import type {
   FeatureTable,
@@ -13,25 +14,14 @@ export const codespacesToc: FeatureTableToc[] = [
   {
     type: "text",
     data: {
-      text: "Pricing (Hosted)",
-    },
-  },
-  {
-    type: "text",
-    data: {
-      text: "Free Tier",
-    },
-  },
-  {
-    type: "text",
-    data: {
       text: "License",
     },
   },
   {
-    type: "text",
+    type: "tooltip",
     data: {
-      text: "Availability",
+      text: "Free Plan",
+      tooltip: "Hours included in free plan for standard workspace (4 cores)",
     },
   },
   {
@@ -58,43 +48,6 @@ export const codespacesToc: FeatureTableToc[] = [
       image: {
         alt: "Bitbucket",
         path: "/svg/bitbucket.svg",
-      },
-    },
-  },
-  {
-    type: "image",
-    data: {
-      text: "Self-Host on GKE",
-      image: {
-        alt: "GCP",
-        path: "/svg/brands/gcp.svg",
-      },
-    },
-  },
-  {
-    type: "image",
-    data: {
-      text: "Self-Host on EKS",
-      image: awsSvelte,
-    },
-  },
-  {
-    type: "image",
-    data: {
-      text: "Self-Host on AKS",
-      image: {
-        alt: "azure",
-        path: "/svg/brands/azure.svg",
-      },
-    },
-  },
-  {
-    type: "image",
-    data: {
-      text: "Self-Host on Kubernetes",
-      image: {
-        alt: "kubernetes",
-        path: "/svg/brands/kubernetes.svg",
       },
     },
   },
@@ -140,6 +93,14 @@ export const codespacesToc: FeatureTableToc[] = [
       text: "Multi-IDE Support",
     },
   },
+  {
+    type: "tooltip",
+    data: {
+      text: "Private SaaS option",
+      tooltip:
+        "<a href='/dedicated' target='_blank'>Gitpod Dedicated</a> is a fully isolated, single-tenant deployment of Gitpod",
+    },
+  },
 ];
 
 export const gitpodColumns: FeatureTableColumn = {
@@ -155,20 +116,12 @@ export const gitpodColumns: FeatureTableColumn = {
     {
       items: [
         {
-          term: "Pricing (Hosted)",
-          text: "Free for Open-Source",
-        },
-        {
-          term: "Free Tier",
-          text: "50h per month",
-        },
-        {
           term: "License",
           text: "Open Source",
         },
         {
-          term: "Availability",
-          text: "Everyone",
+          term: "Free Plan",
+          text: "50h",
         },
         {
           term: "GitHub Integration",
@@ -180,22 +133,6 @@ export const gitpodColumns: FeatureTableColumn = {
         },
         {
           term: "Bitbucket Integration",
-          availability: true,
-        },
-        {
-          term: "Self-Host on GKE",
-          availability: true,
-        },
-        {
-          term: "Self-Host on EKS",
-          availability: true,
-        },
-        {
-          term: "Self-Host on AKS",
-          availability: true,
-        },
-        {
-          term: "Self-Host on Kubernetes",
           availability: true,
         },
         {
@@ -224,6 +161,10 @@ export const gitpodColumns: FeatureTableColumn = {
         },
         {
           term: "Multi-IDE Support",
+          availability: true,
+        },
+        {
+          term: "Private SaaS option",
           availability: true,
         },
       ],
@@ -241,20 +182,12 @@ export const codespacesColumn: FeatureTableColumn = {
     {
       items: [
         {
-          term: "Pricing (Hosted)",
-          text: "$$$",
-        },
-        {
-          term: "Free Tier",
-          availability: false,
-        },
-        {
           term: "License",
           text: "Proprietary",
         },
         {
-          term: "Availability",
-          text: "Teams, Enterprise",
+          term: "Free Plan",
+          text: "30h",
         },
         {
           term: "GitHub Integration",
@@ -266,22 +199,6 @@ export const codespacesColumn: FeatureTableColumn = {
         },
         {
           term: "Bitbucket Integration",
-          availability: false,
-        },
-        {
-          term: "Self-Host on GKE",
-          availability: false,
-        },
-        {
-          term: "Self-Host on EKS",
-          availability: false,
-        },
-        {
-          term: "Self-Host on AKS",
-          availability: false,
-        },
-        {
-          term: "Self-Host on Kubernetes",
           availability: false,
         },
         {
@@ -310,6 +227,10 @@ export const codespacesColumn: FeatureTableColumn = {
         },
         {
           term: "Multi-IDE Support",
+          availability: true,
+        },
+        {
+          term: "Private SaaS option",
           availability: false,
         },
       ],
@@ -322,8 +243,8 @@ export const automationFirstFeature: verticalFeature = {
   paragraph:
     "Simply add your build command into a .gitpod.yml file and let Gitpod do the heavy-lifting. Once you’ve experienced the freedom of ephemeral workspaces, you’ll never want to go back to long-lived manually-maintained environments.",
   moreButton: {
-    href: "https://gitpod.io/workspaces/",
-    text: "Try Now",
+    href: "https://www.gitpod.io/docs/introduction/learn-gitpod/gitpod-yaml",
+    text: "More on Gitpod YAML",
   },
 };
 
@@ -331,3 +252,41 @@ export const codespacesComparison: FeatureTable = {
   toc: codespacesToc,
   columns: [gitpodColumns, codespacesColumn],
 };
+
+export const featureCards: {
+  card: Card;
+  pill?: { text: string; variant: "pink" | "orange" | "gray" | "violet" };
+}[] = [
+  {
+    card: {
+      title: "Gitpod.io",
+      text: "Use Gitpod in our secure cloud with minimal setup time and effort. Scale users as you need with full flexibility. Reduce operational overhead.",
+      icon: {
+        src: "/svg/icons/cloud.svg",
+        alt: "Cloud Icon",
+      },
+      link: {
+        href: "https://gitpod.io/workspaces/",
+        text: "Start for free",
+      },
+    },
+  },
+  {
+    pill: {
+      text: "Early access",
+      variant: "pink",
+    },
+    card: {
+      title: "Gitpod Dedicated",
+      text: "In your cloud, get a dedicated, private instance of Gitpod managed by us. Set up VPC peering and private links to your dev resources. Best for large teams with high security and compliance requirements.",
+      icon: {
+        src: "/svg/icons/cloud.svg",
+        alt: "Cloud Icon",
+      },
+      link: {
+        href: "/contact/sales?subject=enterprise",
+        text: "Talk to sales",
+      },
+    },
+  },
+];

@@ -9,13 +9,11 @@ title: Teams
 
 # Teams
 
-> {title} is currently in [Beta](/docs/help/public-roadmap/release-cycle) · [Send feedback](https://github.com/gitpod-io/gitpod/issues/5095).
-
 Teams are used to share [Projects](/docs/configure/projects) amongst team members.
 
 There are two roles within a Gitpod team **team owners** and **team members**. Team members and owners can view branches and prebuilds for the projects within a team. Team members can open new workspaces directly from a branch in the dashboard. Team owners can manage other team members, reset user invite URLs, and manage [Team billing](/docs/configure/billing/team-billing).
 
-When you sign up for Gitpod you gain access to a **Personal Account** where you can add [Projects](/docs/configure/projects). To collaborate with others on projects you can create a **Team** and invite others as team members.
+To collaborate with others on projects you can create a **Team** and invite others as team members.
 
 ### View teams
 
@@ -53,13 +51,14 @@ You can leave a team using the more actions button in the Members list while hov
 | Permission             | Owner | Member |
 | ---------------------- | ----- | ------ |
 | Manage Team Members    | Yes   | No     |
-| Delete Team            | Yes   | No     |
-| Manage Team billing    | Yes   | No     |
+| Edit Team Settings     | Yes   | No     |
+| Manage Team Billing    | Yes   | No     |
 | Edit Project Settings  | Yes   | No     |
 | Edit Project Variables | Yes   | No     |
+| View Team Usage        | Yes   | No     |
 | Invite Team Members    | Yes   | Yes    |
-| Add Projects.          | Yes   | Yes    |
-| Remove Projects.       | Yes   | Yes    |
+| Add Projects           | Yes   | Yes    |
+| Remove Projects        | Yes   | Yes    |
 | Add Projects           | Yes   | Yes    |
 | View Branches          | Yes   | Yes    |
 | View Prebuilds         | Yes   | Yes    |

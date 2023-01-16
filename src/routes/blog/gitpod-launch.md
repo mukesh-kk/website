@@ -103,8 +103,6 @@ _(I know some of you are lucky enough to do professional open-source. Decide wha
 
 We also offer **team subscriptions**, which allow managers to buy a batch of seats and assign them to the team.
 
-And, of course, a special **students discount** is in store, eligible if your primary GitHub URL belongs to an educational institution.
-
 ## Thank You ❤️
 
 I want to take the opportunity to thank all the people who have helped to make Gitpod a reality: all the [enthusiastic](https://twitter.com/JeremyJaydan/status/1096742668137246721) [early](https://twitter.com/RalfDMueller/status/1054079167841660928) [adopters](https://twitter.com/doppelganger9/status/1088926330857680896) who provided [great feedback](https://github.com/gitpod-io/gitpod/issues) during the beta phase; contributors who have helped by identifying bugs and by sharing their use cases; and of course the [Eclipse Theia community](https://github.com/theia-ide/theia/graphs/contributors) working with passion on an open-source IDE platform for the future.

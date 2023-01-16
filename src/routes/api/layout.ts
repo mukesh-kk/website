@@ -4,8 +4,8 @@ import fs from "fs";
 
 const fallbackStars = 9200;
 
-const startDate = new Date("Apr 28 2022 06:00:00 EST");
-const endDate = new Date("May 28 2022 06:00:00 EST");
+const startDate = new Date("Nov 17 2022 00:00:00 EST");
+const endDate = new Date("Dec 3 2022 06:00:00 EST");
 
 const USE_CACHE = process.env.USE_CACHE;
 const CACHE_PATH = path.resolve("stars-cache.json");
@@ -13,7 +13,7 @@ const CACHE_PATH = path.resolve("stars-cache.json");
 let stars: number;
 let bannerData: { display: boolean; startDate: Date; endDate: Date };
 
-export const get: RequestHandler = async ({ request }) => {
+export const get: RequestHandler = async () => {
   if (USE_CACHE) {
     try {
       const cacheObject = JSON.parse(fs.readFileSync(CACHE_PATH, "utf8"));
@@ -57,12 +57,14 @@ export const get: RequestHandler = async ({ request }) => {
   }
 
   bannerData = getBannerData();
+  const posts = await getPosts();
 
   return {
     status: 200,
     body: {
       stars,
       banner: bannerData,
+      posts,
     },
   };
 };
@@ -77,4 +79,17 @@ function getBannerData() {
     startDate,
     endDate,
   };
+}
+
+async function getPosts() {
+  const posts = await Promise.all(
+    Object.entries(import.meta.glob("/src/routes/blog/*.md")).map(
+      async ([path, page]) => {
+        const { metadata } = await page();
+        const filename = path.split("/").pop();
+        return { ...metadata, filename };
+      }
+    )
+  );
+  return posts.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 }

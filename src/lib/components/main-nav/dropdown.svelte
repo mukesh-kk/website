@@ -4,6 +4,7 @@
 
   import { fade } from "svelte/transition";
   import Arrow from "../svgs/arrow.svelte";
+  import displayBanner from "$lib/stores/display-banner";
 
   let shown: boolean = false;
   let buttonEl: HTMLButtonElement;
@@ -50,6 +51,10 @@
       @apply absolute w-full h-full;
     }
   }
+
+  .extended {
+    @apply top-[125px];
+  }
 </style>
 
 <button
@@ -68,6 +73,7 @@
 
 {#if shown}
   <div
+    class:extended={$displayBanner}
     class="fixed top-20 left-0 w-screen flex justify-center bg-bg border-y border-divider !m-0 shadow-md"
     in:fade={{ duration: 300 }}
     bind:this={wrapperEl}

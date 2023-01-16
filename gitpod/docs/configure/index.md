@@ -39,13 +39,16 @@ Workspaces can be created on their own, or as part of a [Project](/docs/configur
 - [Browser Bookmarklet](/docs/configure/user-settings/browser-bookmarklet)
 - [Dotfiles](/docs/configure/user-settings/dotfiles)
 - [SSH](/docs/configure/user-settings/ssh)
+- [Access Tokens](/docs/configure/user-settings/access-tokens)
 
 ## Projects
 
 [Projects](/docs/configure/projects) are the connection between Gitpod and one or more git repositories and allow you to manage [Prebuilds](/docs/configure/projects/prebuilds). Projects can be associated with your personal account, or associated with [Teams](/docs/configure/teams).
 
-- [Environment Variables](/docs/configure/projects/environment-variables)
 - [Prebuilds](/docs/configure/projects/prebuilds)
+- [Incremental Prebuilds](/docs/configure/projects/incremental-prebuilds)
+- [Last Successful Prebuild](/docs/configure/projects/last-successful-prebuild)
+- [Environment Variables](/docs/configure/projects/environment-variables)
 
 ## Teams
 
@@ -58,12 +61,3 @@ Workspaces can be created on their own, or as part of a [Project](/docs/configur
 - [BitBucket](/docs/configure/authentication/bitbucket)
 - [GitHub Enterprise](/docs/configure/authentication/github-enterprise)
 - [Bitbucket Server](/docs/configure/authentication/bitbucket-server)
-
-## Self-Hosted
-
-[Self-Hosted](/docs/configure/self-hosted/latest/installation-guides) allows you to run and operate Gitpod on your own infrastructure.
-
-- [Operational Guides](/docs/configure/self-hosted/latest/operational-guides)
-- [Troubleshooting](/docs/configure/self-hosted/latest/troubleshooting)
-- [Background](/docs/configure/self-hosted/latest/background)
-- [Reference](/docs/configure/self-hosted/latest/reference)

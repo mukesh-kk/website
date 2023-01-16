@@ -1,29 +1,27 @@
 <script lang="ts">
   import Section from "../section.svelte";
   import Faqs from "../faqs/faqs.svelte";
-  import Modal from "$lib/components/ui-library/modal";
-  import RedeemOffer from "./redeem-offer.svelte";
 
-  import { pricingFAQ } from "$lib/contents/pricing";
-
-  let isModalOpen: boolean = false;
-
-  const handleBodyClickToOpenModal = (event: Event) => {
-    if (
-      (event.target as HTMLButtonElement).dataset.openModal ===
-      "redeem-student-offer"
-    ) {
-      isModalOpen = true;
-    }
-  };
+  import { pricingFAQ, faqOldPlan } from "$lib/contents/pricing";
+  import StructuredData from "../faqs/structured-data.svelte";
 </script>
 
-<svelte:body on:click={handleBodyClickToOpenModal} />
-
 <Section>
-  <Faqs faq={pricingFAQ} />
-</Section>
+  <Faqs useStructuredData={false} headlineClasses="!mb-micro" faq={pricingFAQ}>
+    <p slot="subheading" class="text-p-large mb-x-small text-center">
+      Find all the details of our flexible pricing in our docs.
+    </p>
+  </Faqs>
 
-<Modal on:close={() => (isModalOpen = false)} isOpen={isModalOpen}>
-  <RedeemOffer />
-</Modal>
+  <h3 class="h3 md:mt-xx-large mt-small !mb-micro md:!mb-x-small text-center">
+    Existing customers on old pricing model
+  </h3>
+  <Faqs useStructuredData={false} faq={faqOldPlan} />
+
+  <StructuredData
+    faq={{
+      headline: "Pricing FAQ",
+      items: [...pricingFAQ.items, ...faqOldPlan.items],
+    }}
+  />
+</Section>

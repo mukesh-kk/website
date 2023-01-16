@@ -29,7 +29,7 @@
 <ul class="space-y-micro">
   {#each organisations as { name, url }}
     <li>
-      <a href={url} target="_blank">{name}</a>
+      <a href={url} target="_blank" rel="noreferrer">{name}</a>
     </li>
   {/each}
 </ul>

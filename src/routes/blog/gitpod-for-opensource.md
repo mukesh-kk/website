@@ -16,7 +16,7 @@ title: Introducing Gitpod for Open Source
 **TL;DR**
 
 - Today we are announcing our “[Gitpod for Open Source](/for/opensource)” program.
-- Gitpod has formed a new team to support open source (ps [we are hiring](https://www.gitpod.io/careers)) and personalized support is now available to open source maintainers / communities.
+- Gitpod has formed a new team to support open source (ps [we are hiring](/careers)) and personalized support is now available to open source maintainers / communities.
 - complimentary [Gitpod Self-Hosted licenses](/self-hosted) are now available for projects that maintain their independence via running their own infrastructure (ie Haskell, Drupal, Rust). Apply via [this form](/for/opensource).
 - Free and open source software projects aligned with [FOSSHost](https://fosshost.org/about) can request an account upgrade to a complimentary professional open source account via [this form](/for/opensource).
 - Over 18,000 people in the GitHub ecosystem have been pre-qualified for complimentary professional open source accounts with unlimited hours. If you are in the short-list your account will be automatically upgraded either upon account creation or when you next start a workspace with your existing account. No action is required.

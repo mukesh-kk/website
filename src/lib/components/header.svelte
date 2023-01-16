@@ -6,6 +6,8 @@
   export let textClassNames: string = "text-large";
   export let textAlign: "left" | "center" = "center";
   export let fullWidth: boolean = false;
+  export let titleInline = false;
+  export let titleClasses: string = "";
 
   let clazz = "";
   export { clazz as class };
@@ -22,7 +24,13 @@
 >
   <slot name="top" />
   {#if title}
-    <h1 class="h1 !mb-micro md:!mb-xx-small">{@html title}</h1>
+    <h1
+      class:inline={titleInline}
+      class="h1 !mb-micro md:!mb-x-small {titleClasses}"
+    >
+      {@html title}
+    </h1>
+    <slot name="annotation" />
   {/if}
   {#if text}
     <p class={textClassNames}>{@html text}</p>

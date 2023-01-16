@@ -97,13 +97,13 @@
   text="If you already have a Gitpod account, simply go to <a href='https://gitpod.io/preferences'>/preferences</a>, select your favourite IDE/editor and open your project."
 >
   <img
-    src="/images/jetbrains-space/jetbrains-ides-in-gitpod.png"
+    src="/images/jetbrains-space/jetbrains-ides-in-gitpod.webp"
     alt="Jetbrains IDEs available to use with Gitpod"
     slot="image"
-    class="max-w-3xl mx-auto mt-small w-full hidden md:block dark:shadow-highlight rounded-2xl"
+    class="max-w-2xl mx-auto mt-small w-full hidden md:block dark:shadow-highlight rounded-2xl"
   />
   <img
-    src="/images/jetbrains-space/jetbrains-ides-in-gitpod-mobile.png"
+    src="/images/jetbrains-space/jetbrains-ides-in-gitpod-mobile.webp"
     alt="Jetbrains IDEs available to use with Gitpod"
     slot="image-mobile"
     class="max-w-xs mx-auto mt-x-small w-full md:hidden dark:shadow-highlight rounded-2xl"

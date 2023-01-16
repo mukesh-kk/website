@@ -27,8 +27,7 @@
 
 <OpenGraph
   data={{
-    description:
-      "Explore the documentation to learn more about Gitpod.io and Gitpod Self-Hosted.",
+    description: "Explore the documentation to learn more about Gitpod",
     title: title ? title : "Gitpod Documentation",
   }}
 />

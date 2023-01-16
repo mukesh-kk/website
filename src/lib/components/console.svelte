@@ -22,7 +22,7 @@
     blue: isDark ? "#57c700" : blue,
   };
 
-  let wrapper: HTMLDivElement;
+  let wrapper: HTMLElement;
   let canvas: HTMLCanvasElement;
 
   function debounce(fn: any, wait: number, callFirst: boolean) {

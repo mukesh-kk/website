@@ -14,6 +14,7 @@ export const pricingPlans: Pricing[] = [
     title: "Community",
     price: `${isEurope() ? "€" : "$"}0`,
     btnText: "Install now",
+    description: "",
     btnHref: "/community-license",
     trackingName: "community",
     plans: [
@@ -48,7 +49,7 @@ export const pricingPlans: Pricing[] = [
   {
     title: "Professional",
     price: isEurope() ? "Custom" : "Custom",
-    duration: "",
+    description: "",
     features: [
       "Starts after the 11th user",
       {
@@ -60,7 +61,7 @@ export const pricingPlans: Pricing[] = [
       "Professional support",
     ],
     btnText: "Register and Install now",
-    btnHref: "/enterprise-license",
+    btnHref: "/docs/configure/self-hosted/latest",
     spiced: true,
     trackingName: "professional",
   },
@@ -249,7 +250,7 @@ export const communityPlanTableData: FeatureTableColumn = {
   ],
 };
 
-export const professionalPlanTableData: FeatureTableColumn = {
+export const teamPlanTableData: FeatureTableColumn = {
   isHighlighted: true,
   header: {
     headline: "Professional",
@@ -258,7 +259,7 @@ export const professionalPlanTableData: FeatureTableColumn = {
   },
   link: {
     label: "Register and Install Now",
-    href: "/enterprise-license",
+    href: "/docs/configure/self-hosted/latest",
   },
   enteries: [
     {
@@ -518,16 +519,11 @@ export const selfHostedToc: FeatureTableToc[] = [
 
 export const selfHostedComparison: FeatureTable = {
   toc: selfHostedToc,
-  columns: [communityPlanTableData, professionalPlanTableData],
+  columns: [communityPlanTableData, teamPlanTableData],
 };
 export const selfhostedFAQ: FAQ = {
   headline: "FAQs",
   items: [
-    {
-      title: "How do I move from plan to plan?",
-      content:
-        '<p> You can use Gitpod Self-Hosted Community on your own infrastructure for free for unlimited users. If you have less than 10 users, you will automatically be able to also use additional features like unlimited prebuilds, shared workspaces, snapshots and an admin dashboard.  You lose these features once you go above 10 users.</p> <p> In case you want to enjoy these features with more than 10 users, you can upgrade to the Professional Plan at any time by contacting our sales team: Either <a href="/enterprise-license" >request a license</a > key directly or <a href="/contact/sales">get in touch</a> if you have any questions. </p>',
-    },
     {
       title: "What is the difference between the two Community plans?",
       content:
@@ -547,16 +543,6 @@ export const selfhostedFAQ: FAQ = {
       title: "How can I install Self-Hosted?",
       content:
         '<p> You can either install <strong>Gitpod Self-Hosted</strong> on Google GKE, Amazon EKS, Azure AKS, or K3s. See <a href="/docs/configure/self-hosted/latest">Self-Hosted Docs</a> for more information. </p>',
-    },
-    {
-      title: "How can I pay?",
-      content:
-        '<p> Currently, <strong>Gitpod Self-Hosted</strong> can only be purchased on request. Please <a href="/enterprise-license">request a license key</a> and we\'ll contact you. If you have any questions, please <a href="/contact/sales">Get in touch</a>. All our plans can be paid via invoice. </p>',
-    },
-    {
-      title: "Do you offer discounts for educational institutions?",
-      content:
-        '<p> Yes, qualified educational institutions may receive a special discount. Please <a href="/contact/sales">Contact sales</a>. </p>',
     },
     {
       title: "Still have more questions?",

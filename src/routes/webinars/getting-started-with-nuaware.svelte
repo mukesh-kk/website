@@ -1,3 +1,7 @@
+<script context="module" lang="ts">
+  export const prerender = true;
+</script>
+
 <script>
   import Articles from "$lib/components/articles.svelte";
   import Explore from "$lib/components/explore.svelte";
@@ -11,7 +15,7 @@
   import Register from "$lib/components/webinars/register.svelte";
   import YoutubeEmbed from "$lib/components/youtube-embed.svelte";
 
-  let isRegistrationOpen = true;
+  let isRegistrationOpen = false;
 </script>
 
 <OpenGraph
@@ -57,13 +61,18 @@
     {:else}
       <div class="lgx:hidden">
         <Card
-          size="medium"
-          class="pt-small md:pt-large px-3 sm:px-xx-small pb-micro md:pb-xx-small w-[95vw] lg:w-[auto]"
+          size="small"
+          class="px-3 sm:px-xx-small py-micro md:py-xx-small max-w-full shadow-normal"
         >
-          <YoutubeEmbed
-            title="Getting started with Gitpod and remote development"
-            embedId="wqM7mIIn4z4"
-          />
+          <h2 class="text-xl font-bold mb-6">Watch the recording</h2>
+
+          <div class="flex">
+            <YoutubeEmbed
+              coverImage="/images/webinars/getting-started-with-nuaware-past.png"
+              title="Getting started with Gitpod and remote development"
+              embedId="wqM7mIIn4z4"
+            />
+          </div>
         </Card>
       </div>
     {/if}
@@ -115,24 +124,31 @@
       toType="getting-started-with-nuaware"
       class="hidden lgx:block"
       eventType="workshop"
-    />{:else}
-    <div class="hidden lgx:block max-w-2xl">
-      <Card
-        size="medium"
-        class="pt-small md:pt-large px-3 sm:px-xx-small pb-micro md:pb-xx-small w-[95vw] lg:w-[auto]"
-      >
-        <YoutubeEmbed
-          title="Getting started with Gitpod and remote development"
-          embedId="wqM7mIIn4z4"
-        />
-      </Card>
+    />
+  {:else}
+    <div
+      class="hidden lgx:block mt-small md:mt-x-large sticky top-40 left-full lg:pr-16 max-w-2xl flex-1"
+    >
+      <div class="">
+        <Card size="small" class="p-xx-small shadow-normal">
+          <h2 class="text-xl font-bold mb-6">Watch the recording</h2>
+
+          <div class="flex">
+            <YoutubeEmbed
+              coverImage="/images/webinars/java-panel-discussion.png"
+              title="Success and failure stories of Java developers shifting to remote"
+              embedId="wqM7mIIn4z4"
+            />
+          </div>
+        </Card>
+      </div>
     </div>
   {/if}
 </div>
 
 <Articles
   title="Additional resources"
-  text="If you are curious to learn more on remote development, 
+  text="If you are curious to learn more on remote development,
     have a read through these blog posts."
   textMaxW="max-w-2xl"
   slugs={[

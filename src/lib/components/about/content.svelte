@@ -78,17 +78,16 @@
     <h2 class="h3">Backed by great investors</h2>
 
     <p class="text-large">
-      Gitpod Inc. was founded in 2020 and in early 2021 we raised over $13m from
-      General Catalyst and our early backers Speedinvest, Crane and Vertex. We
-      are proud to work with experienced, international investors and great
-      individuals who have been early backers of <span class="code"
-        >SignalFX</span
-      > <span class="code">Cloudera</span> <span class="code">Couchbase</span>
-      <span class="code">Snyk</span> <span class="code">Render</span>
-      <span class="code">Buildkite</span> <span class="code">LaunchDarkly</span>
-      <span class="code">H20</span>
-      <span class="code">Hasura</span> <span class="code">Instana</span> and several
-      other exciting companies in the world of developer tools and open source software.
+      Founded in 2020, Gitpod Inc. raised over $35m to date from some of the
+      world’s most renowned open source investors. Our early backers include
+      General Catalyst as well as Speedinvest, Crane and Vertex. We are proud to
+      be supported by incredible individuals such as <span class="code"
+        ><b>Tom-Preston Werner</b></span
+      >, founder and ex-CEO of GitHub, <br /><span class="code"
+        ><b>Tobi Lütke</b></span
+      >, founder and CEO of Shopify, and
+      <span class="code"><b>Kent Beck</b></span>, signatory of the Agile
+      Manifesto.
     </p>
 
     <div

@@ -21,6 +21,14 @@ export const authors: { [idx: string]: Author } = {
     description:
       "Sven loves finding sweet spots in product development. Always keeping an eye on pragmatism and the real benefit for the end user, he has proven to be a creative source for many successful technologies. He is a co-founder of TypeFox, co-lead of Eclipse Theia and product manager of Gitpod.",
   },
+  mbrevoort: {
+    name: "Mike Brevoort",
+    socialProfiles: {
+      twitter: "mbrevoort",
+      github: "mbrevoort",
+    },
+    description: "",
+  },
   meysholdt: {
     name: "Moritz Eysholdt",
     socialProfiles: {
@@ -394,6 +402,46 @@ export const authors: { [idx: string]: Author } = {
     socialProfiles: {
       github: "whummer",
       twitter: "w_hummer",
+    },
+    description: "",
+  },
+  jldec: {
+    name: "Jürgen Leschner",
+    socialProfiles: {
+      github: "jldec",
+      twitter: "jldec",
+    },
+    description: "",
+  },
+  atduarte: {
+    name: "André Duarte",
+    socialProfiles: {
+      twitter: "atduarte",
+      github: "andre-duarte-",
+    },
+    description: "",
+  },
+  maciejwalkowiak: {
+    name: "Maciej Walkowiak",
+    socialProfiles: {
+      github: "maciejwalkowiak",
+      twitter: "maciejwalkowiak",
+    },
+    description: "",
+  },
+  evoxmusic: {
+    name: "Romaric",
+    socialProfiles: {
+      github: "evoxmusic",
+      twitter: "rophilogene",
+    },
+    description: "",
+  },
+  Albanetonnellier: {
+    name: "Albane Tonnellier",
+    socialProfiles: {
+      github: "Albanetonnellier",
+      twitter: "Albanetnl",
     },
     description: "",
   },

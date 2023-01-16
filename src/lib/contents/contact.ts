@@ -22,7 +22,7 @@ export const contactActions: Card[] = [
     text: "We’d love to talk about how we can work together.",
     link: {
       text: "Contact Sales",
-      href: "/contact/sales",
+      href: "/contact/sales?subject=enterprise",
     },
   },
   {
@@ -55,7 +55,8 @@ export const contactActions: Card[] = [
 export const noOfEngineers = [
   "1-10",
   "11-50",
-  "51-250",
+  "51-100",
+  "101-250",
   "251-500",
   "501-1000",
   "+1000",
@@ -67,6 +68,15 @@ export const cloudPlatforms = [
   "Kubernetes",
   "Microsoft Azure Kubernetes Service (AKS)",
 ];
+
+export const dedicatedCloudPlatforms = [
+  "Amazon Web Services (AWS)",
+  "Google Cloud Platform (GCP)",
+  "Microsoft Azure",
+  "Other",
+];
+
+export const gitProvider = ["GitHub", "GitLab", "Bitbucket", "Other"];
 
 export const licenseFormsQuestions = [
   "Local preview installation",

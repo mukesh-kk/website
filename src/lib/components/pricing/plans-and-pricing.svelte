@@ -1,52 +1,31 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-  import { goto } from "$app/navigation";
-  import Toggle from "../toggle.svelte";
   import PricingBoxes from "./pricing-boxes.svelte";
   import type { Pricing } from "$lib/types/pricing";
   import Header from "../header.svelte";
+  import { isEurope } from "$lib/utils/helpers";
 
-  export let pricingPlans: Pricing[];
-
-  let toggled: boolean = false;
-
-  const handleChange = (e: Event) => {
-    const slug = $page.url.pathname.split("/")[1];
-    toggled = (<HTMLInputElement>e.target).checked;
-    setTimeout(() => {
-      if (slug === "pricing") {
-        if (toggled) {
-          goto("/self-hosted");
-        } else {
-          goto("/pricing");
-        }
-      } else {
-        if (toggled) {
-          goto("/pricing");
-        } else {
-          goto("/self-hosted");
-        }
-      }
-    }, 400);
-  };
+  export let pricingPlans: Pricing[] = [];
 </script>
 
-<Header title="Plans and pricing" fullWidth={true}>
+<style lang="postcss">
+  .active {
+    @apply font-bold text-important;
+  }
+</style>
+
+<Header
+  class="md:!mb-small !mb-micro"
+  title="Flexible, predictable pricing"
+  text="Always 500 credits free. Pay-as-you-scale with usage-based pricing."
+  fullWidth={true}
+>
   <div slot="content" class="mt-small">
-    <Toggle
-      id="pricing"
-      class="mb-xx-small"
-      labelLeft="SaaS"
-      labelRight="Self-Hosted"
-      on:change={handleChange}
-      isInversed={$page.url.pathname.includes("self-hosted")}
-      checked={toggled}
-    />
-    <PricingBoxes {pricingPlans} />
-    <p class="mt-micro text-center">
-      Can’t find the answer here? Please <a href="/contact/sales"
-        >contact sales</a
-      >.
-    </p>
+    {#if pricingPlans.length > 0}
+      <PricingBoxes {pricingPlans} />
+      <p class="mt-micro text-center">
+        All prices excluding VAT. 1 credit = {isEurope() ? "€" : "$"}0.036. See
+        complete <a href="/pricing#compare-features">feature table</a>.
+      </p>
+    {/if}
   </div>
 </Header>

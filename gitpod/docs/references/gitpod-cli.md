@@ -156,6 +156,8 @@ Returns a table-formatted list of tasks, their name, state and the ID of the ter
 gp tasks list
 ```
 
+Use `gp tasks list --no-color` to disable colors for the output. It also respects the [`NO_COLOR`](https://no-color.org/) & `GP_NO_COLOR` environment variable.
+
 ### attach
 
 Creates a connection from a user terminal to a given workspace's task terminal. The session is interactive. Once attached, both stdin and stdout are streamed between the user and the remote terminal. Allowing the user to run commands directly in the task terminal.
@@ -226,13 +228,13 @@ gp timeout show
 
 ## info
 
-Displays information about the current workspace, such as its ID, workspace class, and URL.
+Displays information about the current [workspace](/docs/configure/workspaces) (such as the workspace ID and URL) and also the [workspace class](/docs/configure/workspaces/workspace-classes).
 
 ```sh
 gp info
 ```
 
-You can also use `gp info --json` to get the output in JSON format.
+Use `gp info --json` to get the output in JSON format for programmatic use in (e.g. in shell scripts).
 
 ## ports
 
@@ -245,6 +247,8 @@ Outputs a table-formatted list of ports along with their status, URL, name and d
 ```sh
 gp ports list
 ```
+
+Use `gp ports list --no-color` to disable colors for the output. It also respects the [`NO_COLOR`](https://no-color.org/) & `GP_NO_COLOR` environment variable.
 
 ### expose
 
@@ -291,4 +295,6 @@ Displays the current workspace's class info along with the used and available CP
 gp top
 ```
 
-You can also use `gp top --json` to get output in JSON format if you want to access them.
+- Use `gp top --json` to get the output in JSON format for programmatic use in (e.g. in shell scripts).
+
+- Use `gp top --no-color` to disable colors for the output. It also respects the [`NO_COLOR`](https://no-color.org/) & `GP_NO_COLOR` environment variable.

@@ -34,7 +34,7 @@ export const benefits: Card[] = [
       alt: "Free OSS plan",
     },
     title: "Free OSS plan",
-    text: "Enjoy free, unlimited hours on any public repository.",
+    text: "Enjoy 2500 credits on the open source plan on any public repository.",
   },
   {
     icon: plusSvelte,

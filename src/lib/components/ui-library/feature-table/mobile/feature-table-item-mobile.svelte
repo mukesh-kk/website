@@ -2,6 +2,7 @@
   import QaTooltip from "$lib/components/qa-tooltip.svelte";
   import GreyDash from "$lib/components/svgs/grey-dash.svelte";
   import GreenTick from "$lib/components/svgs/green-tick.svelte";
+  import { isEurope } from "$lib/utils/helpers";
   export let definition: any;
 </script>
 
@@ -25,14 +26,16 @@
         {:else}
           <span
             class={definition.isHeadline
-              ? "text-black dark:text-important font-semibold text-h4"
+              ? "text-black dark:text-important font-semibold text-p-medium"
               : "text-[#565252] dark:text-important"}>{definition.term}</span
           >
         {/if}
       </div>
     </div>
     {#if definition.text}
-      {@html definition.text}
+      {@html `${definition.isCurrency ? (isEurope() ? "€" : "$") : ""}${
+        definition.text
+      }`}
     {/if}
     {#if definition.availability}
       <GreenTick />

@@ -111,3 +111,20 @@ If you are running a [Self-Hosted](https://www.gitpod.io/self-hosted) Gitpod ins
 2. Your networking and firewalls are configured to allow SSH traffic via port `22`.
 
 See the [Self-Hosted Reference Architectures](/docs/configure/self-hosted/latest/reference-architecture) for more.
+
+# Troubleshooting
+
+[VS Code Desktop and SSH explained](/blog/vscode-desktop-ssh-updates#diagnosing--fixing-common-ssh-connection-issues) blog has a bunch of good troubleshooting notes, you may check them out.
+
+## unix_listener: path "/somewhere/xyz" too long for Unix domain socket
+
+- Open your SSH `config` file in a text editor. (i.e. `~/.ssh/config` or `/etc/ssh/ssh_config`[[1](https://www.ssh.com/academy/ssh/config)])
+- Append the following to it:
+
+```
+Host *.gitpod.io
+     ControlPath /tmp/%r-gitpod
+```
+
+- Save the file.
+- Now try connecting via SSH or VSCode-Desktop again.

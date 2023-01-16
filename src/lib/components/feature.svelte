@@ -11,6 +11,7 @@
   export let feature: Feature;
   const {
     moreButton,
+    ctaButton,
     secondaryButton,
     paragraph,
     title,
@@ -94,6 +95,15 @@
               : undefined}>{secondaryButton.text}</LinkButton
           >
         {/if}
+        {#if ctaButton}
+          <LinkButton
+            variant="cta"
+            size="medium"
+            href={ctaButton.href}
+            target={isAnExternalLink(ctaButton.href) ? "_blank" : undefined}
+            >{ctaButton.text}</LinkButton
+          >
+        {/if}
       </ButtonsWrapper>
     </div>
     <div
@@ -116,6 +126,8 @@
             ? 'dark:hidden'
             : ''}"
           style={image.styles}
+          width={image.width || "100%"}
+          height={image.height || "100%"}
         />
         {#if image.darkSrc}
           <img
@@ -123,6 +135,8 @@
             alt={image.alt}
             class="{image.classNames} mx-auto hidden dark:block"
             style={image.styles}
+            width={image.width || "100%"}
+            height={image.height || "100%"}
           />
         {/if}
       {/if}

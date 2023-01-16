@@ -1,5 +1,10 @@
-<script context="module">
+<script lang="ts" context="module">
   export const prerender = true;
+
+  export const load: Load = async () => {
+    const posts = await getPosts();
+    return { props: { allPosts: posts } };
+  };
 </script>
 
 <script lang="ts">
@@ -7,12 +12,14 @@
   import Body from "$lib/components/screencasts/body.svelte";
   import GetStartedSmall from "$lib/components/screencasts/get-started-small.svelte";
   import { demoScreencast } from "$lib/contents/screencasts";
-  import { session } from "$app/stores";
   import type { BlogPost } from "$lib/types/blog-post";
   import MoreArticles from "$lib/components/more-articles.svelte";
   import Explore from "$lib/components/explore.svelte";
+  import type { Load } from "@sveltejs/kit";
+  import { getPosts } from "$lib/utils/content";
+  export let allPosts: any;
 
-  const posts = $session.posts.filter((p: BlogPost) =>
+  const posts = allPosts.filter((p: BlogPost) =>
     [
       "i-said-goodbye-to-local-development-and-so-can-you",
       "cloud-based-development-for-everyone",
@@ -40,7 +47,9 @@
       url="https://gitpod.io/#https://github.com/gitpod-io/voting-app"
     />
     <p class="mt-x-small md:mb-24">
-      Do you still have questions? <a href="/contact/sales">Contact sales.</a>
+      Do you still have questions? <a href="/contact/sales?subject=enterprise"
+        >Contact sales.</a
+      >
     </p>
   </div>
 </Body>
@@ -67,7 +76,7 @@
 <Explore
   contents={{
     secondaryLink: {
-      href: "/contact/sales",
+      href: "/contact/sales?subject=enterprise",
       text: "Contact Sales",
     },
   }}

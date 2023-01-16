@@ -7,6 +7,7 @@
     if (res.ok) {
       const data = await res.clone().json();
       return {
+        stuff: { posts: data.posts },
         props: {
           bannerData: data.banner,
           stars: data.stars,
@@ -46,14 +47,23 @@
   setContext(key, bannerData);
 
   onMount(() => {
-    Cookies.set(cookies.NECESSARY, "true", { expires: 365 });
+    Cookies.set(cookies.NECESSARY, "true", {
+      expires: 365,
+      domain: ".gitpod.io",
+    });
 
     if (Cookies.get(cookies.ANALYTICAL) !== "false" && !isEurope()) {
-      Cookies.set(cookies.ANALYTICAL, "true", { expires: 365 });
+      Cookies.set(cookies.ANALYTICAL, "true", {
+        expires: 365,
+        domain: ".gitpod.io",
+      });
     }
 
     if (Cookies.get(cookies.ANALYTICAL) === "true") {
-      Cookies.set(cookies.VISITED, "true", { expires: 365 });
+      Cookies.set(cookies.VISITED, "true", {
+        expires: 365,
+        domain: ".gitpod.io",
+      });
     }
   });
 
@@ -70,7 +80,7 @@
   }
 </script>
 
-<style>
+<style lang="postcss">
   :global(#svelte-announcer) {
     @apply sr-only;
   }

@@ -7,20 +7,26 @@
 
   const reverseHtmlEscaping = (slug: string) => slug.replace(/&amp;/g, "&");
 
-  export async function load({ params, session }) {
-    const changelogEntry: ChangelogEntryType = session.changelogEntries.find(
+  export const load: Load = async ({ params, fetch }) => {
+    const res = await fetch("/api/changelogs");
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
+    const allEntries = await res.json();
+    const changelogEntry: ChangelogEntryType = allEntries.find(
       (entry: ChangelogEntryType) =>
         stringToBeautifiedFragment(entry.title) ===
         reverseHtmlEscaping(params.slug)
     );
     return { props: { changelogEntry } };
-  }
+  };
 </script>
 
 <script lang="ts">
   import Wrapper from "$lib/components/changelog/wrapper.svelte";
   import OpenGraph from "$lib/components/open-graph.svelte";
   import "$lib/assets/markdown-commons.scss";
+  import type { Load } from "@sveltejs/kit";
   export let changelogEntry: ChangelogEntryType;
   const { date, title, excerpt, content, image, alt, ogImage } = changelogEntry;
 </script>

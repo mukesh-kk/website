@@ -17,6 +17,7 @@
   import Button from "$lib/components/ui-library/button";
   import Card from "$lib/components/ui-library/card";
   import { scrollToElement } from "$lib/utils/helpers";
+  import { page } from "$app/stores";
   import {
     cloudPlatforms,
     noOfEngineers as noOfEngineersArray,
@@ -24,21 +25,30 @@
   import Select from "$lib/components/ui-library/select/select.svelte";
   import InputsHalf from "$lib/components/contact/inputs-half.svelte";
 
-  const studentUnlimitedSubject = "Educational Discount Verification";
-
-  const selfHostingSubject = "Self-hosting Gitpod";
+  const enterpriseSubject = "Enterprise";
 
   const otherSubject = "Other";
   const subjects = [
     "Question",
     "Technical Support",
     "Billing",
-    studentUnlimitedSubject,
-    selfHostingSubject,
+    enterpriseSubject,
     "Open Source Sponsorship",
     "Security",
     otherSubject,
   ];
+
+  onMount(() => {
+    const subject = $page.url.searchParams.get("subject");
+    const match = subjects.find(
+      (s) => s.toLowerCase() === subject?.toLowerCase()
+    );
+
+    if (match) {
+      formData.selectedSubject.value = match;
+      formData.selectedSubject.valid = true;
+    }
+  });
 
   let isCloudPlatformsSelectShown = false;
 
@@ -60,15 +70,8 @@
     value: "",
   };
 
-  let isStudentEmailNoteShown: boolean = false;
   let sectionStart: HTMLElement;
   let isSubmissionInProgress: boolean = false;
-
-  $: if (formData.selectedSubject.value === studentUnlimitedSubject) {
-    isStudentEmailNoteShown = true;
-  } else {
-    isStudentEmailNoteShown = false;
-  }
 
   const formData: Form = {
     consent: {
@@ -98,7 +101,7 @@
     },
   };
 
-  $: if (formData.selectedSubject.value == selfHostingSubject) {
+  $: if (formData.selectedSubject.value == enterpriseSubject) {
     isCloudPlatformsSelectShown = true;
     formData.cloudInfrastructure = cloudInfrastructure;
     formData.noOfEngineers = noOfEngineers;
@@ -127,36 +130,29 @@
     }
     isSubmissionInProgress = true;
 
-    trackIdentity(
-      {
-        name_untrusted: formData.name.value,
-        email_untrusted: formData.email.value,
-      },
-      true
-    );
+    await trackIdentity({
+      name_untrusted: formData.name.value,
+      email_untrusted: formData.email.value,
+    });
 
-    trackEvent(
-      "message_submitted",
-      {
-        subject: formData.selectedSubject.value,
-        full_name: formData.name.value,
-        email: formData.email.value,
-        infrastructure:
-          formData.selectedSubject.value == selfHostingSubject
-            ? formData.cloudInfrastructure.value
-            : undefined,
-        company_engineers:
-          formData.selectedSubject.value == selfHostingSubject
-            ? formData.noOfEngineers.value
-            : undefined,
-        company:
-          formData.selectedSubject.value == selfHostingSubject
-            ? formData.company.value
-            : undefined,
-        message: formData.message.value,
-      },
-      true
-    );
+    await trackEvent("message_submitted", {
+      subject: formData.selectedSubject.value,
+      full_name: formData.name.value,
+      email: formData.email.value,
+      infrastructure:
+        formData.selectedSubject.value == enterpriseSubject
+          ? formData.cloudInfrastructure.value
+          : undefined,
+      company_engineers:
+        formData.selectedSubject.value == enterpriseSubject
+          ? formData.noOfEngineers.value
+          : undefined,
+      company:
+        formData.selectedSubject.value == enterpriseSubject
+          ? formData.company.value
+          : undefined,
+      message: formData.message.value,
+    });
 
     const email: Email = {
       replyTo: {
@@ -205,20 +201,13 @@
       console.error(error);
     }
   };
-
-  onMount(() => {
-    if (window.location.search.includes("open-source-sponsorship")) {
-      formData.selectedSubject.value = "Open Source Sponsorship";
-      formData.selectedSubject.valid = true;
-    }
-  });
 </script>
 
 <OpenGraph
   data={{
     description:
       "Do you need help with any question or issue? Please get in contact with us and we’ll get onto it right away.",
-    title: "Contact Support",
+    title: "Contact Support - Need help with any question or issue?",
   }}
 />
 
@@ -295,14 +284,7 @@
                 />
               </div>
               <div class:error={isFormDirty && !formData.email.valid}>
-                <label class="cursor-pointer" for="email"
-                  >E-mail*
-                  {#if isStudentEmailNoteShown}
-                    <span class="fine-print"
-                      >(Please use your student or faculty email)</span
-                    >
-                  {/if}
-                </label>
+                <label class="cursor-pointer" for="email">E-mail* </label>
                 <Input
                   hasError={isFormDirty && !formData.email.valid}
                   id="email"
@@ -381,7 +363,7 @@
             <div>
               <Textarea
                 id="message"
-                label="Your message*"
+                label="How can we help you?*"
                 name="message"
                 hasError={isFormDirty && !formData.message.valid}
                 bind:value={formData.message.value}

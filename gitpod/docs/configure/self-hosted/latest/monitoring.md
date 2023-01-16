@@ -12,6 +12,11 @@ title: Monitoring Gitpod Self-Hosted
 
 # Monitoring
 
+> ⚠️ **Self-hosted as a product is no longer supported**
+>
+> The last official update of this product is the [November 2022 self-hosted release](https://www.gitpod.io/changelog/november-self-hosted-release). We no longer sell commercial self-hosted licenses. If you want to self-host Gitpod, you can still request our [free community license](https://www.gitpod.io/community-license). However, we no longer offer support or updates for it. If you are interested in an isolated, private installation of Gitpod, take a look at [Gitpod Dedicated](/dedicated).
+> Read [our blog on Gitpod Dedicated](/blog/introducing-gitpod-dedicated) to learn why we made the decision to discontinue self-hosted.
+
 Once you have Gitpod self-hosted up and running, the next step is making sure it _continues_ to run as expected. This guide shows you how to set up a monitoring solution that consumes the data that Gitpod produces in order to help you understand the overall state of your Gitpod installation.
 
 > **Note** All metrics shown on this page are experimental and might change in the future.

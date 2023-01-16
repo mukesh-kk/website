@@ -78,6 +78,12 @@
         label: "Docs",
       }}
     />
+    <NavItem
+      navItem={{
+        href: "/cde",
+        label: "CDE",
+      }}
+    />
     <MobileDropdown />
     <NavItem
       navItem={{

@@ -627,7 +627,7 @@
         unless you are currently logged in to a Google service. These cookies
         can be prevented by appropriate browser settings and extensions (for
         more information, please see our <a
-          href="https://www.https://gitpod.io/cookies"
+          href="https://www.gitpod.io/cookies"
         >
           Cookies Policy).
         </a>

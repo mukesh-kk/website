@@ -5,9 +5,14 @@ title: Introduction
 
 <script lang="ts" context="module">
   export const prerender = true;
-  export async function load({ session }) {
-    return { props: { changelogEntries: session.changelogEntries } };
-  }
+  export const load = async ({ fetch }) => {
+    const res = await fetch("/api/changelogs");
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
+    const changelogEntries = await res.json();
+    return { props: { changelogEntries } };
+  };
 </script>
 
 <script lang="ts">

@@ -8,11 +8,16 @@
   export let headerData: FeatureTableHeader;
   const toggleIsShown = () => {
     isShown = !isShown;
+    element.scrollIntoView({ behavior: "auto" });
   };
   export let isShown: boolean;
+  let element: HTMLElement;
 </script>
 
-<div class="mb-x-small flex flex-col justify-center items-center">
+<div
+  bind:this={element}
+  class="mb-x-small flex flex-col justify-center items-center"
+>
   <div
     class="pb-x-small flex flex-col justify-center items-center space-y-4 border-b-2 border-divider w-64"
   >

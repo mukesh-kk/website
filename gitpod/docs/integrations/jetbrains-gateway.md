@@ -28,6 +28,10 @@ JetBrains Gateway is the underlying technology which enables the Gitpod integrat
 - [GoLand](/docs/references/ides-and-editors/goland)
 - [PhpStorm](/docs/references/ides-and-editors/phpstorm)
 - [PyCharm](/docs/references/ides-and-editors/pycharm)
+- [RubyMine](/docs/references/ides-and-editors/rubymine)
+- [WebStorm](/docs/references/ides-and-editors/webstorm)
+- [Rider](/docs/references/ides-and-editors/rider)
+- [CLion](/docs/references/ides-and-editors/clion)
 
 ## Getting started
 

@@ -12,6 +12,9 @@
   import Empower from "$lib/components/pricing/empower.svelte";
   import FeatureTable from "$lib/components/ui-library/feature-table/feature-table.svelte";
   import SectionCommon from "$lib/components/section-common.svelte";
+  import PayAsYouGoCard from "$lib/components/pricing/pay-as-you-go-card.svelte";
+  import Calculator from "$lib/components/pricing/calculator/index.svelte";
+  import Section from "$lib/components/section.svelte";
 </script>
 
 <OpenGraph
@@ -23,14 +26,35 @@
   }}
 />
 <PlansAndPricing {pricingPlans} />
-<UsedBy class="py-small" title="Used by 500k+ developers" />
+
+<Section>
+  <div class="mb-small md:mb-x-medium">
+    <h2 id="cost-estimator" class="text-center h2 mb-macro md:!mb-micro">
+      Pricing calculator
+    </h2>
+    <p class="text-large text-center mx-auto">
+      Get a cost estimate for your individual or your team’s usage of Gitpod.
+    </p>
+    <p class="text-center mx-auto">
+      <a href="/docs/configure/billing">Learn more</a> about billing and credits.
+    </p>
+  </div>
+  <Calculator />
+</Section>
+
+<UsedBy title="Used by +750k developers" isCard={false} />
 <SectionCommon
+  titleClassNames="!mb-micro"
   title="Compare features"
-  text="Choose the plan that fits your needs. You can always start for free."
-  textClassNames="mb-xx-small"
+  text="Start using Gitpod for free. Upgrade to flexible pricing and create a team in your dashboard any time."
+  textClassNames="mb-micro md:mb-small"
   isTitleADeepLink={true}
 >
-  <FeatureTable slot="content" tableData={pricingTable} />
+  <div slot="content">
+    <FeatureTable tableData={pricingTable} />
+
+    <PayAsYouGoCard class="mt-small md:mt-xx-large" />
+  </div>
 </SectionCommon>
 <Empower />
 <Faqs />

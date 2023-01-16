@@ -105,3 +105,49 @@ To do so:
 workspaceLocation: frontend/main.code-workspace # Relative to /workspace dir
 ```
   4. [See it in action!](/docs/introduction/learn-gitpod/gitpod-yaml#see-it-in-action)
+
+## FAQs
+
+### [Single repo but instances of multiple branches](https://discord.com/channels/816244985187008514/1063202039955476540)
+<!-- DISCORD_BOT_FAQ - DO NOT REMOVE -->
+
+If you want to create multiple instances of one repository with different branches, you could use such a method:
+
+```yaml
+tasks:
+  - name: Multi branch
+    before: |
+      # Get primary repo dir path and name
+      main_repo_dir="${GITPOD_REPO_ROOT}"
+      primary_repo_name="${main_repo_dir##*/}"
+
+      # Array for BRANCH name(s).
+      extra_clone_branches=(
+          backend
+          docs
+          next
+      )
+
+      for reference in "${extra_clone_branches[@]}"; do {
+          dir="${main_repo_dir}-${reference}"
+
+          if test ! -e "${dir}" && git -C "${main_repo_dir}" show-ref --quiet "refs/heads/${reference}"; then {
+            printf 'INFO: %s\n' "Duplicating ${primary_repo_name} to ${dir} with ${reference} branch"
+            cp -ra "${main_repo_dir}" "${dir}"
+            git -C "${dir}" checkout "${reference}" 2>&1 | grep -v "Switched to branch '${reference}'"
+          } fi
+      } done
+
+      # Send signal to awaiting task(s)
+      gp sync-done multi_branch
+
+  - name: Some other task
+    command: |
+      # Wait for multi_branch to avoid race condition
+      gp sync-await multi_branch
+
+      echo hello
+      true 'something'
+```
+
+And to have such a feature built-in, please react with a " 👍 " on this issue: https://github.com/gitpod-io/gitpod/issues/15608

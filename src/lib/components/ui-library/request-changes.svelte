@@ -19,7 +19,7 @@
 </style>
 
 <span class="prose my-small md:my-0">
-  <a {href} target="_blank" rel="noopener" class="text-xs">
+  <a {href} target="_blank" rel="noopener noreferrer" class="text-xs">
     <Tooltip
       title="Found any issues or typos?<br />Feel free to request changes."
       class="inline-flex items-center"

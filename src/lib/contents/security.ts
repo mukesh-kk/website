@@ -4,14 +4,14 @@ import type { Card } from "$lib/types/card";
 
 export const secureParagraphs = [
   "Storing copies of your source code locally on countless unsecured devices and networks is a bad practice. At the same time, it has become a reality for many organisations to enable their employees to work remotely with BYOD policies.",
-  "With Gitpod, your source code is safely stored in the cloud and never stored locally. Either on the carbon-neutral Google Cloud Platform with our SaaS solution or on your own cloud infrastructure with Gitpod Self-Hosted. Our native integrations with GitHub, GitLab and Bitbucket create a single access point to your intellectual property, no matter where your developers are and what device they use for it.",
+  "With Gitpod, your source code is safely stored in the cloud on the carbon-neutral Google Cloud Platform and never stored locally.",
   "No packages or dependencies are downloaded to users' devices. Gitpod developer environments run in the cloud and are short-lived, protecting your local machines and other corporate resources from malicious attacks through the execution of arbitrary code.",
 ];
 
 export const programFeatures: Card[] = [
   {
     title: "Compliance",
-    text: "<p>Gitpod is a European company committed to security and data privacy. We provide our users with the ability to access and control the information that we collect about them.</p><p>Gitpod is built with security in mind and we continuously invest in security best practices. We are currently in the process of becoming SOC 2 compliant and you can request a copy of our SOC2 audit report as soon as it's available.</p>",
+    text: '<p>Gitpod maintains compliance with the European General Data Protection Regulation (GDPR) and provides users with the ability to access and control the information that is collected about them. To clients we provide a Data Processing Agreement (DPA) incorporating the Standard Contractual Clauses (SCC) for International Data Transfers. </p><p> Gitpod is built with security in mind. We continuously invest in security best practices and conduct annual SOC 2 Type II audits to assess the appropriateness of our controls. You can request a copy of our report inside our public <a href="https://app.safebase.io/portal/71ccd717-aa2d-4a1e-942e-c768d37e9e0c/preview?productId=default" target="_blank" rel="noreferrer">Trust Center</a> (NDA required).</p>',
     icon: {
       src: "/svg/security/compliance.svg",
     },
@@ -19,7 +19,7 @@ export const programFeatures: Card[] = [
   },
   {
     title: "Environment Isolation",
-    text: '<p>Each Gitpod workspace or prebuild runs on a secured single-use container providing fast startup times without compromising on security</p><p>We create separate user, PID, mount and network namespaces for each Gitpod workspace, and establish an unprivileged node user as root within that user namespace. More details on the technical approach can be found <a href="https://www.youtube.com/watch?v=iYLCHQgj0fE" target="_blank" rel="noreferrer">in this talk</a> from our Head of Engineering as well as in this <a href="https://kinvolk.io/blog/2020/12/improving-kubernetes-and-container-security-with-user-namespaces/"  rel="noreferrer" target="_blank">blog post</a> from the container security experts at Kinvolk who stress-tested our namespace layering implementation.</p>',
+    text: '<p>Each Gitpod workspace or prebuild runs on a secured single-use container providing fast startup times without compromising on security</p><p>We create separate user, PID, mount and network namespaces for each Gitpod workspace, and establish an unprivileged node user as root within that user namespace. More details on the technical approach can be found <a href="https://www.youtube.com/watch?v=iYLCHQgj0fE" target="_blank" rel="noreferrer">in this talk</a> as well as in this <a href="https://kinvolk.io/blog/2020/12/improving-kubernetes-and-container-security-with-user-namespaces/"  rel="noreferrer" target="_blank">blog post</a> from the container security experts at Kinvolk who stress-tested our namespace layering implementation.</p>',
     icon: {
       src: "/svg/icons/secure.svg",
       alt: "Chat",
@@ -84,6 +84,6 @@ export const assessmentAction: Action = {
     "You can find our CAIQ self-asssessment inside the Cloud Security Alliance STAR Registry. A framework dedicated to providing an industry-accepted way of transperency around cloud security controls.",
   link: {
     href: "https://cloudsecurityalliance.org/star/registry/gitpod-gmbh",
-    text: "View our Self-Assessment",
+    text: "View our CAIQ self-assessment",
   },
 };

@@ -52,8 +52,8 @@ export const programBenefits: Card[] = [
       alt: "Gitpod",
       transform: "scale(.95)",
     },
-    title: "Gitpod for free",
-    text: "Don't worry about increased workload or adding more users as you grow. We'll be free for at least 1 year with unlimited users and usage.",
+    title: "Gitpod for less",
+    text: "Don't worry about increased workload or adding more users as you grow. Use Gitpod at a 50% discount for at least 1 year with unlimited users and usage.",
   },
   {
     icon: {
@@ -77,32 +77,27 @@ export const faqs: FAQ = {
   headline: "FAQs",
   items: [
     {
-      title: "Are both SaaS and the Self-Hosted option part of the program?",
-      content:
-        'We are happy to manage Gitpod for you to let you focus on the important things, but if you want to <a href="/docs/configure/self-hosted/latest">self-host</a> on your infrastructure, that\'s possible too, without user limit.',
-    },
-    {
       title:
         "How do I know if my accelerator/incubator/VC firm is part of Gitpod for Startups?",
       content:
-        'Please check this list <a href="/for/startups/organisations">of organisations</a>. You still get one year for free, even if you don\'t find your organisation on the list.',
+        'Please check this list <a href="/for/startups/organisations">of organisations</a>. You still get one year at a 50% discount, even if you don\'t find your organisation on the list.',
     },
     {
       title: "What happens after the end of the program?",
       content:
-        "At the end of the program, you decide if you want to keep using Gitpod in a professional plan or in the free plan with limited usage. You'll be notified before the end of the program.",
+        "At the end of the program, you decide if you want to keep using Gitpod in a paid plan or in the free plan with limited usage. You'll be notified before the end of the program.",
     },
     {
       title: "I'm not eligible but still want to use Gitpod",
       content:
-        'We have a very generous <a href="/pricing">free plan</a> for up to 50h a month, including private repos.',
+        'We have a very generous <a href="/pricing">free plan</a> with 500 credits or up to 50h of Standard workspace usage a month, including private repos.',
     },
   ],
 };
 
 export const exploreContents: ExploreSection = {
   title: "Apply Now",
-  note: "Use all our services for free, up to 2 years.",
+  note: "Use all our services at a 50% discount, for up to 2 years.",
   link: { text: "Apply Now", href: "https://bit.ly/3liFICY" },
 };
 

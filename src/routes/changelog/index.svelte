@@ -1,9 +1,13 @@
 <script lang="ts" context="module">
   export const prerender = true;
-  export async function load({ session }) {
-    const changelogEntries = session.changelogEntries;
+  export const load: Load = async ({ fetch }) => {
+    const res = await fetch("/api/changelogs");
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
+    const changelogEntries = await res.json();
     return { props: { changelogEntries } };
-  }
+  };
 </script>
 
 <script lang="ts">
@@ -19,6 +23,7 @@
   import Header from "$lib/components/header.svelte";
   import LinkButton from "$lib/components/ui-library/link-button";
   import ButtonsWrapper from "$lib/components/buttons-wrapper.svelte";
+  import type { Load } from "@sveltejs/kit";
 
   export let changelogEntries: ChangelogEntryType[];
 </script>
@@ -32,8 +37,8 @@
     keywords:
       "updates, product, changes, features, releases, bugs, fixes, version, updates, improvements",
     // Update this each monthly release and enter the changelog URL into https://cards-dev.twitter.com/validator to force twitter to refresh it
-    image: "images/changelog/2022-09-30-og.png",
-    imageTwitter: "images/changelog/2022-09-30-og.png",
+    image: "images/changelog/2022-10-31-og.jpg",
+    imageTwitter: "images/changelog/2022-10-31-og.jpg",
   }}
 />
 

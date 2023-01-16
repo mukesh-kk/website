@@ -41,8 +41,6 @@ Gitpod is an open-source remote development platform for remote development. It 
 
 Rather than having a single static environment (like your local machine), Gitpod encourages you to codify your dev environment as code. With your project codified, you’ll be able to spin up a new workspace, start coding and throw away the workspace when you’re done. You can have multiple workspaces with different contexts open at once - one for your feature, one for a bug or one for your code review directly in Gitpod.
 
-You can also deploy Gitpod on your infrastructure with [Gitpod Self hosted](https://www.gitpod.io/self-hosted). Gitpod supports different cloud providers, self-managed Kubernetes clusters, corporate firewalls, and even off-grid / air-gapped networks.
-
 # How it works - the combined power of LocalStack and Gitpod
 
 Combining the development environment of Gitpod with the cloud sandbox provided by LocalStack minimizes friction when developing cloud applications and getting up and running with cloud development within a few minutes.

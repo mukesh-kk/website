@@ -45,9 +45,11 @@
         width="24"
         height="24"
       />
-      <h4 class="text-important transition-all duration-200 delay-[50ms]">
+      <div
+        class="text-important transition-all duration-200 delay-[50ms] dark:hover:text-black"
+      >
         {title}
-      </h4>
+      </div>
     </div>
     <Button
       class="hidden transition-all duration-200 delay-[50ms] group-hover:inline-block"

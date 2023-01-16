@@ -9,6 +9,11 @@ title: Microsoft Azure Kubernetes Service (AKS)
 
 # How to Create a Cluster on Microsoft Azure Kubernetes Service (AKS)
 
+> ⚠️ **Self-hosted as a product is no longer supported**
+>
+> The last official update of this product is the [November 2022 self-hosted release](https://www.gitpod.io/changelog/november-self-hosted-release). We no longer sell commercial self-hosted licenses. If you want to self-host Gitpod, you can still request our [free community license](https://www.gitpod.io/community-license). However, we no longer offer support or updates for it. If you are interested in an isolated, private installation of Gitpod, take a look at [Gitpod Dedicated](/dedicated).
+> Read [our blog on Gitpod Dedicated](/blog/introducing-gitpod-dedicated) to learn why we made the decision to discontinue self-hosted.
+
 Instructions on how to create a Microsoft AKS environment that is ready to install Gitpod are located in the [gitpod-io/gitpod-microsoft-aks-guide](https://github.com/gitpod-io/gitpod-microsoft-aks-guide) repository on GitHub. The installation process takes around twenty minutes. In the end, the following resources are created:
 
 - An Microsoft AKS cluster running Kubernetes v1.21.

@@ -1,10 +1,5 @@
 <script lang="ts" context="module">
   export const prerender = true;
-
-  export async function load({ session }) {
-    const customers = session.customers;
-    return { props: { customers } };
-  }
 </script>
 
 <script lang="ts">
@@ -20,8 +15,9 @@
   import Section from "$lib/components/section.svelte";
   import { developFeature, quotes, benefits } from "$lib/contents/customers";
   import { testimonials } from "$lib/contents/home/index";
+  import { page } from "$app/stores";
 
-  export let customers: any;
+  let customers = $page.stuff.customers;
 </script>
 
 <style lang="postcss">
@@ -53,7 +49,7 @@
     text: "View stories",
   }}
   btnSecondary={{
-    href: "/contact/sales",
+    href: "/contact/sales?subject=enterprise",
     text: "Contact sales",
   }}
 />
@@ -66,7 +62,7 @@
 
 <SectionFeatures
   title="Accelerate your workflow"
-  text="Spin up fresh, automated developer environments for each task, in the cloud, in seconds."
+  text="Spin up fresh, cloud development environments for each task, fully automated, in seconds."
   features={[{ ...developFeature, headingLevel: "h3" }]}
   type="box"
 />
@@ -82,7 +78,7 @@
 <UsedBy
   isCard={false}
   class="py-small"
-  title="Trusted by +500k developers"
+  title="Trusted by +750k developers"
   isCustomerStoriesLinkShown={false}
 />
 
@@ -91,7 +87,7 @@
 <Explore
   contents={{
     description:
-      "Spin up fresh, automated dev environments for each task, in the cloud, in seconds - no contracts or banking details&nbsp;required.",
+      "Spin up fresh cloud development environments for each task, in the cloud, in seconds - no contracts or banking details&nbsp;required.",
     secondaryLink: {
       href: "https://www.notion.so/gitpod/Gitpod-Onboarding-Guides-Stages-1-3-d97968210ad2408789e968597fe4633c",
       text: "View onboarding guides",

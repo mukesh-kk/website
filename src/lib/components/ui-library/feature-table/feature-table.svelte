@@ -17,7 +17,7 @@
 
 <style lang="postcss">
   .custom {
-    grid-template-columns: 1.2fr 2.2fr 1fr;
+    grid-template-columns: 1.2fr 2.2fr 1fr 1fr;
 
     @media (max-width: 1285px) {
       @apply hidden;
@@ -34,7 +34,7 @@
 </style>
 
 <div
-  class="gap-4 mb-8 hidden {tableData.columns.length > 3
+  class="gap-4 hidden {tableData.columns.length > 3
     ? 'lg:grid'
     : 'md:grid'} {colMap[tableData.columns.length + 1]}"
   class:custom
@@ -50,7 +50,7 @@
     : 'md:hidden'} gap-4 justify-center"
   class:custom-mobile={custom}
 >
-  <div class="w-full space-y-8">
+  <div class="w-full space-y-micro md:space-y-xx-small">
     {#each tableData.columns as col}
       <FeatureTableColumnMobile featureData={col} />
     {/each}

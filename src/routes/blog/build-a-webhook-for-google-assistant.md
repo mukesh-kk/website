@@ -153,7 +153,7 @@ Refer to the links below to add your own functionalities.
 
 ## Conclusion
 
-Gitpod can make your life much simpler by automating your development setup just by adding a simple configuration file to your repo. You can refer to the Gitpod [Docs](/docs) to learn more about the platform. Gitpod lets you work with unlimited workspace but with 100hrs/month runtime. It also provides Personal and unlimited plans as well. If you are a student then you can claim Gitpod Unlimited plan for just $9.
+Gitpod can make your life much simpler by automating your development setup just by adding a simple configuration file to your repo. You can refer to the Gitpod [Docs](/docs) to learn more about the platform. Gitpod lets you work with unlimited workspace but with 100hrs/month runtime. It also provides Personal and unlimited plans as well.
 
 ![Animated character waving hand with a smile](https://res-3.cloudinary.com/anudeepc/image/upload/q_auto/v1/blog-images/character.gif)
 

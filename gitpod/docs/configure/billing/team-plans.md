@@ -1,6 +1,6 @@
 ---
 section: billing
-title: Team plans
+title: Billing - Team plans
 ---
 
 <script context="module">
@@ -9,13 +9,9 @@ title: Team plans
 
 # Team plans
 
-> **NOTE**
-> You can now configure [Team billing](/docs/configure/billing/team-billing) directly from Teams & Projects with the following benefits:
->
-> 1. Auto-subscribe new members when they join or leave the team.
-> 2. Pro-rata billing for new members who join in the middle of a billing cycle.
->
-> [Team billing](/docs/configure/billing/team-billing) will replace the manually managed **Team plans** described below.
+> The team plans below have been superseded by our [new billing model](/docs/configure/billing).
+
+> This page is for users who are looking to manage or cancel their existing team plans.
 
 Team plans allow you to pay for your whole team with a single subscription.
 

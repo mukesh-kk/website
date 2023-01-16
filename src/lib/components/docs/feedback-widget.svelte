@@ -19,16 +19,12 @@
   const submitFeedback = async () => {
     isSubmissionInProgress = true;
 
-    trackEvent(
-      "feedback_submitted",
-      {
-        score: selectedEmotion,
-        feedback: note,
-        url: window.location.href,
-        path: window.location.pathname,
-      },
-      true
-    );
+    await trackEvent("feedback_submitted", {
+      score: selectedEmotion,
+      feedback: note,
+      url: window.location.href,
+      path: window.location.pathname,
+    });
 
     const response = await fetch("/api/feedback", {
       method: "post",

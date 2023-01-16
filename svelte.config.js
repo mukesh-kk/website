@@ -53,9 +53,9 @@ const config = {
     },
     trailingSlash: "never",
     adapter: adapterNetlify({
-      split: true,
+      edge: false,
+      split: false,
     }),
-    amp: false,
     appDir: "_app",
     files: {
       assets: "static",

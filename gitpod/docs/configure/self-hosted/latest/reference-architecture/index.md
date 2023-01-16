@@ -14,6 +14,11 @@ title: Self-Hosted Reference Architectures
 
 # Reference Architectures
 
+> ⚠️ **Self-hosted as a product is no longer supported**
+>
+> The last official update of this product is the [November 2022 self-hosted release](https://www.gitpod.io/changelog/november-self-hosted-release). We no longer sell commercial self-hosted licenses. If you want to self-host Gitpod, you can still request our [free community license](https://www.gitpod.io/community-license). However, we no longer offer support or updates for it. If you are interested in an isolated, private installation of Gitpod, take a look at [Gitpod Dedicated](/dedicated).
+> Read [our blog on Gitpod Dedicated](/blog/introducing-gitpod-dedicated) to learn why we made the decision to discontinue self-hosted.
+
 Below you will find reference architectures supported and recommended by Gitpod for different situations and all major cloud providers. They help you create the infrastructure needed to run Gitpod Self-Hosted and come in the form of a guide and terraform configuration. These are used to create the infrastructure for our nightly testing and fulfil the [requirements](../latest/requirements) Gitpod has on a cluster.
 
 > **Note:** You should see these reference architectures as a starting point for creating infrastructure that works with both Gitpod and your own infrastructure requirements and policies. However, the further you deviate from these recommended architectures, the higher the potential for Gitpod to not behave as expected.

@@ -18,7 +18,7 @@ Rust is a first-class language in Gitpod, and we believe that Gitpod is a great 
 
 ## Rust Version
 
-Gitpod always comes with the latest available Rust toolchain pre-installed using [rustup](https://rustup.rs/). (As of this writing, the Rust version is `1.64.0`.
+Gitpod always comes with the latest available Rust toolchain pre-installed using [rustup](https://rustup.rs/). (As of this writing, the Rust version is `1.66.0`.
 
 You can also use `rustup` yourself in Gitpod in order to switch to a different Rust version, or to install extra components. See [the rustup book](https://rust-lang.github.io/rustup/index.html) to learn more about `rustup` itself.
 

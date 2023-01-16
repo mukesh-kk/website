@@ -46,6 +46,30 @@ title: __productTitle__
 
 **Important:** You must restart any started workspaces for your IDE preferences to take effect.
 
+<CONDITIONAL_SECTION_START products="rider">
+
+## Prerequisites
+
+To successfully use Rider and load a .NET project, your workspace needs the .NET Framework or a compatible alternative, to be installed. The [default workspace image](/docs/configure/workspaces/workspace-image#use-a-public-docker-image) does not come with .NET pre-installed, so you have two options:
+
+**Using the .NET workspace image (Recommended)**
+
+1. Create a `.gitpod.yml` file
+2. Set the `image` property to `image: gitpod/workspace-dotnet:latest` or alternatively, [use a custom Dockerfile](https://www.gitpod.io/docs/configure/workspaces/workspace-image#use-a-custom-dockerfile)
+
+If you need a specific version of .NET, check out our [Dockerfile](https://github.com/gitpod-io/workspace-images/blob/main/chunks/tool-dotnet/Dockerfile) so you can create your own, specifying the version you need.
+
+For additional examples, check out [.NET in Gitpod](/docs/introduction/languages/dotnet).
+
+**Manually install .NET**
+
+1. Using a workspace terminal, install `dotnet` or a compatible alternative
+2. Restart the IDE
+
+Note: manually installed dependencies are only available in the current workspace, when you start a new workspace dotnet will not be pre-installed, for this reason we recommend the first option.
+
+<CONDITIONAL_SECTION_END>
+
 ## Install Plugins
 
 > This section relates to plugin management when using JetBrains IDEs in a remote development context. For information on regular plugin management, refer to <a href="https://www.jetbrains.com/help/__productDocCode__/managing-plugins.html" target="_blank">{title} docs</a>.
@@ -117,7 +141,81 @@ You can find the **pluginId** on the [JetBrains Marketplace](https://plugins.jet
 
 It is not yet possible to install plugins on **{title} backend** for your user to share across all your Gitpod workspaces.
 
+## Configure JVM options
+
+> Configuration of JVM options is currently in [Alpha](/docs/help/public-roadmap/release-cycle) · [Send feedback](https://github.com/gitpod-io/gitpod/issues/8704).
+
+You can adjust JVM options for {title} backend, especially if you want to increase the `-Xmx` memory size. For example:
+
+```yaml
+jetbrains:
+  __productId__:
+    vmoptions: "-Xmx4g"
+```
+
+For more detailed information on JVM options, refer to [Common JVM Options](https://www.jetbrains.com/help/__productDocCode__/tuning-the-ide.html#common-jvm-options) from JetBrains documentation.
+
+## Configure IDE settings
+
+> **Feedback needed:** The JetBrains Gitpod integration is currently beta. Gitpod [continues to collaborate with JetBrains](https://www.gitpod.io/blog/gitpod-jetbrains). The below shows how you can configure global settings with JetBrains. To leave feedback on the approach, please see this GitHub issue: [#6576](https://github.com/gitpod-io/gitpod/issues/6576). Also note that JetBrains is working on [comprehensive settings sync functionality](https://youtrack.jetbrains.com/issue/RDCT-1/Settings-synchronization).
+
+When running {title} locally, the JetBrains IDE applies [global settings](https://www.jetbrains.com/help/__productDocCode__/configuring-project-and-ide-settings.html) to all projects on your machine. However when running in a remote context using [JetBrains Gateway](/docs/integrations/jetbrains-gateway), it's important to note that some IDE settings are configured on the [JetBrains Client](#on-jetbrains-client) and others in the [{title} backend](#on-title-backend) running in your Gitpod [Workspace](/docs/configure/workspaces). See below instructions for more.
+
+### On JetBrains Client
+
+IDE Settings that are configured on the JetBrains Client are stored on your local machine and don't have `On Host` label in the IDE settings. These IDE settings are reused if the workspace is running the exact same version of the {title} backend where the settings were initially configured.
+
+<figure>
+<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Configure IDE settings on JetBrains client" src="/images/editors/jb-client-configure-settings-client.webp">
+    <figcaption>JetBrains client settings don't have <code>On Host</code> label.</figcaption>
+</figure>
+
+### On {title} backend
+
+Settings configured on {title} backend are stored in a Gitpod workspace and have `On Host` label in the IDE settings.
+
+<figure>
+<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Configure IDE settings on JetBrains client" src="/images/editors/jb-backend-configure-settings.webp">
+    <figcaption>{title} backend settings have `On Host` label.</figcaption>
+</figure>
+
+### Configure IDE settings per project
+
+Some IDE settings cannot be configured via [environment variables](/docs/configure/projects/environment-variables#environment-variables) or through setting [vm options](#configure-jvm-options). These settings can only be set via the UI of JetBrains client, and must be manually copied to be syned between workspaces. The below steps detail how to configure your IDE settings for all the users of a given Gitpod project:
+
+**Step 1: Manually use JetBrains UI to configure settings** - Set your IDE settings as you normally would, using the JetBrains UI.
+
+**Step 2: Find generated IDE settings** - You will need to manually find any global settings generated by JetBrains backend within the following path: `/workspace/.config/JetBrains<-latest>/RemoteDev-__productCode__/<your-project-name>/options`
+
+**Step 3:** Move any relevant settings manually to a persistent location within your Gitpod project. Either via a [Workspace Image](/docs/configure/workspaces/workspace-image), or persisted in the version control of your project, for example by committing settings data to GitHub.
+
+**Include relevant IDE settings in your Workspace Image**
+
+- `/home/gitpod/.gitpod/jetbrains/options` - This location applies settings to all JetBrains products (IntelliJ IDEA, GoLang, etc).
+- `/home/gitpod/.gitpod/jetbrains/__productId__/options` - This location will apply settings only to the given IDE, e.g. {title}.
+
+**Commit relevant IDE settings to source control**
+
+- `/workspace/<your-project-name>/.gitpod/jetbrains/options` - This location applies settings to all JetBrains products (IntelliJ IDEA, GoLang, etc).
+- `/workspace/<your-project-name>/.gitpod/jetbrains/__productId__/options` - This location will apply settings only to the given IDE, e.g. {title}.
+
+For any further changes to your IDE settings, you will need to follow the above steps again.
+
+> **Note:** When locating and applying IDE settings, Gitpod will read the locations specified above in priority order. The locations specified first are overriden by the locations specified later.
+
+### Configure IDE settings per user
+
+To configure IDE settings for your user only, and not all those using a project.
+
+Follow the instructions for [configuring IDE settings per project](#configure-ide-settings-per-project), but instead use [.dotfiles](/docs/configure/user-settings/dotfiles#dotfiles) rather than a workspace image or source control to store your IDE settings.
+
 ## Indexing using Prebuilds
+
+<CONDITIONAL_SECTION_START products="rider">
+Currently, prebuilds for Rider are not supported. To leave feedback or check for updates, see [gitpod/issues/6740](https://github.com/gitpod-io/gitpod/issues/6740).
+<CONDITIONAL_SECTION_END>
+
+<CONDITIONAL_SECTION_START products="intellij,goland,phpstorm,pycharm,rubymine,webstorm,clion">
 
 > JetBrains Prebuilds is currently in [Alpha](/docs/help/public-roadmap/release-cycle) · [Send feedback](https://github.com/gitpod-io/gitpod/issues/6576).
 
@@ -144,20 +242,7 @@ jetbrains:
 
 The `version` property allows you to control whether to index for `stable`, `latest`, or `both` versions of {title} compatible with Gitpod.
 Users can switch between `stable` and `latest` versions of {title} on the [user preferences](https://gitpod.io/preferences) page.
-
-## Configure JVM options
-
-> Configuration of JVM options is currently in [Alpha](/docs/help/public-roadmap/release-cycle) · [Send feedback](https://github.com/gitpod-io/gitpod/issues/8704).
-
-You can adjust JVM options for {title} backend, especially if you want to increase the `-Xmx` memory size. For example:
-
-```yaml
-jetbrains:
-  __productId__:
-    vmoptions: "-Xmx4g"
-```
-
-For more detailed information on JVM options, refer to [Common JVM Options](https://www.jetbrains.com/help/__productDocCode__/tuning-the-ide.html#common-jvm-options) from JetBrains documentation.
+<CONDITIONAL_SECTION_END>
 
 ## Workspace performance
 

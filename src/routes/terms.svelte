@@ -33,7 +33,7 @@
 <OpenGraph
   data={{
     description: "Gitpod's terms of service.",
-    title: "Terms",
+    title: "Gitpod Terms of Service",
   }}
 />
 <article class="max-w-[94vw] mt-20 mx-auto mb-8 leading-7 lg:w-[50rem]">

@@ -452,8 +452,8 @@ export const ides: Ide[] = [
     name: "vscode",
     label: "Visual Studio Code",
     screenshots: {
-      desktop: "vscode-desktop.png",
-      browser: "vscode-browser.png",
+      desktop: "vscode-desktop.webp",
+      browser: "vscode-browser.webp",
     },
     icon: "vscode.svg",
   },
@@ -462,7 +462,7 @@ export const ides: Ide[] = [
     availibility: "beta",
     label: "Goland",
     screenshots: {
-      desktop: "goland.png",
+      desktop: "goland.webp",
     },
     icon: "goland.svg",
   },
@@ -471,7 +471,7 @@ export const ides: Ide[] = [
     availibility: "beta",
     label: "IntelliJ IDEA",
     screenshots: {
-      desktop: "Intellij.png",
+      desktop: "Intellij.webp",
     },
     icon: "intellij.svg",
   },
@@ -480,7 +480,7 @@ export const ides: Ide[] = [
     availibility: "beta",
     label: "PyCharm",
     screenshots: {
-      desktop: "pycharm.png",
+      desktop: "pycharm.webp",
     },
     icon: "pycharm.svg",
   },
@@ -489,7 +489,7 @@ export const ides: Ide[] = [
     availibility: "beta",
     label: "PhpStorm",
     screenshots: {
-      desktop: "phpstorm.png",
+      desktop: "phpstorm.webp",
     },
     icon: "phpstorm.svg",
   },
@@ -498,7 +498,7 @@ export const ides: Ide[] = [
     availibility: "beta",
     label: "RubyMine",
     screenshots: {
-      desktop: "rubymine.png",
+      desktop: "rubymine.webp",
     },
     icon: "rubymine.svg",
   },
@@ -507,7 +507,7 @@ export const ides: Ide[] = [
     availibility: "beta",
     label: "WebStorm",
     screenshots: {
-      desktop: "webstorm.png",
+      desktop: "webstorm.webp",
     },
     icon: "webstorm.svg",
   },
@@ -515,7 +515,7 @@ export const ides: Ide[] = [
     name: "vim",
     label: "Vim",
     screenshots: {
-      desktop: "vim.png",
+      desktop: "vim.webp",
     },
     icon: "vim.svg",
   },
@@ -531,11 +531,11 @@ export const featureTitles: FeatureTitle[] = [
     sub: "faster time from zero to first PR",
   },
   {
-    main: "61%",
-    sub: "cost savings compared to a VDI solution",
+    main: "100%",
+    sub: "of code runs in a secure CDE",
   },
   {
-    main: "+500k",
+    main: "+750k",
     sub: "developers are using Gitpod",
   },
 ];

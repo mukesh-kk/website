@@ -16,3 +16,4 @@ Below are links to Gitpod reference material you may find helpful:
 - [Command Line Interface](/docs/references/gitpod-cli)
 - [Roadmap](/docs/help/public-roadmap)
 - [Gitpod Releases](/docs/help/public-roadmap/release-cycle)
+- [Security FAQ](/docs/references/security/faq)

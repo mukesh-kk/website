@@ -34,7 +34,7 @@ You can grant these additional permissions for GitHub at https://gitpod.io/integ
 
 ## Authorizing GitHub webhooks
 
-The first time you create a [new Gitpod project](https://gitpod.io/new) you will need to configure our [GitHub App](https://github.com/apps/gitpod-io) to watch your repositories and trigger prebuilds.
+The first time you create a new Gitpod [project](/docs/configure/projects) you will need to configure our [GitHub App](https://github.com/apps/gitpod-io) to watch your repositories and trigger prebuilds.
 
 > NOTE: Installing the GitHub App for webhooks is only required for github.com, not for [GitHub Enterprise](/docs/configure/authentication/github-enterprise) or other git providers.
 

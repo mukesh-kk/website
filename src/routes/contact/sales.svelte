@@ -16,24 +16,33 @@
   import Select from "$lib/components/ui-library/select";
   import Card from "$lib/components/ui-library/card";
   import Button from "$lib/components/ui-library/button";
-  import { cloudPlatforms, noOfEngineers } from "$lib/contents/contact";
+  import {
+    dedicatedCloudPlatforms,
+    noOfEngineers,
+  } from "$lib/contents/contact";
   import { scrollToElement } from "$lib/utils/helpers";
-  import { tick } from "svelte";
+  import { onMount, tick } from "svelte";
+  import { page } from "$app/stores";
   import Unleashing from "$lib/components/contact/unleashing.svelte";
-  import { afterNavigate } from "$app/navigation";
   import InputsHalf from "$lib/components/contact/inputs-half.svelte";
-  import { goto } from "$app/navigation";
+  import { afterNavigate, goto } from "$app/navigation";
 
-  const selfHostingSubject = "Self-hosting";
+  const enterpriseSubject = "Enterprise";
   const otherSubject = "Other";
   const demoSubject = "Get a demo";
-  const subjects = [
-    selfHostingSubject,
-    demoSubject,
-    "Educational Discount",
-    "Reselling",
-    otherSubject,
-  ];
+  const subjects = [enterpriseSubject, demoSubject, "Reselling", otherSubject];
+
+  onMount(() => {
+    const subject = $page.url.searchParams.get("subject");
+    const match = subjects.find(
+      (s) => s.toLowerCase() === subject?.toLowerCase()
+    );
+
+    if (match) {
+      formData.selectedSubject.value = match;
+      formData.selectedSubject.valid = true;
+    }
+  });
 
   let sectionStart: HTMLElement;
   let isCloudPlatformsSelectShown = false;
@@ -90,7 +99,7 @@
     },
   };
 
-  $: if (formData.selectedSubject.value == selfHostingSubject) {
+  $: if (formData.selectedSubject.value == enterpriseSubject) {
     isCloudPlatformsSelectShown = true;
     formData.cloudInfrastructure = cloudInfrastructure;
   } else {
@@ -120,32 +129,25 @@
     }
     isSubmissionInProgress = true;
 
-    trackIdentity(
-      {
-        name_untrusted: formData.name.value,
-        email_untrusted: formData.workEmail.value,
-        phone_untrusted: formData.number.value,
-      },
-      true
-    );
+    await trackIdentity({
+      name_untrusted: formData.name.value,
+      email_untrusted: formData.workEmail.value,
+      phone_untrusted: formData.number.value,
+    });
 
-    trackEvent(
-      "message_submitted",
-      {
-        subject: formData.selectedSubject.value,
-        infrastructure:
-          formData.selectedSubject.value == selfHostingSubject
-            ? formData.cloudInfrastructure.value
-            : undefined,
-        full_name: formData.name.value,
-        email: formData.workEmail.value,
-        company_website: formData.companyWebsite.value,
-        company_engineers: formData.noOfEngineers.value,
-        message: formData.message.value,
-        phone_number: formData.number.value,
-      },
-      true
-    );
+    await trackEvent("message_submitted", {
+      subject: formData.selectedSubject.value,
+      infrastructure:
+        formData.selectedSubject.value == enterpriseSubject
+          ? formData.cloudInfrastructure.value
+          : undefined,
+      full_name: formData.name.value,
+      email: formData.workEmail.value,
+      company_website: formData.companyWebsite.value,
+      company_engineers: formData.noOfEngineers.value,
+      message: formData.message.value,
+      phone_number: formData.number.value,
+    });
 
     const email: Email = {
       toType,
@@ -210,7 +212,7 @@
   $: {
     if (
       formData.noOfEngineers.value === "1-10" &&
-      (formData.selectedSubject.value === selfHostingSubject ||
+      (formData.selectedSubject.value === enterpriseSubject ||
         formData.selectedSubject.value === demoSubject)
     ) {
       toType = "community-license";
@@ -223,7 +225,7 @@
 <OpenGraph
   data={{
     description: "We’ll help you find the best plan for your business.",
-    title: "Contact Sales",
+    title: "Contact Sales - Book a demo",
   }}
 />
 
@@ -305,7 +307,7 @@
                       // @ts-ignore
                       e.target.validity.valid;
                   }}
-                  options={cloudPlatforms}
+                  options={dedicatedCloudPlatforms}
                   placeholder="Which cloud infrastructure do you use?"
                   class="max-w-md"
                 />
@@ -400,7 +402,7 @@
               </InputsHalf>
               <div>
                 <Textarea
-                  label="Your message*"
+                  label="How can we help you?*"
                   id="message"
                   name="message"
                   hasError={isFormDirty && !formData.message.valid}

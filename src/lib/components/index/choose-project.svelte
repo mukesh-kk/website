@@ -193,7 +193,7 @@
 
 <div class="row">
   <Section>
-    <h2 class="h1">
+    <div class="h1 text-black font-semibold text-center dark:text-important">
       Select project,
       <br />
       {#each Object.entries(animatedTexts) as [device, texts]}
@@ -208,6 +208,6 @@
       {/each}
       <br />
       start coding.
-    </h2>
+    </div>
   </Section>
 </div>

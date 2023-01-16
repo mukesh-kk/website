@@ -80,7 +80,7 @@
           <a
             id={heading.slug}
             class="
-              no-underline 
+              no-underline
               {h2 === heading.slug ? '!text-important font-semibold' : ''}
               {heading.slug === active
               ? 'border-current font-semibold !text-secondary'

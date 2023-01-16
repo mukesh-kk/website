@@ -9,8 +9,6 @@ title: Workspace classes
 
 # Workspace classes
 
-> {title} are currently in [Early Access](/docs/help/public-roadmap/release-cycle) with [Usage-based billing](/docs/configure/billing/usage-based-billing). Please [contact us](/contact/support) to request access, or [send feedback](https://github.com/gitpod-io/gitpod/issues/12473).
-
 Workspace classes allow you to select the resources available to your workspaces.
 
 On gitpod.io, the options are:
@@ -18,15 +16,24 @@ On gitpod.io, the options are:
 - **Standard**: up to 4 cores, up to 8GB RAM, 30GB storage
 - **Large**: up to 8 cores, up to 16GB RAM, 50GB storage
 
-You can configure the workspace class that should be used for your workspaces in your user preferences.
+You can override the default (Standard) workspace class in the [Gitpod project](/docs/configure/projects) settings for your repository.
 
-![Select Workspace Class](../../../static/images/docs/select-workspace-class.png)
-
-Once you have selected the workspace class every new workspace will use the updated workspace class.
+![Project Settings](../../../static/images/docs/project-settings.png)
 
 ## Good to know
 
-- Your existing workspaces will continue to use the workspace class that they have been created with.
-- Prebuilds will use the workspace class that the installation owner (i.e. the user who has [integrated](/docs/integrations) Gitpod with your source control system) has selected for their personal workspaces.
-- If a prebuild exists and your configured workspace class is not sufficient to use the prebuild, the workspace
-  created from that prebuild will use the workspace class of the prebuild instead of the configured one.
+- Large workspace classes use [credits](/docs/configure/billing#credits) at a faster rate. Standard workspaces use 10 credits per hour, whereas Large workspaces use 20 credits per hour.
+- [Prebuilds](/docs/configure/projects/prebuilds) currently use the same workspace class as regular workspaces.
+
+
+## FAQs
+
+### [How to select Large workspace type for extended storage and CPU](https://discord.com/channels/816244985187008514/1061902096389111849)
+<!-- DISCORD_BOT_FAQ - DO NOT REMOVE -->
+
+Create a team [project](/docs/configure/projects) on Gitpod, from the project settings you can select a large workspace.
+
+### [Is it possible to build (android) AOSP source on Gitpod?](https://discord.com/channels/816244985187008514/1055454782908792843)
+<!-- DISCORD_BOT_FAQ - DO NOT REMOVE -->
+
+It is not quite feasible to build an entire AOSP tree right now due to current storage capacity limitations. Please react with a "👍" on https://github.com/gitpod-io/gitpod/issues/13950 and comment your requirements.

@@ -2,6 +2,10 @@
   import type { Features } from "$lib/types/pricing";
   import QaTooltip from "../qa-tooltip.svelte";
 
+  let className: string = "";
+
+  export { className as class };
+
   export let features: Features;
 </script>
 
@@ -18,7 +22,9 @@
   }
 </style>
 
-<ul class="inline-flex flex-col ml-x-small mt-xx-small space-y-micro text-left">
+<ul
+  class="inline-flex flex-col ml-x-small mt-xx-small space-y-micro text-left {className}"
+>
   {#each features as feature}
     <li class="relative inline-flex text-important">
       {#if typeof feature !== "string"}

@@ -1,10 +1,10 @@
 <script lang="ts" context="module">
   export const prerender = true;
 
-  export async function load({ session }) {
-    const customers = session.educationCustomers;
+  export const load: Load = async () => {
+    const customers = await getEducationCustomers();
     return { props: { customers } };
-  }
+  };
 </script>
 
 <script lang="ts">
@@ -23,9 +23,10 @@
     educationFAQ,
     features,
     getStartedFeatures,
-    programBenefits,
   } from "$lib/contents/education";
   import { integrateFeatures } from "$lib/contents/enterprise";
+  import type { Load } from "@sveltejs/kit";
+  import { getEducationCustomers } from "$lib/utils/content";
 
   export let customers: any;
 </script>
@@ -43,13 +44,11 @@
 
 <SectionFeatures
   title="Be ready to teach immediately"
-  text="Spin up fresh, automated dev environments for each learner, in the cloud, in seconds."
+  text="Spin up fresh cloud development environments for each learner, in the cloud, in seconds."
   {features}
 />
 
 <Integrate features={integrateFeatures} />
-
-<ProgramBenefits cards={programBenefits} />
 
 <ProgramBenefits title="Get started with Gitpod" cards={getStartedFeatures} />
 
@@ -65,7 +64,7 @@
   text="Read how our customers improved their development workflows"
   id="stories"
   {customers}
-  class="max-w-7xl lg:grid-cols-3 xl:px-4 mb-xxx-large"
+  class="max-w-5xl lg:grid-cols-2 xl:px-4 mb-xxx-large"
 />
 
 <Faqs faq={educationFAQ} />

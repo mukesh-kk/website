@@ -16,7 +16,7 @@
           rel="noreferrer"
         >
           <img
-            class="inline dark:filter dark:invert"
+            class="inline h-8 dark:filter dark:invert"
             src={img.src}
             alt={img.alt}
             height="40"

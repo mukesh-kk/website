@@ -42,7 +42,7 @@ VS Code in the browser with Gitpod has Settings Sync enabled by default, syncing
 **Note:** If you open VS Code Desktop directly from Gitpod, the Gitpod extension is automatically installed for you.
 
 <figure>
-<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="The Gitpod VS Code Desktop plugin" src="/images/editors/gitpod-extension.png">
+<img class="shadow-medium rounded-xl max-w-md mt-x-small" alt="The Gitpod VS Code Desktop plugin" src="/images/editors/gitpod-extension.png">
     <figcaption>The Gitpod VS Code Desktop plugin</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ _Enable Settings Sync with Gitpod_
 3. Restart your VS Code Desktop application.
 
 <figure>
-<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Prompt to restart VS Code Desktop" src="/images/editors/restart-vscode.png">
+<img class="shadow-medium rounded-xl max-w-md mt-x-small" alt="Prompt to restart VS Code Desktop" src="/images/editors/restart-vscode.png">
     <figcaption>Prompt to restart VS Code Desktop</figcaption>
 </figure>
 
@@ -66,14 +66,14 @@ _Enable Settings Sync with Gitpod_
 You must authenticate with Gitpod to enable settings sync.
 
 <figure>
-<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Enable settings sync from the Manage gear menu" src="/images/editors/enable-settings-sync.png">
+<img class="shadow-medium rounded-xl max-w-md mt-x-small" alt="Enable settings sync from the Manage gear menu" src="/images/editors/enable-settings-sync.png">
     <figcaption>Enable settings sync from the Manage gear menu</figcaption>
 </figure>
 
 You will be prompted which settings to sync, and to authenticate via Gitpod.
 
 <figure>
-<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Sign into Gitpod to enable VS Code settings sync" src="/images/editors/signin-and-turnon.png">
+<img class="shadow-medium rounded-xl max-w-md mt-x-small" alt="Sign into Gitpod to enable VS Code settings sync" src="/images/editors/signin-and-turnon.png">
     <figcaption>Sign into Gitpod to enable VS Code settings sync</figcaption>
 </figure>
 
@@ -82,7 +82,7 @@ You will be prompted which settings to sync, and to authenticate via Gitpod.
 Settings in VS Code Desktop might differ from your remote settings, follow the instructions in VS Code to resolve any conflicts with the preferences files.
 
 <figure>
-<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Merge or replace VS Code Settings" src="/images/editors/resolve-merge-conflicts.png">
+<img class="shadow-medium rounded-xl max-w-md mt-x-small" alt="Merge or replace VS Code Settings" src="/images/editors/resolve-merge-conflicts.png">
     <figcaption>Merge or replace VS Code Settings</figcaption>
 </figure>
 
@@ -95,6 +95,6 @@ Search for `settings sync off` in your VS Code [Command Palette](https://code.vi
 > **Note:** This will only work properly inside of VS Code Desktop. If you choose to disable Settings Sync inside of VS Code Browser, you will have to disable it in every new workspace and every time a workspace restarts.
 
 <figure>
-<img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Disable Gitpod settings sync" src="/images/editors/disable-settings-sync.png">
+<img class="shadow-medium rounded-xl max-w-md mt-x-small" alt="Disable Gitpod settings sync" src="/images/editors/disable-settings-sync.png">
     <figcaption>Searching for "setting sync" on the Command Palette</figcaption>
 </figure>

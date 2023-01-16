@@ -130,8 +130,8 @@ export const post: RequestHandler = async ({ request }) => {
   if (!dontEmail) {
     client.setApiKey(SENDGRID_API_KEY);
     const dontEmailResponse = await sendEmail(client, email);
-    sheetRes.status = dontEmailResponse.statusCode;
-    sheetRes.body = dontEmailResponse.body;
+    emailRes.status = dontEmailResponse.statusCode;
+    emailRes.body = dontEmailResponse.body;
   }
 
   if (!dontEmail && email.toType === "community-license") {

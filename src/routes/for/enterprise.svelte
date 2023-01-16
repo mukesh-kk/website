@@ -24,6 +24,7 @@
   import SectionFeatures from "$lib/components/section-features.svelte";
   import { featureTitles } from "$lib/contents/home";
   import FeatureTitles from "$lib/components/feature-titles.svelte";
+  import Pill from "$lib/components/pill.svelte";
 </script>
 
 <OpenGraph
@@ -51,7 +52,7 @@
   }}
   btnSecondary={{
     text: "Contact sales",
-    href: "/contact/sales",
+    href: "/contact/sales?subject=enterprise",
   }}
 />
 
@@ -69,13 +70,21 @@
   title="Your engineering team, more productive"
   features={otherFeatures}
 />
-<SectionCommon title="Flexible Deployment">
+<SectionCommon title="Your cloud or our cloud">
   <div
     class="flex flex-wrap justify-center mt-small max-w-5xl mx-auto"
     slot="content"
   >
     {#each featureCards as card}
-      <CardSmall class="m-macro px-xx-small" {card} />
+      <CardSmall class="m-macro px-xx-small relative" card={card.card}>
+        {#if card.pill}
+          <Pill
+            class="absolute right-x-small -top-2"
+            variant={card.pill.variant}
+            text={card.pill.text}
+          />
+        {/if}
+      </CardSmall>
     {/each}
   </div>
 </SectionCommon>

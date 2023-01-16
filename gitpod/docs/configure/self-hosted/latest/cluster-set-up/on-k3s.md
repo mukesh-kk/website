@@ -10,6 +10,11 @@ title: K3s Cluster for Gitpod Self-Hosted
 
 # How to Create a Cluster with K3s
 
+> ⚠️ **Self-hosted as a product is no longer supported**
+>
+> The last official update of this product is the [November 2022 self-hosted release](https://www.gitpod.io/changelog/november-self-hosted-release). We no longer sell commercial self-hosted licenses. If you want to self-host Gitpod, you can still request our [free community license](https://www.gitpod.io/community-license). However, we no longer offer support or updates for it. If you are interested in an isolated, private installation of Gitpod, take a look at [Gitpod Dedicated](/dedicated).
+> Read [our blog on Gitpod Dedicated](/blog/introducing-gitpod-dedicated) to learn why we made the decision to discontinue self-hosted.
+
 In this guide, we show you how to set up a Kubernetes cluster with [K3s](https://k3s.io/) that is ready to install Gitpod. In this example we expect to have at least 2 nodes with Ubuntu 20.04 (a single node setup would work as well, see hint below):
 
 - `node0`: main node where the Gitpod service pods will be deployed to

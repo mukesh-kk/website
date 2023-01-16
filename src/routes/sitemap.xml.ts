@@ -16,7 +16,7 @@ export const get: RequestHandler = async () => {
         "src/routes/docs/introduction/getting-started",
         "extension-activation",
         "unsubscribe",
-        "enterprise-license",
+        "stay-connected",
         "extension-uninstall",
       ];
       return !filters.find((filter) => page.includes(filter));

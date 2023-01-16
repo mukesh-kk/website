@@ -18,14 +18,12 @@ ports:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/configure/workspaces/tasks/
 tasks:
-  - init: npm install
+  - name: Dev Server
+    init: npm install
     command: npm run dev
-    name: Dev
-  - command: |
-      gp ports await 3000
+  - name: Forward Cypress Base URL
+    command: |
       export CYPRESS_BASE_URL=$(gp url 3000)
-      npm run test:e2e
-    name: Test
 
 github:
   prebuilds:

@@ -17,14 +17,14 @@
 <OpenGraph
   data={{
     description:
-      "Gitpod is secure and trusted by over 500k developers and companies that are movingtheir dev environments to the cloud.",
-    title: "Security",
+      "Gitpod is secure and trusted by over 750k developers and companies that are movingtheir dev environments to the cloud.",
+    title: "Security at Gitpod",
   }}
 />
 
 <Header
   title="Security at Gitpod"
-  text="Gitpod is trusted by over 500k developers and companies that are moving
+  text="Gitpod is trusted by over 750k developers and companies that are moving
   their dev environments to the cloud."
   textClassNames="text-large max-w-2xl mx-auto mb-x-small"
   tight={true}
@@ -32,6 +32,17 @@
   <div slot="content">
     <LinkButton variant="primary" size="medium" href="#program"
       >View security program</LinkButton
+    >
+    <LinkButton
+      variant="primary"
+      size="medium"
+      href="/docs/references/security/faq">View security faq</LinkButton
+    >
+    <LinkButton
+      variant="primary"
+      size="medium"
+      href="https://app.safebase.io/portal/71ccd717-aa2d-4a1e-942e-c768d37e9e0c/preview?product=default"
+      >View trust center</LinkButton
     >
   </div>
 </Header>

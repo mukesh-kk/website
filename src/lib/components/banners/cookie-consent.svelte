@@ -32,7 +32,10 @@
       <div class="space-x-micro">
         <button
           on:click={() => {
-            Cookies.set(cookies.ANALYTICAL, "false", { expires: 365 });
+            Cookies.set(cookies.ANALYTICAL, "false", {
+              expires: 365,
+              domain: ".gitpod.io",
+            });
             closeBanner();
           }}
           class="underline">Opt-out</button
@@ -49,8 +52,14 @@
       <Button
         variant="tertiary"
         on:click={() => {
-          Cookies.set(cookies.ANALYTICAL, "true", { expires: 365 });
-          Cookies.set(cookies.TARGETING, "true", { expires: 365 });
+          Cookies.set(cookies.ANALYTICAL, "true", {
+            expires: 365,
+            domain: ".gitpod.io",
+          });
+          Cookies.set(cookies.TARGETING, "true", {
+            expires: 365,
+            domain: ".gitpod.io",
+          });
           closeBanner();
         }}
       >

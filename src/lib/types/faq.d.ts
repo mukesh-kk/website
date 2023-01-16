@@ -4,6 +4,6 @@ export type FAQItem = {
 };
 
 export type FAQ = {
-  headline: string;
+  headline?: string;
   items: FAQItem[];
 };

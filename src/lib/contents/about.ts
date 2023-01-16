@@ -16,7 +16,7 @@ export const featureTitles: FeatureTitle[] = [
   },
   {
     main: "A user base of",
-    sub: "+500k",
+    sub: "+750k",
   },
 ];
 
@@ -62,6 +62,13 @@ export const newsArticles: {
   href: string;
   img: Image;
 }[] = [
+  {
+    href: "https://redmonk.com/jgovernor/2022/12/01/the-year-of-the-cloud-development-environment/",
+    img: {
+      src: "/svg/about/redmonk.svg",
+      alt: "RedMonk",
+    },
+  },
   {
     href: "https://www.theregister.com/2020/08/25/gitpod_open_sources_cloud_development_platform/",
     img: {
@@ -116,6 +123,13 @@ export const newsArticles: {
     img: {
       src: "/svg/about/golem-de.svg",
       alt: "Golem DE",
+    },
+  },
+  {
+    href: "https://www.forbes.com/sites/forbestechcouncil/2022/09/28/finally-software-creation-joins-the-cloud/?sh=385862a96a6b",
+    img: {
+      src: "/svg/about/forbes.svg",
+      alt: "Forbes Logo",
     },
   },
 ];

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { page, session } from "$app/stores";
+  import { page } from "$app/stores";
   import Stories from "./stories.svelte";
 
-  const recentPosts = $session.customers.slice(0, 4);
+  const recentPosts = $page.stuff.customers.slice(0, 4);
   $: recentCustomersWithoutCurrent = recentPosts
     .filter((customer: any) => $page.url.pathname.indexOf(customer.slug) === -1)
     .slice(0, 3)

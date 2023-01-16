@@ -15,7 +15,6 @@
   export { clazz as class };
 
   export let toType: EmailToType;
-  export let isJetbrainsConsentRendered = false;
   export let eventType: string;
 
   const formData: Form = {

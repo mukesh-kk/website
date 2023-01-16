@@ -7,50 +7,56 @@ import GitProviders from "../components/svgs/enterprise/git-providers.svelte";
 import { linuxSource } from "./terminal";
 import Jetbrains from "$lib/components/svgs/brands/jetbrains.svelte";
 import type { Quote } from "$lib/types/quote";
-import {
-  factorialQuote,
-  redwoodJsQuote,
-  sharesIoQuote,
-  vizlibQuote,
-} from "./customers";
+import { factorialQuote, sharesIoQuote, vizlibQuote } from "./customers";
 import { jetbrainsQuote } from "./jetbrains-space";
 
 export const exploreContents: ExploreSection = {
   title: "Get demo",
   description:
-    "Spin up fresh, automated dev environments for each task, in the cloud, in seconds",
-  link: { text: "Contact sales", href: "/contact/sales" },
+    "Spin up fresh cloud development environments for each task, in the cloud, in seconds",
+  link: { text: "Contact sales", href: "/contact/sales?subject=enterprise" },
   useKumquatIllustration: false,
 };
 
-export const featureCards: Card[] = [
+export const featureCards: {
+  card: Card;
+  pill?: { text: string; variant: "pink" | "orange" | "gray" | "violet" };
+}[] = [
   {
-    title: "Self-hosted",
-    text: "Gitpod, managed on your own instances. Run Gitpod behind corporate firewalls or on air-gapped networks with full control.",
-    icon: {
-      src: "/svg/logo-textless.svg",
-      alt: "Gitpod Logo",
-    },
-    link: {
-      href: "/contact/sales",
-      text: "Get demo",
+    card: {
+      title: "Gitpod.io",
+      text: "Use Gitpod in our secure cloud with minimal setup time and effort. Scale users as you need with full flexibility. Reduce operational overhead.",
+      icon: {
+        src: "/svg/icons/cloud.svg",
+        alt: "Cloud Icon",
+      },
+      link: {
+        href: "/contact/sales?subject=enterprise",
+        text: "Talk to sales",
+      },
     },
   },
   {
-    title: "SaaS",
-    text: "Gitpod, managed in the cloud for you. Secure data storage in the cloud and minimal setup cost. Scale users as you need with full flexibility.",
-    icon: {
-      src: "/svg/icons/cloud.svg",
-      alt: "Cloud Icon",
+    pill: {
+      text: "Early access",
+      variant: "pink",
     },
-    link: {
-      href: "/pricing",
-      text: "See pricing",
+    card: {
+      title: "Gitpod Dedicated",
+      text: "In your cloud or ours, run a private instance of Gitpod managed by us. Meet high security and compliance requirements while leveraging the ease of cloud development.",
+      icon: {
+        src: "/svg/icons/secure.svg",
+        alt: "Cloud Icon",
+      },
+      link: {
+        href: "/dedicated",
+        text: "Request early access",
+      },
     },
   },
 ];
 
-export let partnershipCards: PartnershipCard[] = [
+export const partnershipCards: PartnershipCard[] = [
   {
     title: "GitLab",
     img: {
@@ -132,8 +138,10 @@ const codeAnywhereFeature: Feature = {
   paragraph:
     "Gitpod moves the workload to the cloud. No need to ship overpowered laptops around the world. Use any computer to code securely.",
   image: {
-    src: "/images/features/ipad.png",
+    src: "/images/features/ipad.webp",
     alt: "Gitpod Workspace on an iPad.",
+    width: "100%",
+    height: "100%",
   },
 };
 

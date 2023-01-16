@@ -39,7 +39,7 @@
   >
     {label}
     {#if highlight}
-      <img src="/indicator.svg" alt="" class="h-1.5 w-1.5" />
+      <img src="/indicator.svg" alt="highlight indicator" class="h-1.5 w-1.5" />
     {/if}
   </a>
 </li>

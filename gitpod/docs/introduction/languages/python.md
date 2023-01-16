@@ -28,6 +28,20 @@ Before we get started, here are some examples of already-[gitpodified](/guides/g
 
 </div>
 
+## Pandas
+
+Welcome data scientists! This part of the guide will show you how to configure Gitpod for Pandas development.
+
+### Try Pandas in Gitpod
+
+To see a minimal project with Pandas installed and configured, please check out [gitpod-io/Gitpod-Pandas](https://github.com/gitpod-io/Gitpod-Pandas):
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/Gitpod-Pandas)
+
+### Use Gitpod for Pandas development
+
+Pandas Team has their official docs on how to use Gitpod for Pandas development. Please check out [Pandas Team's Gitpod guide](https://pandas.pydata.org/docs/dev/development/contributing_gitpod.html).
+
 ## Python Versions
 
 Run `pyenv versions` to see which Python versions are pre-installed in Gitpod.
@@ -76,7 +90,7 @@ To install this extension for your repository, add the following to your [.gitpo
 ```yaml
 vscode:
   extensions:
-    - almenon.arepl@1.0.20:Uu7lIOwyLgmNWpTwCl/iqQ==
+    - almenon.arepl
 ```
 
 ### Python Test Explorer
@@ -193,16 +207,6 @@ To see a basic repository with Python debugging enabled, please check out [gitpo
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/Gitpod-Python-Debug)
 
 <br>
-
-## Pandas
-
-Welcome data scientists! This part of the guide will show you how to configure Gitpod for Pandas development.
-
-## Try Pandas in Gitpod
-
-To see a minimal project with Pandas installed and configured, please check out [gitpod-io/Gitpod-Pandas](https://github.com/gitpod-io/Gitpod-Pandas):
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/Gitpod-Pandas)
 
 ## Further Reading
 

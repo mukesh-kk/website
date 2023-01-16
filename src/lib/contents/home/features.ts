@@ -35,14 +35,16 @@ export const codeAnywhereFeature: Feature = {
   paragraph:
     "You no longer need an over-powered laptop to code, Gitpod works just as smoothly on a Chromebook or iPad. All you need is a browser. ",
   image: {
-    src: "/images/features/ipad.png",
+    src: "/images/features/ipad.webp",
     alt: "Gitpod Workspace on an iPad.",
+    width: "100%",
+    height: "100%",
   },
 };
 
 export const features: Feature[] = [
   {
-    title: "Remote development without friction",
+    title: "Cloud development without friction",
     paragraph:
       "Gitpod continuously builds your git branches like a CI server so that you can start coding right away - no more waiting for dependencies to download and builds to finish.",
     moreButton: {
@@ -118,8 +120,8 @@ export const secondaryFeatures: Card[] = [
     icon: {
       src: "/svg/icons/cloud.svg",
     },
-    title: "SaaS or Self-Hosted",
-    text: "Use our SaaS solution running on the carbon neutral Google Cloud Platform or host Gitpod on your own cloud infrastructure using GKE, k3s, EKS or AKS.",
+    title: "Flexible deployment",
+    text: "Run Gitpod in your cloud or ours. With Gitpod Dedicated, you can meet high compliance and security requirements. Best for teams of 100+. <a href='/dedicated'>More about Gitpod Dedicated</a>",
   },
   {
     icon: {

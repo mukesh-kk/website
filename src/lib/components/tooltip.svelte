@@ -104,7 +104,10 @@
   </button>
 
   {#if isRendered}
-    <div class="tooltip text-important" use:popperContent={popperOptions}>
+    <div
+      class="tooltip max-w-[220px] text-important"
+      use:popperContent={popperOptions}
+    >
       {@html title}
       <div class="arrow -z-10" data-popper-arrow />
     </div>

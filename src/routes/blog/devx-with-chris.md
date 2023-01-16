@@ -16,7 +16,7 @@ type: digest
 
 **Welcome to DevX Digest - the place to hear all about Developer Experience**, brought to you by Pauline Narvas [(@paulienuh)](https://twitter.com/paulienuh) and Mike Nikles [(@mikenikles)](https://twitter.com/mikenikles) from Gitpod. You're reading another newsletter from us 🎉! In this edition, we talk about developer experience in cloud-based,ephemeral dev environments.
 
-The recent episode of DevX Pod is a special one! We spoke to our Cheif Technology Officer (CTO) at Gitpod, Chris about his thoughts on developer experience. We also are very excited to welcome him as a future podcast host! You'll be hearing more from him. 🎶
+The recent episode of DevX Pod is a special one! We spoke to our Chief Technology Officer (CTO) at Gitpod, Chris about his thoughts on developer experience. We also are very excited to welcome him as a future podcast host! You'll be hearing more from him. 🎶
 
 As usual, in today’s newsletter, we’ll be sharing some of our key takeaways from the podcast episode. If you’d like to listen to the full episode, head over to your favourite podcast platform and search for `DevXPod`. Don’t forget to subscribe and leave us a rating ⭐️ Alternatively, if you’d prefer to read a transcript of our conversation head over to [our Buzzsprout site](https://devxpod.buzzsprout.com)!
 

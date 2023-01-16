@@ -204,4 +204,4 @@ The contributing factors leading to sustained performance degradation were parti
 
 Moving forward, we are actively experimenting with process changes and automation to help mitigate similar issues in the future. This will help us gain the feedback and leverage we need to confidently assess risk, while also allowing teams to be independent and ship continuously.
 
-Want to help build Gitpod? Checkout our [careers](https://www.gitpod.io/careers).
+Want to help build Gitpod? Checkout our [careers](/careers).

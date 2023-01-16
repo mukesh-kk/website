@@ -31,33 +31,6 @@ export const features: Feature[] = [
   codeAnywhereFeature,
 ];
 
-export const programBenefits: Card[] = [
-  {
-    icon: {
-      src: "/svg/media-kit/logo-mark.svg",
-      alt: "Gitpod",
-    },
-    title: "75% student discount",
-    text: "Educational institutions receive a 75% discount on the Unleashed Plan.",
-  },
-  {
-    icon: {
-      src: "/svg/icons/cloud.svg",
-      alt: "Gitpod",
-    },
-    title: "Leading technology",
-    text: "Get ahead of the curve and teach students with the infrastructure used by Google, Facebook, and Shopify.",
-  },
-  {
-    icon: {
-      src: "/svg/icons/clock.svg",
-      alt: "Gitpod",
-    },
-    title: "Save time",
-    text: "Every student starts ready to learn in one click.",
-  },
-];
-
 export const getStartedFeatures: Card[] = [
   {
     icon: {

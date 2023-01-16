@@ -161,6 +161,10 @@ ports:
     onOpen: ignore
 ```
 
+## Ports ordering
+
+Ports are ordered according to their definition in `.gitpod.yml`. Any undefined ports are sorted numerically in ascending order. Port ordering rules apply to all ports views, for example, when using `gp ports list` or viewing ports in VS Code or JetBrains.
+
 ## Port forwarding
 
 There are two types of port forwarding: local and remote.

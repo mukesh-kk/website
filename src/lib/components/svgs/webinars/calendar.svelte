@@ -3,7 +3,7 @@
     stroke: var(--sub);
   }
 
-  body.dark path {
+  .dark path {
     stroke: var(--divider-light);
   }
 </style>

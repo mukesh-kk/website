@@ -190,12 +190,12 @@ Many projects need a database to work properly. Here is how to install the most 
 
 ### PostgreSQL
 
-To get PostgreSQL for your project, you can use our dedicated [PostgreSQL image](https://github.com/gitpod-io/workspace-images/blob/d43c719bb2ff7b6849c0456fe21e3ca06c20168f/chunks/tool-postgresql/Dockerfile#L2) built on top of `gitpod/workspace-base`.
+To get PostgreSQL for your project, you can use our dedicated [PostgreSQL image](https://github.com/gitpod-io/workspace-images/blob/main/chunks/tool-postgresql).
 
-Simply base your `.gitpod.dockerfile` on:
+Simply put the following line to your `.gitpod.yml` file:
 
-```dockerfile
-FROM gitpod/workspace-postgresql
+```yaml
+image: gitpod/workspace-postgres
 ```
 
 <br>

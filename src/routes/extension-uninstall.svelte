@@ -100,7 +100,7 @@
 <Header title="How Can We Improve?" tight={true}>
   <div slot="top">
     {#if extensionUrl}
-      <a href={extensionUrl} rel="noopener" target="_blank"
+      <a href={extensionUrl} rel="noopener noreferrer" target="_blank"
         >Reinstall Extension</a
       >
     {/if}

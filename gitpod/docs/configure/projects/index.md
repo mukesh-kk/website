@@ -9,42 +9,47 @@ title: Projects
 
 # Projects
 
-> {title} is currently in [Beta](/docs/help/public-roadmap/release-cycle) · [Send feedback](https://github.com/gitpod-io/gitpod/issues/5095).
+Projects live under a Gitpod team. They connect Gitpod to a git repository. A Gitpod project can only have one git repository, and a git repository can only belong to one project.
 
-Projects are the connection between Gitpod and a remote git repository.
+A project is required in order to trigger [prebuilds](/docs/configure/projects/prebuilds) on a repository. Team members use the project to configure and view prebuilds.
 
-You can create a project on your personal account or on any of the teams you are a member of.
+With [team billing](/docs/configure/billing#configure-team-billing), all project usage such as workspaces and prebuilds, may be billed to the team.
 
-On GitHub, the connection is established through the [GitHub App](https://github.com/marketplace/gitpod-io) while on GitLab and Bitbucket, the connection exists through an active webhook.
-
-Projects have a static URL based on the team project name, for example:
+Projects have a static URL based on the team and project name, for example:
 
 `https://gitpod.io/t/<team>/<project>`
 
 ### View projects
 
-Project cards include information like repository name, repository URL, quick links to project branches and prebuilds as well as branch and timestamp information for the latest prebuild.
+The Projects page for a team shows a card for each project.
+
+Cards show the name, repository URL, quick links to project branches and prebuilds, and the branch and timestamp of the latest prebuild.
 
 ### Add a new project
 
-To add a new project:
+To add a new project, click on _New Project_ on the Projects page for the team, and select a repository from the list.
 
-1. Click on the _New Project_ button on the Projects page.
-2. You can select a provider where the repository exists. By default, the wizard will default to the first provider you authorized with when you signed up with Gitpod.
-3. You will need to install the GitHub app or have proper permissions to install a webhook for GitLab and Bitbucket before selecting a repository.
-4. If you are trying to add a project from your personal account, you'll be prompted to optionally create a team for the new project. By default, the wizard will automatically associate a project to a team if you initiated the process from the team page.
-5. Last but not least, you'll be redirected to the configuration page of the new project.
+The list will show repositories from one of your git providers. Select a different provider if necessary. You may also be prompted to configure our [GitHub app](/docs/configure/authentication/github#authorizing-github-webhooks), the first time a project is created for a GitHub account. The new project will be associated with the current team selected in the dashboard.
 
 ### Configure a project
 
-Once you add a project, Gitpod tries to automatically detect any project configuration by looking for a `.gitpod.yml` file inside the repository. If no such file exists, Gitpod tries to guess the project type and build configuration to suggest a `.gitpod.yml` boilerplate.
+Team members can configure Prebuilds, and set the workspace class used for project workspaces, in project settings.
 
-If Gitpod can't detect the project type based on the source code of the project, you get a commented `.gitpod.yml` that you need to adjust before running a successful prebuild.
-
-Once you are happy with the configuration, you can try to execute a prebuild and then open a new workspace.
-
-The configuration will be stored in a Gitpod database together with other project information until you decide to persist the changes in the repository by creating a `.gitpod.yml` file at the root of your project. A `.gitpod.yml` file in your project takes precedence over configuration stored in the Gitpod database.
+![Project Settings](../../../static/images/docs/project-settings.png)
 
 ### Remove a project
 
-You can remove a project by using the more actions button while hovering over a project card.
+You can remove a project using the "Remove project" action from a project card.
+
+
+## FAQs
+
+### [New Project page is stuck at fetching repositories](https://discord.com/channels/816244985187008514/1056255866791272488)
+<!-- DISCORD_BOT_FAQ - DO NOT REMOVE -->
+
+To identify the problem: check browser console logs.
+
+Possible solution(s):
+
+- Try to disconnect Git(Hub/Lab) or Bitbucket from https://gitpod.io/integrations, then reconnect.
+- Make sure correct scopes are set for those Git integration providers as well.

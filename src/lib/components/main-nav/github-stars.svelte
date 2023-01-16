@@ -30,6 +30,7 @@
 </style>
 
 <a
+  rel="noreferrer"
   href="https://github.com/gitpod-io/gitpod"
   target="_blank"
   class="flex items-center font-bold text-sm"

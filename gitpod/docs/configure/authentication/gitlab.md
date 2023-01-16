@@ -25,6 +25,8 @@ To launch new Gitpod workspaces for issues, branches, specific commits, etc. you
 
 ## Enabling Prebuilds
 
+All prebuilds require a [Gitpod project](/docs/configure/projects#add-a-new-project) for the repository.
+
 To automatically create a [prebuilt workspace](/docs/configure/projects/prebuilds) for each commit, Gitpod needs access to install a webhook. To allow this, go to Gitpod's [Integrations](https://gitpod.io/integrations/) page, scroll to the "Git Providers" section, click on the three dot button that pops up when you hover over the "GitLab" entry. Then choose _Edit Permissions_ from the popup menu.
 
 ![GitLab integration actions menu](../../../static/images/docs/beta/integrations/gitlab-integration-actions-menu.png)
@@ -32,8 +34,6 @@ To automatically create a [prebuilt workspace](/docs/configure/projects/prebuild
 In the "Edit Permissions" dialog, make sure that _api_ is checked such that Gitpod is allowed to install the webhook.
 
 ![Modal Edit Permissions of GitLab in the Gitpod settings](../../../static/images/docs/beta/integrations/edit-permissions.png)
-
-The webhook will be automatically installed when you trigger the first prebuild manually. For this, prefix your GitLab project URL with `gitpod.io/#prebuild/` as described in the [prebuilds page](/docs/configure/projects/prebuilds#on-gitlab-and-bitbucket).
 
 ## Connecting Your GitLab Account
 

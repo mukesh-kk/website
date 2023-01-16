@@ -10,4 +10,5 @@
 
 <Card size="small" styles="max-width: 315px" class="p-x-small {className}">
   <Base {card} {...$$restProps} {titleClassNames} iconClassNames="h-12 w-14" />
+  <slot />
 </Card>

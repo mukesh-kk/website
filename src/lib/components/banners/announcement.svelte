@@ -27,12 +27,12 @@
     class="announcement-banner flex justify-between items-center px-4 py-2 w-full bg-sand-dark dark:bg-card shadow-sm text-xs sm:text-sm md:text-base border-b border-divider border-solid"
     location="top"
   >
-    <span class="flex-1 text-lg text-right">🤝 </span>
+    <span class="flex-1 text-right">📢</span>
     <p class="flex-2 px-4 md:px-2">
-      ⚡ Joint JetBrains x Gitpod webinar on Java remote development | <a
-        href="/webinars/java-remote-development"
-        on:click={closeBanner}>Register now</a
-      >
+      <a href="/dedicated" sveltekit:prefetch on:click={closeBanner}
+        >Coming soon: Gitpod Dedicated, an isolated & managed installation of
+        Gitpod
+      </a>
     </p>
     <div class="flex-1 flex justify-end">
       <button on:click={closeBanner} class="align-middle">

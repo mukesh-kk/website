@@ -32,7 +32,7 @@
     },
     {
       text: "Contact Sales",
-      href: "/contact/sales",
+      href: "/contact/sales?subject=enterprise",
       icon: {
         component: Headphones,
         size: "h-[14.38px] w-[20.48px]",

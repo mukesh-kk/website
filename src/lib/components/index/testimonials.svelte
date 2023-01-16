@@ -1,6 +1,6 @@
 <script lang="ts">
   import Section from "../section.svelte";
-  import Testimonial from "./testimonial.svelte";
+  import Testimonial from "../testimonial.svelte";
   import type { Testimonial as TestimonialType } from "$lib/types/testimonial";
   import Carousel, { getItemId } from "$lib/components/index/carousel.svelte";
   import { scrollIntoView } from "$lib/utils/helpers";

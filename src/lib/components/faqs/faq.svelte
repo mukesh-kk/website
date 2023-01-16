@@ -128,12 +128,8 @@
   }
 
   @media (max-width: 375px) {
-    .faq__top {
-      @apply p-micro;
-    }
-
     .faq__text {
-      @apply p-micro pt-0 -translate-y-0.5;
+      @apply -translate-y-0.5;
     }
   }
 
@@ -155,9 +151,7 @@
     bind:this={summary}
     on:click={handleClick}
   >
-    <div
-      class="faq__top flex items-center p-xx-small sm:p-x-small lgx:p-medium"
-    >
+    <div class="faq__top flex items-center p-x-small lgx:p-medium">
       <h3 class="h4 faq__title flex-1 inline-block w-5/6">{title}</h3>
       <Arrow
         width="24"
@@ -167,7 +161,7 @@
     </div>
   </summary>
   <div
-    class="faq__text text-large p-xx-small sm:p-x-small lgx:p-medium -translate-y-2 sm:-translate-y-4 lg:-translate-y-8"
+    class="faq__text text-large p-x-small lgx:p-medium -translate-y-2 sm:-translate-y-4 lg:-translate-y-8"
     bind:this={content}
   >
     <slot />

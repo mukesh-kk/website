@@ -119,12 +119,6 @@
   </p>
   <ul class="pl-xx-small md:pl-x-small space-y-4 mb-4">
     <li>
-      Perform the majority of your security research against <a
-        href="/docs/configure/self-hosted/latest"
-        >Gitpod hosted on your own infrastructure</a
-      >.
-    </li>
-    <li>
       Play by the rules, including following this policy and any other relevant
       agreements. If there is any inconsistency between this policy and any
       other applicable terms, the terms of this policy will prevail;

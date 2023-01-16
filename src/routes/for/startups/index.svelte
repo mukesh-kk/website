@@ -32,8 +32,8 @@
   data={{
     title: "Gitpod for Startups",
     description:
-      "Apply for our startup program and get Gitpod for free for up to 2 years with unlimited users and usage. ",
-    keywords: "startup, free",
+      "Apply for our startup program and use Gitpod at a 50% discount for up to 2 years with unlimited users and usage. ",
+    keywords: "startup, discount",
   }}
 />
 
@@ -49,7 +49,7 @@
     <p
       class="h5 text-important font-semibold max-w-2xl mx-auto mt-micro mb-x-small"
     >
-      Use all our services for free, up to 2 years.
+      Use all our services at a 50% discount, for up to 2 years.
     </p>
     <LinkButton
       variant="primary"

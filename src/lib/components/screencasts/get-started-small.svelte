@@ -15,8 +15,8 @@
   <div>
     <h3 class="h4">Get started</h3>
     <p class="mb-micro">
-      Spin up fresh, automated dev environments for each task, in the cloud, in
-      seconds.
+      Spin up fresh cloud development environments for each task, in the cloud,
+      in seconds.
     </p>
     <LinkButton href="/#get-started" variant="primary">Try now</LinkButton>
   </div>

@@ -12,14 +12,26 @@
 
   const handleSave = () => {
     if (analyticalChecked) {
-      Cookies.set(cookies.ANALYTICAL, "true", { expires: 365 });
-      Cookies.set(cookies.VISITED, "true", { expires: 365 });
+      Cookies.set(cookies.ANALYTICAL, "true", {
+        expires: 365,
+        domain: ".gitpod.io",
+      });
+      Cookies.set(cookies.VISITED, "true", {
+        expires: 365,
+        domain: ".gitpod.io",
+      });
     } else {
-      Cookies.set(cookies.ANALYTICAL, `${analyticalChecked}`, { expires: 365 });
+      Cookies.set(cookies.ANALYTICAL, `${analyticalChecked}`, {
+        expires: 365,
+        domain: ".gitpod.io",
+      });
       Cookies.remove(cookies.VISITED);
     }
     if (targetingChecked) {
-      Cookies.set(cookies.TARGETING, "true", { expires: 365 });
+      Cookies.set(cookies.TARGETING, "true", {
+        expires: 365,
+        domain: ".gitpod.io",
+      });
     } else {
       Cookies.remove(cookies.TARGETING);
     }

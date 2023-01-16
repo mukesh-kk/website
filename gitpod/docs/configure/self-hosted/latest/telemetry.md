@@ -10,6 +10,11 @@ title: Telemetry in Gitpod Self-Hosted
 
 # Telemetry
 
+> ⚠️ **Self-hosted as a product is no longer supported**
+>
+> The last official update of this product is the [November 2022 self-hosted release](https://www.gitpod.io/changelog/november-self-hosted-release). We no longer sell commercial self-hosted licenses. If you want to self-host Gitpod, you can still request our [free community license](https://www.gitpod.io/community-license). However, we no longer offer support or updates for it. If you are interested in an isolated, private installation of Gitpod, take a look at [Gitpod Dedicated](/dedicated).
+> Read [our blog on Gitpod Dedicated](/blog/introducing-gitpod-dedicated) to learn why we made the decision to discontinue self-hosted.
+
 We optionally collect telemetry from Gitpod Self-Hosted installations to better understand the needs and use cases of the Gitpod community. Collected telemetry contains simple usage statistics like the number of users and workspaces. Our [Privacy Policy](https://www.gitpod.io/privacy) describes in detail how we use this data.
 
 To provide individualized support to enterprise customers we optionally collect a customer ID. This customer ID provides insights into enterprise adoption of Gitpod and helps us ensure that customers get the best value from their installations. Self-hosted installations using the community license do not have a customer ID and will be anonymous.

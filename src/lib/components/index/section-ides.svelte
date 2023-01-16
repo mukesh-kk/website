@@ -52,6 +52,8 @@
             src="/images/index/{idetoRender.screenshots[ideType]}"
             alt={idetoRender.label}
             class="shadow-highlight rounded-lg"
+            width="100%"
+            height="100%"
           />
         </div>
         <IdeSwitcher

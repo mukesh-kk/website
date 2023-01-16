@@ -1,4 +1,6 @@
 <script lang="ts" context="module">
+  import { v4 } from "uuid";
+
   declare global {
     interface Window {
       analytics: any;
@@ -9,75 +11,103 @@
     }
   }
 
+  interface PageProps {
+    url: string;
+    path: string;
+    referrer?: string;
+    title?: string;
+    search?: string;
+  }
+
   const allowsAnalytics = () => {
-    //isDoNotTrack is adopted from Segment snippet, see https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/#step-2-add-the-segment-snippet
-    const isDoNotTrack = () =>
-      typeof navigator !== "undefined" &&
-      (parseInt(navigator.doNotTrack) === 1 ||
-        parseInt(window.doNotTrack) === 1 ||
-        // @ts-ignore
-        parseInt(navigator.msDoNotTrack) === 1 ||
-        navigator.doNotTrack === "yes");
-
-    return !!Cookies.get(cookies.ANALYTICAL) && !isDoNotTrack();
+    return !!Cookies.get(cookies.ANALYTICAL);
   };
 
-  export const trackEvent = (
-    eventName: string,
-    props: any,
-    isStrictlyNecessary?: boolean
-  ) => {
-    if (!(allowsAnalytics() || isStrictlyNecessary)) {
-      return;
-    }
-    window.analytics?.track(
-      eventName,
-      {
-        ...props,
-        authenticated: !!Cookies.get("gitpod-user"),
-      },
-      {
-        context: {
-          ip: "0.0.0.0",
-          page: {
-            referrer: window.prevPages?.length == 2 ? window.prevPages[0] : "",
-            url: window.location.href,
-          },
-        },
-      }
-    );
-  };
-
-  export const trackPage = (props: any) => {
+  const getOrSetCookieId = () => {
     if (!allowsAnalytics()) {
       return;
     }
-    window.analytics?.page(
-      {
-        ...props,
-        authenticated: !!Cookies.get("gitpod-user"),
-      },
-      {
-        context: {
-          ip: "0.0.0.0",
-          page: props,
-        },
-      }
-    );
+
+    var cookieId = Cookies.get("ajs_anonymous_id");
+    if (!cookieId) {
+      cookieId = v4();
+      Cookies.set("ajs_anonymous_id", cookieId, {
+        domain: ".gitpod.io",
+        expires: 365,
+      });
+    }
+    return cookieId;
   };
 
-  export const trackIdentity = (traits: any, isStrictlyNecessary?: boolean) => {
-    if (!(allowsAnalytics() || isStrictlyNecessary)) {
-      return;
-    }
-    window.analytics?.identify(traits, {
+  const getAuthenticationStatus = () => {
+    return allowsAnalytics() ? !!Cookies.get("gitpod-user") : undefined;
+  };
+
+  const getPageProps = (): PageProps => {
+    return {
+      path: window.location.pathname,
+      url: window.location.href,
+      search: window.location.search,
+      title: document.title,
+      referrer: window.prevPages
+        ? window.prevPages[window.prevPages.length - 1]
+        : undefined,
+    };
+  };
+
+  export const trackEvent = async (eventName: string, props: any) => {
+    const body: AnalyticsPayload = {
+      cookieId: getOrSetCookieId(),
+      type: "event",
+      eventName,
+      props: props,
       context: {
-        ip: "0.0.0.0",
-        page: {
-          referrer: window.prevPages?.length == 2 ? window.prevPages[0] : "",
-          url: window.location.href,
-        },
+        page: getPageProps(),
+        allowsAnalytics: allowsAnalytics(),
+        authenticated: getAuthenticationStatus(),
       },
+    };
+
+    await fetch("/api/collect-data", {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+  };
+
+  export const trackPage = async () => {
+    const pageProps = getPageProps();
+    const body: AnalyticsPayload = {
+      cookieId: getOrSetCookieId(),
+      type: "page",
+      props: pageProps,
+      context: {
+        page: pageProps,
+        allowsAnalytics: allowsAnalytics(),
+        authenticated: getAuthenticationStatus(),
+      },
+    };
+
+    await fetch("/api/collect-data", {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+  };
+
+  export const trackIdentity = async (traits: any) => {
+    const body: AnalyticsPayload = {
+      cookieId: getOrSetCookieId(),
+      type: "identity",
+      traits: traits,
+      context: {
+        page: getPageProps(),
+        allowsAnalytics: allowsAnalytics(),
+        authenticated: getAuthenticationStatus(),
+      },
+    };
+
+    await fetch("/api/collect-data", {
+      method: "POST",
+      body: JSON.stringify(body),
     });
   };
 </script>
@@ -87,6 +117,7 @@
   import { page } from "$app/stores";
   import Cookies from "js-cookie";
   import { cookies } from "$lib/constants";
+  import type { AnalyticsPayload } from "../types/analytics";
 
   interface TrackWebsiteClick {
     path: string;
@@ -123,7 +154,7 @@
     }
   };
 
-  const trackButtonOrAnchor = (
+  const trackButtonOrAnchor = async (
     target:
       | HTMLAnchorElement
       | HTMLButtonElement
@@ -204,98 +235,12 @@
     if (trackingMsg.dnt) {
       return;
     }
-    trackEvent("website_clicked", trackingMsg);
+    await trackEvent("website_clicked", trackingMsg);
   };
 
-  const writeKey =
-    typeof window !== "undefined" &&
-    window.location.hostname === "www.gitpod.io"
-      ? "5aJzy2ASNbqx8I0kwppRflDZpL7pS1GO" // Website Production
-      : "Xe5zR3MbnyxHsveZr4HvrY35PL9iT0EH"; // Website Staging
-
   onMount(async () => {
-    // Override anonymous ID in local storage if it exists in Cookie
-    // This is done in order to guarantee the same anonymous_id is used by dashboard and website
-    const current_id = Cookies.get("ajs_anonymous_id");
-    if (current_id) {
-      window.localStorage.setItem("ajs_anonymous_id", current_id);
-    }
-    // Create a queue, but don't obliterate an existing one!
-    var analytics = (window.analytics = window.analytics || []);
-    // If the real analytics.js is already on the page return.
-    if (analytics.initialize) return;
-    // If the snippet was invoked already show an error.
-    if (analytics.invoked) {
-      if (window.console && console.error) {
-        console.error("Segment snippet included twice.");
-      }
-      return;
-    }
-    // Invoked flag, to make sure the snippet
-    // is never invoked twice.
-    analytics.invoked = true;
-    // A list of the methods in Analytics.js to stub.
-    analytics.methods = [
-      "trackSubmit",
-      "trackClick",
-      "trackLink",
-      "trackForm",
-      "pageview",
-      "identify",
-      "reset",
-      "group",
-      "track",
-      "ready",
-      "alias",
-      "debug",
-      "page",
-      "once",
-      "off",
-      "on",
-      "addSourceMiddleware",
-      "addIntegrationMiddleware",
-      "setAnonymousId",
-      "addDestinationMiddleware",
-    ];
-    // Define a factory to create stubs. These are placeholders
-    // for methods in Analytics.js so that you never have to wait
-    // for it to load to actually record data. The `method` is
-    // stored as the first argument, so we can replay the data.
-    analytics.factory = function (method: any) {
-      return function () {
-        var args = Array.prototype.slice.call(arguments);
-        args.unshift(method);
-        analytics.push(args);
-        return analytics;
-      };
-    };
-    // For each of our methods, generate a queueing stub.
-    for (var i = 0; i < analytics.methods.length; i++) {
-      var key = analytics.methods[i];
-      analytics[key] = analytics.factory(key);
-    }
-    // Define a method to load Analytics.js from our CDN,
-    // and that will be sure to only ever load it once.
-    analytics.load = function (key: string, options: any) {
-      // Create an async script element based on your key.
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.async = true;
-      script.src =
-        "https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";
-      // Insert our script next to the first script element.
-      var first = document.getElementsByTagName("script")[0];
-      first.parentNode.insertBefore(script, first);
-      analytics._loadOptions = options;
-    };
-    analytics._writeKey = writeKey;
-    // Add a version to keep track of what's in the wild.
-    analytics.SNIPPET_VERSION = "4.13.2";
-
-    analytics.load(writeKey);
-
     // Track first page
-    trackPage({});
+    await trackPage();
     window.prevPages = [window.location.href];
     window.addEventListener("click", handleButtonOrAnchorTracking, true);
 
@@ -309,7 +254,7 @@
         new URLSearchParams(window.location.search).get("track")
       );
       if (doTrack) {
-        trackEvent(
+        await trackEvent(
           window.location.pathname == "/extension-activation"
             ? "extension_installed"
             : "extension_uninstalled",
@@ -326,14 +271,12 @@
     // a recompute on each new page.
     if (typeof window !== "undefined" && window.prevPages) {
       // Track subsequent pages
-      trackPage({
-        referrer: window.prevPages[window.prevPages.length - 1],
-        url: window.location.href,
+      trackPage().then(() => {
+        window.prevPages.push(window.location.href);
+        if (window.prevPages.length > 2) {
+          window.prevPages.shift();
+        }
       });
-      window.prevPages.push(window.location.href);
-      if (window.prevPages.length > 2) {
-        window.prevPages.shift();
-      }
     }
   }
 </script>

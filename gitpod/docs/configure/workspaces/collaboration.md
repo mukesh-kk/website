@@ -1,6 +1,6 @@
 ---
 section: workspaces
-title: Collaboration & Sharing
+title: Collaboration & Sharing of Gitpod workspaces
 ---
 
 <script context="module">
@@ -37,19 +37,27 @@ There are a few important things to note about workspace snapshots:
 <IdeToggle id="ide-toggle-ports">
 
 <div slot="jetbrains">
-  To create a snapshot, run "Gitpod: Share Workspace Snapshot" from the Backend Control Center, or from the JetBrains IDE search. Once you execute the command, the snapshot is taken and the URL is shown in a dialog.
+
+To create a snapshot, run "Gitpod: Share Workspace Snapshot" from the Backend Control Center, or from the JetBrains IDE search. Once you execute the command, the snapshot is taken and the URL is shown in a dialog.
+
 </div>
 
 <div slot="vscodedesktop">
-  To create a snapshot, run "Gitpod: Share Workspace Snapshot" from the hamburger menu at the top left of VS Code, from the Gitpod menu at the bottom, or via the VS Code command palette. Once you execute the command, the snapshot is taken and the URL is shown in a dialog.
+
+To create a snapshot, run "Gitpod: Share Workspace Snapshot" from the hamburger menu at the top left of VS Code, from the Gitpod menu at the bottom, or via the VS Code command palette. Once you execute the command, the snapshot is taken and the URL is shown in a dialog.
+
 </div>
 
 <div slot="vscodebrowser">
-  To create a snapshot, run "Gitpod: Share Workspace Snapshot" from the hamburger menu at the top left of VS Code, from the Gitpod menu at the bottom, or via the VS Code command palette. Once you execute the command, the snapshot is taken and the URL is shown in a dialog.
+
+To create a snapshot, run "Gitpod: Share Workspace Snapshot" from the hamburger menu at the top left of VS Code, from the Gitpod menu at the bottom, or via the VS Code command palette. Once you execute the command, the snapshot is taken and the URL is shown in a dialog.
+
 </div>
 
 <div slot="commandline">
-    You can run <code>gp snapshot</code> from any workspace to generate a snapshot URL.
+
+    You can run `gp snapshot` from any workspace to generate a snapshot URL.
+
 </div>
 
 </IdeToggle>
