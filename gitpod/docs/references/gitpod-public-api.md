@@ -907,12 +907,12 @@ func ListAllProjects() {
 		TeamId: "<TEAM_ID>",
 	}))
 
-  if err != nil {
+	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to list projects %v", err)
 		return
 	}
 
-  fmt.Fprintf(os.Stdout, "%v", response.Msg)
+	fmt.Fprintf(os.Stdout, "%v", response.Msg)
 }
 ```
 
@@ -929,8 +929,7 @@ func ListAllProjects() {
       "name": "<Name of the project>",
       "slug": "<slug-of-the-project>",
       "cloneUrl": "<REPOSITORY_GIT_CLONE_URL>",
-      "creationTime": "2023-01-20T18:12:45.442Z",
-      "settings": {}
+      "creationTime": "2023-01-20T18:12:45.442Z"
     },
     {
       "id": "<PROJECT_ID>",
@@ -938,8 +937,7 @@ func ListAllProjects() {
       "name": "<Name of the project>",
       "slug": "<slug-of-the-project>",
       "cloneUrl": "<REPOSITORY_GIT_CLONE_URL>",
-      "creationTime": "2022-09-26T04:35:39.275Z",
-      "settings": {}
+      "creationTime": "2022-09-26T04:35:39.275Z"
     },
     {
       "id": "<PROJECT_ID>",
@@ -947,8 +945,7 @@ func ListAllProjects() {
       "name": "<Name of the project>",
       "slug": "<slug-of-the-project>",
       "cloneUrl": "<REPOSITORY_GIT_CLONE_URL>",
-      "creationTime": "2023-01-20T18:30:46.853Z",
-      "settings": {}
+      "creationTime": "2023-01-20T18:30:46.853Z"
     }
   ],
   "totalResults": 3
