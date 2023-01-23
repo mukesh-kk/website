@@ -872,6 +872,262 @@ curl 'https://api.gitpod.io/gitpod.experimental.v1.TeamsService/DeleteTeam' \
 
 **Response**: It deletes the requested team.
 
+## Resource: Projects
+
+### List all projects
+
+Lists all the projects for a team.
+
+<APIExample id="api-example">
+
+<div slot="curlExample">
+
+```bash title="cURL"
+curl 'https://api.gitpod.io/gitpod.experimental.v1.ProjectsService/ListProjects' \
+  -H 'content-type: application/json' \
+  -H 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
+  --data '{"teamId":"<TEAM_ID>"}'
+```
+
+</div>
+
+<div slot="goExample">
+
+```go
+func ListAllProjects() {
+	token := "<YOUR_ACCESS_TOKEN>"
+
+	gitpod, err := client.New(client.WithCredentials(token))
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to construct gitpod client %v", err)
+		return
+	}
+
+	response, err := gitpod.Projects.ListProjects(context.Background(), connect.NewRequest(&v1.ListProjectsRequest{
+		TeamId: "<TEAM_ID>",
+	}))
+
+  if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to list projects %v", err)
+		return
+	}
+
+  fmt.Fprintf(os.Stdout, "%v", response.Msg)
+}
+```
+
+</div>
+
+<div slot="responseExample">
+
+```json
+{
+  "projects": [
+    {
+      "id": "<PROJECT_ID>",
+      "teamId": "<TEAM_ID>",
+      "name": "<Name of the project>",
+      "slug": "<slug-of-the-project>",
+      "cloneUrl": "<REPOSITORY_GIT_CLONE_URL>",
+      "creationTime": "2023-01-20T18:12:45.442Z",
+      "settings": {}
+    },
+    {
+      "id": "<PROJECT_ID>",
+      "teamId": "<TEAM_ID>",
+      "name": "<Name of the project>",
+      "slug": "<slug-of-the-project>",
+      "cloneUrl": "<REPOSITORY_GIT_CLONE_URL>",
+      "creationTime": "2022-09-26T04:35:39.275Z",
+      "settings": {}
+    },
+    {
+      "id": "<PROJECT_ID>",
+      "teamId": "<TEAM_ID>",
+      "name": "<Name of the project>",
+      "slug": "<slug-of-the-project>",
+      "cloneUrl": "<REPOSITORY_GIT_CLONE_URL>",
+      "creationTime": "2023-01-20T18:30:46.853Z",
+      "settings": {}
+    }
+  ],
+  "totalResults": 3
+}
+```
+
+</div>
+</APIExample>
+
+<br>
+
+**Request Parameters**:
+
+| Parameter | Description |  Type  | Required |
+| :-------: | :---------: | :----: | :------: |
+| `teamId`  |   Team Id   | String |   true   |
+
+<br>
+
+**Response Parameters**: It returns the array of projects for the requested team & total number of projects. Each project has the following parameters:
+
+|   Parameter    |                              Description                               |  Type  |
+| :------------: | :--------------------------------------------------------------------: | :----: |
+|      `id`      |                               Proejct Id                               | string |
+|    `teamId`    |                              Workspace Id                              | string |
+|     `name`     |                          Name of the project                           | string |
+|     `slug`     | Slug of the project (contains no space & separated by <code>-</code> ) | string |
+|   `cloneUrl`   |    Repository Clone Url (Git Context Url - GitHub/GitLab/Bitbucket)    | string |
+| `creationTime` |                 Timestamp when the project was created                 | string |
+
+### Get a project (Coming soon)
+
+Returns a single project of a team.
+
+### Create a project
+
+Creates a new project for a team.
+
+<APIExample id="api-example">
+
+<div slot="curlExample">
+
+```bash title="cURL"
+curl 'https://api.gitpod.io/gitpod.experimental.v1.ProjectsService/CreateProject' \
+  -H 'content-type: application/json' \
+  -H 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
+  --data '{"project":{"teamId": "<TEAM_ID>", "name":"<Name of the project>", "slug":"<slug-of-the-project>", "cloneUrl":"<REPOSITORY_GIT_CLONE_URL>"}}
+```
+
+</div>
+
+<div slot="goExample">
+
+```go
+func ExampleCreateProject() {
+	token := "<YOUR_ACCESS_TOKEN>"
+
+	gitpod, err := client.New(client.WithCredentials(token))
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to construct gitpod client %v", err)
+		return
+	}
+
+	response, err := gitpod.Projects.CreateProject(context.Background(), connect.NewRequest(&v1.CreateProjectRequest{
+		Project: &v1.Project{
+			TeamId: "<TEAM_ID>",
+			Name: "<Name of the project>",
+			Slug: "<slug-of-the-project>",
+			CloneUrl: "<REPOSITORY_GIT_CLONE_URL>",
+		},
+	}))
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to create project %v", err)
+		return
+	}
+
+	fmt.Fprintf(os.Stdout, "Project has been successfully created %v", response.Msg)
+}
+```
+
+</div>
+
+<div slot="responseExample">
+
+```json
+{
+  "id": "<PROJECT_ID>",
+  "teamId": "<TEAM_ID>",
+  "name": "<Name of the project>",
+  "slug": "<slug-of-the-project>",
+  "cloneUrl": "<REPOSITORY_GIT_CLONE_URL>",
+  "creationTime": "2023-01-20T18:12:45.442Z",
+  "settings": {}
+}
+```
+
+</div>
+
+</APIExample>
+
+<br>
+
+**Request Parameters**: You need to pass the `project` & under each project, you need to pass the following parameters:
+
+| Parameter  |                              Description                               |  Type  | Required |
+| :--------: | :--------------------------------------------------------------------: | :----: | :------: |
+|  `teamId`  |                                Team Id                                 | String |   true   |
+|   `name`   |                          Name of the project                           | String |   true   |
+|   `slug`   | Slug of the project (contains no space & separated by <code>-</code> ) | String |   true   |
+| `cloneUrl` |    Repository Clone Url (Git Context Url - GitHub/GitLab/Bitbucket)    | String |   true   |
+
+**Response Parameters**: It returns the newly created project with the following parameters:
+
+|   Parameter    |                              Description                               |  Type  |
+| :------------: | :--------------------------------------------------------------------: | :----: |
+|      `id`      |                               Proejct Id                               | string |
+|    `teamId`    |                              Workspace Id                              | string |
+|     `name`     |                          Name of the project                           | string |
+|     `slug`     | Slug of the project (contains no space & separated by <code>-</code> ) | string |
+|   `cloneUrl`   |    Repository Clone Url (Git Context Url - GitHub/GitLab/Bitbucket)    | string |
+| `creationTime` |                 Timestamp when the project was created                 | string |
+
+### Delete a project
+
+Deletes a project of a team.
+
+<APIExample id="api-example">
+
+<div slot="curlExample">
+
+```bash title="cURL"
+curl 'https://api.gitpod.io/gitpod.experimental.v1.ProjectsService/DeleteProject' \
+  -H 'content-type: application/json' \
+  -H 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
+  --data '{"projectId":"<PROJECT_ID>"}'
+```
+
+</div>
+
+<div slot="goExample">
+
+```go
+func ExampleDeleteProject() {
+	token := "<YOUR_ACCESS_TOKEN>"
+
+	gitpod, err := client.New(client.WithCredentials(token))
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to construct gitpod client %v", err)
+		return
+	}
+
+	response, err := gitpod.Projects.DeleteProject(context.Background(), connect.NewRequest(&v1.DeleteProjectRequest{
+		ProjectId: "<PROJECT_ID>",
+	}))
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to delete project %v", err)
+		return
+	}
+
+	fmt.Fprintf(os.Stdout, "Project has been successfully deleted %v", response.Msg)
+}
+```
+
+</div>
+
+</APIExample>
+
+<br>
+
+**Request Parameters**:
+
+|  Parameter  | Description |  Type  | Required |
+| :---------: | :---------: | :----: | :------: |
+| `projectId` | Project Id  | String |   true   |
+
+**Response**: It deletes the requested project.
+
 ## API language clients
 
 ### Go
