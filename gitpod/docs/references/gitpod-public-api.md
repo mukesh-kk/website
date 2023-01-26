@@ -961,7 +961,7 @@ func ListAllProjects() {
 
 | Parameter | Description |  Type  | Required |
 | :-------: | :---------: | :----: | :------: |
-| `teamId`  |   Team Id   | String |   true   |
+| `teamId`  |   Team Id   | string |   true   |
 
 <br>
 
@@ -969,7 +969,7 @@ func ListAllProjects() {
 
 |   Parameter    |                              Description                               |  Type  |
 | :------------: | :--------------------------------------------------------------------: | :----: |
-|      `id`      |                               Proejct Id                               | string |
+|      `id`      |                               Project Id                               | string |
 |    `teamId`    |                              Workspace Id                              | string |
 |     `name`     |                          Name of the project                           | string |
 |     `slug`     | Slug of the project (contains no space & separated by <code>-</code> ) | string |
@@ -1053,16 +1053,16 @@ func ExampleCreateProject() {
 
 | Parameter  |                              Description                               |  Type  | Required |
 | :--------: | :--------------------------------------------------------------------: | :----: | :------: |
-|  `teamId`  |                                Team Id                                 | String |   true   |
-|   `name`   |                          Name of the project                           | String |   true   |
-|   `slug`   | Slug of the project (contains no space & separated by <code>-</code> ) | String |   true   |
-| `cloneUrl` |    Repository Clone Url (Git Context Url - GitHub/GitLab/Bitbucket)    | String |   true   |
+|  `teamId`  |                                Team Id                                 | string |   true   |
+|   `name`   |                          Name of the project                           | string |   true   |
+|   `slug`   | Slug of the project (contains no space & separated by <code>-</code> ) | string |   true   |
+| `cloneUrl` |    Repository Clone Url (Git Context Url - GitHub/GitLab/Bitbucket)    | string |   true   |
 
 **Response Parameters**: It returns the newly created project with the following parameters:
 
 |   Parameter    |                              Description                               |  Type  |
 | :------------: | :--------------------------------------------------------------------: | :----: |
-|      `id`      |                               Proejct Id                               | string |
+|      `id`      |                               Project Id                               | string |
 |    `teamId`    |                              Workspace Id                              | string |
 |     `name`     |                          Name of the project                           | string |
 |     `slug`     | Slug of the project (contains no space & separated by <code>-</code> ) | string |
@@ -1121,7 +1121,7 @@ func ExampleDeleteProject() {
 
 |  Parameter  | Description |  Type  | Required |
 | :---------: | :---------: | :----: | :------: |
-| `projectId` | Project Id  | String |   true   |
+| `projectId` | Project Id  | string |   true   |
 
 **Response**: It deletes the requested project.
 
