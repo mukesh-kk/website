@@ -22,12 +22,16 @@ export const showHideOverflowY = (bool: boolean) => {
   }
 };
 
-export const formatDate = (date) =>
-  new Date(Date.parse(date)).toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+export const formatDate = (date) => {
+  try {
+    const d = new Date(date);
+    return `${d.toLocaleString("default", {
+      month: "long",
+    })} ${d.getDate()}, ${d.getFullYear()}`;
+  } catch (e) {
+    return "";
+  }
+};
 
 export const scrollToElement = async (
   element: HTMLElement,

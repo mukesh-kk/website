@@ -11,21 +11,20 @@
     "watch:css": "run-p watch:css:*",
     "watch:css:global": "postcss src/lib/assets/global.css -o static/global.css -w",
     "watch:css:styles": "postcss src/lib/assets/styles.scss -o static/styles.css -w",
-    "watch:dev": "env-cmd --silent svelte-kit dev --host 0.0.0.0",
+    "watch:dev": "env-cmd --silent vite dev --host 0.0.0.0",
     "clean": "run-p clean:*",
     "clean:build": "rm -fr ./build",
     "clean:css": "rm -f static/global.css && rm -f static/styles.css",
-    "clean:dev": "rm -fr ./.svelte-kit",
     "dev": "npm run clean && run-p watch:*",
     "build": "run-s build:css build:svelte",
     "build:css": "run-p build:css:*",
     "build:css:global": "NODE_ENV=production postcss src/lib/assets/global.css -o static/global.css",
     "build:css:styles": "NODE_ENV=production postcss src/lib/assets/styles.scss -o static/styles.css",
-    "build:svelte": "USE_CACHE=true svelte-kit build --verbose",
+    "build:svelte": "USE_CACHE=true vite build",
     "deploy": "run-s clean build:css build:svelte",
-    "start": "svelte-kit preview",
+    "start": "vite preview",
     "validate": "svelte-check",
-    "prepare": "husky install",
+    "prepare": "svelte-kit sync && husky install",
     "generate:blog-post": "plop --plopfile ./generators/index.cjs blog-post",
     "generate:adr": "adr new",
     "generate:jb": "node ./generators/ide/jb-gen.js && npm run check-links $(gp url 3000)/docs/references/ides-and-editors",
@@ -34,7 +33,9 @@
     "test:e2e": "cypress run --headless --browser firefox"
   },
   "dependencies": {
+    "@lottiefiles/lottie-player": "^1.6.3",
     "@sendgrid/mail": "^7.5.0",
+    "@types/rss": "^0.0.30",
     "@types/uuid": "^8.3.4",
     "cookie": "^0.5.0",
     "emoji-regex": "^10.0.0",
@@ -43,13 +44,14 @@
     "nanoid": "^4.0.0",
     "node-fetch": "^3.2.10",
     "rehype-img-size": "^1.0.1",
+    "rss": "^1.2.2",
     "validator": "^13.7.0"
   },
   "devDependencies": {
     "@netlify/functions": "^1.0.0",
     "@octokit/plugin-paginate-graphql": "^2.0.1",
     "@sveltejs/adapter-netlify": "1.0.0-next.69",
-    "@sveltejs/kit": "1.0.0-next.341",
+    "@sveltejs/kit": "1.0.0-next.364",
     "@tailwindcss/typography": "^0.5.0",
     "@testing-library/cypress": "^8.0.7",
     "@tsconfig/svelte": "^2.0.1",
@@ -95,17 +97,19 @@
     "tailwindcss": "^3.0.0",
     "tslib": "^2.3.1",
     "typescript": "^4.7.4",
-    "unist-util-visit": "^4.1.0"
+    "unist-util-visit": "^4.1.0",
+    "vite": "^2.9.14"
   },
   "overrides": {
     "@sveltejs/kit": {
-      "@sveltejs/vite-plugin-svelte": "1.0.0-next.44"
+      "@sveltejs/vite-plugin-svelte": "1.0.0-next.48"
     }
   },
   "lint-staged": {
     "*.{cjs,js,ts,css,scss,md,svelte}": "prettier --write"
   },
   "engines": {
-    "npm": ">=6.0.0 <7"
+    "npm": ">=7.0.0",
+    "node": ">=16.9.0"
   }
 }

@@ -10,11 +10,14 @@
     switch (badge) {
       case "Community office hours":
         return "orange";
+
       case "Content":
         return "pink";
 
       case "Discord contribution":
         return "violet";
+
+      case "Open Source":
       default:
         return "orange";
     }

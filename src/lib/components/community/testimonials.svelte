@@ -7,7 +7,7 @@
 
 <Section class="flex flex-col">
   <p class="text-center font-bold text-h3 text-important max-w-3xl mx-auto">
-    Join our community of 5k+ developers from all over the world
+    Join our community of 6k+ developers from all over the world
   </p>
   <div class="flex justify-center mt-micro lg:mt-x-small">
     <LinkButton variant="primary" size="large" href="https://www.gitpod.io/chat"

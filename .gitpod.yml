@@ -18,9 +18,10 @@ ports:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/configure/workspaces/tasks/
 tasks:
-  - name: Dev Server
-    init: npm install
-    command: npm run dev
+  - name: Installing Dependencies
+    init: nvm use lts/hydrogen && npm install
+  - name: Start Dev Server
+    command: nvm use lts/hydrogen && npm run dev
   - name: Forward Cypress Base URL
     command: |
       export CYPRESS_BASE_URL=$(gp url 3000)

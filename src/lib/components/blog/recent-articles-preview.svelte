@@ -43,8 +43,10 @@
   }
 
   const posts = $page.stuff.posts;
+  // Filter out the current post and posts older than a year & if slug is a specific one (e.g. /blog/building-for-the-long-run) & then shuffle the array
   $: recentPostsWithoutCurrent = shuffle(
     posts
+      .filter((post: BlogPost) => post.slug !== "building-for-the-long-run")
       .filter((post: BlogPost) => $page.url.pathname.indexOf(post.slug) === -1)
       .filter((post) => {
         if (tags === "all") {

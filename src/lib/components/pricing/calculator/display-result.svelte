@@ -23,26 +23,42 @@
     10 * monthlyHours * (standardWorkspaces / 100) +
     20 * monthlyHours * (largeWorkspaces / 100);
 
-  $: displayValue = getResult(members, usedCredits, calculatedPrice);
+  $: toalHoursUsingTeamMembers = members * monthlyHours;
+
+  $: displayValue = getResult(
+    members,
+    usedCredits,
+    calculatedPrice,
+    toalHoursUsingTeamMembers
+  );
 
   const getResult = (
     members: number,
     usedCredits: number,
-    calculatedPrice: number
+    calculatedPrice: number,
+    toalHoursUsingTeamMembers: number
   ) => {
-    switch (members) {
-      case 1:
-        if (usedCredits <= 500) {
-          return 0;
-        }
-        if (usedCredits <= 1000) {
-          return 9;
-        } else {
-          return 9 + (usedCredits - 1000) * 0.036;
-        }
-
-      default:
-        return calculatedPrice;
+    if (members === 1) {
+      if (usedCredits <= 500) {
+        return 0;
+      }
+      if (usedCredits <= 1000) {
+        return 9;
+      } else {
+        return 9 + (usedCredits - 1000) * 0.036;
+      }
+    } else if (
+      members >= 2 &&
+      usedCredits <= 1000 &&
+      toalHoursUsingTeamMembers <= 100
+    ) {
+      if (usedCredits <= 1000) {
+        return 9;
+      } else {
+        return 9 + (usedCredits - 1000) * 0.036;
+      }
+    } else {
+      return calculatedPrice;
     }
   };
 </script>

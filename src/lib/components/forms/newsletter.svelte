@@ -10,6 +10,10 @@
   let resultMessage = "";
   let isSubmissionInProgress = false;
 
+  export let title: string = "Read our newsletter";
+  export let description: string =
+    "Access Gitpod's latest thinking, news, and insights.";
+
   const formData: Form = {
     email: {
       el: null,
@@ -75,10 +79,9 @@
   class="flex justify-between max-w-6xl mx-auto items-center flex-wrap gap-small lg:gap-xx-large"
 >
   <div>
-    <h2 class="h3 !mb-macro lg:!mb-micro">Read our newsletter</h2>
+    <h2 class="h3 !mb-macro lg:!mb-micro">{title}</h2>
     <p>
-      {#if resultMessage}{resultMessage}{:else}Access Gitpod's latest thinking,
-        news, and insights.{/if}
+      {#if resultMessage}{resultMessage}{:else}{description}{/if}
     </p>
   </div>
   <div>

@@ -16,12 +16,12 @@ This ensures that you are starting from a clean slate with proper configuration.
 
 ## Timeouts
 
-Any running workspace will automatically stop after some time of inactivity. Normally, this timeout is 30 minutes but is extended to **60 minutes if you have an _Unleashed_ plan**.
-Furthermore, _Unleashed_ users can manually boost the timeout of a workspace to 180 minutes. This comes in handy, e.g. in case you want to go out for a longer lunch or meeting and don't like restarting your workspace when coming back.
+Any running workspace will automatically stop after some time of inactivity. Normally, this timeout is 30 minutes but is extended to **60 minutes if you have a** [**_Paid plan_**](/pricing).
+Furthermore, _Paid_ users can manually boost the timeout of a workspace up to 24 hours ([learn more](/docs/references/gitpod-cli#timeout)). This comes in handy, e.g. in case you want to go out for a longer lunch or meeting and don't like restarting your workspace when coming back.
 
 To do that, open the editor's Command Palette (<Keybind>CtrlCmd + Shift + P</Keybind>) and search for "Gitpod: Extend Workspace Timeout".
 
-**Note**: If you do not have an _Unleashed_ plan, this command is not available.
+**Note**: If you do not have a _Paid_ plan, this command is not available.
 
 The timeout will always be reset to the full 30 minutes (or other applicable timeout depending on your subscription) by any activity&thinsp;—&thinsp;mouse move or keystroke&thinsp;—&thinsp;in the editor.
 If the editor is still open but the corresponding workspace has stopped, a dialog will pop up that lets you start the workspace
@@ -31,7 +31,7 @@ For convenience, closing the browser window/tab containing the workspace reduces
 
 ### What happens if my workspace times out?
 
-Not to worry, your changes are safe. You can navigate back to https://gitpod.io, look for your stopped workspace and start it again to continue working.
+Not to worry, your changes are safe. You can navigate back to [Gitpod Dashboard](https://gitpod.io/workspaces), look for your stopped workspace and start it again to continue working.
 
 ### I want my team / client to review my work
 

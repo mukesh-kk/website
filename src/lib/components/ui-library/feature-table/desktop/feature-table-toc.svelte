@@ -10,9 +10,7 @@
   <section class="grid grid-cols-1 auto-rows-[3rem] pt-4 inner-grid-desktop">
     {#each tocData as item}
       {#if item.isHeadline}
-        <div
-          class="-ml-8 font-semibold flex items-center text-black dark:text-important"
-        >
+        <div class="-ml-8 font-semibold text-black dark:text-important">
           {item.headlineText}
         </div>
       {:else}

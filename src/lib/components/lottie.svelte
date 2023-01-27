@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { Lottie } from "$lib/types/lottie";
 
+  // Known Issue with Lottie & Server Side Rendering: https://github.com/airbnb/lottie-web/issues/2851
+  if (typeof window !== "undefined") import("@lottiefiles/lottie-player");
   import { onMount } from "svelte";
 
   export let lottie: Lottie;
@@ -36,6 +38,5 @@
   background="transparent"
   speed="1"
   {style}
-  loop={false}
   autoplay
 />

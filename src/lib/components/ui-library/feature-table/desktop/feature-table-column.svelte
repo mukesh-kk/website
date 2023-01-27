@@ -11,23 +11,23 @@
   const firstEntry = featureData.enteries[0];
 </script>
 
-<Card size="small" class="p-4 -z-20" brandShadow={featureData.isHighlighted}>
+<Card size="small" class="p-4" brandShadow={featureData.isHighlighted}>
   <FeatureTableHeader headerData={featureData.header} />
   <div
     class="{!hasASingleEntry
       ? ''
       : 'grid grid-cols-1 auto-rows-[3rem]'} {!firstEntry.users
       ? 'border-t border-divider'
-      : ''} inner-grid-desktop pt-4"
+      : ''} inner-grid-desktop"
   >
     {#if hasASingleEntry}
       {#if firstEntry.users}
-        <h4 class="h5 !mb-0 text-center border-b border-divider">
+        <h4 class="h5 text-center border-b border-divider">
           {firstEntry.users}
         </h4>
       {/if}
       {#each firstEntry.items as item}
-        <div class="flex justify-center items-center">
+        <div class="mt-micro">
           <FeatureTableItem definition={item} />
         </div>
       {/each}
@@ -39,7 +39,7 @@
               {entry.users}
             </h4>
             {#each entry.items as item}
-              <div class="justify-center items-center flex">
+              <div class="mt-micro">
                 <FeatureTableItem definition={item} />
               </div>
             {/each}

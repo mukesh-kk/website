@@ -44,12 +44,12 @@ export const teamImages: Image[] = [
 export const featureTitles: FeatureTitle[] = [
   {
     main: "More than",
-    sub: "70",
+    sub: "50",
     third: "remote team members",
   },
   {
     main: "From",
-    sub: "53",
+    sub: "14",
     third: "countries and regions",
   },
 ];

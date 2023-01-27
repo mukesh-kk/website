@@ -3,10 +3,10 @@
 </script>
 
 <script lang="ts">
-  import Explore from "$lib/components/explore.svelte";
+  // import Explore from "$lib/components/explore.svelte";
   import FeatureTitles from "$lib/components/feature-titles.svelte";
   import Header from "$lib/components/header.svelte";
-  import ImageLightDark from "$lib/components/image-light-dark.svelte";
+  // import ImageLightDark from "$lib/components/image-light-dark.svelte";
   import OpenGraph from "$lib/components/open-graph.svelte";
   import Celebrate from "$lib/components/team/celebrate.svelte";
   import CoreValues from "$lib/components/team/core-values.svelte";
@@ -31,7 +31,9 @@
   text="Gitpod started with a small team in Germany. Now, our fully remote team is distributed across the globe."
   fullWidth={true}
 >
-  <ImageLightDark
+  <!-- Hide Map until we have better solution -->
+
+  <!-- <ImageLightDark
     slot="content"
     image={{
       src: "/images/team/map-light.svg",
@@ -39,7 +41,7 @@
       alt: "World Map of Gitpodders",
     }}
     class="mt-x-small md:mt-medium w-full max-w-[1091px] mx-auto"
-  />
+  /> -->
 </Header>
 
 <FeatureTitles {featureTitles} swap={true} />
@@ -56,7 +58,9 @@
 
 <Join />
 
-<Explore
+<!-- Un-comment this when we have some open positions -->
+
+<!-- <Explore
   contents={{
     title: "We're hiring",
     description:
@@ -67,4 +71,4 @@
     },
     secondaryLink: null,
   }}
-/>
+/> -->

@@ -9,7 +9,7 @@
 >
   <h2 id="open-positions" class="h3 md:!mb-xx-small">Open positions</h2>
   {#if openPositions.meta.total < 1}
-    Unfortunately, there are no open positions currently...
+    Nothing open at the moment, but check back soon!
   {:else}
     <ul class="space-y-micro">
       {#each openPositions.jobs as job}

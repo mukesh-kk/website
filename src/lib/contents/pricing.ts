@@ -14,7 +14,7 @@ import githubMarkSvelte from "$lib/components/svgs/github-mark.svelte";
 export const pricingPlans: Pricing[] = [
   {
     title: "Individual",
-    description: "For your personal projects",
+    description: "For single users",
     prependedPrice: "From",
     showCurrency: true,
     price: `0`,
@@ -359,11 +359,11 @@ export const teamPlanTableData: FeatureTableColumn = {
         {
           term: "Base price",
           isCurrency: true,
-          text: "0/ mo",
+          text: "9/ mo",
         },
         {
           term: "Credits in base price",
-          text: "0",
+          text: "1000",
         },
         {
           term: "Additional credits",
@@ -670,7 +670,7 @@ export const pricingTableToc: FeatureTableToc[] = [
     type: "tooltip",
     data: {
       text: "Timeout boost",
-      tooltip: "Manually extent workspace timeout to 180 minutes",
+      tooltip: "Manually extend workspace timeout up to 24 hours.",
     },
   },
   {

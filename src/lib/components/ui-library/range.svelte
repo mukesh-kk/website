@@ -10,13 +10,12 @@
 
 <style lang="postcss">
   input {
-    @apply w-full appearance-none h-[5px] bg-divider outline-none active:cursor-grabbing transition-all duration-200;
+    @apply w-full h-[5px] bg-divider outline-none active:cursor-grabbing transition-all duration-200;
     -webkit-appearance: none;
   }
 
   input::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
-    appearance: none;
     @apply w-[28px] h-[28px] rounded-full bg-gitpod-kumquat-gradient border-none;
   }
 

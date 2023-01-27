@@ -21,10 +21,13 @@
   <div
     class="grid m-auto max-w-7xl w-full gap-6 grid-cols-none justify-center md:grid-cols-2 lg:grid-cols-3"
   >
+    <!-- Iterate to each post except slug is building-for-the-long-run -->
     {#each posts as post}
-      <div class="flex justify-center min-w-[20rem] max-w-sm">
-        <PostPreview {post} {type} isMostRecent headlineOrder="h3" />
-      </div>
+      {#if post.slug !== "building-for-the-long-run"}
+        <div class="flex justify-center min-w-[20rem] max-w-sm">
+          <PostPreview {post} {type} isMostRecent headlineOrder="h3" />
+        </div>
+      {/if}
     {/each}
   </div>
 </Section>

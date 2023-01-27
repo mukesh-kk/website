@@ -1,29 +1,23 @@
 <script lang="ts">
+  import { contributionHighlights } from "$lib/contents/community/index";
   import ContributionCard from "./contribution-card.svelte";
   import Section from "$lib/components/section.svelte";
-  import {
-    contributionHighlights,
-    contributionMonths,
-  } from "$lib/contents/community/index";
 
-  // last item of contributionsMonth
-  let selectedMonth = contributionMonths[contributionMonths.length - 1];
-  $: highlights = contributionHighlights.filter(
-    (highlight) => highlight.date === selectedMonth
-  );
+  let months = Object.keys(contributionHighlights).reverse();
+  let selectedMonth = months.at(-1);
 
   let element: HTMLElement;
 
-  const clickHandler = (month: string) => {
+  function select(month: string) {
     selectedMonth = month;
 
-    //check if element is in view
+    // check if element is in view
     const rect = element.getBoundingClientRect();
 
     if (rect.top < 0 || rect.bottom > window.innerHeight) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }
 </script>
 
 <Section>
@@ -37,22 +31,25 @@
       word around the globe. We are proud that you are here.
     </p>
   </div>
+
   <ul class="flex flex-wrap justify-center gap-micro">
-    {#each highlights as highlight}
+    {#each contributionHighlights[selectedMonth] || [] as highlight}
       <li>
         <ContributionCard contentCard={highlight} />
       </li>
     {/each}
   </ul>
+
   <ul class="flex mt-x-small lg:mt-small flex-wrap justify-center gap-micro">
-    {#each contributionMonths as month}
+    {#each Object.keys(contributionHighlights).reverse() as month}
       <button
         class:font-bold={selectedMonth === month}
         class:text-important={selectedMonth === month}
-        on:click={() => clickHandler(month)}
+        on:click={() => select(month)}
         class="underline hover:text-important hover:decoration-transparent"
-        >{month}</button
       >
+        {month}
+      </button>
     {/each}
   </ul>
 </Section>

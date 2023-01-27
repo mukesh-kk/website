@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import Header from "$lib/components/header.svelte";
-  import Explore from "$lib/components/explore.svelte";
+  // import Explore from "$lib/components/explore.svelte";
 
   import OpenGraph from "$lib/components/open-graph.svelte";
   import Section from "$lib/components/section.svelte";
@@ -66,7 +66,9 @@
   ]}
 />
 
-<Explore
+<!-- Un-comment this when we have some open positions -->
+
+<!-- <Explore
   contents={{
     title: "We have open positions",
     description: "Come join us.",
@@ -76,4 +78,4 @@
     },
     secondaryLink: null,
   }}
-/>
+/> -->
