@@ -68,7 +68,7 @@ Running workspaces will stop automatically after a period of inactivity.
 
 ### Workspace Inactivity
 
-By default, workspaces stop following 30 minutes without user input (e.g. keystrokes or terminal input commands). You can increase the workspace timeout up to a maximum of 24 hours.
+By default, workspaces stop following 30 minutes without user input (e.g. keystrokes or terminal input commands). You can increase the workspace timeout, but keep in mind that workspaces can't be in the running state for more than 36 hours.
 
 ### Editor Disconnect
 
