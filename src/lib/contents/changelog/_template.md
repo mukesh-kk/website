@@ -1,5 +1,5 @@
 ---
-title: {{releaseMonth}} Changelog
+title: {{releaseMonth}} Gitpod Release {{releaseYear}}
 excerpt: {{releaseMonth}} Changelog
 date: {{releaseDate}}
 image: {{releaseDate}}.jpg

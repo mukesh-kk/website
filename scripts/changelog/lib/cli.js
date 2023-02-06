@@ -95,6 +95,12 @@ export const outputResults = (
     releaseMonth
   );
 
+  const releaseYear = new Date(releaseDate).getUTCFullYear();
+  newChangelogFileContent = newChangelogFileContent.replace(
+    /{{releaseYear}}/g,
+    releaseYear
+  );
+
   newChangelogFileContent = newChangelogFileContent.replace(
     /{{releaseDate}}/g,
     releaseDate
