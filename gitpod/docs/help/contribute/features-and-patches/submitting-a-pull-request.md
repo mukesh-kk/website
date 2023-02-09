@@ -13,6 +13,7 @@ Before you submit your pull request, please:
 
 - If you are considering submitting a pull-request that is more than a simple fix, open a discussion on GitHub first with your proposal.
 - Search [GitHub](https://github.com/gitpod-io/gitpod/pulls) for an open or closed Pull Request that relates to your submission.
+- Sign Gitpod's [Contributor License Agreement](https://powerforms.docusign.net/30e1aa46-cce5-4bc6-a933-ad02cd8d5ada?env=eu&acct=86335c2c-01b9-4edc-a187-014f5150a112&accountId=86335c2c-01b9-4edc-a187-014f5150a112) if you haven't done this before
 
 Make your changes in a new git branch:
 
@@ -56,6 +57,7 @@ Before you submit your pull request, please:
 
 - If you are considering submitting a pull-request that is more than a simple fix, open a discussion on GitHub first with your proposal.
 - Search [GitHub](https://github.com/gitpod-io/gitpod/pulls) for an open or closed Pull Request that relates to your submission.
+- Sign Gitpod's [Contributor License Agreement](https://powerforms.docusign.net/30e1aa46-cce5-4bc6-a933-ad02cd8d5ada?env=eu&acct=86335c2c-01b9-4edc-a187-014f5150a112&accountId=86335c2c-01b9-4edc-a187-014f5150a112) if you haven't done this before
 
 If we suggest changes, then:
 
