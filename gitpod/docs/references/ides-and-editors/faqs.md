@@ -67,4 +67,5 @@ Gitpod does not officially support [JetBrains Projector](https://lp.jetbrains.co
 
 ## Can I ensure VS Code Desktop always opens in a single window?
 
-Unfortunately, it is not possible to redirect to VS Code Desktop using the same window, this is a limitation of VS Code.
+
+When opening a workspace in VS Code (Desktop) a blank/empty window is opened. A new window is used to open the connection to the workspace and this blank window is left in the background. Unfortunately, it is not possible to redirect to VS Code Desktop using the same window, and/or remove the blank window as this is a limitation of VS Code.
