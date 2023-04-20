@@ -65,6 +65,6 @@ No, JetBrains Remote Development and Gateway are available only in the IntelliJ 
 
 Gitpod does not officially support [JetBrains Projector](https://lp.jetbrains.com/projector/). Gitpod has support for [JetBrains Gateway](/docs/integrations/jetbrains-gateway), which is the primary tool for remote development when using JetBrains IDE's.
 
-## Can I ensure VS Code Desktop always opens in a single window
+## Can I ensure VS Code Desktop always opens in a single window?
 
 Unfortunately, it is not possible to redirect to VS Code Desktop using the same window, this is a limitation of VS Code.
