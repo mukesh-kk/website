@@ -9,3 +9,13 @@ OpenID Connect (OIDC) allows third-party applications to verify identity. <abbr 
 ## Setting up OIDC Authentication with Any Provider
 
 To retrieve the OIDC token for the current workspace simply run `gp idp token`, to return a JWT that can be exchanged with a third party service to grant access.
+
+<figure>
+
+![](/images/docs/oidc-flow.png)
+
+<figcaption>
+    Sequence diagram of Authentication via OIDC using AWS with Gitpod
+</figcaption>
+
+</figure>
