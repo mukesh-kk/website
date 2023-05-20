@@ -30,6 +30,8 @@ Now that your AWS account is setup to trust Gitpod, you need to create an AWS IA
 
 > Important: We strongly recommend you adhere to the principle of least privilege, and ensure that only relevant workspaces and users can assume your AWS role.
 
+<figure>
+
 ```json
 {
   "iss": "https://api.dev-internal.gitpod.cloud/idp",
@@ -44,11 +46,16 @@ Now that your AWS account is setup to trust Gitpod, you need to create an AWS IA
 }
 ```
 
-_Caption: Example claims in the OIDC JWT._
+  <figcaption>
+    Example claims in the OIDC JWT.
+  </figcaption>
+</figure>
 
 To adjust the IAM role trust policy to restrict which workspaces can assume the role. You can define conditions keys using the name of the OIDC provider (created in step 1, e.g. `gitpod.io`) followed by the claim (`:aud`, `:azp`, `:amr`, `sub`).
 
-```text
+<figure>
+
+```json
 {
   Action    = "sts:AssumeRoleWithWebIdentity"
   Condition = {
@@ -64,7 +71,10 @@ To adjust the IAM role trust policy to restrict which workspaces can assume the 
 }
 ```
 
-_Caption: Example IAM role assume role trust policy._
+  <figcaption>
+    Example IAM role assume role trust policy.
+  </figcaption>
+</figure>
 
 **Read more:**
 
@@ -76,6 +86,8 @@ _Caption: Example IAM role assume role trust policy._
 
 The following code will login to AWS using OIDC and then fetch a secret dynamically from AWS Secrets Manager for use in your application.
 
+<figure>
+
 ```yaml
 tasks:
   - command: |
@@ -83,7 +95,10 @@ tasks:
     aws secretsmanager get-secret-value --secret-id database_connection_string --region us-east-1 | jq .SecretString
 ```
 
-_Caption: Example_ `.gitpod.yml` _that assumes a web identity role._
+  <figcaption>
+    Example_ `.gitpod.yml` _that assumes a web identity role.
+  </figcaption>
+</figure>
 
 Read more:
 
