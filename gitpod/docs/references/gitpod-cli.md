@@ -21,7 +21,7 @@ Usage:
 
 Available Commands:
   docs                Open Gitpod Documentation in default browser
-  env                 Controls user-defined, persistent environment variables.
+  env                 Controls workspace environment variables.
   help                Help about any command
   info                Display workspace info, such as its ID, class, etc.
   init                Create a Gitpod configuration for this project.
@@ -34,7 +34,7 @@ Available Commands:
   sync-done           Notifies the corresponding gp sync-await calls that this event has happened
   tasks               Interact with workspace tasks
   timeout             Interact with workspace timeout configuration
-  top                 Display workspace resource (CPU and memory usage)
+  top                 Display usage of workspace resources (CPU and memory)
   url                 Prints the URL of this workspace
   validate            [experimental] Validates the workspace (useful to debug a workspace configuration)
   version             Prints the version of the CLI
