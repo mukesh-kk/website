@@ -19,3 +19,7 @@ To retrieve the OIDC token for the current workspace simply run `gp idp token`, 
 </figcaption>
 
 </figure>
+
+**Read more:**
+
+- https://auth0.com/docs/authenticate/protocols/openid-connect-protocol
