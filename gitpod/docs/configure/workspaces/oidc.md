@@ -8,8 +8,6 @@ OpenID Connect (OIDC) allows third-party applications to verify identity. <abbr 
 
 ## Setting up OIDC Authentication with Any Provider
 
-To retrieve the OIDC token for the current workspace simply run `gp idp token`, to return a JWT that can be exchanged with a third party service to grant access.
-
 <figure>
 
 ![](/images/docs/oidc-flow.png)
@@ -23,3 +21,9 @@ To retrieve the OIDC token for the current workspace simply run `gp idp token`, 
 **Read more:**
 
 - https://auth0.com/docs/authenticate/protocols/openid-connect-protocol
+
+## Experimental Gitpod CLI integration
+
+You can interface with Gitpod's IdP using the `gp idp` subcommand. To retrieve the OIDC token for the current workspace simply run `gp idp token`, to return a JWT that can be exchanged with a third party service to grant access.
+
+For example, to request a new OIDC JWT for `example.org` you'll need to execute `gp idp token --audience example.org`, the output of which you can use to authenticate yourself.
