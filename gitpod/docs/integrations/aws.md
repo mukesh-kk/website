@@ -15,9 +15,9 @@ To use an <abbr title="Identity Provider">IdP</abbr>, you create an IAM identity
 
 AWS Identity Providers allow you to manage user identities outside of AWS, instead of creating IAM users in your AWS account and give these external identities (e.g. Gitpod workspaces) permissions to use AWS resources in your account.
 
-Configure the URL of the identity provider to: `<your-installation>/idp`
+Configure the URL of the identity provider to: `https://api.<your-installation>/idp`
 
-For example: `https://gitpod.io/idp`.
+For example: `https://api.gitpod.io/idp`.
 
 **Read more:**
 
