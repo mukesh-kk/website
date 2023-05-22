@@ -21,7 +21,7 @@ For example: `https://gitpod.io/idp`.
 
 **Read more:**
 
-- [https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create.html)
+- [[AWS docs] Creating IAM identity providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create.html)
 - [[AWS docs] Creating OpenID Connect (OIDC) identity providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html)
 
 ## Step 2: Create an AWS role with a trust policy
