@@ -1,4 +1,4 @@
-# OIDC in Gitpod
+# OpenID Connect (OIDC) in Gitpod
 
 You can now use OIDC authentication to connect Gitpod workspaces to cloud providers and/or other third party services such as AWS, Azure, GCP, or secret management services like Vault. Through OIDC you can connect with a secret store using a temporary access token and eliminate the need to manually distribute secrets through environment variables. You can fetch temporary access tokens for your workspaces, which gives you fine-grained control over which of your Gitpod workspaces can have certain access.
 
