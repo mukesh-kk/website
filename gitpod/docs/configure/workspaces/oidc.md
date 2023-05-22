@@ -21,6 +21,14 @@ OIDC provides a reliable way to establish a user's identity, including the abili
 
 ## Setting up OIDC Authentication with Any Provider
 
+Setting up OIDC Authentication generally involves three main steps:
+
+1. Establish Trust: This is where you register your application with the OIDC Provider (like AWS, Google, etc.). The provider then gives your application a unique client ID and secret, which your application uses to prove its identity to the provider.
+
+1. Setup Trust Rules: This involves setting up rules on the provider's end about what information the provider can share with your application, and under what conditions.
+
+1. Exchange the JWT Token: After trust is established and rules are set up, Gitpod's <abbr title="Identity Provider">IdP</abbr> will issue JWT tokens, which your application can then use these tokens to verify the identity of the user and gain access to their information according to the rules set up in the previous step.
+
 <figure>
 
 ![OIDC flow via Gitpod](/images/docs/oidc-flow.png)
