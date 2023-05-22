@@ -1,3 +1,12 @@
+---
+section: configure
+title: OpenID Connect
+---
+
+<script context="module">
+  export const prerender = true;
+</script>
+
 # OpenID Connect (OIDC) in Gitpod
 
 You can use OIDC authentication to connect Gitpod workspaces to cloud providers and/or other third party services such as AWS, Azure, GCP, or secret management services like Vault. Through OIDC you can connect with a third party, eliminating the need to manually distribute access credentials, secrets and other key material via environment variables.
@@ -35,3 +44,27 @@ Although this process is universal for all OIDC-compatible providers, we maintai
 You can interface with Gitpod's IdP using the `gp idp` subcommand. To retrieve the OIDC token for the current workspace simply run `gp idp token`, to return a JWT that can be exchanged with a third party service to grant access.
 
 For example, to request a new OIDC JWT for `example.org` you'll need to execute `gp idp token --audience example.org`, the output of which you can use to authenticate yourself.
+
+### Example usage
+
+```bash
+$ gp idp token --audience example.org
+eyJhbGciOiJSUzI1NiIsImtpZCI6ImlkLTE2ODQ3NTc4MDY...
+
+$ jwt decode eyJh...
+{
+  "aud": [
+    "example.org"
+  ],
+  "auth_time": 1684777794,
+  "azp": "example.org",
+  "c_hash": "gc_vPbUNoCT0UmXDCdp1sw",
+  "email": "kumquat@gitpod.io",
+  "email_verified": true,
+  "exp": 1684781394,
+  "iat": 1684777794,
+  "iss": "https://api.gitpod.io/idp",
+  "name": "Kumquat The Third",
+  "sub": "https://github.com/gitpod-io/website/pull/1"
+}
+```
