@@ -9,6 +9,8 @@ title: AWS
 
 # Setting up OIDC Authentication with AWS
 
+> ℹ️ This document describes the setup for AWS with OIDC. [Learn more](/docs/configure/workspaces/oidc) about OpenID Connect in Gitpod.
+
 To use an <abbr title="Identity Provider">IdP</abbr>, you create an IAM identity provider entity to establish a trust relationship between your AWS account and the IdP. Using OIDC authentication with AWS gives you fine-grained control of which Gitpod workspaces can access what resources inside of your cloud account.
 
 ## Step 1: Create an "AWS Identity Provider" resource
