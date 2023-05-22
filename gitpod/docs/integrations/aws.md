@@ -82,7 +82,7 @@ To adjust the IAM role trust policy to restrict which workspaces can assume the 
 
 ## Step 3: Assume the AWS role to retrieve the AWS credentials
 
-> Important: The follg assumes that your workspace has the AWS CLI installed so that it can call aws sts assume-role-with-web-identity from the AWS CLI.
+> 💡 **Important**: The following assumes that your workspace has the AWS CLI installed so that it can call `aws sts assume-role-with-web-identity`.
 
 The following code will login to AWS using OIDC and then fetch a secret dynamically from AWS Secrets Manager for use in your application.
 
