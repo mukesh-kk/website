@@ -20,6 +20,10 @@ OIDC provides a reliable way to establish a user's identity, including the abili
     Sequence diagram of Authentication via OIDC using AWS with Gitpod
 </figcaption>
 
+Although this process is universal for all OIDC-compatible providers, we maintain the following docs that go in detail on setting them up:
+
+- [AWS](/docs/integrations/aws)
+
 </figure>
 
 **Read more:**
