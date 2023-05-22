@@ -20,7 +20,7 @@ OpenID Connect (OIDC) allows third-party applications to verify identity. <abbr 
 
 **Read more:**
 
-- https://auth0.com/docs/authenticate/protocols/openid-connect-protocol
+- [[Auth0 docs] OpenID Connect Protocol](https://auth0.com/docs/authenticate/protocols/openid-connect-protocol)
 
 ## Experimental Gitpod CLI integration
 
