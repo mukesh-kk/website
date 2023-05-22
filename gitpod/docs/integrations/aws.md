@@ -28,7 +28,7 @@ For example: `https://gitpod.io/idp`.
 
 Now that your AWS account is setup to trust Gitpod, you need to create an AWS IAM role that can be assumed by the Gitpod workspace. Here, you can also restrict who has access to the assumed role based on claims in your Gitpod workspace JWT token.
 
-> Important: We strongly recommend you adhere to the principle of least privilege, and ensure that only relevant workspaces and users can assume your AWS role.
+> 💡 **Important**: We strongly recommend you adhere to the principle of least privilege, and ensure that only relevant workspaces and users can assume your AWS role.
 
 <figure>
 
