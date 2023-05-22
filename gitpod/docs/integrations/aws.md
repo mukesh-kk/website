@@ -96,7 +96,7 @@ tasks:
 ```
 
   <figcaption>
-    Example_ `.gitpod.yml` _that assumes a web identity role.
+    Example <code>.gitpod.yml</code> that assumes a web identity role.
   </figcaption>
 </figure>
 
