@@ -78,7 +78,7 @@ To adjust the IAM role trust policy to restrict which workspaces can assume the 
 
 **Read more:**
 
-- [https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html)
+- [[AWS docs] IAM and AWS STS condition context keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html)
 
 ## Step 3: Assume the AWS role to retrieve the AWS credentials
 
