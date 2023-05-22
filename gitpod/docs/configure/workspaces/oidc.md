@@ -10,7 +10,7 @@ OpenID Connect (OIDC) allows third-party applications to verify identity. <abbr 
 
 <figure>
 
-![](/images/docs/oidc-flow.png)
+![OIDC flow via Gitpod](/images/docs/oidc-flow.png)
 
 <figcaption>
     Sequence diagram of Authentication via OIDC using AWS with Gitpod
