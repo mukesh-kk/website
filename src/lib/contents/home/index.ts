@@ -1,7 +1,3 @@
-import type { Brand } from "$lib/types/brand";
-import type { Project } from "$lib/types/project";
-import type { Testimonial } from "$lib/types/testimonial";
-import type { Ide } from "$lib/types/ide";
 import GitlabLogo from "$lib/components/svgs/brands/gitlab-logo.svelte";
 import FreecodecampLogo from "$lib/components/svgs/brands/freecodecamp.svelte";
 import Google from "$lib/components/svgs/brands/google.svelte";
@@ -13,7 +9,13 @@ import Astrato from "$lib/components/svgs/brands/astrato.svelte";
 import CodeInstitute from "$lib/components/svgs/brands/code-institute.svelte";
 import Redwood from "$lib/components/svgs/brands/redwood.svelte";
 import Jetbrains from "$lib/components/svgs/brands/jetbrains.svelte";
+import Dynatrace from "$lib/components/svgs/brands/dynatrace.svelte";
+import EquipmentShare from "$lib/components/svgs/brands/equipmentshare.svelte";
 import FourGeeks from "$lib/components/svgs/brands/fourgeeks.svelte";
+import type { Brand } from "$lib/types/brand";
+import type { Project } from "$lib/types/project";
+import type { Testimonial } from "$lib/types/testimonial";
+import type { Ide } from "$lib/types/ide";
 import type { FeatureTitle } from "$lib/types/feature-title";
 
 export const gitlab: Brand = {
@@ -85,12 +87,23 @@ export const fourGeeks: Brand = {
   transform: "scale(1.0)",
 };
 
+export const equipmentShare: Brand = {
+  logo: EquipmentShare,
+  alt: "Equipmentshare",
+  transform: "scale(1.6)",
+};
+export const dynatrace: Brand = {
+  logo: Dynatrace,
+  alt: "Dynatrace",
+  transform: "scale(1.3)",
+};
+
 export const brands: Brand[] = [
   gitlab,
-  jetbrains,
-  google,
+  dynatrace,
   factorial,
   dataStax,
+  equipmentShare,
   amazon,
   shares,
   astrato,
@@ -105,10 +118,10 @@ export const logosAnimated: Brand[] = [
   gitlab,
   amazon,
   astrato,
-  jetbrains,
+  equipmentShare,
   redwood,
   codeInstitute,
-  google,
+  dynatrace,
   factorial,
   fourGeeks,
   shares,

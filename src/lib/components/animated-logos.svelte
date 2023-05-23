@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { logosAnimated } from "$lib/contents/home";
+  import { equipmentShare, logosAnimated } from "$lib/contents/home";
   import { onMount } from "svelte";
 
   let sequence = [];
@@ -63,7 +63,10 @@
       <div class="logos-wrapper h-5 w-24 sm:h-8 sm:w-32">
         <svelte:component this={logosAnimated[i].logo} class="hide to-top" />
         {#if logosAnimated[i + 1] !== undefined}
-          <svelte:component this={logosAnimated[i + 1].logo} />
+          <svelte:component
+            this={logosAnimated[i + 1].logo}
+            class={logosAnimated[i + 1] == equipmentShare ? "scale-125" : ""}
+          />
         {/if}
         {#if logosAnimated[i + 2] !== undefined}
           <svelte:component
