@@ -13,6 +13,8 @@ title: Building Cloud Dev Assistants with GPT-4 and Pinecone on Gitpod
   export const prerender = true;
 </script>
 
+![Gitpod with Temporal and GPT-4](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/gitpod-ai-workflow.png)
+
 GPT-4 has been a [massive breakthrough](https://arxiv.org/abs/2303.12712) for the power of Large Language Models (LLMs).
 
 For the first time, a language model has demonstrated an ability to “solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more, without needing any special prompting.” Even more surprising still, it’s performance is close to human-level performance.
@@ -21,9 +23,9 @@ Given such a powerful, new tool, the first question raised is, “How can I harn
 
 ## Using GPT-4 for Augmented Software Development
 
-GPT-4 uses a natural language interface for its API calls. It also uses what’s called a system role for telling it the identity to assume when answering questions.
+GPT-4 uses a natural language interface for its API calls. It also uses what’s called a `system` role for telling it the identity to assume when answering questions.
 
-The system query is a place for you to tell the language model how you’d like your responses made. Here you can suggest things like “respond using only code”, or “respond as an experienced frontend developer”.
+The `system` query is a place for you to tell the language model how you’d like your responses made. Here you can suggest things like “respond using only code”, or “respond as an experienced frontend developer”.
 
 A minimal program to query GPT-4 using OpenAI’s API looks like the following (you’ll need API access to GPT-4, which is still in beta):
 
@@ -84,15 +86,17 @@ Vector databases have recently gained a lot of attention. This is because of the
 
 Ideally, this resultant text is directly applicable to the question asked, or the task given to the language model. This resultant text is then injected before the question or task given to the language model, providing more context and specific information to base the answer off of.
 
-We’ll use a (Temporal workflow)[https://docs.temporal.io/workflows] to prime a vector database in this post, building up a knowledge base we can call upon to answer any questions we may have, or any tasks we may need done.
+We’ll use a [Temporal workflow](https://docs.temporal.io/workflows) to prime a vector database in this post, building up a knowledge base we can call upon to answer any questions we may have, or any tasks we may need done.
 
 ## Building Knowledge Databases with Pinecone and Temporal Workflows
 
-Temporal is a platform for orchestrating the [running of workflows](https://docs.temporal.io/temporal#temporal-application) that may fail, in a way that they will automatically retry, deal with unreliable network connections, and resume from failed states.
+Temporal is a platform for orchestrating the [running of workflows](https://docs.temporal.io/temporal#temporal-application) that may fail, in a way that the platform will automatically retry, deal with unreliable network connections, and resume from failed states.
 
-Temporal is different from queues and workers in that it allows you to define your workflows mostly in code, and that it has exception handling built right in to the platform.
+Temporal is different from queues and workers in that it allows you to define your workflows mostly in code, and that it has exception handling, observability, and history built right in to the platform.
 
 We’ll use a Temporal Workflow for the generation of an augmented dataset to query GPT-4 with.
+
+![Gitpod with Temporal and GPT-4](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/temporal-workflow.png)
 
 A Temporal Workflow will orchestrate the scraping of websites, stripping the webpages of HTML to basic text, and then finally converting the raw text to tokens, posting them to Pinecone to be added to a vector database index.
 
