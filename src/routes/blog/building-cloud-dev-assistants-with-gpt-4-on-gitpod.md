@@ -437,7 +437,7 @@ This will add jobs to the queue, using a list of URLs at the beginning of the fi
 
 Finally, once we've run our commands we can try querying our Pinecone database ahead of a query to GPT-4. The program is relatively straightforward:
 
-```python3
+```python
 import pinecone
 import openai
 import os
