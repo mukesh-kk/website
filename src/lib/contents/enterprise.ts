@@ -172,7 +172,7 @@ export const integrateFeatures: verticalFeature[] = [
 const multiTrackDevelopmentFeature: Feature = {
   title: "Onboard developers in seconds",
   paragraph:
-    "Effective day 1. Developers are ready to code with the click of a button.",
+    "Effective day 1. Developers are ready-to-code with the click of a button.",
   lottie: {
     src: "/lottie/edit_workspace.json",
     id: "edit_workspace",

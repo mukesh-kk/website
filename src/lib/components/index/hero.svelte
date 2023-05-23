@@ -53,14 +53,14 @@
 <div class="hero mt-x-small" data-analytics={`{"position":"hero"}`}>
   <div class="hero__text">
     <h1 class="homeh1">
-      Always<br /> ready to code.
+      Always<br /> ready-to-code.
     </h1>
     <p
       id="choose-project-observer-target"
-      class="hero__intro-text text-large max-w-xl"
+      class="hero__intro-text text-large max-w-2xl"
     >
-      Cloud development environments are the fastest,<br /> and more secure way,
-      to ship code.
+      The developer platform for on-demand cloud <br /> development
+      environments. Create software faster <br />and more securely.
     </p>
     <div class="hero__action">
       <ButtonsWrapper class="mt-x-small lg:mt-small mb-x-small">

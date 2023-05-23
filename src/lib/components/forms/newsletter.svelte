@@ -77,11 +77,11 @@
       {#if resultMessage}{resultMessage}{:else}{description}{/if}
     </p>
   </div>
-  <div>
+  <div class="max-w-xl">
     {#if !isFormHidden}
       <form class="space-y-4" on:submit|preventDefault={submitEmail}>
         <div class="flex justify-center space-x-6" />
-        <div class="flex gap-xx-small">
+        <div class="flex gap-micro md:gap-xx-small">
           <div class="w-4/5">
             <Input
               hasError={isFormDirty && !formData.email.valid}
@@ -99,6 +99,15 @@
               legendClass="!mb-0"
               class="bg-bg w-full"
             />
+            <div>
+              <p class="text-xs mt-3 md:mt-6">
+                By submitting this form, I confirm that I acknowledge the
+                collection and processing of personal data by Gitpod, as further
+                described in the <br /><a class="!underline" href="/privacy"
+                  >Privacy Policy.</a
+                >
+              </p>
+            </div>
           </div>
           <div>
             <Button
@@ -109,18 +118,6 @@
               type="submit">Sign up</Button
             >
           </div>
-        </div>
-        <div>
-          <div>
-            <p class="text-sm max-w-lg">
-              By submitting this form, I confirm that I acknowledge the
-              collection and processing of personal data by Gitpod, as further
-              described in the <a class="!underline" href="/privacy"
-                >Privacy Policy.</a
-              >
-            </p>
-          </div>
-          <span />
         </div>
       </form>
     {/if}

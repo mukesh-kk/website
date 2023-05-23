@@ -23,7 +23,7 @@
   data={{
     description:
       "Gitpod is a cloud development environment for teams to efficiently and securely develop software. Improve your team's developer experience by coding in a CDE.",
-    title: "Gitpod: Always ready to code.",
+    title: "Gitpod: Always ready-to-code.",
     keywords:
       "cloud dev environment, cde, remote development, open-source, integration, coding, developer experience, automation",
   }}
@@ -54,7 +54,7 @@
 <IntegrateDontDictate class="py-small" />
 <Features features={otherFeatures} />
 <Testimonials
-  title="Accelerate your software development."
+  title="Empowering the most productive teams"
   class="-mb-20"
   {testimonials}
 />

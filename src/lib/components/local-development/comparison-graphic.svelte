@@ -7,7 +7,7 @@
   export { className as class };
 
   let text =
-    "As Alice automates the configuration setup by using Gitpod she is ready to code within seconds, while it can take up to days for Bob.";
+    "As Alice automates the configuration setup by using Gitpod she is ready-to-code within seconds, while it can take up to days for Bob.";
 </script>
 
 <Card size="medium" class="shadow-normal max-w-lg md:max-w-6xl mx-auto">

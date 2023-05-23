@@ -101,7 +101,9 @@
   <LayoutMain>
     <slot />
   </LayoutMain>
-  <Footer />
+  {#if $page.url.pathname !== "/extension-activation"}
+    <Footer />
+  {/if}
 </LayoutRoot>
 <CookieConsent />
 <Segment />

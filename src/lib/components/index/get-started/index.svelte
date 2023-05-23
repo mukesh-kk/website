@@ -19,9 +19,11 @@
 </script>
 
 <Section id="get-started" class="pt-20">
-  <h2 class="!mb-x-small text-center text-h2">Get started for free</h2>
+  <h2 class="!mb-x-small text-center text-h2">Get started with any project</h2>
   <div
-    class="cards-container flex flex-col lg:flex-row max-w-[600px] lg:max-w-none gap-4 mx-auto"
+    class="cards-container flex flex-col lg:flex-row {exampleFlagValue
+      ? 'max-w-6xl'
+      : 'max-w-5xl'}  gap-4 mx-auto"
     class:justify-between={exampleFlagValue}
     class:justify-center={!exampleFlagValue}
   >
@@ -34,7 +36,7 @@
 
     {#if exampleFlagValue}
       <Card
-        class="p-xx-small sm:py-small  basis-[50%] sm:px-x-small xl:p-medium text-center"
+        class="hidden md:block p-xx-small sm:py-small  basis-[50%] sm:px-x-small xl:p-medium text-center"
         size="small"
       >
         <LaunchExampleWorkspace />

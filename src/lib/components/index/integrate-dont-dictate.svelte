@@ -29,7 +29,7 @@
 <Card size="medium" class="m-auto shadow-highlight w-10/12">
   <Section class="text-center {clazz}" {...$$restProps}>
     <h2 class="text-2xl sm:text-[32px] text-left ml-4 sm:ml-16 mb-4">
-      Integrate into your existing dev stack
+      Integrate with your existing development infrastructure
     </h2>
     <div
       class="flex flex-wrap items-center mx-auto justify-evenly mb-6 ml-6 mr-6"

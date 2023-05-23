@@ -30,7 +30,7 @@
       Onboard developers to new projects quickly
     </h2>
     <p class="text-large max-w-xl">
-      Get new team members onboarded and ready to code in less than one hour.
+      Get new team members onboarded and ready-to-code in less than one hour.
     </p>
   </div>
   <Quote

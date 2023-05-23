@@ -42,7 +42,7 @@
 <OpenGraph
   data={{
     description:
-      "Short screencasts to get started and learn how to become always ready to code. Set up, configure and customize Gitpod and enter remote development in the cloud.",
+      "Short screencasts to get started and learn how to become always ready-to-code. Set up, configure and customize Gitpod and enter remote development in the cloud.",
     title: "Gitpod Screencasts - Videos, guides and tutorials",
     keywords: "learn, video, tutorial, documentation, onboarding",
   }}

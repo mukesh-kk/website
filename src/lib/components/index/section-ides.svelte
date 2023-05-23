@@ -67,14 +67,19 @@
     What's a cloud development environment?
   </h3>
   <p
-    class="text-left sm:text-center text-lg sm:text-2xl my-micro mx-auto max-w-3xl"
+    class="text-left sm:text-center text-lg sm:text-2xl my-micro mx-auto max-w-4xl"
   >
-    CDEs are coding workspaces that allow developers to write, test and deploy
-    their applications entirely in the cloud.
+    CDEs are on-demand development environments that are pre-configured with all
+    tools, libraries and dependencies needed to write and review code.
   </p>
-  <div class="text-left sm:text-center m-auto mb-x-small">
-    <LinkButton variant="gray" size="large" href="/cde"
+  <div
+    class="text-left md:text-center m-auto mb-x-small space-x-0 md:space-x-2 space-y-2 md:space-y-0 mt-0 md:mt-8"
+  >
+    <LinkButton variant="primary" size="large" href="/cde"
       >Learn more about CDEs</LinkButton
+    >
+    <LinkButton variant="gray" size="large" href="https://gitpod.io/workspaces"
+      >Try now</LinkButton
     >
   </div>
 </Section>

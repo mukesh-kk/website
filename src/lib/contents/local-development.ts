@@ -30,7 +30,7 @@ export const benefits: Card[] = [
       alt: "Faster onboarding",
     },
     title: "Faster onboarding",
-    text: "Ready to code within seconds. No need to set up dev environments.",
+    text: "Ready-to-code within seconds. No need to set up dev environments.",
   },
   {
     icon: {

@@ -15,9 +15,9 @@ export const multiTrackDevelopmentFeature: Feature = {
 };
 
 export const reduceDeveloperToil: Feature = {
-  title: "Collaborate with ease",
+  title: "Collaborate with anyone",
   paragraph:
-    "Developers, designers, PMs. Anyone can share running workspaces for remote pair programming, quick code reviews, live feedback, and more.",
+    "From QA to PMs to designers, anyone can preview, open or share a dev environment. Jump in with your immediate team or cross-functional stakeholders to preview changes live and shorten feedback cycles.",
   lottie: {
     src: "/lottie/share_workspace.json",
     id: "share-workspace",
@@ -29,6 +29,10 @@ export const worksOnAnyMachineFeature: Feature = {
   paragraph:
     "No more compatibility issues. Developers can work with the same tools, libraries, and dependencies, regardless of operating system, with a single click.",
   previewComponent: Workspaces,
+  moreButton: {
+    text: "Improve collaboration",
+    href: "/solutions/collaboration",
+  },
 };
 
 export const collaborationFeature: Feature = {
@@ -67,9 +71,9 @@ export const codeAnywhereFeature: Feature = {
 };
 
 export const onboardNewHires: Feature = {
-  title: "Onboard new hires in an hour",
+  title: "Start developing instantly",
   paragraph:
-    "Eliminate the need for setting up local environments. Open a fully configured workspace, complete with everything necessary to start coding immediately.",
+    "Reduce time to first PR, drastically. With pre-configured environments, eliminate the need to setup any dev environments: local, VDI or homegrown.",
   terminal: {
     source: linuxSource,
     dark: true,
@@ -88,18 +92,6 @@ export const reduceTimeToResolution: Feature = {
     id: "edit_workspace",
   },
 };
-
-export const features: Feature[] = [
-  worksOnAnyMachineFeature,
-  onboardNewHires,
-  reduceTimeToResolution,
-  // {
-  //   title: "Works on my machine - and yours",
-  //   paragraph:
-  //     "Spin up pre-configured, standardized dev environments from any git context when you need them and close them when you're done. You won’t go back to the friction of long-living stateful environments. ",
-  //   previewComponent: Workspaces,
-  // },
-];
 
 export const otherFeatures: Feature[] = [
   reduceDeveloperToil,
@@ -266,7 +258,7 @@ export const worksOnAnyMachineFeatureForOnboarding: Feature = {
 export const onboardDevsWithOneClick: Feature = {
   title: "Onboard developers with one click",
   paragraph:
-    "Developers are ready to code at the click of the button. Internal and external developers become effective on day 1.",
+    "Developers are ready-to-code at the click of the button. Internal and external developers become effective on day 1.",
   lottie: {
     src: "/lottie/edit_workspace.json",
     id: "edit_workspace",
@@ -311,9 +303,9 @@ export const isolatedEnvironments: Feature = {
 };
 
 export const allYourDataSecured: Feature = {
-  title: "All your data secured",
+  title: "Secure software supply chains",
   paragraph:
-    "All data is encrypted at rest and all connections to CDEs are encrypted in transit.",
+    "Centralized access of dev environment configurations and resources. Enforce organizational security policies from one place.",
   image: {
     src: "/images/features/encoded-data.webp",
     alt: "Secure data movement",
@@ -353,4 +345,17 @@ export const supplyChainSecurityFeatures: Feature[] = [
   allYourDataSecured,
   lockDownYourSourceCode,
   secureDataMovement,
+];
+
+export const features: Feature[] = [
+  worksOnAnyMachineFeature,
+  onboardNewHires,
+  allYourDataSecured,
+  // reduceTimeToResolution,
+  // {
+  //   title: "Works on my machine - and yours",
+  //   paragraph:
+  //     "Spin up pre-configured, standardized dev environments from any git context when you need them and close them when you're done. You won’t go back to the friction of long-living stateful environments. ",
+  //   previewComponent: Workspaces,
+  // },
 ];

@@ -66,7 +66,7 @@
 <Section>
   <Testimonials
     title="Trusted by the best developer teams"
-    text="Gitpod empowers teams to be always ready to code."
+    text="Gitpod empowers teams to be always ready-to-code."
     class="-mb-20"
     {testimonials}
   />

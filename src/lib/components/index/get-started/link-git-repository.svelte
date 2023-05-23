@@ -2,10 +2,8 @@
   import LinkButton from "$lib/components/ui-library/link-button";
 </script>
 
-<h3>Get started with any project</h3>
-<p class="max-w-md mx-auto">
-  Select a Git provider to start with an existing project from any Git context.
-</p>
+<!-- <h3>Get started with any project</h3> -->
+<p class="max-w-3xl mx-auto">Choose an existing project from any Git context</p>
 <div class="inline-flex flex-col my-large space-y-2">
   <LinkButton
     href="https://gitpod.io/workspaces/"

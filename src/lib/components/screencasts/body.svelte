@@ -65,7 +65,7 @@
             View next tutorial
           </p>
           <p class="text-lg md:text-2xl mb-4 md:mb-8">
-            Learn how to always be ready to code witht these short recordings.
+            Learn how to always be ready-to-code witht these short recordings.
           </p>
           <div class="space-y-3 md:space-y-0">
             <LinkButton

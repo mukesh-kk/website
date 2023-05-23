@@ -7,7 +7,7 @@
   <div
     class="stroked p-xx-small sm:py-small sm:px-x-small md:p-medium bg-card rounded-4xl shadow-highlight max-w-4xl mx-auto text-center mb-xxx-large"
   >
-    <h2>To become always ready to code</h2>
+    <h2>To become always ready-to-code</h2>
     <ol
       class="max-w-xl w-full list-decimal pl-small md:px-small text-left mx-auto my-small lg:mt-medium lg:mb-large space-y-macro text-p-large"
     >

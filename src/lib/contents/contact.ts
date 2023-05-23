@@ -44,7 +44,7 @@ export const contactActions: Card[] = [
       alt: "Docs",
     },
     title: "Docs",
-    text: "Learn more about how to become always ready to code.",
+    text: "Learn more about how to become always ready-to-code.",
     link: {
       text: "Open documentation",
       href: "/docs",
