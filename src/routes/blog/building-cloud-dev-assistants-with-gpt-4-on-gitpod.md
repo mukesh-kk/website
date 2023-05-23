@@ -139,7 +139,7 @@ async def download_file_to_worker_filesystem(details: DownloadObj) -> str:
 
 ```
 
-Note that we're using async here, to not block the overall execution. We can write out our other activites from here, adding an activity to read the file later, then delete it, and finally, orchestrate everything using a workflow definition:
+Note that we're using async here, so as not to block the overall execution of the Task. We can write out our other activites from here, adding an activity to read the file later, then delete it, and finally, orchestrate everything using a workflow definition:
 
 ```python
 @workflow.defn
