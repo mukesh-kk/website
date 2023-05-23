@@ -23,7 +23,7 @@
     return !!Cookies.get(cookies.ANALYTICAL);
   };
 
-  const getOrSetCookieId = () => {
+  export const getOrSetCookieId = () => {
     if (!allowsAnalytics()) {
       return;
     }

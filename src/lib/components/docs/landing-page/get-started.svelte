@@ -26,7 +26,7 @@
       Learn how to spin up dev environments the way that suits you best –
       reading, watching or start directly with a template.
     </p>
-    <div class="flex flex-wrap gap-4 justify-start md:justify-center">
+    <div class="flex flex-wrap gap-4 justify-start">
       {#each getStartedItems as getStartedItem}
         <LinkButton
           data-sveltekit-preload-data

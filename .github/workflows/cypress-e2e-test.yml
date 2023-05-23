@@ -16,6 +16,8 @@ jobs:
           wait-on-timeout: 120
           runTests: false
           install: false
+        env: 
+          VITE_CONFIGCAT_KEY: ${{ secrets.CONFIGCAT_KEY }}
       - name: Run e2e tests 🧪
         uses: cypress-io/github-action@v4
         with:

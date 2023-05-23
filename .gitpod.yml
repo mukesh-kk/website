@@ -21,7 +21,9 @@ tasks:
   - name: Installing Dependencies
     init: npm install
   - name: Start Dev Server
-    command: npm run dev
+    command: |
+      cp .env.example .env
+      npm run dev
   - name: Forward Cypress Base URL
     command: |
       export CYPRESS_BASE_URL=$(gp url 3000)
