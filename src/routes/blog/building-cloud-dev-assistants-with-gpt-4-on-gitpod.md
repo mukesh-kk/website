@@ -59,14 +59,12 @@ $ python3 playground.py
 Enter your system prompt context below. As an example it should be something like:
 'you are an experienced frontend developer who cares about readability'
 Leave blank for default:
-Enter your prompt: write a fastapi api to handle login and image uploads to s3
+Enter your prompt: write a fastapi api to handle sso logins and image uploads to s3
 ```
 
-And after a few minutes, we get the following, (correct!) answer:
+And after a few minutes, we get the following, (mostly correct!) [answer](https://github.com/burningion/demo-gpt-4-temporal/tree/main/gpt-4-output):
 
-```
-TODO: Link to repo with output
-```
+![Dynamic Secrets](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/screenshot-prompt.png)
 
 This is wild, and a great start to a project that would otherwise take time to set up.
 
@@ -74,7 +72,7 @@ So, what can we do to improve this? How can we turn it into a better tool?
 
 ## Augmenting GPT-4’s Performance
 
-Really, there are two main ways to enhance the performance of GPT-4. The first is via prompts, either the persona we ask GPT-4 to take on, or the type of question that we ask. The other method is via augmenting our query with data that will help GPT-4 learn about the specific problem we’re facing. With this, we’d (as an example) add docs to the query to GPT-4, before asking our question.
+Really, there are two main ways to enhance the performance of GPT-4. The first is via our prompts, either the persona we ask GPT-4 to take on, or the type of question that we ask. The other method is via augmenting our query with data that will help GPT-4 learn about the specific problem we’re facing. With this, we’d (as an example) add docs to the query to GPT-4, before asking our question.
 
 The first method of augmenting GPT-4 has been written very well by the [Brex prompt engineering Github repository](https://github.com/brexhq/prompt-engineering). I encourage you to read through that repository if you’re interested in a more sophisticated approach to your queries.
 
@@ -90,11 +88,15 @@ We’ll use a (Temporal workflow)[https://docs.temporal.io/workflows] to prime a
 
 ## Building Knowledge Databases with Pinecone and Temporal Workflows
 
-Temporal is a platform for orchestrating the running of workflows that may fail, in a way that they will automatically retry, deal with unreliable network connections, and resume from failed states.
+Temporal is a platform for orchestrating the [running of workflows](https://docs.temporal.io/temporal#temporal-application) that may fail, in a way that they will automatically retry, deal with unreliable network connections, and resume from failed states.
 
-We’ll use a Temporal Workflow for the scraping of websites, stripping the webpages of HTML to basic text, and then finally converting the raw text to tokens, posting them to Pinecone to be added to a vector database index.
+Temporal is different from queues and workers in that it allows you to define your workflows mostly in code, and that it has exception handling built right in to the platform.
 
-From there we’ll ready for search augmentation for our queries we may have for GPT-4. Let’s jump in.
+We’ll use a Temporal Workflow for the generation of an augmented dataset to query GPT-4 with.
+
+A Temporal Workflow will orchestrate the scraping of websites, stripping the webpages of HTML to basic text, and then finally converting the raw text to tokens, posting them to Pinecone to be added to a vector database index.
+
+From there we’ll ready for search augmentation for our queries for GPT-4. Let’s jump in.
 
 ## Orchestrating Pinecone Workflows in Gitpod with Temporal
 
