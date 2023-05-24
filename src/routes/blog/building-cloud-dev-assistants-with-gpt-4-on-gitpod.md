@@ -529,10 +529,12 @@ This configuration file sets up a Gitpod workspace with Python, installs the nec
 
 ## Extending the Workflow Platform
 
-As written, the Github repository still has room for improvements. I encourage you to try it out. For starters, here are a few ideas to pursue:
+As written, the [Github repository](https://github.com/burningion/demo-gpt-4-temporal) still has room for improvements. I encourage you to try it out.
 
-- Add a language model running locally on your computer to the query. You can use Tailscale and add your home machine as a node.
-- Refine the feedback loop for augmented queries. Pick a token window size and determine a smart way to fit the right amount of context.
-- Use LoRA to fine tune your own language model, using Temporal's workflows to build your data pipeline.
+For starters, here are a few ideas to pursue:
+
+- Add a language model running locally on your computer to do the query. You can use Tailscale and add your home machine as a node, and then connect via Gitpod.
+- Refine the feedback loop for augmented queries. Pick a token window size and determine a smart way to fit the right amount of context. There's a [started file ](https://github.com/burningion/demo-gpt-4-temporal/blob/a8599650e224f2a4ee89298aba6ea7a4892fc8dc/ask-embeddings-loop.py) in the repo to bootstrap from.
+- Use [LoRA](https://replicate.com/blog/fine-tune-alpaca-with-lora) to fine tune your own language model, using Temporal's workflows to build your data pipeline.
 
 I'm excited to see what you build, please don't hesitate to share with me on [Twitter](https://twitter.com/burningion).
