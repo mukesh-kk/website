@@ -218,7 +218,7 @@ OpenAI has a [great example](https://github.com/openai/openai-cookbook/blob/main
 
 We’ll mostly base our scraping off of their work, with the minor change of not using the ReadTheDocs interpreter from Langchain, but instead using the BeautifulSoup HTML reader. The helper function to convert our downloaded HTML to raw text looks like this:
 
-```
+```python
 def read_file(path, url) -> list:
     """Read file and load with BS4"""
     loader = BSHTMLLoader(path)
