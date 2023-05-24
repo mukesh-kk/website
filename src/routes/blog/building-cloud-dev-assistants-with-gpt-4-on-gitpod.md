@@ -334,7 +334,7 @@ Next, we need to iterate on the text we have, breaking up the text into chunks:
        } for i in range(len(texts))])
 ```
 
-Yep, this splits up our text into chunks, getting them ready actually be inserted into Pinecone.
+This splits up our text into chunks that fit as entries within our vector database, getting them ready actually be inserted into Pinecone.
 
 Next, we configure OpenAI and Pinecone, getting them ready for upsertion / tokenization:
 
@@ -397,11 +397,11 @@ Finally, we tokenize our text, and insert to Pinecone:
     return f"Processed {len(chunks)} documents to pinecone"
 ```
 
-With this, we're ready to run our workflow.
+With this, we're ready to run our workflow on a [set of URLs](https://github.com/burningion/demo-gpt-4-temporal/blob/a8599650e224f2a4ee89298aba6ea7a4892fc8dc/src/starter.py#L9-L27), and populate our vector database with the tokens / embeddings.
 
 ## Running A Temporal Workflow
 
-To run our Temporal workflow to insert these tokens, we'll need be running Temporal in our development environment.
+To run our Temporal workflow to insert these tokens, we'll need be running Temporal in our development environment. The [repository](https://github.com/burningion/demo-gpt-4-temporal/) already has this configured.
 
 For that, our `.gitpod.yaml` file can ensure we've got a running system:
 
@@ -436,7 +436,7 @@ Once it's spun up, we can start the workers with a:
 $ python3 worker.py
 ```
 
-In the Dev Env, and spin up our workers to process the URLs.
+In the shell entitled `Dev Env`, and this will spin up our workers to process the URLs.
 
 But our Workers need work to execute, and for that, we'll need to open a new bash shell, and run:
 
@@ -444,9 +444,9 @@ But our Workers need work to execute, and for that, we'll need to open a new bas
 $ python3 starter.py
 ```
 
-This will add jobs to the queue, using a list of URLs at the beginning of the file. Change them to edit your knowledge base.
+This will add jobs to the Temporal queue, using the [list of URLs](https://github.com/burningion/demo-gpt-4-temporal/blob/a8599650e224f2a4ee89298aba6ea7a4892fc8dc/src/starter.py#L9-L27) at the beginning of the file. Change them to edit your knowledge base.
 
-## Testing our Augmented Results
+## Testing our Pinecone Augmented Results
 
 Finally, once we've run our commands we can try querying our Pinecone database ahead of a query to GPT-4. The program is relatively straightforward:
 
@@ -513,19 +513,17 @@ We can now try executing our questions with and without our context, to confirm 
 ````markdown
 Here's a .gitpod.yml file for your FastAPI Python project based on the provided information:
 
-`` ```yaml
+```yaml
 image: gitpod/workspace-python
 
 tasks:
-
-- init: pip install fastapi uvicorn python-dotenv python-social-auth boto3
-  command: uvicorn main:app --host 0.0.0.0 --port 8000
+  - init: pip install fastapi uvicorn python-dotenv python-social-auth boto3
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
 
 ports:
-
-- port: 8000
-  onOpen: open-preview
-  `` ```
+  - port: 8000
+    onOpen: open-preview
+```
 
 This configuration file sets up a Gitpod workspace with Python, installs the necessary dependencies using `pip`, and then runs your FastAPI application using the provided `uvicorn` command. Additionally, it exposes port 8000 and opens a preview when the workspace starts.
 ````
