@@ -134,8 +134,7 @@ class DownloadedObj:
 
 @activity.defn
 async def download_file_to_worker_filesystem(details: DownloadObj) -> str:
-    """Simulates downloading a file to a local filesystem"""
-    # FS ops
+    """Downloads a URL to the local filesystem"""
     path = create_filepath(details.unique_worker_id, details.workflow_uuid)
     activity.logger.info(f"Downloading ${details.url} and saving to ${path}")
 
@@ -162,7 +161,7 @@ class FileProcessing:
         """Workflow implementing the basic file processing example.
 
         First, a worker is selected randomly. This is the "sticky worker" on which
-        the workflow runs. This consists of a file download and some processing task,
+        the workflow runs. This consists of a file download and the text stripping to Pinecone,
         with a file cleanup if an error occurs.
         """
         workflow.logger.info("Searching for available worker")
