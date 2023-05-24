@@ -82,11 +82,11 @@ So, what can we do to improve this? How can we turn it GPT-4 into a better softw
 
 [![Karpathy talk](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/retrieval-augmented.png)](https://build.microsoft.com/en-US/sessions/db3f4859-cd30-4445-a0cd-553c3304f8e2)
 
-Really, there are two main ways to enhance the performance of GPT-4. The first is via our prompts. Either the persona we ask GPT-4 to take on, or the type of question that we ask. We can ensure that our prompt increases the probability that GPT-4 will predict using the right expecations given it's massive dataset. So things like specifying you want results from an expert help here.
+Really, there are two main ways to enhance the performance of GPT-4. The first is via our prompts. Both the persona we ask GPT-4 to take on, and the type of question that we ask influence the quality of response. We must be explicit in our prompts so that GPT-4 uses the right part of it's knowledge base to respond. So telling GPT-4 you want it to assume the role of an expert developer is critically important for good results.
 
 This method of augmenting GPT-4 has been written very well by the [Brex prompt engineering Github repository](https://github.com/brexhq/prompt-engineering). I encourage you to read through that repository if you’re interested in a more sophisticated approach to your queries.
 
-The other method is via augmenting our query with data that will help GPT-4 learn about the specific problem we’re facing. With this, we’d prepend relevant documents with context to our query to GPT-4, before asking our question.
+The other method of enhancing GPT-4's responses is via augmenting our query with data that will help GPT-4 learn about the specific problem we’re facing. With this, we’d prepend relevant documents with context to our query to GPT-4, before asking our question.
 
 For this post, we’ll mostly focus on the second sort of augmentation, adding in your custom data or context before posing your question.
 
