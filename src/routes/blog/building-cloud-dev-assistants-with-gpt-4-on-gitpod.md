@@ -13,10 +13,6 @@ title: Building Cloud Dev Assistants with GPT-4 and Pinecone on Gitpod
   export const prerender = true;
 </script>
 
-![Gitpod with Temporal and GPT-4](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/gitpod-ai-workflow.png)
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/burningion/demo-gitpod-temporal)
-
 GPT-4 has been a [massive breakthrough](https://arxiv.org/abs/2303.12712) for the power of Large Language Models (LLMs).
 
 For the first time, a language model has demonstrated an ability to “solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more, without needing any special prompting.” Even more surprising still, it’s performance is close to human-level performance.
@@ -24,6 +20,10 @@ For the first time, a language model has demonstrated an ability to “solve nov
 Given such a powerful, new tool, the first question raised is, “How can I harness it?” Today we’ll take a look at some of the ways GPT-4 can be used within a secure cloud development environment (Gitpod) to augment and improve the productivity of developers.
 
 ## Using GPT-4 for Augmented Software Development
+
+![Gitpod with Temporal and GPT-4](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/gitpod-ai-workflow.png)
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/burningion/demo-gitpod-temporal)
 
 GPT-4 uses a natural language interface for its API calls. It also uses what’s called a `system` role for telling the language model the identity to assume when answering questions.
 
