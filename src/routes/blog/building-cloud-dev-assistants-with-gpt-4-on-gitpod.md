@@ -4,8 +4,8 @@ date: Wed, 24 May 2023 17:00:00 UTC
 excerpt: GPT-4 has been a massive breakthrough for the power of Large Language Models (LLMs). Learn how to augment their abilities for development with Gitpod
 slug: building-cloud-dev-assistants-with-gpt-4-on-gitpod
 tags: ["Engineering"]
-image: teaser.webp
-teaserImage: teaser.webp
+image: header.webp
+teaserImage: header.webp
 title: Building Cloud Dev Assistants with GPT-4 and Pinecone on Gitpod
 ---
 
