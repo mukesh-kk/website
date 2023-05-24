@@ -80,6 +80,8 @@ So, what can we do to improve this? How can we turn it GPT-4 into a better softw
 
 ## Augmenting GPT-4’s Performance
 
+[![Karpathy talk](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/retrieval-augmented.png)](https://build.microsoft.com/en-US/sessions/db3f4859-cd30-4445-a0cd-553c3304f8e2)
+
 Really, there are two main ways to enhance the performance of GPT-4. The first is via our prompts. Either the persona we ask GPT-4 to take on, or the type of question that we ask. We can ensure that our prompt increases the probability that GPT-4 will predict using the right expecations given it's massive dataset. So things like specifying you want results from an expert help here.
 
 This method of augmenting GPT-4 has been written very well by the [Brex prompt engineering Github repository](https://github.com/brexhq/prompt-engineering). I encourage you to read through that repository if you’re interested in a more sophisticated approach to your queries.
@@ -90,7 +92,7 @@ For this post, we’ll mostly focus on the second sort of augmentation, adding i
 
 ## Why Everyone Loves Vector Databases Now
 
-![Karpathy talk](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/retrieval-augmented.png)
+[![Vector database](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/vector-database.png)](https://www.pinecone.io/learn/vector-database/)
 
 Vector databases have recently gained a lot of attention for their potential in augmenting large language models. The basic idea is to build a large database of relevant text, and to search through it when asking a question to a large language model.
 
@@ -99,6 +101,8 @@ Ideally, this resultant text is directly applicable to the question asked, or th
 We’ll use a [Temporal workflow](https://docs.temporal.io/workflows) to scrape the documentation of Gitpod to build a vector database in this post, building up a knowledge base we can call upon to answer any questions we may have, or any tasks we may need done.
 
 ## Building Knowledge Databases with Pinecone and Temporal Workflows
+
+[![Augmented Development Architecture](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/architecture.png)](https://github.com/burningion/demo-gpt-4-temporal/)
 
 Temporal is a platform for orchestrating the [running of workflows](https://docs.temporal.io/temporal#temporal-application) that may fail, in a way that the platform will automatically retry, deal with unreliable network connections, and resume from failed states.
 
@@ -135,11 +139,6 @@ async def download_file_to_worker_filesystem(details: DownloadObj) -> str:
     path = create_filepath(details.unique_worker_id, details.workflow_uuid)
     activity.logger.info(f"Downloading ${details.url} and saving to ${path}")
 
-    # Here is where the real download code goes. Developers should be careful
-    # not to block an async activity. If there are concerns about blocking download
-    # or disk IO, developers should use loop.run_in_executor or change this activity
-    # to be synchronous. Also like for all non-immediate activities, be sure to
-    # heartbeat during download.
     async with aiohttp.ClientSession() as sess:
         async with sess.get(details.url) as resp:
             # We don't want to retry client failure
@@ -153,7 +152,7 @@ async def download_file_to_worker_filesystem(details: DownloadObj) -> str:
 
 ```
 
-Note that we're using async here, so as not to block the overall execution of the Task. We can write out our other activites from here, adding an activity to read the file later, then delete it, and finally, orchestrate everything using a workflow definition:
+Note that we're using async here, so as not to block the overall execution of the Task. We can write out our other activities from here, adding an activity to read the file later, then delete it, and finally, orchestrate everything using a workflow definition:
 
 ```python
 @workflow.defn
@@ -213,7 +212,7 @@ class FileProcessing:
 
 With this, we mostly have our stub to execute the downloading of HTML. Next, convert our raw HTML to plain text, and then tokenize them, then finally, upload those tokens to Pinecone.
 
-## From Scraped HTML to Tokenized Chunks of Text
+## From Scraped Raw HTML to Tokenized Chunks of Text
 
 OpenAI has a [great example](https://github.com/openai/openai-cookbook/blob/main/examples/vector_databases/pinecone/GPT4_Retrieval_Augmentation.ipynb) application showcasing retrieval augmentation with Pinecone.
 
