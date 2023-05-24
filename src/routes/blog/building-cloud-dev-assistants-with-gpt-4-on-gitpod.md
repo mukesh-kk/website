@@ -25,9 +25,11 @@ Given such a powerful, new tool, the first question raised is, “How can I harn
 
 ## Using GPT-4 for Augmented Software Development
 
-GPT-4 uses a natural language interface for its API calls. It also uses what’s called a `system` role for telling it the identity to assume when answering questions.
+GPT-4 uses a natural language interface for its API calls. It also uses what’s called a `system` role for telling the language model the identity to assume when answering questions.
 
 The `system` query is a place for you to tell the language model how you’d like your responses made. Here you can suggest things like “respond using only code”, or “respond as an experienced frontend developer”.
+
+According to Andrej Karpathy in his new [Microsoft Build talk](https://build.microsoft.com/en-US/sessions/db3f4859-cd30-4445-a0cd-553c3304f8e2), we need to ensure that we tell our language model to assume the identity of an expert, because it's been trained on data from non-experts, and can't really know that expert level answers are what we want unless we tell it.
 
 A minimal program to query GPT-4 using OpenAI’s API looks like the following (you’ll need API access to GPT-4, which is still in beta):
 
@@ -70,25 +72,31 @@ And after a few minutes, we get the following, (mostly correct!) [answer](https:
 
 ![Dynamic Secrets](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/screenshot-prompt.png)
 
-This is wild, and a great start to a project that would otherwise take time to set up.
+This is not quite production ready, but a great start to a project that would otherwise take time to set up.
 
-So, what can we do to improve this? How can we turn it into a better tool?
+In general, these large language models _aren't_ yet going to turn out perfect production code. It helps to be able to read the code afterwards, or to try running it in a [disposable development environment](https://gitpod.io/) before moving on.
+
+So, what can we do to improve this? How can we turn it GPT-4 into a better software development tool?
 
 ## Augmenting GPT-4’s Performance
 
-Really, there are two main ways to enhance the performance of GPT-4. The first is via our prompts, either the persona we ask GPT-4 to take on, or the type of question that we ask. The other method is via augmenting our query with data that will help GPT-4 learn about the specific problem we’re facing. With this, we’d (as an example) add docs to the query to GPT-4, before asking our question.
+Really, there are two main ways to enhance the performance of GPT-4. The first is via our prompts. Either the persona we ask GPT-4 to take on, or the type of question that we ask. We can ensure that our prompt increases the probability that GPT-4 will predict using the right expecations given it's massive dataset. So things like specifying you want results from an expert help here.
 
-The first method of augmenting GPT-4 has been written very well by the [Brex prompt engineering Github repository](https://github.com/brexhq/prompt-engineering). I encourage you to read through that repository if you’re interested in a more sophisticated approach to your queries.
+This method of augmenting GPT-4 has been written very well by the [Brex prompt engineering Github repository](https://github.com/brexhq/prompt-engineering). I encourage you to read through that repository if you’re interested in a more sophisticated approach to your queries.
 
-But for this post, we’ll mostly focus on the second sort of augmentation, adding in your custom data or context before posing your question.
+The other method is via augmenting our query with data that will help GPT-4 learn about the specific problem we’re facing. With this, we’d prepend relevant documents with context to our query to GPT-4, before asking our question.
+
+For this post, we’ll mostly focus on the second sort of augmentation, adding in your custom data or context before posing your question.
 
 ## Why Everyone Loves Vector Databases Now
 
-Vector databases have recently gained a lot of attention. This is because of their relevance when it comes to extending the features of Large Language Models. The basic idea is to have a large database of text, and to search through it when asking a question to a large language model.
+![Karpathy talk](../../../static/images/blog/building-cloud-dev-assistants-with-gpt-4-on-gitpod/retrieval-augmented.png)
+
+Vector databases have recently gained a lot of attention for their potential in augmenting large language models. The basic idea is to build a large database of relevant text, and to search through it when asking a question to a large language model.
 
 Ideally, this resultant text is directly applicable to the question asked, or the task given to the language model. This resultant text is then injected before the question or task given to the language model, providing more context and specific information to base the answer off of.
 
-We’ll use a [Temporal workflow](https://docs.temporal.io/workflows) to prime a vector database in this post, building up a knowledge base we can call upon to answer any questions we may have, or any tasks we may need done.
+We’ll use a [Temporal workflow](https://docs.temporal.io/workflows) to scrape the documentation of Gitpod to build a vector database in this post, building up a knowledge base we can call upon to answer any questions we may have, or any tasks we may need done.
 
 ## Building Knowledge Databases with Pinecone and Temporal Workflows
 
@@ -503,10 +511,10 @@ We can now try executing our questions with and without our context, to confirm 
  Prompt: write a .gitpod.yml file for a fastapi python project. the application is named `main.py`, and the command to run it is `uvicorn main:app --host 0.0.0.0 --port 8000`. the other library dependencies are fastapi uvicorn python-dotenv python-social-auth boto3
 ```
 
-```markdown
+````markdown
 Here's a .gitpod.yml file for your FastAPI Python project based on the provided information:
 
-\`\`\`yaml
+`` ```yaml
 image: gitpod/workspace-python
 
 tasks:
@@ -518,10 +526,10 @@ ports:
 
 - port: 8000
   onOpen: open-preview
-  \`\`\`
+  `` ```
 
 This configuration file sets up a Gitpod workspace with Python, installs the necessary dependencies using `pip`, and then runs your FastAPI application using the provided `uvicorn` command. Additionally, it exposes port 8000 and opens a preview when the workspace starts.
-```
+````
 
 ## Extending the Workflow Platform
 
